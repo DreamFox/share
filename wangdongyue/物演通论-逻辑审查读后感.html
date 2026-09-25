@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《物演通论》逻辑审查读后感 · 递弱代偿的雄心与命门</title>
+<style>
+  :root{
+    --ink:#1a1c22; --muted:#5b616e; --line:#e3e6ec; --bg:#f7f8fb; --card:#ffffff;
+    --ok:#0f9d58; --warn:#c07a00; --bad:#c0392b; --accent:#2d5bd7; --quote:#6a4bbc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC","STSong",-apple-system,"Segoe UI",Roboto,sans-serif;
+    line-height:1.85;font-size:17px;}
+  .wrap{max-width:940px;margin:0 auto;padding:48px 26px 96px;}
+  header.hero{background:linear-gradient(135deg,#243b6b,#4a6fd0);color:#fff;border-radius:16px;
+    padding:40px 36px;margin-bottom:34px;box-shadow:0 12px 34px rgba(40,70,150,.22);}
+  .hero .kicker{letter-spacing:.28em;font-size:13px;opacity:.85;text-transform:uppercase;}
+  .hero h1{font-size:38px;margin:.25em 0 .1em;line-height:1.25;font-weight:800;}
+  .hero .sub{font-size:18px;opacity:.94;margin-top:6px;}
+  .hero .meta{margin-top:20px;font-size:14px;opacity:.85;display:flex;gap:22px;flex-wrap:wrap;}
+  .verdict-bar{margin-top:24px;background:rgba(255,255,255,.14);border-left:5px solid #ffd36b;
+    border-radius:8px;padding:16px 20px;font-size:17px;}
+  .verdict-bar b{color:#ffd36b;}
+
+  h2{font-size:27px;margin:52px 0 8px;padding-top:14px;border-top:3px solid var(--accent);}
+  h2 .num{color:var(--accent);font-weight:800;margin-right:.4em;}
+  h3{font-size:21px;margin:34px 0 6px;color:#243b6b;}
+  h4{font-size:17.5px;margin:24px 0 4px;color:#333;}
+  p{margin:.7em 0;}
+  .lead{font-size:18px;color:#2a2d35;}
+  .muted{color:var(--muted);}
+  small{color:var(--muted);}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;
+    margin:18px 0;box-shadow:0 2px 10px rgba(20,30,60,.04);}
+
+  /* 逻辑链条块 */
+  .chain{background:#fbfbfe;border:1px solid #e6e3f5;border-left:5px solid var(--quote);
+    border-radius:10px;padding:16px 20px;margin:14px 0;}
+  .chain .tag{font-size:12.5px;letter-spacing:.14em;color:var(--quote);font-weight:700;text-transform:uppercase;}
+  .chain ol{margin:.5em 0 .2em 1.1em;padding:0;}
+  .chain ol li{margin:.35em 0;}
+  .chain .therefore{margin-top:.5em;font-weight:600;}
+  .chain .therefore::before{content:"∴ 结论：";color:var(--quote);font-weight:800;}
+
+  /* 裁决徽章 */
+  .badge{display:inline-block;padding:2px 12px;border-radius:999px;font-size:14px;font-weight:700;
+    color:#fff;vertical-align:middle;margin-right:6px;}
+  .b-ok{background:var(--ok);} .b-warn{background:var(--warn);} .b-bad{background:var(--bad);}
+  .judg{border-radius:10px;padding:14px 18px;margin:12px 0;border:1px solid var(--line);background:#fff;}
+  .judg.ok{border-left:5px solid var(--ok);} .judg.warn{border-left:5px solid var(--warn);}
+  .judg.bad{border-left:5px solid var(--bad);}
+  .judg .why{margin:.4em 0 0 .2em;}
+  .judg .why li{margin:.25em 0;}
+  .fallacy{display:inline-block;background:#f0eaff;color:#5a3fb0;border-radius:6px;
+    padding:1px 8px;font-size:13px;margin:2px 4px 2px 0;font-weight:600;}
+  .hidden{color:#8a5a00;font-size:14.5px;}
+
+  /* 命门卡片 */
+  .vital{border:2px solid var(--bad);border-radius:12px;padding:20px 24px;margin:22px 0;
+    background:linear-gradient(180deg,#fff7f6,#fff);}
+  .vital h4{color:var(--bad);margin-top:0;font-size:19px;}
+
+  /* 金句 */
+  .quote{border-left:4px solid var(--quote);padding:8px 18px;margin:14px 0;background:#faf8ff;
+    border-radius:0 8px 8px 0;font-style:normal;color:#3a2f5a;}
+  .quote .src{display:block;font-size:13.5px;color:#8a7bb5;margin-top:4px;}
+
+  /* 结构图（纯CSS竖链） */
+  .map{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin:18px 0;}
+  .map .lvl{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line);}
+  .map .lvl:last-child{border-bottom:none;}
+  .map .lvlnum{flex:0 0 30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;}
+  .map .lvltxt b{color:#243b6b;}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fff;
+    border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(20,30,60,.05);}
+  th,td{border:1px solid var(--line);padding:10px 13px;text-align:left;vertical-align:top;}
+  th{background:#eef2fb;color:#243b6b;font-weight:700;}
+  tr:nth-child(even) td{background:#fafbfe;}
+
+  ul.tight li{margin:.3em 0;}
+  .pill{display:inline-block;background:#eef;color:#2a5;border:1px solid #cfe9d8;border-radius:6px;
+    padding:0 8px;font-size:13px;font-weight:700;}
+  footer{margin-top:60px;padding-top:20px;border-top:2px solid var(--line);color:var(--muted);font-size:14px;}
+  .backlink{display:inline-block;margin:8px 0;background:var(--accent);color:#fff;text-decoration:none;
+    padding:8px 18px;border-radius:8px;font-size:15px;font-weight:600;}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 26px;margin:22px 0;}
+  .toc a{color:var(--accent);text-decoration:none;display:inline-block;margin:3px 14px 3px 0;}
+  .toc a:hover{text-decoration:underline;}
+  @media print{body{background:#fff}.hero{background:#243b6b !important;-webkit-print-color-adjust:exact;}}
+
+  .reportnav{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 20px;margin:18px 0;
+    font-size:15.5px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 2px 8px rgba(20,30,60,.05);}
+  .reportnav a{color:var(--accent);text-decoration:none;font-weight:600;padding:4px 12px;border-radius:8px;background:#eef2fb;}
+  .reportnav a:hover{background:#dde5fb;}
+  .reportnav a.home{background:#333;color:#fff;}
+  .reportnav a.cur{opacity:.45;pointer-events:none;}
+  .reportnav .sep{color:var(--muted);margin:0 2px;}
+  .reportnav .lbl{color:var(--muted);font-size:13.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">逻辑审查 · 精读读后感</div>
+  <h1>《物演通论》：一条原理统摄万物的雄心与命门</h1>
+  <div class="sub">王东岳 著 · 全书 180 章三卷（自然哲学 / 精神哲学 / 社会哲学）</div>
+  <div class="meta">
+    <span>审查对象：<b>全部逻辑推演的有效性</b></span>
+    <span>方法：逐章重构「前提 → 推理 → 结论」并逐项裁决</span>
+  </div>
+  <div class="verdict-bar">
+    <b>一句话总评：</b>
+    这是一套<b>概念咬合极其精密、修辞雄辩、统摄力惊人</b>的形而上世界图景，
+    但作为「逻辑演绎」来审查，它<b>在奠基处依赖循环论证、核心概念（存在度）偷换滑动、
+    大量以比喻代论证、结论不可证伪</b>——
+    它更像柏拉图/黑格尔式的<b>自洽哲学建构</b>，而非可证伪的科学理论；
+    其「越发展越没落」的宿命结论，<b>并未被其前提充分支持</b>。
+  </div>
+</header>
+
+<div class="toc">
+  <b>目录：</b>
+  <a href="#what">① 这本书想干什么</a>
+  <a href="#map">② 全书论证地图</a>
+  <a href="#vol1">③ 卷一·递弱代偿的奠基</a>
+  <a href="#vol2">④ 卷二·精神＝属性代偿</a>
+  <a href="#vol3">⑤ 卷三·社会＝结构代偿</a>
+  <a href="#vital">⑥ 三大命门的逻辑体检</a>
+  <a href="#verdict">⑦ 总裁决：逻辑成立吗</a>
+  <a href="#read">⑧ 我的读后感·得与失</a>
+  <a href="#quotes">⑨ 金句摘录</a>
+</div>
+
+<div class="reportnav"><a class="home" href="index.html">☰ 三书总览</a><span class="sep">|</span><span class="lbl">精读三书互跳：</span><a class="cur" href="物演通论-逻辑审查读后感.html">《物演通论》</a><a href="人类的没落-逻辑审查读后感.html">《人类的没落》</a><a href="知鱼之乐-逻辑审查读后感.html">《知鱼之乐》</a></div>
+
+<!-- ============ ① ============ -->
+<h2 id="what"><span class="num">①</span>这本书想干什么（说人话）</h2>
+<p class="lead">
+  王东岳想干一件哲学史上野心最大的事之一：<b>用一条叫「递弱代偿」的原理，把宇宙、精神、社会、人生全部解释掉</b>。
+</p>
+<p>
+  大意是这样：宇宙万物有一个统一的「<b>存在度</b>」——你可以理解成一个东西「自己站得稳、不需要靠别人」的程度。
+  越往后演化出来的存在者（比如人），存在度越低，也就是越「<b>弱</b>」、越离不开外部条件。这叫「<b>递弱</b>」。
+</p>
+<p>
+  弱了怎么办？只好不断长出新的本事来补——感知、能动、智慧、社会、文明……这些东西统称「<b>属性</b>」，这个补的过程叫「<b>代偿</b>」。
+  关键的翻案在于：<b>代偿只能让你勉强续命（维持在一条「存在阈」线上），却补不回你丢失的存在度，反而证明你更弱了</b>。
+  你越「能干」，其实越「虚弱」；文明越辉煌，其实越接近崩塌。这就是全书的总纲——「<b>越发展越没落</b>」。
+</p>
+<p>
+  三卷分工：<b>卷一</b>讲自然（万物怎么按这个法则演化），<b>卷二</b>讲精神（感知/智慧其实只是最弱者最强的代偿），<b>卷三</b>讲社会（社会只是残弱生物抱团的结构代偿）。
+  最后合流成一个惊人的结论：人类是这条演化链的末端、最弱的一环，文明是代偿的极致，所以人类正走向「没落」。
+</p>
+<div class="card">
+  <b>它对我的第一吸引力：</b>读起来非常「爽」。它把物理、化学、生物、哲学史、心理学、社会学、文明史全部串成一条线，形成一种「万物皆备于我」的智性快感。
+  很多段落的洞见（比如「感知是为求存而非求真」「工具是站立不稳的老者之杖」）确实令人眼前一亮。
+  <br><b>但这次我要做的不是欣赏，而是拆它的逻辑：</b>每一步推导，凭什么成立？
+</div>
+
+<!-- ============ ② ============ -->
+<h2 id="map"><span class="num">②</span>全书论证地图（完整推演骨架）</h2>
+<p>把 180 章的推演压缩成一条链，它的「骨」是这样的（后面几节会逐段拆开裁决）：</p>
+<div class="map">
+  <div class="lvl"><div class="lvlnum">1</div><div class="lvltxt">
+    <b>起点（ch1–4）：</b>从「设问者何以要追问存在」入手 → 存在都是相对、有限的 → 存在只能「相对于存在而衍存」（层层相依、步步分化）。
+  </div></div>
+  <div class="lvl"><div class="lvlnum">2</div><div class="lvltxt">
+    <b>核心公设（ch8–10）：</b>假设「存在效价先天不足（&lt;1）又不告竭（&gt;0）」→ 量化为「存在度 ∈ (0,1)」→ 总体守恒、个别分有。
+    <span class="pill">此处是循环+偷换，见命门一</span>
+  </div></div>
+  <div class="lvl"><div class="lvlnum">3</div><div class="lvltxt">
+    <b>经验归纳（ch11–13）：</b>用宇宙演化序列（奇点→粒子→原子→分子→生物→人）归纳「存在度递减（递弱）」。
+    <span class="pill">此处是类目错置，见命门二</span>
+  </div></div>
+  <div class="lvl"><div class="lvlnum">4</div><div class="lvltxt">
+    <b>代偿机制（ch16–20）：</b>设「存在阈」常量 + 「存在有求存倾向」→ 补偿＝分化＝残化 → 代偿「愈补愈失」。
+  </div></div>
+  <div class="lvl"><div class="lvlnum">5</div><div class="lvltxt">
+    <b>数学内核（ch34）：</b><b>存在度 Ed ＋ 代偿度 Cd ＝ 存在阈 Ts（常量）</b>，Cd 是 Ed 的反比函数。
+    <span class="pill">此处是人为定义的恒等式，见命门三</span>
+  </div></div>
+  <div class="lvl"><div class="lvlnum">6</div><div class="lvltxt">
+    <b>精神＝代偿（卷二 ch61–120）：</b>感知/逻辑/意志都是「感应属性」的代偿膨胀；真理是「求存」不是「求真」。
+  </div></div>
+  <div class="lvl"><div class="lvlnum">7</div><div class="lvltxt">
+    <b>社会＝代偿（卷三 ch121–180）：</b>社会是残弱生物「分化耦合」的结构代偿，社会方程 S=ER 是 Ed+Cd=Ts 的社会版。
+  </div></div>
+  <div class="lvl"><div class="lvlnum">8</div><div class="lvltxt">
+    <b>终局（ch177–180）：</b>大同＝失存临界；人类是「最后载体」、精神是「最高代偿」、社会是「最终结构」→ 存在前途预先注定、选择不成立。
+  </div></div>
+</div>
+<div class="card">
+  <b>看这条链的关键：</b>整座大厦压在第 2 步那几个「公设」上。
+  而卷二、卷三几乎<b>不重新证明</b>这些公设，只是把它们<b>套用到精神和社会领域</b>。
+  也就是说——<b>地基如果是定义和循环，上面三层就只是把结论反复重述</b>。这正是本次审查要盯死的地方。
+</div>
+
+<!-- ============ ③ ============ -->
+<h2 id="vol1"><span class="num">③</span>卷一 · 递弱代偿的奠基（第 1–60 章）</h2>
+<p class="muted">这一卷是全书的逻辑根基。我逐章精读并亲自裁决了它的奠基演绎（ch1–60）。下面挑出真正「承重」的推演重点展开。</p>
+
+<h3>3.1 开场的三步妙棋（ch1–7）</h3>
+<div class="chain">
+  <div class="tag">推演链 · 第 1–7 章</div>
+  <ol>
+    <li>一旦对「存在」设问，这「存在」就已经是设问者感知中的存在了。</li>
+    <li>绝对的存在者无须为存在发问、也无须设对象；今既设问又设对象，可见追问中的存在都是<b>相对、有限</b>的。</li>
+    <li>于是哲学要找「存在自身的逻各斯」，且它要能反过来说明「逻辑何以存在」。</li>
+  </ol>
+  <div class="therefore">追问无限存在，恰是追问者自身「正无限趋近于失存」的表现（ch7）。</div>
+</div>
+<div class="judg warn">
+  <span class="badge b-warn">⚠️ 存疑</span>开场问题意识极好（「设问者何以追问存在」是真问题），但：
+  <ul class="why">
+    <li>把「存在」一上来就定义为「感知中的对象之总和」，是<b>把唯心立场塞进了前提</b>，不是无预设推出的。</li>
+    <li>「会设问＝有限性」是从<b>认识主体的特性</b>跳到<b>存在的本体论有限性</b>，中间缺环节（范畴跳跃）。</li>
+    <li>ch7「追问无限＝自身趋近失存」是<b>诗意断言</b>而非论证，是从认识论滑向存在论的<b>范畴滑动</b>。</li>
+    <li><span class="fallacy">丐题</span><span class="fallacy">范畴跳跃</span></li>
+    <li class="hidden">隐藏假设：设问能力是有限性的充要表征。</li>
+  </ul>
+</div>
+
+<h3>3.2 命门一：ch8 的两个「证明」是循环论证</h3>
+<div class="vital">
+  <h4>🔴 第一命门：奠基「证明」实为丐题 + 概念偷换</h4>
+  <div class="chain">
+    <div class="tag">所谓「假设一」的证明（ch8）</div>
+    <ol>
+      <li>若存在效价十足完满 → 存在应绝对稳定、永恒不变。</li>
+      <li>但任何存在者都不免流逝、变迁、灭归。</li>
+    </ol>
+    <div class="therefore">一切存在者都暗含「使之难以存续的缺憾」＝存在效价先天不足。</div>
+  </div>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立</span>
+    <ul class="why">
+      <li><b>循环论证（丐题）：</b>「存在效价」就是被定义为「使之不至于流逝的内在度」，再用「存在者会流逝」去证明它「不足」，等于<b>用定义本身证明结论</b>。</li>
+      <li><b>范畴跳跃：</b>从「个别存在者会生灭」（时间性/物理事实）跳到「存在本质先天残缺」（形而上公理）。个体生灭不蕴含本体论的先天缺憾。</li>
+      <li><span class="fallacy">循环论证</span><span class="fallacy">范畴跳跃</span></li>
+    </ul>
+  </div>
+  <div class="chain">
+    <div class="tag">所谓「假设二」的证明（ch8）</div>
+    <ol>
+      <li>任何存在者即使必趋消逝，也不会失灭到一无所存，总会转化/保留。</li>
+    </ol>
+    <div class="therefore">存在效价不能告竭（不归零）。</div>
+  </div>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立</span>
+    <ul class="why">
+      <li><b>概念偷换：</b>把「物质不灭/转化为他物」（质量守恒，物理律）偷换为「存在效价不竭」。但「转化为另一种存在」是否等于「保留同一存在效价」？未证。</li>
+      <li>本质是把「存在(being)不灭」与「存在度(存在效价)不竭」划了等号。</li>
+      <li><span class="fallacy">偷换概念</span></li>
+    </ul>
+  </div>
+  <p class="hidden"><b>为什么这是命门：</b>ch9–10 把它量化成「存在度∈(0,1)」、ch16/19 再据此设「存在阈」和守恒式——<b>整个体系的定量骨架都吊在这两个循环/偷换的「证明」上</b>。
+  注：ch34 的数学内核，作者自己在附注里承认「绝非精确坐标，只是尚无法代入任何参数的示意图，粗略到连线性形态都无法确定」——这等于亲手承认这套「数学」没有实证内容。</p>
+</div>
+
+<h3>3.3 命门二：ch12 的经验归纳是类目错置</h3>
+<div class="vital">
+  <h4>🔴 第二命门：用「质量/丰度/寿命」冒充「存在度」</h4>
+  <p>ch12 用宇宙演化材料（太阳占太阳系 99.86%、氢占宇宙 76%、高等物种灭绝最快、人类史极短……）归纳「存在度递减」。</p>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立</span>
+    <ul class="why">
+      <li><b>类目错置 / 概念偷换（核心问题）：</b>把「质量多少、丰度大小、单体寿命、物种存续时间」这些<b>异质指标</b>统统当作「存在度」的度量。但体系里「存在度」指「自身稳定/独立/自持之力」——<b>质量大＝存在度高吗？氢最多＝最强存？石头巨而稳＝存在度高？</b>作者在不同段落用不同指标填充「存在度」，这是核心概念 equivocation。</li>
+      <li><b>选择性归纳 + 过度外推：</b>「高等物种更脆弱、更易灭绝」真实，但它证明的是「复杂生物更脆弱」，<b>不等于「整个宇宙存在度单调递减」</b>。从生物界脆弱性推宇宙统一律是外推过强。</li>
+      <li><b>不可证伪：</b>任何「进步」现象都可被重述为「代偿增益＝存在度下降」，从而永远「证实」递弱（把「适应力增强」说成「实则独立性下降＝更弱」）。</li>
+      <li><span class="fallacy">偷换概念</span><span class="fallacy">以偏概全</span><span class="fallacy">不可证伪</span></li>
+      <li class="hidden">缺失：需要一个独立、可操作的「存在度」测量定义，并证明质量/丰度/寿命测的是同一量，否则归纳基础瓦解。</li>
+    </ul>
+  </div>
+</div>
+
+<h3>3.4 代偿机制的推出（ch16–20）</h3>
+<div class="chain">
+  <div class="tag">推演链 · 第 16–20 章</div>
+  <ol>
+    <li>存在先天「残弱」→ 失稳 → 失存；存在从一开始就难以自持（ch16）。</li>
+    <li>本原的最高存在点同时是后衍必须维系的最低阈限＝「存在阈」（ch16，<b>关键设定</b>）。</li>
+    <li>「补偿」非外来追加（本原外无他物）→ 补偿只能是分化、再构合 → 分化即残化 → 「愈补愈残」（ch17）。</li>
+    <li>新层位把缺陷重复甚至放大 → 代偿「愈补愈失」，所失即存在度之失（ch18）。</li>
+  </ol>
+  <div class="therefore">存在度无可逆转地下滑，代偿相应增势 →「递弱代偿」法则（ch18–19）。</div>
+</div>
+<div class="judg bad">
+  <span class="badge b-bad">❌ 不成立（奠基步）</span>
+  <ul class="why">
+    <li>ch16「最高点＝最低阈（存在阈）」是<b>被设定的常量</b>，全无证明，却是后面守恒式（Ed+Cd=Ts）的地基。</li>
+    <li>ch16 给抽象的「存在」加上「要求、倾向、追求成全」等<b>意向性/目的性谓词</b>（「演化内驱」），是亚里士多德式<b>内在目的因</b>，未证。</li>
+    <li>ch17「分化＝残化、愈补愈残」是<b>定义式断言</b>（把一切新增属性都定义为「残化的自救」），于是「补偿必更残」成了分析命题而非发现。</li>
+    <li>ch18「代偿不能补回存在度」是<b>作为公理断言</b>（「物自性依然如故」），不是被证明的。</li>
+    <li><span class="fallacy">未证当公理</span><span class="fallacy">目的论</span><span class="fallacy">循环定义</span></li>
+  </ul>
+</div>
+
+<h3>3.5 命门三：ch19/34 的守恒恒等式是人为定义</h3>
+<div class="vital">
+  <h4>🔴 第三命门：Ed ＋ Cd ＝ Ts 是定义，不是发现</h4>
+  <div class="chain">
+    <div class="tag">全书数学内核 · 第 19、34 章</div>
+    <ol>
+      <li>代偿效价的递增量「一定等于」存在效价的递减量。</li>
+      <li>二者之和恒定于「存在阈」Ts 基准线。</li>
+    </ol>
+    <div class="therefore">代偿「有效于续存」（守住阈线）、又「无效于补损」（补不回存在度）——即 Cd=F(Ed)，Ed+Cd=Ts。</div>
+  </div>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立</span>
+    <ul class="why">
+      <li><b>人为构造的恒等式：</b>把代偿度定义为「恰好补到存在阈线」，于是「代偿有效于阈上维持、无效于补回存在度」是该定义的<b>逻辑必然（重言）</b>，不是经验发现。</li>
+      <li><b>不可证伪：</b>无论观察到什么，都可说「存在度降 X、代偿度升 X、和仍在阈上」，不冒被推翻的风险。（讽刺的是，作者自己在《知鱼之乐》评波普尔时，恰恰把这条当作「非科学」的标志。）</li>
+      <li><b>作者自认的退守：</b>ch34 附注坦言这只是「无法代入参数的示意图，连线性形态都无法确定」——所以它只能算<b>启发式草图</b>，绝非被证明的「自然律」。</li>
+      <li><span class="fallacy">定义即结论</span><span class="fallacy">不可证伪</span></li>
+    </ul>
+  </div>
+</div>
+
+<h3>3.6 卷一收束（ch41–60）：反转命题与闭合</h3>
+<p>卷一后半把法则推成一串「翻案」命题，并回到开篇之问。挑几处要害：</p>
+<table>
+  <tr><th style="width:30%">命题</th><th style="width:42%">作者的推理</th><th>裁决</th></tr>
+  <tr>
+    <td>「适者＝弱者」（ch22）</td>
+    <td>适应是弱者不得已的生存方式，「适应性越强＝生存度越弱」。</td>
+    <td><span class="badge b-bad">❌</span> 不是驳达尔文，而是用自定义「存在度」对「适者/适应」做<b>语义反转</b>（fitness 是相对繁殖成功率，与「独立自持」非同度量）→ <b>换概念而非驳命题</b>。</td>
+  </tr>
+  <tr>
+    <td>「完善＝残弱」（ch28）</td>
+    <td>完善是残弱的形态，残弱是完善的本质，二者等价。</td>
+    <td><span class="badge b-warn">⚠️</span> 辩证式<b>定义等同</b>（把反义词划等号），是规定不是证明。</td>
+  </tr>
+  <tr>
+    <td>「因即果、果即因」（ch30）</td>
+    <td>自因一元论，因果本质上无分别；决定论。</td>
+    <td><span class="badge b-bad">❌</span> 把因果<b>同一化</b>会<b>自噬其根</b>：全书靠「因为 A 所以 B」立论，若因＝果，则作者自己的推演也失去「推导」意义（行为与主张不自洽）。</td>
+  </tr>
+  <tr>
+    <td>「意识对存在的反作用力不成立」（ch55）</td>
+    <td>意识反作用其实是代偿作用的贯彻，故从根本上取消能动性。</td>
+    <td><span class="badge b-bad">❌</span> 极强的决定论/副现象论断言，未证且与技术确实改造世界的常识冲突；用「反作用＝代偿的贯彻」<b>重新定义掉反例</b>（免疫/丐题）。这是全书由「描述」滑向「宿命」的关键一步。</td>
+  </tr>
+  <tr>
+    <td>闭合 ch1：设问者为何追问存在（ch58–59）</td>
+    <td>因为追问者自身弱、需要代偿，故追问。</td>
+    <td><span class="badge b-warn">⚠️</span> 让体系<b>自答开篇</b>——若接受递弱代偿则顺理成章，但这正是待证的核心，故是<b>假设内部的自圆</b>，非独立验证。</td>
+  </tr>
+</table>
+
+<!-- ============ ④ ============ -->
+<h2 id="vol2"><span class="num">④</span>卷二 · 精神＝属性代偿（第 61–120 章）</h2>
+<p class="muted">这一卷要证明：感知、逻辑、意志、真理，统统只是「最弱者最强的代偿」。下面按承重链挑要害（逐章图谱见分段笔记）。</p>
+
+<h3>4.1 核心翻案：「感知是为求存，不是为求真」（ch65、81）</h3>
+<div class="chain">
+  <div class="tag">推演链</div>
+  <ol>
+    <li>感官证据（可见光仅 400–700nm、色是波长转换、声是振动「错觉」……）显示感知系统性「扭曲」世界。</li>
+    <li>最小作用原理（简约原理）规定感知必须「省力」→ 必取舍、必失真。</li>
+  </ol>
+  <div class="therefore">感知不是为「求真」而是为「求存」；失真反而是求实的唯一途径。</div>
+</div>
+<div class="judg warn">
+  <span class="badge b-warn">⚠️ 存疑（材料扎实，结论外推过强）</span>
+  <ul class="why">
+    <li>感官受限、主观转换的科学举证<b>成立且充分</b>，证明「感知非原样反映」有效。</li>
+    <li>但由此推出「感知完全不能反映本真」是<b>结论强于前提</b>：<b>扭曲 ≠ 无对应</b>；科学仪器校准与多通道互校恰说明存在可趋近的客观对应。</li>
+    <li>「求存不求真」是<b>功能性解释滑向真值断言</b>：说明感知「为何这样设计」不等于「感知无真值」。</li>
+    <li>ch81 把物理「最小作用原理」移植为「认知必简约」是<b>偷换概念</b>（同名双关，缺过渡论证）。</li>
+    <li><span class="fallacy">结论强于前提</span><span class="fallacy">偷换概念</span><span class="fallacy">以比喻代论证</span></li>
+  </ul>
+</div>
+
+<h3>4.2 「武断是一切认识的基础」（ch64–68）</h3>
+<div class="judg warn">
+  <span class="badge b-warn">⚠️ 存疑（含一处实质错判）</span>
+  <ul class="why">
+    <li>刻画「认识的自指困境」（证据即待证对象）<b>成立</b>，是标准难题。</li>
+    <li>但 ch66 对演绎/归纳有<b>逻辑错判</b>：说「演绎只能证明不能证伪、发现黑天鹅是归纳的证伪」——混淆了检验手段与逻辑形式；波普尔的证伪恰恰是<b>演绎性的</b>（理论→预测→观察不符→否定后件）。据此弱化波普尔的段落连带受损。</li>
+    <li>「归纳要么误知要么无知」是<b>假二分</b>（漏掉概率归纳、贝叶斯渐进修正）。</li>
+    <li>ch68「同一律＝武断律」是<b>概念滑动</b>（从「确认有主观性」滑到「同一律本质是武断」）。</li>
+    <li><span class="fallacy">逻辑错判</span><span class="fallacy">假二分</span><span class="fallacy">概念滑动</span></li>
+  </ul>
+</div>
+
+<h3>4.3 「真理是求存的适应度」（ch93、103、160-AⅤ）</h3>
+<div class="vital">
+  <h4>🔴 卷二最脆的一环：真理观的标准错置</h4>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立（强结论）</span>
+    <ul class="why">
+      <li>由「认识必带主体属性」（温和、几乎无争议）跳到「符合论真理概念不成立、真理纯属妄语」，是<b>推理跳跃</b>：康德式「物自体不可知」至多限制「本体真理」，不取消「命题与事态符合」的弱真理概念。</li>
+      <li>把「真」（truth，认知符合）偷换为「存」（survival，存续效力），再宣布旧概念空洞——这是<b>用生存有效性取代真值语义</b>。</li>
+      <li>ch103「宗教之理比科学之理更真，因其持续更久」是<b>标准错置 + 以偏概全</b>：以「理论寿命」论真，会推出占星术/地心说部分更「真」（持续更久），与科学史相悖。</li>
+      <li>ch160「真理的被确认度＝生存适应度」是<b>自我指涉困境</b>：若此说为「真理」，其真度也只等于王东岳时代的适应度（表述自毁）。</li>
+      <li><span class="fallacy">偷换概念</span><span class="fallacy">标准错置</span><span class="fallacy">自我否定</span><span class="fallacy">不可证伪</span></li>
+    </ul>
+  </div>
+</div>
+
+<h3>4.4 「自由＝失位/失存度」与苦乐均衡（ch110、116–117）</h3>
+<div class="judg bad">
+  <span class="badge b-bad">❌ 不成立（普遍律部分）</span>
+  <ul class="why">
+    <li>ch110「苦乐必等比抵消于无聊基态」「生死等位」是<b>未证公理</b>：无任何心理物理学依据保证正负体验严格等量抵消；享乐适应的不对称、抑郁/慢性疼痛恰是长期偏置的反例。宝黛/刘姥姥、饿汉/富翁是<b>以修辞代证据</b>。</li>
+    <li>ch116–117「自由度∝失存度」「落实概率随自由化下降」是<b>循环定义</b>（把「自由」定义为「远离自在」后自然得出），且与技术文明存续能力反而更强的经验图景相悖。</li>
+    <li>ch117 的 a–f 量效六律是从卷一存在度公理的<b>代数改写</b>（六次换词），无独立测量，是<b>形式化的假精确</b>。</li>
+    <li><span class="fallacy">未证当公理</span><span class="fallacy">循环定义</span><span class="fallacy">假精确</span></li>
+  </ul>
+</div>
+
+<h3>4.5 全卷的免疫化倾向</h3>
+<div class="card">
+  把 ch102（波普尔/meme 被收编）、ch103（科学之理不如宗教之理真）、ch111（存在度衰微「不被感知所知」，理论费解反而佐证）、ch118（「广义逻辑失洽」留豁免口）合看，形成一套<b>三向皆通的免疫结构</b>：
+  <ul class="tight">
+    <li>科学<b>成功</b> → 解释为「代偿有效」；</li>
+    <li>科学<b>失败</b> → 解释为「临界失真」；</li>
+    <li>理论<b>被拒</b> → 解释为「弱者无知」。</li>
+  </ul>
+  三条路都通向同一个结论，意味着<b>没有可能的经验能否证它</b>——这正是作者自己（在《知鱼之乐》论波普尔时）判定为「非科学」的特征。<b>体系封闭性过高</b>。
+</div>
+
+<!-- ============ ⑤ ============ -->
+<h2 id="vol3"><span class="num">⑤</span>卷三 · 社会＝结构代偿（第 121–180 章）</h2>
+<p class="muted">这一卷把社会（分工、阶级、国家、自由、平等、正义、民主、革命、战争、道德）一律改写为「自然分化—代偿结构」的现象形态，最后推到「没落终局」。</p>
+
+<h3>5.1 关键泛化：「分子就是原子的社会化」（ch126）</h3>
+<div class="vital">
+  <h4>🔴 卷三的承重墙：「社会」概念被泛化</h4>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立（核心步骤）</span>
+    <ul class="why">
+      <li>ch126 先把「社会」泛化为「一切结构化聚合」（分子＝原子的社会化），再以「社会＝自然结构代偿」作结论——<b>概念扩张使结论成为同义反复</b>（循环）。</li>
+      <li><b>两难未解：</b>若「社会化」仅指「聚合依存」，社会学降格为物理学别名；若保留「社会」的分工、权力、契约内涵，则分子类比不成立。</li>
+      <li>若「社会」取窄义（分工＋体外依存整合＋信息协调），则无机类比失效，「社会＝结构代偿」需重新举证；取宽义则结论空转。</li>
+      <li><span class="fallacy">偷换概念</span><span class="fallacy">以比喻代论证</span><span class="fallacy">循环论证</span></li>
+    </ul>
+  </div>
+</div>
+
+<h3>5.2 社会方程 S=ER（ch146–149）</h3>
+<div class="judg bad">
+  <span class="badge b-bad">❌ 不成立（作为「公式」）</span>
+  <ul class="why">
+    <li><b>未证前提 + 循环：</b>E+S=Ts 正是卷一「存在阈/代偿守恒」假设的复述，用它推出「S 是 E 的代偿」是把结论塞进前提（只是给公理换上字母）。</li>
+    <li><b>函数形式任意：</b>为何是乘积 S=ER 而非其他函数？无推导、无量纲、无测量方案，三变量（S、E、R）均不可独立观测 → <b>模型不可证伪</b>。</li>
+    <li><b>ch149「铁的规律」最典型：</b>三种「偏离」（含崩溃）都被重述为「回归等式」——亡亦符、存亦符，理论对一切结果都「成立」。</li>
+    <li>例证几乎全来自蜜蜂（膜翅目单一素材），跳到「包括人类在内的一切社会」是巨大外推。</li>
+    <li><span class="fallacy">循环论证</span><span class="fallacy">不可证伪</span><span class="fallacy">以偏概全</span><span class="fallacy">假精确</span></li>
+  </ul>
+</div>
+
+<h3>5.3 人文范畴的「还原」：自由 / 平等 / 正义 / 道德（ch165–175）</h3>
+<p>作者把这些规范性范畴一律降格为「代偿位相的现象表达」。要害在于它犯了<b>自然主义谬误</b>（从「是」直接推「应该」），并抹去规范性的独立维度：</p>
+<table>
+  <tr><th style="width:22%">范畴</th><th>要害问题</th></tr>
+  <tr><td>经济（ch165）</td><td>「经济人＝弱化依存物」「人为劣迹＝宇宙动势的人格化」——把规范性评价整体消解为自然描述（<b>自然主义谬误</b>），且「利他＝利己」是<b>概念合并</b>取消真实区分。</td></tr>
+  <tr><td>自由（ch168）</td><td>「自由＝失位性依存质态」一经定义，「自由度与自立度成反比」就成了准分析命题；裴多菲诗的宇宙史注解是<b>以诗代证</b>。</td></tr>
+  <tr><td>平等（ch169）</td><td>「反社会倾向终归是社会化倾向的贯彻」——把一切抗争预先收编为正题的变态形式（<b>免疫/循环</b>）；「平等」在章中三易其义（<b>概念滑动</b>）。</td></tr>
+  <tr><td>正义（ch175）</td><td>中枢神经耗氧类比社会分配是<b>不当类比</b>（工程最优化 ≠ 规范性正当化）；任何正义都被判为「结构需要」→ <b>正义一词失去批判力</b>（不可证伪）。</td></tr>
+  <tr><td>道德（ch174）</td><td>「善＝残化的辉煌」「至善＝至恶」是<b>重定义</b>而非解释；「无助于结构整合就抛弃它是最大的德行」是<b>自然主义谬误</b>（休谟断头台的正面冲撞）。</td></tr>
+</table>
+<div class="card">
+  <b>一句话诊断卷三：</b>它能解释这些制度「何以出现、何以稳固」（发生学），却把「何以正当」（规范学）当作伪问题消解。
+  这是<b>维度塌缩</b>——把正当性维度整个删掉了，因此它无法回答「人权为何能批判并改写结构」（废奴、平权这类反例被绕过）。
+</div>
+
+<h3>5.4 终局：大同＝失存临界，与三大论断（ch177–180）</h3>
+<div class="vital">
+  <h4>🔴 全书终点的判决：结论强于前提 + 自相矛盾</h4>
+  <div class="judg bad">
+    <span class="badge b-bad">❌ 不成立（核心预测）</span>
+    <ul class="why">
+      <li><b>ch177「大同＝失存临界」靠比喻支撑：</b>「社会人如碳原子、社会如钻石」「灯蛾扑火」「燃烧化灰烬」。而钻石类比<b>内在不洽</b>——钻石恰恰最稳定坚硬，作者不得不用自造的「活化晶体」补丁，反而暴露类比失效。</li>
+      <li><b>与 ch178 直接自相矛盾：</b>ch177 巨细靡遗地预言未来社会（分工不分人、机器接管、家庭解体），ch178 开篇却断言「未来社会具体形态不可预知」——同一卷内自我咬合。</li>
+      <li><b>ch180 三大论断的「最」字全部超出前提：</b>「人类是<b>最后</b>载体」与作者自己 ch164 列的「基因工程人而不止」冲突；「精神是<b>最高</b>代偿」「社会是<b>最终</b>结构」预设谱系封闭于智质/社会（为何不是 AI 认知、集体智能？）。</li>
+      <li><b>决定论未证：</b>从「同一存在性支配一切」跳到「前途预先注定、选择不成立」，需要严格决定论（无随机、无分叉），而作者从未排除量子随机、演化偶然、路径依赖。</li>
+      <li><b>规范性自我消解：</b>「怎么做都应该也都错误」是规范虚无主义，却仍以「哲学的元义在于……」（规范主张）落笔——若一切皆被注定，则这句规训也失效。</li>
+      <li><span class="fallacy">以比喻代论证</span><span class="fallacy">结论强于前提</span><span class="fallacy">自相矛盾</span><span class="fallacy">决定论未证</span><span class="fallacy">自我消解</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ ⑥ ============ -->
+<h2 id="vital"><span class="num">⑥</span>三大命门的逻辑体检（汇总）</h2>
+<p>把全书成败系于一身的三处推演，放在一起看它们如何「环环相扣」地把一个假说变成封闭模型：</p>
+<div class="vital">
+  <h4>命门一 · ch8 循环「证明」</h4>
+  <p>用「物会流逝」证「存在效价不足」＝用定义证结论；用「物质不灭」证「存在效价不竭」＝偷换概念。→ <b>整座大厦的第一块基石是断言，不是证明。</b></p>
+  <h4>命门二 · ch12 概念偷换</h4>
+  <p>把「质量/丰度/寿命」当「存在度」，核心概念 equivocation，导致「递弱」可被任何现象「验证」。→ <b>理论不可证伪，失去经验检验通道。</b></p>
+  <h4>命门三 · ch19/34 定义式恒等</h4>
+  <p>Ed+Cd=Ts 是人为规定的守恒式（作者自认是无参数示意图），使「代偿无效」成为重言。→ <b>结论是被「规定」出来的，不是被推导/发现的。</b></p>
+  <p style="margin-top:14px"><b>三者合观：</b>
+    <span class="fallacy">公理化断言（ch8）</span>＋
+    <span class="fallacy">概念滑动（ch12）</span>＋
+    <span class="fallacy">定义式恒等（ch19）</span>
+    共同把「递弱代偿」从<b>可检验的假说</b>变成了<b>自洽但自我封闭的形而上模型</b>——再加上全书密集的<span class="fallacy">以比喻代论证</span>（老者之杖、水、飞蛾、钻石、灯蛾、驴子……）与<span class="fallacy">结论强于前提</span>（从结构描述跳到物种没落判词），它的「必然性/宿命」语气远远超出其论证强度。
+  </p>
+</div>
+
+<!-- ============ ⑦ ============ -->
+<h2 id="verdict"><span class="num">⑦</span>总裁决：逻辑到底成立不成立？</h2>
+<div class="judg bad" style="font-size:17.5px">
+  <span class="badge b-bad">作为严格逻辑演绎：不成立</span>
+  <p style="margin-top:8px">理由浓缩成一句：<b>它的「证明」多为「自定义公理 ＋ 循环重言 ＋ 隐喻类比」的混合，而非从无可辩驳的前提必然推出结论。</b>
+  具体地：</p>
+  <ul class="why">
+    <li><b>起点武断：</b>奠基「证明」（ch8）是循环与范畴跳跃。</li>
+    <li><b>核心概念滑动：</b>「存在度」在质量/丰度/寿命/稳定性之间偷换，是全书最大软肋。</li>
+    <li><b>定义当发现：</b>守恒恒等式（Ed+Cd=Ts、S=ER）是人为构造，且作者自认非精确。</li>
+    <li><b>以比喻代论证：</b>大量关键步靠意象（钻石、灯蛾、老者之杖）承载说服力。</li>
+    <li><b>从「是」推「应该」/宿命：</b>自然主义谬误 + 未证的严格决定论。</li>
+    <li><b>不可证伪：</b>三向免疫结构（成功/失败/被拒都通向同一结论），反例无法进入。</li>
+  </ul>
+</div>
+<div class="judg ok" style="font-size:17.5px">
+  <span class="badge b-ok">作为形而上框架/研究纲领：内部自洽，且极富启发</span>
+  <p style="margin-top:8px">这不等于全盘否定。公允地说：</p>
+  <ul class="why">
+    <li>它<b>概念咬合极其精密</b>、体系内部<b>高度自洽</b>，能统一解释从宇宙演化到人类文明的海量现象——这种统摄力是真实的思想魅力。</li>
+    <li>它的<b>问题意识深刻</b>：「感知为求存非求真」「设问者何以追问存在」「工具是弱化的支撑」等洞见，击中了认识论与存在论的真问题。</li>
+    <li>它的<b>气质接近柏拉图「理念」、黑格尔「绝对精神」、斯宾诺莎「实体」</b>——伟大的世界图景，但从来不是、也自称不是可证伪意义上的科学（作者自己在 ch34/80 承认体系是「猜想和假说/哲学性定理模型」）。</li>
+    <li>所以最公允的判词是：<b>它是一套起点武断、核心概念滑动、以比喻和定义立骨、结论不可证伪的自洽哲学建构——魅力在统一与深刻，要害在「证明」多为循环与隐喻。</b></li>
+  </ul>
+</div>
+
+<!-- ============ ⑧ ============ -->
+<h2 id="read"><span class="num">⑧</span>我的读后感 · 得与失</h2>
+<h3>读它值不值？值。</h3>
+<p>抛开逻辑硬伤不谈，《物演通论》给我的<b>智性震荡是真实的</b>。它最狠的一招，是把我们习惯的「进步」彻底翻转：
+  「越能干＝越弱」「越文明＝越危险」「智慧不是福音而是弱者的代偿」。
+  这个「倒看世界」的视角，哪怕你不同意它的证明，也会被它逼着重新审视「发展」「强大」这些词。
+  尤其「感知是为求存而非求真」这一刀，接住了从康德到波普尔的怀疑论传统，并用自然史给了它一个新注脚——这是全书最硬、最有价值的部分。</p>
+
+<h3>但它的「逻辑」经不起追问——三处让我无法签字</h3>
+<ul class="tight">
+  <li><b>一、它把「定义」当「证明」。</b>读到 ch19 那句「代偿效价的递增量一定等于存在效价的递减量」时我停下来算了很久——这个「一定等于」不是推出来的，是<b>规定</b>出来的。
+    一旦你接受这个恒等式，「代偿无效」就是必然；但它凭什么「一定等于」？作者在 ch34 附注自己承认坐标「连线性都无法确定」。一个自称「法则」的东西，骨子里是<b>一张画出来的示意图</b>。</li>
+  <li><b>二、「存在度」这个量，从来没有被真正定义清楚。</b>它一会儿是质量、一会儿是丰度、一会儿是寿命、一会儿是「独立自持性」。因为口径会滑，任何「进步」的现象都能被重新描述成「其实是更弱」，于是理论<b>永远赢、从不输</b>。这恰恰是作者自己在《知鱼之乐》里痛批的「放之四海而皆准」的伪科学特征——他用同一把尺子量别人，却没量自己。</li>
+  <li><b>三、它用「是」冒充「应该」，又用「宿命」取消「选择」。</b>结尾「存在前途预先注定、选择不成立」是极强的决定论结论，但前提根本不足以撑起它。
+    更微妙的是它<b>自我消解</b>：如果一切都被注定，那作者写书劝我们「看清真相」又有什么意义？他自己那句「哲学的元义在于澄清……」恰恰是一个规范主张，而规范主张预设了「能选择」。这套体系在终点上咬到了自己的尾巴。</li>
+</ul>
+
+<h3>给后来读者的一句话</h3>
+<div class="card">
+  把《物演通论》当<b>一部伟大的「世界隐喻」和思想刺激素</b>来读，它物超所值——它会强迫你重新校准「进步、强大、智慧」这些默认信念。
+  但<b>别把它的「法则」「注定」「必然」当成已被证明的科学结论</b>——那层必然性的外衣，是用定义、循环和隐喻缝起来的。
+  读它的正确姿势是：<b>享受它的统摄力，但对它的每一个「所以」都多问一句「凭什么」。</b>
+</div>
+
+<!-- ============ ⑨ ============ -->
+<h2 id="quotes"><span class="num">⑨</span>金句摘录（可感受其文风与逻辑）</h2>
+<div class="quote">哲学上的第一设问……应该是：作为存在者的设问者何以要追问存在？<span class="src">— 第 1 章</span></div>
+<div class="quote">有限存在者若居然立志要探询无限的存在，则一定是由于……探询者自身正在无限地趋近于失存的缘故。<span class="src">— 第 7 章（洞见与范畴跳跃并存）</span></div>
+<div class="quote">所谓「愈补愈失」盖出于愈补愈残的缘故，所「失」者，无非是存在效价或存在度之失，是为递弱的渊源和代偿的本质。<span class="src">— 第 18 章</span></div>
+<div class="quote">代偿效价的递增量一定等于「存在效价」的递减量，亦即二者之和恰好保持在「存在阈」所规定的基准线上。<span class="src">— 第 19 章（全书数学内核，实为定义式恒等）</span></div>
+<div class="quote">所谓「适者」，说到底其实不过是「弱者」的代名词……「适应性越强的物种」其实就是指「生存度越弱的物种」。<span class="src">— 第 22 章（对达尔文的语义反转）</span></div>
+<div class="quote">我们的感知系统不是为「求真」设定的，而是为「求存」设定的。<span class="src">— 第 65 章（全书最硬的一刀）</span></div>
+<div class="quote">「真理」正是把人类引向失存的灯塔。<span class="src">— 第 103 章</span></div>
+<div class="quote">这倒应了那句颇有一些辩证意味的老话：最大的失败莫过于成功。<span class="src">— 第 177 章（大同实现即没落）</span></div>
+<div class="quote">存在的形式是无可选择的，存在的前途是预先注定的。<span class="src">— 第 180 章（全书收束句，决定论未证）</span></div>
+
+<footer>
+  <b>方法说明：</b>本报告基于对《物演通论》全 180 章的逐章精读（卷一 ch1–60 由主审亲自精读并裁决，其余分段由精读图谱汇总），
+  对每一步推演做「前提 → 推理 → 结论」重构与逻辑有效性裁决（✅成立 / ⚠️存疑 / ❌不成立，并注明谬误类型）。
+  裁决标准：概念是否含混/偷换、是否循环论证、是否以偏概全、是否不当类比/以比喻代论证、是否推理跳跃、是否未证当公理、是否不可证伪、是否结论强于前提。
+  <br>生成于 2026 年 · 逻辑审查系列 · 与《人类的没落》《知鱼之乐》配套阅读。
+</footer>
+
+</div>
+</body>
+</html>
