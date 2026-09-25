@@ -1,0 +1,5 @@
+name = "share-web"
+main = "worker.js"
+compatibility_date = "2024-12-01"
+account_id = "c1689375f424f5fba0d3e8b580018895"
+assets = { directory = "./dist" }
