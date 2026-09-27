@@ -4,60 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Share · easyaistudy</title>
-<meta name="description" content="easyaistudy 公开分享页入口：课程笔记、活动纪要与其他想公开给别人的静态网页。">
+<meta name="description" content="easyaistudy 公开分享页：课程笔记、读书笔记与其他想分享的静态网页。">
 <style>
   :root{
     --paper:#f7f6f3; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
-    --accent:#9a3b2e; --accent-deep:#772b20; --accent-tint:#f2e6e2; --rule:#dcd7cf;
+    --accent:#9a3b2e; --accent-deep:#772b20; --accent-tint:#f2e6e2;
+    --rule:#dcd7cf; --hairline:#e7e3dc;
     --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     --serif:"Noto Serif SC","Songti SC","STSong",Georgia,serif;
   }
   @media (prefers-color-scheme: dark){
     :root{
       --paper:#151617; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
-      --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d; --rule:#323537;
+      --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+      --rule:#323537; --hairline:#26292b;
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.85;min-height:100vh}
-  .wrap{width:calc(100% - 48px);max-width:720px;margin:0 auto;padding:64px 0 80px}
-  .kicker{font-size:12.5px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:16px}
-  h1{font-family:var(--serif);font-size:clamp(30px,5vw,44px);line-height:1.25;font-weight:900;margin-bottom:16px}
-  .lede{color:var(--ink-soft);font-size:15.5px;margin-bottom:36px;max-width:36em}
-  .card{border:1px solid var(--rule);border-radius:12px;padding:22px 24px;margin-bottom:16px;background:color-mix(in srgb, var(--paper) 92%, white)}
-  .card h2{font-size:17px;margin-bottom:8px}
-  .card p{font-size:14px;color:var(--ink-soft)}
+  .wrap{width:calc(100% - 48px);max-width:760px;margin:0 auto;padding:56px 0 80px}
+  .kicker{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:600;margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:clamp(28px,5vw,42px);line-height:1.25;font-weight:900;margin-bottom:14px}
+  .lede{color:var(--ink-soft);font-size:15.5px;margin-bottom:40px;max-width:38em}
+  section{margin-bottom:36px}
+  .sec-title{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:16px;text-transform:uppercase}
+  .card{border:1px solid var(--rule);border-radius:12px;padding:22px 24px;margin-bottom:14px;background:var(--card,#fffefb);transition:border-color .15s}
+  .card:hover{border-color:var(--accent)}
+  .card h2{font-family:var(--serif);font-size:19px;margin-bottom:6px;line-height:1.4}
+  .card h2 a{color:var(--ink);text-decoration:none}
+  .card h2 a:hover{color:var(--accent)}
+  .card p{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin:0}
+  .card .meta{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:8px}
+  .tag{display:inline-block;font-family:var(--sans);font-size:11px;background:var(--accent-tint);color:var(--accent-deep);border-radius:99px;padding:2px 10px;font-weight:600;margin-bottom:8px}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
-  .meta{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:18px}
-  ul{margin:10px 0 0 1.2em;color:var(--ink-soft);font-size:14px}
-  li{margin:6px 0}
-  @media (max-width:640px){.wrap{width:calc(100% - 28px);padding-top:40px}}
+  .meta-foot{margin-top:48px;font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:18px}
+  ul{margin:6px 0 0 1.2em;color:var(--ink-soft);font-size:13.5px}
+  li{margin:4px 0}
+  @media(max-width:640px){.wrap{width:calc(100% - 28px);padding-top:36px}}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <p class="kicker">SHARE.EASYAISTUDY.CN</p>
-    <h1>分享页入口</h1>
-    <p class="lede">这里托管值得公开分享的静态网页：课程笔记、活动纪要、小工具演示，或其他想发给别人的页面。把页面放进本站目录后执行一次 Worker 部署即可发布。</p>
+<div class="wrap">
+  <p class="kicker">SHARE.EASYAISTUDY.CN</p>
+  <h1>分享页</h1>
+  <p class="lede">公开分享的静态网页集合：课程笔记、读书笔记，以及其他想发给别人的页面。推送到 <a href="https://github.com/DreamFox/share">GitHub</a> 后由 Cloudflare 自动发布。</p>
 
+  <section>
+    <div class="sec-title">课程笔记</div>
     <div class="card">
-      <h2>已发布内容</h2>
-      <ul>
-        <li>
-          <strong><a href="wangdongyue/index.html">王东岳三书 · 逻辑审查读后感总览</a></strong>
-          <p style="margin:4px 0 10px;font-size:13.5px;color:var(--muted)">《物演通论》《知鱼之乐》《人类的没落》三书的深度逻辑审查与读后感，含原著结构拆解与哲学推演反思。</p>
-        </li>
-      </ul>
+      <span class="tag">系列课</span>
+      <h2><a href="ai-venture/index.html">北大《AI创业与投资》课堂笔记</a></h2>
+      <p>三讲完整课堂笔记，含课程目录、上一讲/下一讲互跳、课件原图与问答实录。</p>
+      <div class="meta">
+        第 1 讲 王小川 · 创新相对论与百川的思考（09.09）<br>
+        第 2 讲 朱啸虎 · 互联网和 AI 的创业与投资的异同（09.16）<br>
+        第 3 讲 刘勇 · AI 创业的第一性框架：赛道和时机（09.23）
+      </div>
     </div>
+  </section>
 
+  <section>
+    <div class="sec-title">读书笔记</div>
     <div class="card">
-      <h2>如何新增一页</h2>
-      <p>在本仓库 <a href="https://github.com/DreamFox/share">DreamFox/share</a> 的 <code>dist/</code> 下增加一个目录（建议 ASCII 名），放入 <code>index.html</code> 与静态资源，然后 <code>wrangler deploy</code>。站内互链请用相对路径。</p>
+      <span class="tag">哲学</span>
+      <h2><a href="wangdongyue/index.html">王东岳三书 · 逻辑审查读后感</a></h2>
+      <p>《物演通论》《知鱼之乐》《人类的没落》三书的深度逻辑审查与读后感，含原著结构拆解与哲学推演反思。</p>
     </div>
+  </section>
 
-    <p class="meta"><span id="live-version">v-1790347335</span> · Hosted on Cloudflare Worker · Domain <strong>share.easyaistudy.cn</strong> · Source <a href="https://github.com/DreamFox/share">DreamFox/share</a></p>
-  </div>
-  <!-- auto-deploy-test: 1790347099 -->
+  <section>
+    <div class="sec-title">如何新增一页</div>
+    <div class="card">
+      <h2 style="font-family:var(--sans);font-size:15px">发布流程</h2>
+      <p>在 <a href="https://github.com/DreamFox/share">DreamFox/share</a> 仓库下新建子目录（建议 ASCII 名），放入 <code>index.html</code> 及静态资源，推送到 <code>main</code> 即自动上线。站内互链请用相对路径。</p>
+    </div>
+  </section>
+
+  <p class="meta-foot">Hosted on Cloudflare · Domain <strong>share.easyaistudy.cn</strong> · Source <a href="https://github.com/DreamFox/share">DreamFox/share</a></p>
+</div>
 </body>
 </html>

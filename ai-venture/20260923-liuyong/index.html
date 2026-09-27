@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 创业的第一性框架：赛道和时机 | 北大 AI创业与投资 课程笔记</title>
+<meta name="description" content="北京大学《AI创业与投资》第三课课堂笔记：TaoZ Capital 创始合伙人刘勇主讲《AI创业的第一性框架：赛道和时机》，从康波周期、第一性成本模型到成功率与能力拐点，系统拆解 AI 创业的赛道选择与时机判断。">
+<style>
+  :root{
+    --paper:#f7f6f3; --card:#fffefb; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
+    --accent:#9a3b2e; --accent-deep:#772b20; --accent-tint:#f2e6e2;
+    --rule:#dcd7cf; --hairline:#e7e3dc;
+    --serif:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --pill:#efece6;
+    --pill-2:#f1eee8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+      --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+      --rule:#323537; --hairline:#26292b; --pill:#26292b; --pill-2:#232629;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.95;-webkit-font-smoothing:antialiased}
+  .wrap{width:calc(100% - 48px);max-width:1180px;margin:0 auto}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::selection{background:var(--accent-tint);color:var(--accent-deep)}
+  strong{font-weight:700;color:var(--ink)}
+  em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-tint) 62%)}
+  code{font-family:var(--mono);font-size:.88em;background:var(--pill);border:1px solid var(--hairline);border-radius:4px;padding:1px 6px}
+  .num{font-family:var(--mono)}
+  /* topbar */
+  .topbar{border-bottom:1px solid var(--rule);background:var(--paper);position:relative;z-index:20}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;font-family:var(--sans);font-size:12.5px;flex-wrap:wrap}
+  .wordmark{font-weight:600;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
+  .topbar-links{display:flex;gap:18px;flex-wrap:wrap}
+  .topbar-links a{color:var(--muted)}
+  .topbar-links a:hover{color:var(--accent)}
+  /* hero */
+  .hero{padding:64px 0 40px;border-bottom:1px solid var(--rule)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:start}
+  .kicker{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:18px}
+  h1{font-size:clamp(30px,4.6vw,50px);line-height:1.28;font-weight:900;letter-spacing:.01em;margin-bottom:20px}
+  .subtitle{font-family:var(--sans);color:var(--ink-soft);font-size:15.5px;line-height:1.9;max-width:34em}
+  .meta-card{border-top:2px solid var(--ink);padding-top:18px;font-family:var(--sans);font-size:13.5px;line-height:1.85}
+  .meta-card dt{color:var(--muted);font-size:11.5px;letter-spacing:.12em;margin-top:14px}
+  .meta-card dt:first-child{margin-top:0}
+  .meta-card dd{color:var(--ink);margin-top:2px}
+  .speakers{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:44px}
+  .speaker{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;padding:22px 0}
+  .speaker+.speaker{border-top:1px solid var(--hairline)}
+  .speaker .role{font-family:var(--sans);font-size:12px;color:var(--accent);font-weight:600;letter-spacing:.08em;padding:5px 0 0;background:none;border-radius:0;overflow-wrap:normal;word-break:normal;max-width:none}
+  .speaker .name{font-size:21px;font-weight:700;margin-right:14px}
+  .speaker .tag{font-family:var(--sans);font-size:11.5px;color:var(--accent-deep);background:var(--accent-tint);border-radius:99px;padding:2px 10px;margin-left:8px;white-space:nowrap}
+  .speaker .note{font-family:var(--sans);font-size:13.5px;color:var(--muted);line-height:1.85;margin-top:6px}
+  /* logic chain details + timeline */
+  .logic{margin:44px 0 8px}
+  .logic details{border:1px solid var(--rule);background:var(--card);border-radius:10px}
+  .logic summary{cursor:pointer;list-style:none;padding:16px 22px;font-family:var(--sans);font-size:14.5px;font-weight:600;display:flex;justify-content:space-between;gap:12px;align-items:center}
+  .logic summary::-webkit-details-marker{display:none}
+  .logic summary::after{content:"展开 +";font-family:var(--mono);font-size:12px;color:var(--accent);flex-shrink:0}
+  .logic details[open] summary::after{content:"收起 −"}
+  .logic summary:hover{color:var(--accent)}
+  .tl{padding:8px 26px 26px}
+  .tl ol{list-style:none;border-left:2px solid var(--accent);margin-left:7px;padding-left:26px}
+  .tl li{position:relative;padding:10px 0 10px 4px;font-family:var(--sans);font-size:14px;line-height:1.9;color:var(--ink-soft)}
+  .tl li::before{content:"";position:absolute;left:-33px;top:19px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+  .tl li b{color:var(--ink)}
+  .tl .tl-final{background:var(--accent-tint);border-radius:8px;padding:14px 18px;margin-top:14px;font-family:var(--sans);font-size:14.5px;line-height:1.9;color:var(--accent-deep)}
+  .tl .tl-final b{color:var(--accent-deep)}
+  /* layout with toc */
+  .layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px;padding:48px 0 24px;align-items:start}
+  .sidebar{position:sticky;top:24px;max-height:calc(100vh - 48px);overflow-y:auto;font-family:var(--sans);padding-right:6px}
+  .toc-group{font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:600;margin:18px 0 6px}
+  .toc-group:first-child{margin-top:0}
+  .toc{list-style:none}
+  .toc li{margin:0}
+  .toc a{display:block;font-size:13px;line-height:1.5;color:var(--ink-soft);padding:6px 0 6px 12px;border-left:2px solid var(--hairline)}
+  .toc a:hover{color:var(--accent);text-decoration:none}
+  .toc a.active{color:var(--accent);border-left-color:var(--accent);font-weight:600}
+  .toc-mobile{display:none}
+  main{min-width:0}
+  /* chapters */
+  .chapter{padding:34px 0 18px;border-top:1px solid var(--rule)}
+  .chapter:first-of-type{border-top:none}
+  .chapter-title{display:flex;align-items:baseline;gap:18px;margin-bottom:6px}
+  .ch-no{font-family:var(--serif);font-size:44px;font-weight:900;line-height:1;color:var(--accent);letter-spacing:.02em}
+  .chapter h2{font-size:clamp(21px,2.6vw,28px);line-height:1.4;font-weight:800}
+  .ch-part{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;color:var(--muted);margin:0 0 10px 62px}
+  h3{font-size:18.5px;font-weight:700;margin:34px 0 12px;line-height:1.55}
+  h3 .h3no{font-family:var(--mono);color:var(--accent);font-size:14px;margin-right:10px}
+  p{margin:0 0 16px;max-width:44em}
+  ul,ol{margin:0 0 16px;padding-left:1.5em;max-width:44em}
+  li{margin-bottom:7px}
+  li>ul{margin-top:7px}
+  /* quotes */
+  blockquote{border-left:3px solid var(--accent);background:var(--card);margin:22px 0;padding:18px 24px;border-radius:0 8px 8px 0;max-width:44em}
+  blockquote p{margin:0;font-size:17px;line-height:1.95}
+  blockquote .who{display:block;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:10px}
+  .keynote{background:var(--accent-tint);border-left:3px solid var(--accent-deep);border-radius:0 10px 10px 0;margin:26px 0;padding:22px 26px;max-width:44em}
+  .keynote p{margin:0;font-size:17.5px;line-height:1.95;color:var(--accent-deep);font-weight:600}
+  .keynote .kicker-mini{font-family:var(--sans);font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:700;display:block;margin-bottom:8px}
+  .callout{border:1px solid var(--rule);background:var(--card);border-radius:10px;padding:18px 22px;margin:22px 0;font-family:var(--sans);font-size:14px;line-height:1.9;color:var(--ink-soft);max-width:44em}
+  .callout strong{color:var(--accent-deep)}
+  /* formula */
+  .formula{font-family:var(--mono);background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:18px 22px;margin:22px 0;font-size:14.5px;line-height:2.1;color:var(--ink);max-width:44em;overflow-x:auto}
+  .formula b{color:var(--accent-deep)}
+  /* tables */
+  .table-wrap{overflow-x:auto;margin:22px 0;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-family:var(--sans);font-size:13.5px;line-height:1.8}
+  th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  th{font-size:12px;letter-spacing:.08em;color:var(--ink-soft);font-weight:600;background:var(--pill-2);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+  td .num{color:var(--accent-deep);font-weight:600}
+  /* Q&A turns */
+  .turn-list{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:24px 0}
+  .turn{width:100%;min-width:0;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:20px 24px}
+  .turn-q{border-left:3px solid var(--muted)}
+  .turn-a{border-left:3px solid var(--accent)}
+  .turn-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px;font-family:var(--sans)}
+  .turn-who{font-weight:700;font-size:14.5px}
+  .turn-q .turn-who{color:var(--ink-soft)}
+  .turn-a .turn-who{color:var(--accent-deep)}
+  .role{font-family:var(--sans);font-size:11.5px;background:var(--pill);color:var(--ink-soft);border-radius:99px;padding:2px 10px;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+  .turn-a .role{background:var(--accent-tint);color:var(--accent-deep)}
+  .turn p{margin:0 0 10px;font-family:var(--sans);font-size:14.5px;line-height:1.9;color:var(--ink-soft)}
+  .turn p:last-child{margin-bottom:0}
+  .qa-note{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);background:var(--pill-2);border-radius:8px;padding:12px 18px;margin:18px 0;line-height:1.85;max-width:44em}
+  /* appendix small */
+  .appendix table{min-width:480px}
+  .appendix td:first-child{font-family:var(--mono);font-size:12.5px}
+  /* course nav footer */
+  .course-nav{border-top:2px solid var(--ink);margin-top:56px;padding:34px 0 8px;font-family:var(--sans)}
+  .course-nav h4{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:700;margin:0 0 14px}
+  .cn-series{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:26px;padding:0}
+  .cn-series li{display:flex;align-items:baseline;gap:12px;font-size:14.5px;flex-wrap:wrap}
+  .cn-series .cn-no{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:52px}
+  .cn-series li.current a,.cn-series li.current span{color:var(--ink);font-weight:700}
+  .cn-series .cn-now{font-family:var(--sans);font-size:11px;background:var(--accent-tint);color:var(--accent-deep);border-radius:99px;padding:1px 9px}
+  .cn-series .cn-date{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .cn-pager{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:22px}
+  .cn-pager a{display:block;font-size:15px;font-weight:700}
+  .cn-pager .cn-dir{font-family:var(--sans);font-size:11.5px;letter-spacing:.1em;color:var(--muted);display:block;margin-bottom:4px;font-weight:600}
+  .cn-pager .next{text-align:right;margin-left:auto}
+  .cn-pager .disabled{color:var(--muted);font-weight:400}
+  .cn-pager .disabled:hover{text-decoration:none;cursor:default}
+  .cn-more{display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;border-top:1px solid var(--rule);padding-top:18px}
+  .cn-more a{color:var(--ink-soft)}
+  .cn-more a:hover{color:var(--accent)}
+  .cn-more .cn-ext{font-family:var(--sans);font-size:11.5px;letter-spacing:.12em;color:var(--muted);display:block;font-weight:700}
+  /* footer colophon */
+  footer.colophon{border-top:1px solid var(--rule);margin-top:30px;padding:26px 0 60px;font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.9}
+  footer.colophon p{max-width:none}
+  /* back to top */
+  .back-to-top{position:fixed;right:22px;bottom:22px;width:42px;height:42px;border-radius:50%;border:1px solid var(--rule);background:var(--card);color:var(--accent);font-size:17px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;z-index:30}
+  .back-to-top.visible{opacity:1;pointer-events:auto}
+  .back-to-top:hover{background:var(--accent-tint)}
+  /* responsive */
+  @media (max-width:900px){
+    .wrap{width:calc(100% - 36px)}
+    .hero{padding:44px 0 30px}
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+    .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:20px}
+    .sidebar{display:none}
+    .toc-mobile{display:block;border:1px solid var(--rule);border-radius:10px;background:var(--card);margin:26px 0 8px}
+    .toc-mobile summary{cursor:pointer;list-style:none;padding:14px 18px;font-family:var(--sans);font-size:14px;font-weight:600;display:flex;justify-content:space-between}
+    .toc-mobile summary::-webkit-details-marker{display:none}
+    .toc-mobile summary::after{content:"+";color:var(--accent);font-family:var(--mono)}
+    .toc-mobile[open] summary::after{content:"−"}
+    .toc-mobile .toc-inner{padding:4px 18px 16px}
+    .toc-mobile .toc a{padding:8px 0 8px 12px}
+  }
+  @media (max-width:640px){
+    body{font-size:15.5px}
+    .wrap{width:calc(100% - 28px)}
+    .chapter-title{flex-direction:column;align-items:flex-start;gap:4px}
+    .ch-no{font-size:34px}
+    .ch-part{margin-left:0}
+    .speaker{grid-template-columns:minmax(0,1fr);gap:4px;padding:18px 0}
+    .speaker .role{padding-top:0}
+    .turn{padding:16px 16px}
+    blockquote,.keynote,.callout,.formula{padding:14px 16px}
+    table{min-width:0;width:100%;table-layout:fixed}
+    th,td{padding:9px 10px;overflow-wrap:break-word;word-break:break-word;white-space:normal;font-size:12.5px}
+    td:first-child{white-space:normal}
+    .cn-pager{flex-direction:column}
+    .cn-pager .next{text-align:left;margin-left:0}
+  }
+  @media (max-width:390px){
+    .wrap{width:calc(100% - 22px)}
+    body{font-size:15px}
+    h1{font-size:26px}
+    .turn p{font-size:13.5px}
+    .tl{padding:4px 12px 18px}
+    .tl ol{padding-left:20px}
+    .tl li::before{left:-27px}
+  }
+  /* 课件图 */
+  figure.slide{margin:26px 0;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px;max-width:44em}
+  figure.slide img{display:block;max-width:100%;max-height:78vh;width:auto;height:auto;margin:0 auto;border-radius:6px;cursor:zoom-in}
+  figure.slide figcaption{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.8;margin-top:10px;text-align:left}
+  /* 灯箱 */
+  .lb{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.93);z-index:1000;cursor:zoom-out;align-items:center;justify-content:center;flex-direction:column;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:86vh;object-fit:contain;border-radius:6px}
+  .lb .lb-cap{color:#d9d5cd;font-family:var(--sans);font-size:13px;margin-top:12px;max-width:80ch;text-align:center;line-height:1.7}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+  @media print{ .back-to-top,.sidebar,.toc-mobile{display:none!important} .layout{grid-template-columns:minmax(0,1fr)} body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="wordmark">北大《AI创业与投资》课堂笔记</span>
+  <nav class="topbar-links">
+    <a href="../index.html">课程目录</a>
+    <a href="../20260909-wangxiaochuan/index.html">第一课 王小川</a>
+    <a href="../20260916-zhuxiaohu/index.html">第二课 朱啸虎</a>
+    <a href="#ch17">问答实录</a>
+  </nav>
+</div></div>
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">北大《AI创业与投资》第三课 · 2026.09.23</p>
+        <h1>AI 创业的第一性框架：<br>赛道和时机</h1>
+        <p class="subtitle">从"为什么比尔·盖茨和乔布斯都生于 1955 年"出发，用第一性原理把赛道选择与时机判断拆成可计算的成本剪刀差、成功率与能力拐点。</p>
+      </div>
+      <dl class="meta-card">
+        <dt>主讲</dt><dd>刘勇 · TaoZ Capital 创始合伙人</dd>
+        <dt>时间地点</dt><dd>2026 年 9 月 23 日（周三）晚 6:40 · 北大二教 109 室</dd>
+        <dt>分享主题</dt><dd>《AI 创业的第一性框架：赛道和时机》</dd>
+        <dt>系列</dt><dd>北大《AI创业与投资》（本讲为第三课）</dd>
+        <dt>笔记形态</dt><dd>按录音逐字稿整理 · 保留全部推理链 · 含 14 组问答</dd>
+      </dl>
+    </div>
+    <div class="speakers">
+      <div class="speaker">
+        <div class="role">主讲人</div>
+        <div>
+          <div><span class="name">刘勇</span><span class="tag">TaoZ Capital 创始合伙人</span></div>
+          <p class="note">穿越互联网、移动互联网和 AI 三轮技术浪潮的连续成功创业者与风险投资人。本科毕业于北京大学，后赴美国获 UIUC 计算机硕士与 Kellogg 商学院 MBA。2003 年 11 月联合创办亿友网（国内领先社交网络平台），2008 年创立热酷（亚洲最大社交游戏公司之一、移动互联网全球化的代表性创业公司），2021 年加入蓝驰创投任投资合伙人（重点投资 AI 与 Web3.0），2026 年创立 TaoZ Capital，专注 AI 时代的孵化与投资。</p>
+        </div>
+      </div>
+      <div class="speaker">
+        <div class="role">现场互动</div>
+        <div>
+          <div><span class="name">课堂同学</span><span class="tag">提问</span></div>
+          <p class="note">课上零散追问与课末集中问答，问题均按逐字稿保留（FDE 一问的回答未被录音覆盖）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="logic">
+      <details>
+        <summary>本课的核心论证链：从"为什么是 1955"到"为什么是现在、为什么是你"（点击展开）</summary>
+        <div class="tl">
+          <ol>
+            <li><b>谜题切入：为什么比尔·盖茨和乔布斯都生于 1955 年？</b>（《异类》之问）答案是 PC 大年：两人 21 岁时正好赶上 PC 兴起。推广出"科技史大年"现象：1905 爱因斯坦、1982 大型软件公司（Oracle、Adobe）、1995 美国互联网、2010-2011 移动互联网（小米、美团、滴滴、字节）。</li>
+            <li><b>大年的商业含义：赛道大于选手。</b>红杉哲学 bet on the racetrack, not the jockey（赌赛道不赌骑手）+ 孙子兵法"善战者，求之于势，不责于人" + VC 不成文规则：一流赛道 × 三流创业者 > 一流创业者 × 垃圾赛道。推论：一流的赛道会放大普通人的能力，三流的赛道会吞没顶尖选手的才华。</li>
+            <li><b>紧跟着的问题不是 how 而是 how long：</b>做独角兽要 8-10 年，该花约 1/10（一年）选方向，此后以季度为单位持续重估。创业最怕的不是跑得慢，而是在错误的战场上跑得快。</li>
+            <li><b>选择的三条标准：</b>①第一性原理（落到供需与生产要素价格）；②可量化、可证伪；③跨时代（能解释历史也能预测未来）。</li>
+            <li><b>宏观层：技术 = 工具 × 能源，效果是消灭稀缺；但商业价值来自稀缺。</b>矛盾靠"稀缺性转移"解决：蒸汽机→煤炭与机器；计算机→软件；互联网→注意力、支付与物流；移动互联网→本地履约、内容创作者。新的稀缺环节就是新的利润来源。</li>
+            <li><b>周期层：康波定位"现在"。</b>每轮技术周期约 40-60 年，共同特征是能源转化效率百倍提升→生产力百倍提升→大市场出现；上升期是创业与资本最活跃的窗口，且必然伴随泡沫。拥抱泡沫三理由：增量市场（上百亿的 Agent）、新老同一起跑线、旧生产要素壁垒瓦解。</li>
+            <li><b>微观层：成本公式。</b>供给端成本（模型摊销 + 算力 + 失败接管成本）&lt; 需求端人力全成本，且剪刀差持续扩大 = 规模化 PMF。最大变量是<b>成功率</b>（90% 成功率总成本约 2.2 倍，20% 约 45 倍）；多步任务总成功率 = 单步成功率^步数，"能力拐点"就是成功率跳变的时刻。</li>
+            <li><b>时机层：需求常在，窗口只是偶尔开放。</b>模型能力连续进步，但机会是阶跃函数（DeepSeek R1 开源→Agent 框架成熟→Manus 等 87 天窗口期冲出）；窗口极短，必须提前蹲守拐点、团队预先组好。</li>
+            <li><b>战场层：反馈速度与可验证性决定替代顺序。</b>Coding 最快、数学与实验次之、理论物理最慢；打分标准化程度（grading）决定反馈成本。AI 产品经理：建垂直 Evaluation、找需求曲线与能力曲线的交点、为下一代模型做产品。</li>
+            <li><b>落点：壁垒 = 快 + 独特私有数据。</b>Cursor（多模型 + 自研专用模型 + IDE）与 Abridge（医院数据壁垒）示范两条活路；对降维打击的标准答案是"模型公司也会做，但你跑得比它快"；快慢的边界由业务内生属性决定。</li>
+          </ol>
+          <div class="tl-final">一句话总结：<b>用第一性原理算清"替代是否划算"（成本剪刀差 × 成功率），用康波与能力拐点定位"为什么是现在"（阶跃窗口 × 提前蹲守），再用赛道质量与执行速度回答"为什么是你"（新、大、快 × 数据壁垒）。</b></div>
+        </div>
+      </details>
+    </div>
+    <details class="toc-mobile">
+      <summary>本页目录</summary>
+      <div class="toc-inner">
+        <p class="toc-group">开场</p>
+        <ul class="toc">
+          <li><a href="#ch01">01 开场补充：非共识、组队与共享项目</a></li>
+        </ul>
+        <p class="toc-group">上篇 · 赛道</p>
+        <ul class="toc">
+          <li><a href="#ch02">02 1955 问题：大年与"赛道为王"</a></li>
+          <li><a href="#ch03">03 how long 与方法论三标准</a></li>
+          <li><a href="#ch04">04 反稀缺与价值链稀缺转移</a></li>
+        </ul>
+        <p class="toc-group">中篇 · 周期与成本</p>
+        <ul class="toc">
+          <li><a href="#ch05">05 康波周期：上升期、泡沫与增量市场</a></li>
+          <li><a href="#ch06">06 第一性成本框架：剪刀差决定 PMF</a></li>
+          <li><a href="#ch07">07 成功率：最核心的变量</a></li>
+          <li><a href="#ch08">08 中美成本阈值差与国运</a></li>
+        </ul>
+        <p class="toc-group">下篇 · 战场与执行</p>
+        <ul class="toc">
+          <li><a href="#ch09">09 赛道标准：新、大、快与壁垒</a></li>
+          <li><a href="#ch10">10 快与慢的边界</a></li>
+          <li><a href="#ch11">11 大模型格局已定</a></li>
+          <li><a href="#ch12">12 时机：需求常在，窗口偶尔开放</a></li>
+          <li><a href="#ch13">13 能力拐点与 87 天窗口</a></li>
+          <li><a href="#ch14">14 反馈速度、打分与可验证性</a></li>
+          <li><a href="#ch15">15 AI 产品经理：为下一代模型做产品</a></li>
+          <li><a href="#ch16">16 案例：Cursor、Abridge 与硬件</a></li>
+        </ul>
+        <p class="toc-group">问答与附录</p>
+        <ul class="toc">
+          <li><a href="#ch17">17 问答实录</a></li>
+          <li><a href="#appA">附录 A 转写勘误</a></li>
+          <li><a href="#appB">附录 B 书单与概念</a></li>
+          <li><a href="#appC">附录 C 课程事务</a></li>
+          <li><a href="#appD">附录 D 课件全集</a></li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="toc-group">开场</p>
+      <ul class="toc">
+        <li><a href="#ch01">01 开场补充：非共识、组队与共享项目</a></li>
+      </ul>
+      <p class="toc-group">上篇 · 赛道</p>
+      <ul class="toc">
+        <li><a href="#ch02">02 1955 问题：大年与"赛道为王"</a></li>
+        <li><a href="#ch03">03 how long 与方法论三标准</a></li>
+        <li><a href="#ch04">04 反稀缺与价值链稀缺转移</a></li>
+      </ul>
+      <p class="toc-group">中篇 · 周期与成本</p>
+      <ul class="toc">
+        <li><a href="#ch05">05 康波周期：上升期、泡沫与增量市场</a></li>
+        <li><a href="#ch06">06 第一性成本框架：剪刀差决定 PMF</a></li>
+        <li><a href="#ch07">07 成功率：最核心的变量</a></li>
+        <li><a href="#ch08">08 中美成本阈值差与国运</a></li>
+      </ul>
+      <p class="toc-group">下篇 · 战场与执行</p>
+      <ul class="toc">
+        <li><a href="#ch09">09 赛道标准：新、大、快与壁垒</a></li>
+        <li><a href="#ch10">10 快与慢的边界</a></li>
+        <li><a href="#ch11">11 大模型格局已定</a></li>
+        <li><a href="#ch12">12 时机：需求常在，窗口偶尔开放</a></li>
+        <li><a href="#ch13">13 能力拐点与 87 天窗口</a></li>
+        <li><a href="#ch14">14 反馈速度、打分与可验证性</a></li>
+        <li><a href="#ch15">15 AI 产品经理：为下一代模型做产品</a></li>
+        <li><a href="#ch16">16 案例：Cursor、Abridge 与硬件</a></li>
+      </ul>
+      <p class="toc-group">问答与附录</p>
+      <ul class="toc">
+        <li><a href="#ch17">17 问答实录</a></li>
+        <li><a href="#appA">附录 A 转写勘误</a></li>
+        <li><a href="#appB">附录 B 书单与概念</a></li>
+        <li><a href="#appC">附录 C 课程事务</a></li>
+          <li><a href="#appD">附录 D 课件全集</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section class="chapter" id="ch01">
+        <div class="chapter-title"><span class="ch-no">01</span><h2>开场补充：非共识、组队与共享项目</h2></div>
+        <p class="ch-part">开场 · 00:00-03:53</p>
+        <p>刘勇在课程开场（向老师介绍完选课安排后）补充了两点。</p>
+        <p><strong>第一，选人是非共识的过程。</strong>投资者筛人的过程非常非标、非常繁重：好几位投资决策人独立决策（他也是其中之一），还有外部专家参与，最后筛出的其实是一些"共识性"的同学。但创业这件事情，最厉害的成果往往来自<em>非共识的 idea 和非共识的人才</em>。所以"你们没有选中的，肯定能取得更大的成功"。</p>
+        <p><strong>第二，创业是一件组队的事情，绝对不是一个人的事情。</strong>他特别强调：组队之后并不是让大家完全从 0 到 0.1、0.2 一点点从头去做。他在北大参与过数算学院、计算学院相关的其他课程，看到不少大学生组起队后"想 idea 想半学期"，这不是好的路径。北大学生真正缺的是<strong>视野</strong>：以终为始来看，优秀的创始人往往诞生在优秀的公司里（例如今天的大模型公司，两年后会出现很多出来创业的人，就是"黄埔军校"）。在校学生缺的是<strong>在一个优秀项目里磨练的过程</strong>。因此课程组专门把一些已经在运营的好项目、成熟的 BP、甚至已拿到投资的项目共享出来，让大家参与项目 <span class="num">0.5</span> 到 <span class="num">1</span> 的过程，在优秀项目里获得同样的经验和教训。下星期就会安排这些项目（目前已报名的共享项目已有三四个，其中有项目已拿到天使投资）供认领和筛选。</p>
+      </section>
+
+      <section class="chapter" id="ch02">
+        <div class="chapter-title"><span class="ch-no">02</span><h2>1955 问题：科技史的大年与"赛道为王"</h2></div>
+        <p class="ch-part">上篇 · 赛道 · 03:53-09:44</p>
+        <h3><span class="h3no">2.1</span>为什么比尔·盖茨和乔布斯都生于 1955 年？</h3>
+        <p>这个问题来自一本书：《异类》（Outliers，马尔科姆·格拉德威尔），一本讲成功学的畅销书。刘勇认为这本书本身不算特别有深度，但提出的问题都特别好，这是其中最有意思的一个。</p>
+        <p>答案指向两家公司：<strong>苹果和微软</strong>。1976 年前后创办这两家公司时，乔布斯和比尔·盖茨都是 21 岁，正是在座各位这个年龄。他们是在 PC 刚刚开始兴起的时候，凭借强大而丰富的想象力抓住了机会，并且一直坚持下去。同样的故事发生在爱因斯坦身上：1905 年，他发表四篇跨世纪的经典论文（奇迹年），当时他也是一个年轻人。</p>
+        <h3><span class="h3no">2.2</span>科技史上的"大年"</h3>
+        <p>推而广之，科技史上好几个"大年"：</p>
+        <div class="table-wrap"><table>
+          <tr><th>大年</th><th>标志事件</th><th>涌现的公司/人物</th></tr>
+          <tr><td>1905</td><td>爱因斯坦奇迹年</td><td>四篇跨世纪论文</td></tr>
+          <tr><td>1982</td><td>PC 软件大年</td><td>今天几乎所有大型软件公司几乎都诞生在那前后一年：Oracle、Adobe 等</td></tr>
+          <tr><td>1995</td><td>美国互联网大年</td><td>雅虎、亚马逊、Netscape（稍早）及一大批公司</td></tr>
+          <tr><td>2010-2011</td><td>移动互联网大年</td><td>小米、美团（2010），滴滴（2011 年前后），后来市值最高的字节跳动也在那个时期诞生</td></tr>
+        </table></div>
+        <h3><span class="h3no">2.3</span>为什么"大年"存在：赌赛道，不赌骑手</h3>
+        <p>为什么会出现大年？如果你生在大年，很可能事半功倍。刘勇专门研究过这个问题，发现有个人写了一本关于红杉（全球风投老大）的书，叫《赛道为王》，其中总结出一句著名的话，英文大意是 <strong>bet on the racetrack, not the jockey</strong>（赛道 = racetrack，jockey = 赛马的骑手）：说白话就是<strong>赌赛道，不赌选手</strong>。这一直是红杉的哲学（注意：美国红杉会在一个赛道里投两三家公司，所以他确实是"投赛道"）。</p>
+        <figure class="slide"><img src="images/ppt-02.jpg" alt="课件原图 P.02：开场问题与红杉的赌赛道哲学，是整堂课方法论的起点。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.02：开场问题与红杉的赌赛道哲学，是整堂课方法论的起点。</figcaption></figure>
+
+        <p>这对创业者的启发反过来读：很多 VC 针对创业者非常忌讳的一点，就是选 VC 的时候可以多想想这些话。类似的鸡汤："选择大于努力"。刘勇更喜欢老祖宗《孙子兵法》里的版本：</p>
+        <blockquote><p>善战者，求之于势，不责于人。</p><span class="who">《孙子兵法》：势，是你所处的势，大于你人本身的能力，时势造英雄</span></blockquote>
+        <h3><span class="h3no">2.4</span>暴论：一流的赛道会放大普通人的能力</h3>
+        <p>回到投资上，VC 圈有一个不成文的规则：<strong>一流的赛道，三流的创业者做，成功的概率显著高于一流的创业者去做一个垃圾赛道</strong>。这句话能解释很多问题。由此推出本课第一个暴论：</p>
+        <div class="keynote"><span class="kicker-mini">本课暴论</span><p>一流的赛道会放大普通人的能力，三流的赛道会吞没顶尖选手的才华。而在座的都是顶尖选手，加上一流赛道，buff 就更大了。</p></div>
+      </section>
+
+      <section class="chapter" id="ch03">
+        <div class="chapter-title"><span class="ch-no">03</span><h2>how long：选方向要花多长时间，方法论三标准</h2></div>
+        <p class="ch-part">上篇 · 赛道 · 09:44-13:50</p>
+        <h3><span class="h3no">3.1</span>比 how 更重要的问题是 how long</h3>
+        <p>光知道要做好选择还不够。第一个显而易见的问题是"怎么做选择"（how），但刘勇认为还有一个更重要的问题：<strong>how long，你要花多长时间去做选择</strong>。</p>
+        <p>参照移动互联网时代：平均成立一家独角兽公司要多长时间？8-10 年。如果你要创业、要做 10 年，那么你该花多少时间去选择方向、选择赛道、选择战场？他的经验是：<strong>大概花 1/10 的时间，也就是一年的时间去思考</strong>，而且之后还要不停迭代思考，甚至以季度为单位来思考。凡是做独角兽公司（一亿两亿美金以上）的公司，每个季度都要重新思考：你的赛道是不是正确的，你的战场是不是正确的。</p>
+        <p>《思考，快与慢》讲思考的快与慢；对创业来说，创业的快与慢同样是核心命题：</p>
+        <blockquote><p>创业不怕你跑得慢，创业最怕的是你在错误的战场上跑得快，使劲跑、拼命奔跑，那就是南辕北辙。</p><span class="who">刘勇 · TaoZ Capital 创始合伙人</span></blockquote>
+        <p>他不信"孙正义 15 分钟就投了某家最成功的互联网公司"之类的神话：那次投资大概 2000 万美元，只占那家公司投资额的千分之一，对传奇人物而言不用花那么大精力去思考，赌一下就行。传奇的事情可以去相信，但对创业者来说，<strong>how long 这个问题特别值得去思考</strong>。</p>
+        <figure class="slide"><img src="images/ppt-03.jpg" alt="课件《Follow on 好问题》：01 How 如何选？"谁都想选最好的，但最合适的最重要。"；02 How long？花多少时间选择？"如果创业要做 10 年，你该花多少时间选择战场？"我的答案：1/10。蓝条金句："快与慢：创业最怕的不是跑得慢，是在错误的战场跑得快""持续高质量决策是成功的核心"。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《Follow on 好问题》：01 How 如何选？"谁都想选最好的，但最合适的最重要。"；02 How long？花多少时间选择？"如果创业要做 10 年，你该花多少时间选择战场？"我的答案：1/10。蓝条金句："快与慢：创业最怕的不是跑得慢，是在错误的战场跑得快""持续高质量决策是成功的核心"。</figcaption></figure>
+
+        <h3><span class="h3no">3.2</span>选择的三条标准</h3>
+        <p>当然也不能一直耗在思考上，选择还是需要方法论。刘勇不停在思考让方法论变得更通用，总结出<strong>三个规则、三个适用条件、三个标准</strong>：</p>
+        <ol>
+          <li><strong>必须满足第一性原理。</strong>它不是叙事，而是你的产品必须满足用户的需求、用户愿意用愿意买。从第一性的角度看，这就是微观经济学的基本原理：价格和成本的问题、供需的问题。而且这个价格成本不能放在细枝末节上，要放在<strong>生产要素</strong>这个大变量上。亚当·斯密提出的资本、劳动力和土地，他把能源归入其中（后文会看到为什么是能源）。</li>
+          <li><strong>必须可量化、可证伪。</strong>在座 80% 都是学科学的，要用科学的方式：可量化，还要可证伪。不能证伪的，就不去玩它。（这也是他自己的背景使然。）</li>
+          <li><strong>跨时代。</strong>在长期周期里被验证过：既能解释历史，更能用历史去预测未来。看赛道时他自己在历史和未来上花的时间基本上一半一半，但历史不会重复，所以两边都要看。</li>
+        </ol>
+        <figure class="slide"><img src="images/ppt-04.jpg" alt="课件《How 的通用框架需要满足什么标准？》：一个真正有用的框架，必须同时经得起原理、数据与时间的检验。三张标准卡：01 第一性原理（解释变量）"不能只讲故事，必须用经济学基本原理，回到生产要素：资本、能源与劳动力"；02 能量化、能验证（检验关系）"能落到可比较的变量、阈值与数据，而不是模糊叙述"；03 跨时代可移植（指导决策）"既能解释历史，也能指导今天的选择，并允许未来证据推翻"。蓝条：原理 → 变量 → 阈值 → 决策。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《How 的通用框架需要满足什么标准？》：一个真正有用的框架，必须同时经得起原理、数据与时间的检验。三张标准卡：01 第一性原理（解释变量）"不能只讲故事，必须用经济学基本原理，回到生产要素：资本、能源与劳动力"；02 能量化、能验证（检验关系）"能落到可比较的变量、阈值与数据，而不是模糊叙述"；03 跨时代可移植（指导决策）"既能解释历史，也能指导今天的选择，并允许未来证据推翻"。蓝条：原理 → 变量 → 阈值 → 决策。</figcaption></figure>
+
+      </section>
+
+      <section class="chapter" id="ch04">
+        <div class="chapter-title"><span class="ch-no">04</span><h2>技术的本质：反稀缺与价值链稀缺转移</h2></div>
+        <p class="ch-part">上篇 · 赛道 · 15:24-28:16</p>
+        <h3><span class="h3no">4.1</span>技术史的主线：技术是人类的延伸</h3>
+        <p>宏观周期这一部分，标题是"技术史的主线"，出自麦克卢汉《理解媒介》（刘勇强烈推荐，称做互联网的人、尤其是靠谱的产品经理必看）。麦克卢汉的原话大意是：<strong>技术是人类的延伸</strong>，是人身体的延伸、人类器官的延伸。汽车是脚的延伸，电脑是计算的延伸，小到手套也是防冷防热的延伸。</p>
+        <p>更本质的第一性表述（不在麦克卢汉书上）：<strong>技术 = 工具 + 能源</strong>。人用工具加上使用能量去获得我们想要的东西、满足我们的需求。这就是技术。任何大规模满足需求的技术，都是在做同一件事。</p>
+        <figure class="slide"><img src="images/ppt-06.jpg" alt="课件《技术史的主线，是人类能力不断延伸的历史》（2/45）：Progress 曲线从石器工具（2,000,000bc）、青铜（3,300bc）、铁器（1,200bc）经水力（1700）、蒸汽（1848）、电力（1895）、内燃机（1940），到通信与存储信息（1973）、计算信息（2008，knowledge & algorithms）。被外部化的能力：工具=改变物质；能源=持续做功；信息=存储·传输·计算；AI=生成·推理·规划、调用工具·执行动作。结论："技术消灭稀缺；但商业价值的本质是稀缺。"（来源 Hilbert 2020、Stanford AI Index 2026）" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《技术史的主线，是人类能力不断延伸的历史》（2/45）：Progress 曲线从石器工具（2,000,000bc）、青铜（3,300bc）、铁器（1,200bc）经水力（1700）、蒸汽（1848）、电力（1895）、内燃机（1940），到通信与存储信息（1973）、计算信息（2008，knowledge & algorithms）。被外部化的能力：工具=改变物质；能源=持续做功；信息=存储·传输·计算；AI=生成·推理·规划、调用工具·执行动作。结论："技术消灭稀缺；但商业价值的本质是稀缺。"（来源 Hilbert 2020、Stanford AI Index 2026）</figcaption></figure>
+
+        <h3><span class="h3no">4.2</span>技术消灭稀缺，商业价值来自稀缺</h3>
+        <p>技术干的事情是<strong>消灭稀缺</strong>（或说得拗口一点：反稀缺性）。</p>
+        <p>回到第一性原理：<strong>只有稀缺的东西才有商业价值</strong>。空气每个人都需要、需要量无穷大，但它不稀缺，所以没有价格（免费）。水也类似，河边可以随便喝；但今天干净的水就稀缺一点了。于是出现一对矛盾：技术是反稀缺性的（把成本降到极低，甚至免费）；而商业价值一定来自稀缺。怎么解决？答案是下一条。</p>
+        <h3><span class="h3no">4.3</span>稀缺性的转移：价值链相邻环节变稀缺</h3>
+        <div class="keynote"><span class="kicker-mini">稀缺性转移</span><p>一个东西不再稀缺了，价值链旁边的东西一定会开始变得稀缺。新的稀缺，就是利润的来源。</p></div>
+        <p>历史验证：</p>
+        <div class="table-wrap"><table>
+          <tr><th>技术革命</th><th>被消灭的稀缺</th><th>新的稀缺（利润来源）</th></tr>
+          <tr><td>蒸汽机</td><td>机械动力不再稀缺</td><td>煤炭稀缺了，做机器的稀缺了</td></tr>
+          <tr><td>计算机</td><td>计算不再稀缺</td><td>软件稀缺了（软件应用到各种场景，Adobe 今天是 2000 亿美元的公司）</td></tr>
+          <tr><td>互联网</td><td>分发变得特别便宜（内容不再稀缺）</td><td><strong>注意力</strong>稀缺（所以搜索能吸引注意力就值钱）；上下游的<strong>支付、物流</strong>变得稀缺</td></tr>
+          <tr><td>移动互联网</td><td>连接不再稀缺（随时随地连接）</td><td><strong>本地履约</strong>变得稀缺（滴滴、美团本质都是本地履约）；摄像头让内容不再稀缺后，<strong>内容创作者</strong>变得稀缺</td></tr>
+          <tr><td>AI（本课主题）</td><td>？</td><td>？（价值链上有新的东西变得稀缺，留给思考）</td></tr>
+        </table></div>
+        <p>这就是第一部分的收束：技术消灭稀缺，商业从新稀缺中来。带着这个问题进入周期部分。</p>
+        <figure class="slide"><img src="images/ppt-11.jpg" alt="课件《要素降价不会消灭稀缺，只会重估新的稀缺》（10/45）：机械动力→能源·机器设计·工厂组织（动力可得后规模化生产成为约束）；电力→电网·电机·流程重构（分布式动力要求重构工厂）；计算→软件·数据·芯片生态（计算便宜后问题定义更重要）；互联网分发→注意力·搜索·支付·信任·物流·社区（触达便宜后筛选与履约稀缺）；AI 生成与执行→判断·评测·权限·责任（???留白）。链条：关键要素降价 → 新稀缺资产需求上升 → 旧利润池收缩/新利润池形成 → 进入战场选择。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《要素降价不会消灭稀缺，只会重估新的稀缺》（10/45）：机械动力→能源·机器设计·工厂组织（动力可得后规模化生产成为约束）；电力→电网·电机·流程重构（分布式动力要求重构工厂）；计算→软件·数据·芯片生态（计算便宜后问题定义更重要）；互联网分发→注意力·搜索·支付·信任·物流·社区（触达便宜后筛选与履约稀缺）；AI 生成与执行→判断·评测·权限·责任（???留白）。链条：关键要素降价 → 新稀缺资产需求上升 → 旧利润池收缩/新利润池形成 → 进入战场选择。</figcaption></figure>
+
+      </section>
+      <section class="chapter" id="ch05">
+        <div class="chapter-title"><span class="ch-no">05</span><h2>康波周期：上升期、泡沫与增量市场</h2></div>
+        <p class="ch-part">中篇 · 周期与成本 · 17:52-28:16</p>
+        <h3><span class="h3no">5.1</span>为什么用康波周期</h3>
+        <p>技术周期有很多种解释框架（马克思主义、熊彼特等等），刘勇个人最喜欢的是<strong>康波周期</strong>。他发现用它能解释很多东西。康波的核心：从工业革命之前（1800 年开始），已经历了 5 个大的技术周期，而且<strong>每一个技术周期都和经济周期、政治周期、金融周期全部连接在一起</strong>。</p>
+        <p>看康波他更推荐用<strong>扩散曲线（S 曲线）</strong>的视角，也可以把它弯成类似余弦（cos）曲线的波动来看，这样更方便看清四阶段（复苏、繁荣、衰退、萧条）。历史的对应（用波动视角看）：</p>
+        <ul>
+          <li>第一次蒸汽革命，在大概 1840 年结束（正是中国第一次鸦片战争的年代：别人已经完成了第一次大的技术周期，想想我们也没多远，现在不是赶上来了吗）；</li>
+          <li>第二次是铁路与钢铁；</li>
+          <li>第四次：1937 年到 1982 年，波谷在 1982 年附近。<strong>1982 年</strong>就是前面说的"软件大年"那个数字：波谷的时候反而有好多事情在发生，是一个很好的时间点；</li>
+          <li>最新一轮（以 PC 为代表的信息革命）：1981 年起算，每一轮周期大约 43 年，加 43 年就是 <span class="num">2024</span> 年左右。</li>
+        </ul>
+        <figure class="slide"><img src="images/ppt-07.jpg" alt="课件原图 P.07：五轮康波周期的具体年份和时长，第五轮「信息技术」还没走完，问号留在那里。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.07：五轮康波周期的具体年份和时长，第五轮「信息技术」还没走完，问号留在那里。</figcaption></figure>
+
+        <figure class="slide"><img src="images/ppt-08.jpg" alt="课件原图 P.08：康波周期的四阶段模型：复苏、繁荣、衰退、萧条，创业的窗口在复苏到繁荣这一段。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.08：康波周期的四阶段模型：复苏、繁荣、衰退、萧条，创业的窗口在复苏到繁荣这一段。</figcaption></figure>
+
+        <p>他自己的判断：上一轮以 PC 为代表的信息革命，在 2023、2024 年左右结束了（标志：2022 年 11 月 30 日 ChatGPT 出现），2024 年开始进入了新的波澜壮阔的大周期。说到这里他很激动，也很遗憾："如果我出生在这个年代，我就不会站在这里，我会去使劲创业了。"但<strong>这个时代属于北大的学生和老师，是最好也是最大的创业机会，因为这个年代比以前更需要技术、更需要底层的技术和基础科学研究</strong>。</p>
+        <h3><span class="h3no">5.2</span>康波周期的三个特征</h3>
+        <ol>
+          <li><strong>每个周期都是一次能源转化效率的百倍提升。</strong>技术是"工具 + 能源"转化成满足需求，本质是能源转化效率。上一课 Allen 讲过需求角度的 10 倍提升，但底层的生产效率一定是<strong>百倍</strong>提升。生产力百倍提升，这是大前提。</li>
+          <li><strong>生产力提升之后，一定会出现一个大市场</strong>，生产关系随之慢慢变化。</li>
+          <li><strong>最重要：整个上升期（复苏 + 繁荣）是创业最好的时间点，也是资本最活跃的时间点。</strong>由此推论：每一次技术革命一定会出现金融泡沫，也一定会出现崩盘。</li>
+        </ol>
+        <h3><span class="h3no">5.3</span>拥抱泡沫：技术革命给普通人的三样东西</h3>
+        <p>大家都在恐惧泡沫，但刘勇认为北大的同学一定要有丰富的想象力：<strong>要拥抱泡沫，千万不要怕泡沫，拥抱泡沫才能够致富</strong>。</p>
+        <p>为什么拥抱泡沫能致富？因为每一次技术革命都有三个东西让普通人（而不是"老登"们）有机会：</p>
+        <ol>
+          <li><strong>增量市场。</strong>生产力百倍变化，稀缺被消除，成本降得非常低（之前 100 块的现在 1 块，之前 10 块的现在 1 毛甚至免费）。反例式的疑问：前阵子有位知名投资人说"AI 时代没有增量市场"（以前 PC 有上亿台计算机、互联网有十几亿网民、移动互联网有百亿手机，都是增量用户/设备，难道 AI 时代没有增量？）。刘勇明确反对这个观点：<strong>AI 时代的增量就是 Agent，有上百亿的 Agent 等着我们去调用、管理、交互，这些都是需求，都是新生的市场</strong>。</li>
+          <li><strong>新老势力同一起跑线。</strong>新的大市场出现后，老玩家的经验前提不在座各位身上，而新生力量对新东西的理解超过他们。大家都处在同一起跑线抢占市场，老家伙们没有优势。要素价格降低带来新的使用方式，进而带来不同的商业模式。</li>
+          <li><strong>旧的生产要素级别壁垒被瓦解</strong>（详见第 09 章壁垒部分）。</li>
+        </ol>
+        <figure class="slide"><img src="images/ppt-10.jpg" alt="课件《问题：AI 的增量市场是什么？还是没有增量？》（DELEGATED TASKS）：四代范式对照表。PC：主要降价要素=计算，新增市场单位=计算机，典型商业模式=软件许可；互联网：分发与连接，上网用户，广告/平台/电商；移动：随时随地连接，手机，App/O2O/订阅；AI（高亮行）：智力，Agent，按调用/任务/结果计费。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《问题：AI 的增量市场是什么？还是没有增量？》（DELEGATED TASKS）：四代范式对照表。PC：主要降价要素=计算，新增市场单位=计算机，典型商业模式=软件许可；互联网：分发与连接，上网用户，广告/平台/电商；移动：随时随地连接，手机，App/O2O/订阅；AI（高亮行）：智力，Agent，按调用/任务/结果计费。</figcaption></figure>
+        <p>课件把"增量"进一步拆成四代范式的对照（见上图）：AI 的主要降价要素是<strong>智力</strong>，新增的市场单位是 <strong>Agent</strong>，典型商业模式转向<strong>按调用/任务/结果计费</strong>。三种机制的完整框架（增量市场红利、经验清零效应、资本壁垒降低）及各自的可观察变量与常见误判见下图：</p>
+        <figure class="slide"><img src="images/ppt-09.jpg" alt="课件《技术革命通过三种机制，让普通人离财富更近》（4/45）：①增量市场红利（消除稀缺后增加了什么？可观察：新用户·新任务·交易频次·支付来源；常见误判：把 TAM 想象成收入）；②经验清零效应（一种东西变便宜，另一种东西就会变稀缺；可观察：渠道/流程/数据、助力还是锁定；误判：把年轻等同于正确）；③资本壁垒降低（投入结构分化；可观察：原型/获客/算力、硬件/合规资本；误判：以为所有 AI 创业都更轻）。蓝条：结构性创业窗口 = 新需求被创造 × 旧资产失配 × 新投入结构（新公司不是因为「时代奖励新人」而出现，而是三种经济机制同时制造了空位）。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《技术革命通过三种机制，让普通人离财富更近》（4/45）：①增量市场红利（消除稀缺后增加了什么？可观察：新用户·新任务·交易频次·支付来源；常见误判：把 TAM 想象成收入）；②经验清零效应（一种东西变便宜，另一种东西就会变稀缺；可观察：渠道/流程/数据、助力还是锁定；误判：把年轻等同于正确）；③资本壁垒降低（投入结构分化；可观察：原型/获客/算力、硬件/合规资本；误判：以为所有 AI 创业都更轻）。蓝条：结构性创业窗口 = 新需求被创造 × 旧资产失配 × 新投入结构（新公司不是因为「时代奖励新人」而出现，而是三种经济机制同时制造了空位）。</figcaption></figure>
+        <p>课件把"拥抱泡沫"的三个理由收敛成一个结构性创业窗口公式：<strong>结构性创业窗口 = 新需求被创造 × 旧资产失配 × 新投入结构</strong>。新公司不是因为"时代奖励新人"而出现，而是三种经济机制同时制造了空位。</p>
+        <h3><span class="h3no">5.4</span>稀缺性转移在各代技术上的表现</h3>
+        <p>技术消灭稀缺、但商业要稀缺，两者的矛盾靠"相邻环节变稀缺"解决（第 04 章表格）。移动互联网的例子再展开一点：它让连接不再稀缺后，<strong>本地履约</strong>变得特别稀缺（滴滴、美团都是本地履约生意）；摄像头接入后内容不再稀缺，稀缺的是<strong>内容创作者</strong>。AI 时代同理：价值链上会有新的东西变得稀缺，<strong>新的稀缺就是利润的来源</strong>。这是留给大家继续思考的问题。</p>
+        <div class="callout">此处有现场确认环节：刘勇问大家是否听得明白，并建议觉得抽象的同学多去看技术史的书。他推荐的书目见<strong>附录 B</strong>。</div>
+      </section>
+
+      <section class="chapter" id="ch06">
+        <div class="chapter-title"><span class="ch-no">06</span><h2>第一性成本框架：剪刀差决定 PMF</h2></div>
+        <p class="ch-part">中篇 · 周期与成本 · 30:23-37:28</p>
+        <h3><span class="h3no">6.1</span>从宏观到中观：把"值得做"翻译成成本公式</h3>
+        <p>第一性原理落到微观经济学，就是<strong>供给与需求、成本与价格</strong>的关系。需求总是以价格的形式出现。刘勇给出一个公式：</p>
+        <div class="formula"><b>新的供给成本（左端）</b> &lt; <b>市场上的老供给成本（右端）</b> = 事情成立</div>
+        <figure class="slide"><img src="images/ppt-12.jpg" alt="课件《通用战场优先框架：规模化替代取决于三种生产要素的微观经济》（14/45）：完成同样的任务，资本（机器）+ 能源，能否替代劳动力？公式：供给成本 ≤ 劳动力价格（工资）。三条推论：谁的工资最高 → 最有动力「少用劳动力」；谁的能源/机器便宜 → 最容易「多用机器」；当成本差显著且持续 → 规模化 PMF 最先在该战场爆发。蓝条：技术革命不会平均发生；它先发生在要素价格最先让「技术替人」算账经济的地方。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《通用战场优先框架：规模化替代取决于三种生产要素的微观经济》（14/45）：完成同样的任务，资本（机器）+ 能源，能否替代劳动力？公式：供给成本 ≤ 劳动力价格（工资）。三条推论：谁的工资最高 → 最有动力「少用劳动力」；谁的能源/机器便宜 → 最容易「多用机器」；当成本差显著且持续 → 规模化 PMF 最先在该战场爆发。蓝条：技术革命不会平均发生；它先发生在要素价格最先让「技术替人」算账经济的地方。</figcaption></figure>
+
+        <p><strong>右端（需求端）：劳动力的价格转化为工资。</strong>你每小时要出多少钱给别人干这个事情，或者你自己做这件事每小时的机会成本（北大学生的机会成本肯定比隔壁更高）。这是人口/Labor 这个生产要素的价格。</p>
+        <p><strong>左端（供给端）：用机器 + 能源干这件事的成本</strong>，由两块决定：</p>
+        <ul>
+          <li><strong>资本（以机器的方式体现）：</strong>各个时代"机器"的所指不同。第一次康波周期是蒸汽机，第二次是发电机、各种发电机、汽车，今天是电子电脑设备、手机，而 AI 时代的机器就是<strong>大模型</strong>。机器的成本里含有摊销成本。例子：做一张 Excel，之前要花 5 个小时，这 5 个小时是有钱的（工资）。</li>
+          <li><strong>能源：</strong>把能源转化为满足需求的动力，即煤、石油、天然气、电，今天再加上 AI。</li>
+        </ul>
+        <p>直觉推论：<strong>你给别人付的工资越高，你越有动力去替代他们。</strong>硅谷的程序员、码农工资很高，所以硅谷天天都想替代他们，替代意愿最强。但光有意愿还不行，还得有能力：你的能源和机器（资本）成本要足够便宜。这就是典型的供给侧第一性：<strong>新的供给成本小于老的供给成本，事情成立</strong>。</p>
+        <h3><span class="h3no">6.2</span>剪刀差持续扩大 = 规模化的 PMF</h3>
+        <p>上述公式只表明"可能发生"。但判断赛道时，一定要判断它<strong>持续发生</strong>（上一课朱啸虎 3S 里的 sustainable 也是这个意思）。要持续发生，两边的<strong>剪刀差必须越来越大</strong>：</p>
+        <div class="keynote"><span class="kicker-mini">规模化 PMF 的判据</span><p>两边差别显著，且剪刀差持续扩大，才是规模化的 PMF。</p></div>
+        <p>PMF = Product-Market Fit，产品市场契合。刘勇提醒：这是最基本的概念，跟牛顿第二定律一样，不会就赶快学会。（顺带一个定价的插曲，见 17 章问答：供给端成本还分"客户采购的成本"和"你真实的成本"，中间是毛利。定价建议用你自己的定价（价值定价），而不是用 token 成本定价。）</p>
+        <h3><span class="h3no">6.3</span>推论：AI 替代一定发生在"算得过账"的地方</h3>
+        <p>一旦技术革命发生、周期往上走，它发生的地方是不均匀的：<strong>一定发生在机器替代人力、在经济上算得过账的地方</strong>（账就是上面的公式）。</p>
+        <p>经典案例：<strong>为什么工业革命在英国发生，而不在德国、法国、中国发生？</strong>有位英国人专门写书讨论过这个问题。最重要的原因：1800 年前后英国工人工资贵，而英国的能源价格便宜（英国的煤在地表，很快可以抽出来）。法国当时人工更便宜（英国圈地运动把人赶出来后，法国人工反而更便宜），而且法国和德国的煤更难开采、能源价格更高。<strong>人工贵 + 能源便宜的地方，机器替代人力算得过账</strong>，工业革命就在那里发生。公式里还有机器效率、摩擦成本等补充变量，可以自行扩展。</p>
+        <figure class="slide"><img src="images/ppt-13.jpg" alt="课件原图 P.13：英国工业革命的历史案例，用来验证这套公式不是凭空编的。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.13：英国工业革命的历史案例，用来验证这套公式不是凭空编的。</figcaption></figure>
+
+      </section>
+
+      <section class="chapter" id="ch07">
+        <div class="chapter-title"><span class="ch-no">07</span><h2>成功率：成本模型中最核心的变量</h2></div>
+        <p class="ch-part">中篇 · 周期与成本 · 37:28-44:11</p>
+        <h3><span class="h3no">7.1</span>AI 时代的成本公式多一项：失败接管成本</h3>
+        <p>用这套公式看 AI 赛道，它可以直接回答见 VC 的三个最经典问题：<strong>①为什么做这个（赛道）；②为什么是你；③为什么是现在（时机）。</strong>这三个问题想透了，其他问题都能在这个框架上找到答案。</p>
+        <p>但在套公式之前，必须先理解 AI 自己的规律：<strong>AI 摩尔定律</strong>。以前是摩尔定律，现在推理成本的下降速度统计下来是<strong>每年 10 倍到 30 倍甚至 50 倍</strong>（之前一个 20 美元的订阅/百 token 级别的价格，三年之后会便宜到难以置信；三年就是 1000 倍以上的差距）。同时能力持续提升。</p>
+        <figure class="slide"><img src="images/ppt-15.jpg" alt="课件原图 P.15：AI 摩尔定律的具体曲线：达到同等能力的推理成本，十八个月跌去二百八十倍。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.15：AI 摩尔定律的具体曲线：达到同等能力的推理成本，十八个月跌去二百八十倍。</figcaption></figure>
+
+        <p>在 AI 摩尔定律下，左端（供给端成本）拆成三部分：</p>
+        <div class="formula"><b>供给端成本 = 模型摊销成本 + 算力成本 + 失败接管成本</b></div>
+        <p>与过去机器不同的是第三项：<strong>AI 代理产品会失败，失败了还需要人力去介入（接管/修复）</strong>。把这个纳入公式，就必须引入<strong>成功率 p</strong>：</p>
+        <div class="formula"><b>总成本 = [ 算力成本 + 失败时人工介入成本 × (1 − p) ] ÷ p</b></div>
+        <p>直观理解：算力成本 ÷ p，等于"做成功一件任务所需要摊的算力成本"（失败重试也要烧算力）；失败了人还得参与进去，而人的成本非常高。</p>
+        <h3><span class="h3no">7.2</span>数字推演：成功率是放大器</h3>
+        <p>刘勇做过各种推演，结论非常鲜明：</p>
+        <div class="table-wrap"><table>
+          <tr><th>成功率</th><th>总成本相对放大幅度</th></tr>
+          <tr><td>90%</td><td>总成本约提升 <span class="num">2.2 倍</span></td></tr>
+          <tr><td>20%</td><td>总成本约提升 <span class="num">45 倍</span></td></tr>
+        </table></div>
+        <p><strong>最核心的变量是成功率。</strong>成功率越低，因失败导致的人工接管成本呈倍数级上升。后面整节课都围绕这个成功率展开。</p>
+        <h3><span class="h3no">7.3</span>多步任务：单步成功率的 N 次方</h3>
+        <p>任务的总成功率有一个简单粗糙但非常好用的框架：</p>
+        <div class="formula"><b>复杂任务总成功率 ≈ 单步成功率^N</b>（N = 完成任务所需的步数/子任务数）</div>
+        <p>任何复杂任务都由 N 个简单任务组成。算一下差别有多大：</p>
+        <div class="table-wrap"><table>
+          <tr><th>任务步数</th><th>单步 95%</th><th>单步 99%</th><th>单步 99.9%</th></tr>
+          <tr><td>10 步</td><td>≈ 60%</td><td>≈ 90%</td><td>≈ 99%</td></tr>
+          <tr><td>50 步</td><td><strong>&lt; 10%</strong></td><td>≈ 61%</td><td>≈ 95%（讲者凭记忆说"好像是 80%"，按公式 0.999^50 ≈ 95%）</td></tr>
+        </table></div>
+        <p>这就是为什么大家会觉得"大模型什么都能做，但做我自己的事情又不那么顺手"：咱们面临的实际任务全是复杂任务。比如写一个实验的 PPT，大家觉得内容是 AI 生成的，但其实也花了他好多 token 才生成出来。这是一个复杂任务，而且<strong>很多素材是他喂给模型的</strong>；如果不喂，模型要走 1 万步、10 万步，成功率就不可能达标，基本做不出来。</p>
+        <figure class="slide"><img src="images/ppt-24.jpg" alt="课件原图 P.24：能力拐点的数学模型：完整任务成功率等于单步成功率的 n 次方，直观解释了「AI 什么都会又什么都做不成」。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.24：能力拐点的数学模型：完整任务成功率等于单步成功率的 n 次方，直观解释了「AI 什么都会又什么都做不成」。</figcaption></figure>
+
+        <p>也可以把模型本身看成一个由几个子模块组成的环，用同样的方式分析每个环节的成功率。用这种"成功率 × 步数"的视角去分析，就能更理解<strong>为什么 AI 在某些场景下能完成任务、某些场景下不能</strong>。</p>
+      </section>
+
+      <section class="chapter" id="ch08">
+        <div class="chapter-title"><span class="ch-no">08</span><h2>中美成本阈值差与国运</h2></div>
+        <p class="ch-part">中篇 · 周期与成本 · 44:11-49:26</p>
+        <h3><span class="h3no">8.1</span>中美人力成本差：PMF 先发生在美国</h3>
+        <p>用公式两端做中美对比（生产要素价格对比），结论是：<strong>AI 替代人力的 PMF 首先在美国发生，然后才传导到中国</strong>。原因：美国的人力成本是中国的 3-5 倍（右端的直线高得多）。供给端成本是一条不停下降的曲线，它先 hit 到美国那条直线，再 hit 到中国的直线。</p>
+        <p>这解释了一个宏观事实：<strong>今天不管是模型公司还是应用公司，80% 甚至 100% 的收入都来自海外、来自北美和欧美高端市场</strong>，因为他们能付更多的钱、他们的人力成本更高。</p>
+        <p>这个框架可以用在具体行业判断上：把右端换成程序员、律师、分析师、财务分析师、老师、教授的小时成本，对比左端的供给成本，就可以横向比较不同行业的替代顺序。右端的成本是<strong>可以非常清晰计算出来的</strong>，这是可推演、有数据的宏观逻辑。</p>        <p>课件给出了可以直接抄的官方锚点（见下图）：美国软件开发者中位工资 <span class="num">$133,080/年 ≈ $64/h</span>、律师中位工资 <span class="num">≈ $72.67/h</span>；中国信息软件 IT 非私营平均 <span class="num">238,966 元/年 ≈ 115 元/h ≈ $16/h</span>（按 2080 小时、汇率近似）。同一复杂任务的人类成本，美国约为中国的 <strong>3-5 倍</strong>。采纳阈值：<strong>美国机器成本压到约 $60/h 即可触发替代；中国往往要接近 $20/h 才出现相似 ROI</strong>。</p>
+        <figure class="slide"><img src="images/ppt-17.jpg" alt="课件《推算过程 1：等式右边，人有多贵？》（18/45）：AI 最先替代的不是「所有工作」，而是程序员、分析师、法务、研究员等高价值数字劳动。美国 $60-150/小时，中国 $10-40/小时；同一复杂任务的人类成本：美国约为中国的 3-5 倍。官方锚点·美国：软件开发者中位工资 $133,080/年 ≈ $64/h，律师中位工资 ≈ $72.67/h。官方锚点·中国：信息软件 IT 非私营平均 238,966 元/年 ≈ 115 元/h ≈ $16/h（2080h、汇率近似）。采纳阈值：美国机器成本压到约 $60/h 即可触发；中国往往要接近 $20/h 才出现相似 ROI。（来源 U.S. BLS OEWS 2024、中国国家统计局 2024）" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《推算过程 1：等式右边，人有多贵？》（18/45）：AI 最先替代的不是「所有工作」，而是程序员、分析师、法务、研究员等高价值数字劳动。美国 $60-150/小时，中国 $10-40/小时；同一复杂任务的人类成本：美国约为中国的 3-5 倍。官方锚点·美国：软件开发者中位工资 $133,080/年 ≈ $64/h，律师中位工资 ≈ $72.67/h。官方锚点·中国：信息软件 IT 非私营平均 238,966 元/年 ≈ 115 元/h ≈ $16/h（2080h、汇率近似）。采纳阈值：美国机器成本压到约 $60/h 即可触发；中国往往要接近 $20/h 才出现相似 ROI。（来源 U.S. BLS OEWS 2024、中国国家统计局 2024）</figcaption></figure>
+
+        <h3><span class="h3no">8.2</span>中国的优势项：物理世界与制造业</h3>
+        <p>中国也有自己的优势：制造业、数据特点、政府支持等非常多。刘勇认为在<strong>物理世界的自动化</strong>方面，中国和欧美市场发生的时间差异不会特别多（还是会先发生在美国，但按 AI 摩尔定律会传导得特别快），而且中国的供给端成本特别低；反之美国那边由于中美冲突，物理设备的供给端成本反而变高。这一系列因素可以用同一个框架揉进去分析。</p>
+        <figure class="slide"><img src="images/ppt-20.jpg" alt="课件《同一公式，两套要素价格：软件先看美国，物理自动化再看中国》（23/45）：把同一个任务分别代入两国的工资、机器、能源与部署成本。人工成本：美国高价值知识劳动更贵 vs 中国工程与交付人力更可得（右边：替代价值）；模型/资本：私人资本、云与模型生态密集 vs 开源、成本工程与快速追赶（左边：机器价格）；制造/部署：高 ARPU、软件采购成熟 vs 机器人、硬件、工厂与服务网络（左边：部署成本）；市场/规则：责任成本高、预算明确 vs 产业场景密集、价格竞争强（风险与规模速度）。当前判断：美国更容易先跨过「数字白领」阈值；中国更容易在受控制造任务中降低「机器+部署」成本。（来源 BLS 2024、中国国家统计局 2024、Stanford AI Index 2026、IFR World Robotics 2025）" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《同一公式，两套要素价格：软件先看美国，物理自动化再看中国》（23/45）：把同一个任务分别代入两国的工资、机器、能源与部署成本。人工成本：美国高价值知识劳动更贵 vs 中国工程与交付人力更可得（右边：替代价值）；模型/资本：私人资本、云与模型生态密集 vs 开源、成本工程与快速追赶（左边：机器价格）；制造/部署：高 ARPU、软件采购成熟 vs 机器人、硬件、工厂与服务网络（左边：部署成本）；市场/规则：责任成本高、预算明确 vs 产业场景密集、价格竞争强（风险与规模速度）。当前判断：美国更容易先跨过「数字白领」阈值；中国更容易在受控制造任务中降低「机器+部署」成本。（来源 BLS 2024、中国国家统计局 2024、Stanford AI Index 2026、IFR World Robotics 2025）</figcaption></figure>
+
+        <h3><span class="h3no">8.3</span>国运：改变生产要素价格的那只手</h3>
+        <p>这个框架里还有一个很重要的因素：<strong>国运</strong>。"我们每个人都是时代背景的产物。"国运这个词很抽象，但可以放进公式里：<strong>它改变生产要素的价格</strong>（左边机器/能源的成本），<strong>也改变客户愿意采购产品的价格</strong>（右端）。</p>
+        <p>典型例子：中国的新能源车，最早就是补贴起来的（政策改变了两端的价格）。其中一家代表公司（蔚来）也是北大 91 级校友非常成功的创业。把这些抽象的词语转化为可量化、可衡量、可"苹果对苹果"比较的东西，正是第一性方法的意义。</p>
+        <div class="keynote"><span class="kicker-mini">国运</span><p>紧跟科教兴国的国运，是有深刻的经济学原理在里面的。</p></div>        <p>课件把"国运"翻译成了可观测的要素变量（见下图）：<strong>美国·数字劳动的第一波</strong>：<span class="num">$285.9B</span>（2025 私人 AI 投资）、<span class="num">5,427</span> 个数据中心，高价值白领工资高；<strong>中国·物理部署的要素优势</strong>：<span class="num">54%</span>（2024 全球工业机器人安装量）<span class="num">295,000</span> 台，制造密度与供应链完整。国运通过要素价格、基础设施与规则改变 PMF 阈值，从而改变创业窗口。</p>
+        <figure class="slide"><img src="images/ppt-21.jpg" alt="课件《国运不是赛道答案，而是改变战场的生产要素》（21/45）：国家条件不替代任务判断；它通过要素价格、基础设施与规则，改变哪类任务最先跨线。链路：人工成本→资本/算力→能源与基础设施→客户与采购→监管与责任；国家条件 → 改变机器成本与劳动力成本 → 改变 PMF 阈值 → 改变创业窗口。左卡：美国·数字劳动的第一波 $285.9B（2025 私人 AI 投资），5,427 个数据中心，高价值白领工资高；右卡：中国·物理部署的要素优势 54%（2024 全球工业机器人安装量）295,000 台，制造密度与供应链完整。红字结语：北大的学子们，要紧跟科教兴国的国运。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《国运不是赛道答案，而是改变战场的生产要素》（21/45）：国家条件不替代任务判断；它通过要素价格、基础设施与规则，改变哪类任务最先跨线。链路：人工成本→资本/算力→能源与基础设施→客户与采购→监管与责任；国家条件 → 改变机器成本与劳动力成本 → 改变 PMF 阈值 → 改变创业窗口。左卡：美国·数字劳动的第一波 $285.9B（2025 私人 AI 投资），5,427 个数据中心，高价值白领工资高；右卡：中国·物理部署的要素优势 54%（2024 全球工业机器人安装量）295,000 台，制造密度与供应链完整。红字结语：北大的学子们，要紧跟科教兴国的国运。</figcaption></figure>
+
+        <h3><span class="h3no">8.4</span>为什么这一轮 AI 更依赖基础科学</h3>
+        <p>这一轮 AI 与移动互联网不太一样，国运起的作用差别特别大：模型、资本、制造、部署、软件硬件的整合，很多今天都需要 1-10 的突破，都需要基础科学的支撑，都需要系统性的、高规模的工程。</p>
+        <p>例子：美国现在第一强的 AI 公司 Anthropic，其 CEO（Dario Amodei）是什么背景？（现场有人开玩笑说"百度一下"）他的背景是<strong>纯理科背景：物理学博士，美国物理奥赛队的成员</strong>，有非常多第一性原理的思考。刘勇并不喜欢这家公司本身，但认为它的很多东西值得去看、值得好好研究。</p>
+        <p>还有一个行业内的观察：2021-2022 年之前一段时间，做 AI 的人里<strong>专业最多的是学物理的</strong>。这一轮 AI 本是技术科学的突破。清华有很多做智能科学的，北大现在也有很多做智能科学、做强化学习的（强化学习是一个非常数学化的领域）。<strong>从基础知识转化为产业的路径非常短</strong>，这也是他特别希望老师们也来听听课的原因。</p>
+      </section>
+      <section class="chapter" id="ch09">
+        <div class="chapter-title"><span class="ch-no">09</span><h2>赛道标准：新、大、快；壁垒 = 快 + 独特数据</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 49:26-57:35</p>
+        <h3><span class="h3no">9.1</span>成立之后才谈得上：新、大、快</h3>
+        <p>成本阈值过了（成立了），接下来是通用共识层面的赛道审核标准。刘勇他们在蓝驰提过一个提法（转写作"新大块"，按上下文应为<strong>新、大、快</strong>），可以拿来审核自己的商业 idea 是否好：</p>
+        <ol>
+          <li><strong>新：增量市场出来了之后，大家都不懂。</strong>你也不懂、别人也不懂，关键是<strong>你可能比别人用得更多</strong>，你脑袋里没有障碍。</li>
+          <li><strong>大：</strong>阿里也讲 3S，第一个 S 就是 significant（转写略有失真），规模要大。</li>
+          <li><strong>快：</strong>在 AI 时代，更重要的是<strong>快速起规模</strong>，scale 一定要快。</li>
+        </ol>
+        <figure class="slide"><img src="images/ppt-22.jpg" alt="课件原图 P.22：成本阈值达标之后还要过的三关：新市场、TAM 要大、能不能快速起规模。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.22：成本阈值达标之后还要过的三关：新市场、TAM 要大、能不能快速起规模。</figcaption></figure>
+
+        <h3><span class="h3no">9.2</span>AI 时代的核心竞争力：唯快不破</h3>
+        <div class="keynote"><span class="kicker-mini">快</span><p>今天 AI 的核心竞争力是什么？天下武功，唯快不破，使劲快就行。</p></div>
+        <p>为什么要快？因为"AI 公司的壁垒是不是资本壁垒？"很多人的第一反应是没壁垒。上一课艾伦总也讲过可防守性（defensibility）的问题。<strong>今天一个最重要的问题就是：凭什么你做的这些事，模型公司不会做？</strong></p>
+        <p>现场有同学担心：哪怕我的市场起得很快，模型公司降维打击怎么办？刘勇给出的"相对标准的答案"是：</p>
+        <blockquote><p>模型公司也会做，但是你跑得比它快。</p><span class="who">刘勇 · 对"大模型公司降维打击"问题的标准答案（第一层面）</span></blockquote>
+        <p>这是第一个层面（执行层面的快）。第二个层面是选赛道的时候要慢下来：做大决定一定要慢下来（详见第 03 章 how long：8-10 年出一个独角兽，就要花几个月到一年好好思考战场与差异化）。</p>
+        <p>AI 的节奏确实快：大模型两年就出一代公司，所以你出的也要特别快。他回忆 2023 年 2 月就跟小川说："不是说你是最适合做大模型的吗？卡一下冲进来，砸个二十几亿，然后使劲干，可能就会比别人（更快建立优势）。"</p>
+        <h3><span class="h3no">9.3</span>非模型公司的壁垒：快 + 独特私有数据</h3>
+        <p>模型公司的壁垒不是应用层的事。对非模型公司（应用层）而言，壁垒就两个：</p>
+        <ol>
+          <li><strong>快</strong>（快速起量）；</li>
+          <li><strong>数据。</strong>回到 AI 三大要素：<strong>算力、算法、数据</strong>，哪一个会潜在成为你自己的核心能力、核心竞争力？是<strong>数据集</strong>。而它能不能成为核心竞争力，还是要回到稀缺性：<strong>必须是你自己独特的数据才行，非独特的数据不行</strong>。</li>
+        </ol>
+        <h3><span class="h3no">9.4</span>定价：用你的定价，不是 token 成本</h3>
+        <p>有同学问到供给端成本、客户采购成本与毛利的关系（不同公司有不同打法，这是定价战略）。刘勇的建议：<strong>今天既是创业公司又要赚钱，定价就不能过低。要用你自己的定价，而不是用你真实的成本（token 价格）去定价。</strong>你本来做的就是把 token 的价格以更高的价格卖出去（中间是你的价值），所以按你的价值定价。</p>
+        <p>（另一个插曲：做公司是一连串的决策，决策质量要高。定价没有标准答案，但一定受竞争和你想要的增长速度影响。如果是百团大战那种竞争格局，那就什么都不要管、先把量做起来（质量低一些也要上，但不是无限低）；如果竞争没那么大、你还能拿到锁定的资源，就可以慢一些。总之今天要快：AI 的边际执行成本趋近于零，你比别人快卖一天，才能卖出溢价。）</p>
+      </section>
+
+      <section class="chapter" id="ch10">
+        <div class="chapter-title"><span class="ch-no">10</span><h2>快与慢的边界</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 现场问答 · 01:11-01:15</p>
+        <div class="turn-list">
+          <div class="turn turn-q">
+            <div class="turn-head"><span class="turn-who">现场提问</span><span class="role">同学</span></div>
+            <p>尊重时间、尊重经验的"慢公司"（例如泡泡玛特式的沉淀）和 AI 公司"唯快不破"之间，平衡点在哪里？</p>
+          </div>
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>这是一个对立统一的问题，创业者（尤其偏理性的创业者）的优势就在于可以去思考各种东西的边界。好与坏没有统一标准（除非是纯好纯坏），关键是<strong>中间的边界是什么</strong>。</p>
+            <p>泡泡玛特这种方式和 AI 公司（或者以前百团大战那种唯快不破）都是有边界的：</p>
+            <p><strong>泡泡玛特/内容 IP 的边界：</strong>IP、内容是需要沉淀的，<strong>快不来</strong>，这是每一个东西固有的属性、内因。刘勇自嘲看不懂泡泡玛特（"没准在座的零零后看得懂"），但他第一个公司的联合创始人麦刚是泡泡玛特的天使投资人（200 万人民币进去，赚了 N 倍，N 等于一千还是五千）。刘勇认为麦刚也不是完全"看懂了"，但麦刚比他更有人物气息（人大经济系、有才华、更懂年轻人），<strong>只要比你更懂，他就敢愿意花钱进去</strong>。</p>
+            <p><strong>大模型上的应用：</strong>今天大模型的很多东西都是可替代的，不需要慢。当你不需要慢的时候，就可以快。</p>
+            <p><strong>判断方法：从业务内生的属性去思考，这才是真正的边界。</strong>例如：你做<strong>企业市场（大 B）</strong>，在中国一定快不起来，就慢慢去做；你做<strong>海外 consumer</strong>，面对强大的竞争（这是外部竞争属性），就必须快。价值链的不同环节、外部竞争属性，共同决定了你应该快还是慢。</p>
+            <p>再回到成本要素上想：你的成本能不能快速跨越？别人能不能把成本压得比你更低？这都可以回到自然（生产）要素上去衡量。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch11">
+        <div class="chapter-title"><span class="ch-no">11</span><h2>大模型格局已定：应用层的两层机会</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 现场问答 · 01:15-01:18</p>
+        <div class="turn-list">
+          <div class="turn turn-q">
+            <div class="turn-head"><span class="turn-who">现场提问</span><span class="role">同学</span></div>
+            <p>大模型是不是可替代的？大模型（复杂能力）的未来怎么看？还有同学问：上一轮创业的经验"完全不适用了"，以前要等技术成熟再看商业，现在技术不成熟、商业也看不清，怎么办？</p>
+          </div>
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>先说格局。他在硅谷交流后的一个明确判断：</p>
+            <p><strong>这一轮大模型的竞争已经结束了，game over。这是指格局已定</strong>，不是说不会有新架构出现。</p>
+            <p>短期之内，即便有新的玩家出来（有同学提到"leo labs"，转写如此，疑指某新架构模型公司；转写中"新的价格"应为"新的玩家"），它们的竞争力目前也不如头部这三四家强。中国很牛的一件事：闭源之外，<strong>中国占住了开源的入口</strong>。总之<strong>开源和闭源结合起来用就好</strong>。但今天你要去做新架构、做原来路线的大模型，<strong>一点机会都没有</strong>。</p>
+            <p>不过：<strong>在技术还没有完全成熟、但你相信技术可以成熟的时候，还是值得去尝试的。</strong>今天中国做 RSI（递归自我改进）等等，他认为还是值得去尝试的。再尝试的机会来自两方面：①RSI 或别的方向上会出现新架构的模型；②（第二层机会）还比较远。</p>
+            <p>再回答"技术不成熟怎么办"："等技术成熟再进"的判断来自：你是下游、是 GPT 之后的应用者。<strong>只要技术不完全成熟的时候，你一定要杀进去</strong>：技术虽然不完全成熟，但你已经感觉到它快成熟了。</p>
+            <p>经典的问题：<strong>机器人/具身智能什么时候能到 ChatGPT 时刻？</strong>现在的共识答案是 <strong>3-5 年</strong>。所以如果做"通用机器人"，今天 3-5 年之内还不一定是最好的时机（指真的做通用机器人）。但有另外一种做法：<strong>你的概念是通用机器人，但你真实做的可能不是通用机器人</strong>。这是技巧，前提是你对这东西理解了、能迎合市场的需求。你既要拥抱泡沫，又要坚持自己的东西。</p>
+            <p>人形机器人今天的泡沫为什么大？因为大家觉得它 3 年之后就可以通用了。但注意：<strong>一旦共识了，就不具备稀缺性了</strong>。非共识才稀缺；共识的东西在商业上已经没那么值钱了。</p>
+            <p>补充：市场与技术两个都要看，但不可能什么都看得那么明白，<strong>一定要抓一个最主要的变量</strong>（driver）。AI 时代最大的变量是<strong>技术/模型技术</strong>（AI 摩尔定律的迭代速度是以前摩尔定律的 10 倍级）。需求常在（尤其是付费需求一直都在），<strong>变量在时机</strong>（why now）：技术导致成本按 AI 摩尔定律下降、能力按 AI 摩尔定律上升，去预测它。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch12">
+        <div class="chapter-title"><span class="ch-no">12</span><h2>时机：需求常在，机会窗口只是偶尔开放</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 01:00-01:07</p>
+        <div class="keynote"><span class="kicker-mini">时机</span><p>需求常在，机会窗口只是偶尔才开放。</p></div>
+        <p>以<strong>自动化编程</strong>为例：每家公司都想做，需求一直存在。但直到 2025 年 5 月，这类产品才达到"程序员正常很愿意去使用"的可用线。在那之前都不行。而在这之前，真正的<strong>战场窗口只有 87 天</strong>。</p>
+        <h3><span class="h3no">12.1</span>Manus 案例：87 天窗口</h3>
+        <p>2025 年上半年，中国出了两家现象级的 Agent 公司：一家是 <strong>Manus</strong>（也是后续要邀请来的嘉宾），另一家是蓝驰投的（转写作"james park"，产品 4 月 8 日发布，存疑）。它们分别在 2025 年 3 月 6 日和 4 月 8 日发布产品。</p>
+        <p>为什么是那个时间点？因为 <strong>2025 年 1 月 DeepSeek 开源了自己的 R1</strong>。一旦开源，Agent 框架（不停的推理 + harness 工具调用）就有了基座：Manus 等大量借助了这个框架做出自己的通用 Agent。从开源到发布，整个窗口只有 2-3 个月，<strong>只有 87 天</strong>。</p>
+        <p>结论非常残酷：</p>
+        <ul>
+          <li>6 月之后，再做所谓"通用 Agent"这种公司再也不可能成功，因为模型自己已经做到那去了（模型自带框架，不再需要外挂）；</li>
+          <li>窗口期内只能拼命狂奔（7×20 小时地干），87 天发布产品；</li>
+          <li><strong>如果你的能力拐点很大，窗口期内才开始重新组团队，早就没戏了。你必须在拐点来临之前就等在风口上</strong>（怎么等、为什么要等，见下一章）。</li>
+        </ul>        <p>Claude Code 的完整时间线与"87 天"口径见课件：</p>
+        <figure class="slide"><img src="images/ppt-25.jpg" alt="课件《Claude Code：能力拐点前等了三年，窗口打开后 87 天 Preview 到 GA》（35/45）：能力拐点可能等待多年，但一旦任务与产品形态跨线，产业反馈会以月为单位压缩决策时间；领先来自预先准备好的任务、产品与重测机制。时间线：2022 Anthropic 内部尝试 Claude Code（需求和 Idea 已在，能力钟未过线）；2024 Sonnet 在开发者中成为重要模型（用户、任务和反馈闭环开始形成）；2025-02-24 Claude Code 以 limited research 发布（Task/Workflow 证据公开收集）；2025-05-22 随 Claude 4 正式 GA：Preview 到 GA 87 天。CASE：如果团队在 2022 年只记录「代码 Agent 没需求」，2025 年仍然不会重启；正确记录应是：需求存在，但哪些能力假设失败？课堂问题：如果你的战场窗口也只给 87 天，你今天是否已经准备好任务集、设计伙伴、入口和产品形态？还是模型跨线以后才开始研究用户？" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《Claude Code：能力拐点前等了三年，窗口打开后 87 天 Preview 到 GA》（35/45）：能力拐点可能等待多年，但一旦任务与产品形态跨线，产业反馈会以月为单位压缩决策时间；领先来自预先准备好的任务、产品与重测机制。时间线：2022 Anthropic 内部尝试 Claude Code（需求和 Idea 已在，能力钟未过线）；2024 Sonnet 在开发者中成为重要模型（用户、任务和反馈闭环开始形成）；2025-02-24 Claude Code 以 limited research 发布（Task/Workflow 证据公开收集）；2025-05-22 随 Claude 4 正式 GA：Preview 到 GA 87 天。CASE：如果团队在 2022 年只记录「代码 Agent 没需求」，2025 年仍然不会重启；正确记录应是：需求存在，但哪些能力假设失败？课堂问题：如果你的战场窗口也只给 87 天，你今天是否已经准备好任务集、设计伙伴、入口和产品形态？还是模型跨线以后才开始研究用户？</figcaption></figure>
+
+      </section>
+
+      <section class="chapter" id="ch13">
+        <div class="chapter-title"><span class="ch-no">13</span><h2>能力拐点：阶跃函数与提前蹲守</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 01:02-01:05</p>
+        <h3><span class="h3no">13.1</span>模型连续进步，机会是阶跃函数</h3>
+        <p>基于"单步成功率^N"的框架看不同任务：有的任务 10 万步（如新药），有的任务 100 万步量级（如菲尔兹奖级数学问题，转写失真存疑）。<strong>模型是连续进步的，但你的机会是不连续的、突然打开的，是一个阶跃函数。</strong></p>
+        <figure class="slide"><img src="images/ppt-23.jpg" alt="课件原图 P.23：Why Now 版本的战场优先框架：真正的 Driver 不是市场热度，是大模型的能力拐点。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.23：Why Now 版本的战场优先框架：真正的 Driver 不是市场热度，是大模型的能力拐点。</figcaption></figure>
+
+        <p>以 Coding 为例（此处 PPT 上未写出 Claude Code，沿用他口头展开）：任务成功率从 10% 慢慢涨到 20%，又涨到 30-40%，然后<strong>一下涨到 60-70%，你就知道：OK，你成了</strong>。这就是为什么要提前做、在市场还没有成熟的时候做：你在沿着反馈速度相信它一定会成熟，按照测量/评估昨天和今天的数据去看未来。</p>
+        <figure class="slide"><img src="images/ppt-26.jpg" alt="课件原图 P.26：模型能力是连续进步的，但机会是突然打开的：步数示意图把这句话具象化了。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.26：模型能力是连续进步的，但机会是突然打开的：步数示意图把这句话具象化了。</figcaption></figure>
+
+        <h3><span class="h3no">13.2</span>Claude Code 案例：为下一代模型做产品</h3>
+        <p>Claude Code 的时间线：</p>
+        <ul>
+          <li>22、23 年就想做，24 年产品已经出来了（负责人 Boris Cherny，转写作"boris"），但特别不好用；</li>
+          <li>但他看到内部模型能力变化比较快，所以决定<strong>先做出来</strong>；</li>
+          <li>2025 年 1 月勉强可用（对应 DeepSeek R1 同期的能力环境）；</li>
+          <li>2025 年 5 月 22 日发布了 Opus 之后，任务成功率<strong>突然上升到 60-70%</strong>。</li>
+        </ul>
+        <div class="keynote"><span class="kicker-mini">产品心法</span><p>所有的成功公司都是在为下一代模型做产品。Claude Code 就是典型（Anthropic 自己在为下一代模型做产品，更何况应用公司）。</p></div>
+        <h3><span class="h3no">13.3</span>怎么"等在风口上"：理解模型的能力曲线</h3>
+        <p>要为下一代模型做产品，你必须理解模型，也就是理解<strong>模型的能力曲线</strong>（过去、现在、未来）。具体抓手：</p>
+        <ul>
+          <li>看 benchmark、建自己的 evaluation、看步数、看能力拐点，看哪些东西在快速变化；</li>
+          <li><strong>今天要把过去的 evaluation 全部更新</strong>：benchmark 不变是不对的。在复杂任务的情况下很多东西已经变了；"今天把北大学生会做的小学题都去掉，那才不是你们的边界"（例：题库里已经完全掌握的题目要剔除，能力边界（会与不会之间那条缝）在移动，evaluation 要跟着移动）。</li>
+        </ul>
+        <p>AI 产品经理的最终定义见第 15 章：<strong>找需求曲线和能力曲线的交点</strong>。这对技术能力的理解比移动互联网时代高特别多倍。</p>
+      </section>
+      <section class="chapter" id="ch14">
+        <div class="chapter-title"><span class="ch-no">14</span><h2>战场优先：反馈速度、打分与可验证性</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 01:09-01:10</p>
+        <p>选战场除了赔率（战场决定赔率：给 1 块钱能赚多少钱的倍数）和切入点（切入点决定胜率，例如滴滴从租车市场切入，上一课艾伦讲过；创业者要学会判断胜率，但相比投资者没那么重要，因为你有足够时间去磨），还必须看 AI 替代的两个结构性因素：</p>
+        <h3><span class="h3no">14.1</span>反馈速度</h3>
+        <p>供给端成本要低，反馈速度必须非常快：</p>
+        <ul>
+          <li><strong>Coding：反馈速度最快</strong>，下一秒钟结果就出来了；</li>
+          <li><strong>数学</strong>之所以能更快突破（菲尔兹奖级问题），也与反馈速度快有关（对错立判）；</li>
+          <li>化学/生物实验的反馈速度也较快（做 AI for science 的朋友讲的，刘勇说这块他不是特别懂）；</li>
+          <li>反馈慢的领域（如理论物理，验证周期长）就更难。</li>
+        </ul>
+        <p>反馈速度是所有大模型公司和 500 强公司主线里都在看的因素。</p>
+        <figure class="slide"><img src="images/ppt-27.jpg" alt="课件原图 P.27：Coding 之所以第一个跨线，靠的是六项结构性优势，不只是「程序员容易被替代」这么简单。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.27：Coding 之所以第一个跨线，靠的是六项结构性优势，不只是「程序员容易被替代」这么简单。</figcaption></figure>
+
+        <h3><span class="h3no">14.2</span>可验证性与打分（grading）</h3>
+        <p>反馈速度的前面一步是<strong>打分</strong>：</p>
+        <ul>
+          <li>标准化的题目（如 Coding）打分非常容易；</li>
+          <li>非标准化的目标/题目，需要你自己花精力去定义打分标准。</li>
+        </ul>
+        <p>与数据经济直接相关：大模型 post-training / fine-tuning 时的 <strong>RLHF（Human Feedback，人工反馈打分）</strong>，一条数据相当贵。2023 年刘勇去硅谷时这还是核心秘密：<strong>OpenAI 一条 RLHF 数据要花大约 100 美元</strong>。今天高质量的标注数据非常非常贵。</p>
+        <p>所以今天数据公司一个很核心的能力就是 <strong>grading（打分）能力</strong>：有了 grading，你就能对数据快速反馈，你就比别人快。这就是"可验证性"的商业含义。</p>
+        <figure class="slide"><img src="images/ppt-28.jpg" alt="课件原图 P.28：AI 产品经理的可验证性框架：grader 越强的任务，越是好的创业战场。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.28：AI 产品经理的可验证性框架：grader 越强的任务，越是好的创业战场。</figcaption></figure>
+
+      </section>
+
+      <section class="chapter" id="ch15">
+        <div class="chapter-title"><span class="ch-no">15</span><h2>AI 产品经理：为下一代模型做产品</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 01:18-01:25</p>
+        <p>刘勇专门加了两三页 PPT 讲 AI 产品经理（移动互联网训练出的优秀产品经理范式在 AI 时代不一样了）。他研究下来，AI 产品经理有三个关键点：</p>
+        <h3><span class="h3no">15.1</span>挑赛道/挑创始人：可验证性三要素</h3>
+        <p>挑选赛道、包括看 founder 时，看<strong>赛道的可验证性</strong>：</p>
+        <ol>
+          <li><strong>反馈的速度</strong>（多快能得到对错信号）；</li>
+          <li><strong>可标准化程度</strong>（能不能自动打分，即 grading 的难度）。</li>
+        </ol>
+        <p>最标准的赛道就是大模型最先突破的地方：Coding、数学、AI for Science。理论物理还要更难一点（理论物理的验证本身也难）。在想自己的赛道时，可验证性、标准化程度、可验证速度是必须考虑的维度。数据公司尤其要把 grading 能力建起来（见 14.2）。</p>
+        <h3><span class="h3no">15.2</span>建 Evaluation，而不是看 Benchmark</h3>
+        <p>OpenAI 怎么做自己的产品？他们自己的产品经理在做的东西叫 <strong>Evaluation</strong>。注意：Evaluation <strong>不是 Benchmark</strong>。</p>
+        <ul>
+          <li>Benchmark 是宏观的、公共的数据集；</li>
+          <li><strong>Evaluation 是你自己垂直场景下的任务集</strong>：你自己要做 20 来条任务（他有一期视频里专门取了近 7 条举例）。</li>
+        </ul>        <p>课件把评测集的记录要求拆成四层（见下图）：<strong>Task</strong>（用户目标、输入、限制、合格结果）、<strong>Environment</strong>（工具、权限、状态、版本、异常）、<strong>Grader</strong>（规则、单元测试、模型、专家、业务结果）、<strong>Failure taxonomy</strong>（能力失败、工具失败、权限失败、状态失败、风险违规）。CASE：法律合同 Agent 的任务集不能只放十份标准合同，还应包含扫描质量差、条款冲突、权限不足、附件缺失、跨语言和必须升级专家的失败样本，否则高分只证明演示环境被优化。</p>
+        <figure class="slide"><img src="images/ppt-29.jpg" alt="课件《AI 产品经理做 Eval：20 个真实失败任务，比 Benchmark 更接近你的战场》（29/45）：创业公司的第一条 AI 资产不是提示词，而是一组能稳定复现客户任务、环境和失败的评测集。四层记录要求：Task=用户目标、输入、限制、合格结果；Environment=工具、权限、状态、版本、异常；Grader=规则、单元测试、模型、专家、业务结果；Failure taxonomy=能力失败、工具失败、权限失败、状态失败、风险违规。CASE：法律合同 Agent 的任务集不能只放十份标准合同，还应包含扫描质量差、条款冲突、权限不足、附件缺失、跨语言和必须升级专家的失败样本，否则高分只证明演示环境被优化。课堂问题：如果今天必须判断这个战场是否可运营，你会用哪 20 个任务测量？其中哪三个失败会直接否决上线？（来源 Anthropic Engineering, Demystifying evals for AI agents, 2026）" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《AI 产品经理做 Eval：20 个真实失败任务，比 Benchmark 更接近你的战场》（29/45）：创业公司的第一条 AI 资产不是提示词，而是一组能稳定复现客户任务、环境和失败的评测集。四层记录要求：Task=用户目标、输入、限制、合格结果；Environment=工具、权限、状态、版本、异常；Grader=规则、单元测试、模型、专家、业务结果；Failure taxonomy=能力失败、工具失败、权限失败、状态失败、风险违规。CASE：法律合同 Agent 的任务集不能只放十份标准合同，还应包含扫描质量差、条款冲突、权限不足、附件缺失、跨语言和必须升级专家的失败样本，否则高分只证明演示环境被优化。课堂问题：如果今天必须判断这个战场是否可运营，你会用哪 20 个任务测量？其中哪三个失败会直接否决上线？（来源 Anthropic Engineering, Demystifying evals for AI agents, 2026）</figcaption></figure>
+
+        <h3><span class="h3no">15.3</span>找瓶颈</h3>
+        <p>某个环节效率突然提升之后，别的环节就会出现瓶颈。你要想到去提升瓶颈处的价值。这和稀缺性转移是一个道理：<strong>AI 技术变得毫无稀缺性之后，边缘/相邻的价值链上什么东西稀缺了，价值就在哪里</strong>。找到瓶颈、提升瓶颈，你的速度就会上来。</p>
+        <figure class="slide"><img src="images/ppt-30.jpg" alt="课件原图 P.30：AI 解决一个局部瓶颈后，价值会转移到没有同步提速的相邻环节，这才是真正的新战场。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.30：AI 解决一个局部瓶颈后，价值会转移到没有同步提速的相邻环节，这才是真正的新战场。</figcaption></figure>
+
+        <h3><span class="h3no">15.4</span>为下一代模型做产品 + 需求曲线 × 能力曲线</h3>
+        <div class="keynote"><span class="kicker-mini">AI 产品经理</span><p>所有的成功公司都是在为下一代模型做产品。AI 产品经理是要找需求曲线和能力曲线的交点。</p></div>        <p>课件的"冲浪三天法"把重测机制表格化（见下图）：测量今天，重估昨天，预测明天。原失效假设按"新模型可能改变吗"分类，配触发事件（新模型、工具、context、harness；降价、缓存、本地部署、路由；新 UI、自动恢复、低置信路由）与重测方法（固定任务集多次 trials；重算 B 与 Cq；影子流程测 H）。</p>
+        <figure class="slide"><img src="images/ppt-31.jpg" alt="课件《AI 产品经理之冲浪三天法》（36/45）：为下一代模型做产品，测量今天，重估昨天，预测明天。重测表（原失效假设 × 新模型可能改变吗 × 触发事件 × 重测方法）：p 太低/长链失败→高→新模型、工具、context、harness→固定任务集多次 trials；推理或延迟太贵→高→降价、缓存、本地部署、路由→重算 B 与 Cq；接管太重→中→新 UI、自动恢复、低置信路由→影子流程测 H。蓝条：AI 产品经理的核心是需求曲线和能力曲线的交点。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件《AI 产品经理之冲浪三天法》（36/45）：为下一代模型做产品，测量今天，重估昨天，预测明天。重测表（原失效假设 × 新模型可能改变吗 × 触发事件 × 重测方法）：p 太低/长链失败→高→新模型、工具、context、harness→固定任务集多次 trials；推理或延迟太贵→高→降价、缓存、本地部署、路由→重算 B 与 Cq；接管太重→中→新 UI、自动恢复、低置信路由→影子流程测 H。蓝条：AI 产品经理的核心是需求曲线和能力曲线的交点。</figcaption></figure>
+
+        <p>要为下一代模型做产品，你必须理解模型的能力曲线（过去、现在、未来），看 benchmark、看自己的 evaluation、看步数、看能力拐点（例如某任务成功率从 10%→20%→30-40%→60-70% 的那条曲线就是 Claude Code 的曲线）。同时今天要把过时的 evaluation 清掉（能力边界在移动）。他对技术能力的理解要求比移动互联网时代高特别多倍。否则你做的东西"别人也没错，模型也能做"。</p>
+        <p>关于 AI 产品"能不能做个 demo 就上线"：他倾向于赞成 Stripe CEO 的说法（今天 AI 产品不能只做个凑合的 MVP 就上线），因为今天的供给能力已经非常好、用户自己也在用 AI，标准应该是<strong>既要快速迭代、快速上版本，又要每个版本相对比较好</strong>。"做一个 demo 就去给客户试用"的时代已经不完全存在了。同时 AI 产品经理要懂需求、懂供给（今天的很多需求是从 B 端生产侧来的，要理解生产力效率什么时候被替代）。有意思的一点：<strong>今天 AI 产品对"人性"的理解要求可以不像移动互联网时代那么高</strong>。所以他跟他投的一些 portfolio 公司说：你不用去找过去那种移动互联网式的非常优秀的产品经理，两者要的 criteria 完全不一样。</p>
+      </section>
+
+      <section class="chapter" id="ch16">
+        <div class="chapter-title"><span class="ch-no">16</span><h2>案例：Cursor、Abridge 与硬件机会</h2></div>
+        <p class="ch-part">下篇 · 战场与执行 · 01:25-01:32</p>
+        <h3><span class="h3no">16.1</span>Cursor：模型可替代的口径下怎么打</h3>
+        <p>Cursor 2023 年开始做的时候，Coding 模型还不成熟。它做了三件事避开与大模型公司的正面竞争、构建差异：</p>
+        <ol>
+          <li><strong>接入多个模型</strong>（在 Anthropic 决定自己做 Coding 产品时，多模型策略帮助它避开直接竞争）；</li>
+          <li><strong>自己做专用模型</strong>，让专用场景上的推理速度更快、更好；</li>
+          <li><strong>IDE 形态</strong>本身构成一定程度的差异。</li>
+        </ol>
+        <p>所以它增长超级快。回到根本问题：<strong>这个战场究竟还存不存在？答案是肯定的。</strong>因为今天 Cursor 们让全球可能有 10 亿人能够写 code（成为 coder），这是 AI Coding 的巨大机会。</p>
+        <p>但是再回到要素上分析：反馈速度有多快？能否标准化？要素成本是否便宜？就会发现：<strong>有机会，但很可能不是创业公司的机会</strong>（Coding 对创业公司的机会已经不大）。若一定要做，机会在海外、更靠近需求侧，而不是供给在国内。最终 Cursor 自己 4 年做到 600 亿美元估值：<strong>只要你跑得快，从全局去思考，你一定找得到一个最佳的方案。</strong>太多大公司想进入这些市场、它们的规模特别强，跑得快才有机会。</p>
+        <figure class="slide"><img src="images/ppt-32.jpg" alt="课件原图 P.32：Cursor 的完整时间线，用真实的 ARR 数字回答「复制 Cursor 还有没有机会」这个问题。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.32：Cursor 的完整时间线，用真实的 ARR 数字回答「复制 Cursor 还有没有机会」这个问题。</figcaption></figure>
+
+        <h3><span class="h3no">16.2</span>Abridge：数据壁垒的样板</h3>
+        <p>客服/医疗文书案例（转写作"a bridge"，即 Abridge）：这是<strong>完全有数据壁垒</strong>的生意，不是公用数据，所以有戏。最开始做得很简单：<strong>帮医生写病历</strong>。在美国医生人力成本特别高的情况下，很容易算得过账、容易替代。</p>
+        <p>中国的场景不一样（生产关系挺麻烦的，跟小川也交流过），要找那些<strong>生产关系相对简单、监管门槛没那么高</strong>的场景，或者类似的、有数据壁垒的东西。</p>
+        <figure class="slide"><img src="images/ppt-34.jpg" alt="课件原图 P.34：Abridge 医疗写病历产品的实测数据：接诊时间、认知负荷、时间压力全面下降。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.34：Abridge 医疗写病历产品的实测数据：接诊时间、认知负荷、时间压力全面下降。</figcaption></figure>
+
+        <h3><span class="h3no">16.3</span>硬件与中国变量</h3>
+        <p>机器人/具身智能方面：今天一定要看硅谷，但要拿出中国四个要素的独特地方（尤其硬件），在科教兴国的国运下，具身智能是中国在 AI 行业和美国竞争的一个抓手。</p>
+        <p>关于中美投入差距（此处 PPT 左下角有数据对比，转写严重失真存疑：硅谷一级市场在 AI 上花的钱约 300 亿美元量级、中国约 12 亿/百亿量级，另提到 3 万亿等数字，无法确认）。大意是：<strong>一级市场的投资差距这么大，就不要完全想着在算力、算法上一定要比对方好</strong>（对方能花更多钱找更优秀的人才，你培养出来的人才也会被挖走），<strong>而是要真的去找我们自己的变量</strong>。</p>
+        <p>硬件的具体机会（见 17 章问答）：眼镜（数据获取能力还不够）、手表（模态不够）都还没到，但像 Plaud 这样满足真实刚需的产品很好；宠物需求等也值得看。建议大家去 CES 看看硬件：那些硬件细分每一个都能做到 10 亿美元规模的赛道。</p>
+        <figure class="slide"><img src="images/ppt-35.jpg" alt="课件原图 P.35：中美 AI 竞争的五个变量对比：模型、人才、资本、市场、物理世界，各自领先的维度不同。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.35：中美 AI 竞争的五个变量对比：模型、人才、资本、市场、物理世界，各自领先的维度不同。</figcaption></figure>
+
+      </section>
+      <section class="chapter" id="ch17">
+        <div class="chapter-title"><span class="ch-no">17</span><h2>问答实录</h2></div>
+        <p class="ch-part">问答与附录 · 01:32-01:50</p>
+        <div class="qa-note">课上零散的现场追问已按内容归入正文相应章节：定价与毛利（见 06/09 章）、模型公司降维打击与"快"（见 09 章）、快慢边界与泡泡玛特（见 10 章）、大模型格局与机器人时机（见 11 章）。以下为课程末尾集中问答（01:32-01:50），每一对问答完整保留。</div>
+        <h3><span class="h3no">Q1</span>如何看待 AI 创业中 To B 和 To C 的差异？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>还是回到那个公式。右端是人力替代成本：To C 替代的那个人力成本（个人的时间）是很低的，所以那条线（替代是否划算的临界线）用这个公式算就很明显：To C 今天还没有到（替代线）。而 To B 是一定有机会的（已经占领了），去找那些<strong>人能被替代的、高人力成本的地方</strong>。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q2</span>国内市场怎么看（从软件 application 的角度）？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>我推荐的还是：<strong>中国做供给（团队），市场做在海外，尤其欧美</strong>。如果你是做硬件的，可以两边同时并行：在中国先做到 PMF 甚至规模化，然后出海。（此处转写失真存疑：收入结构上中国大约能占近一半。）</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q3</span>一个 AI 产品在 launch 之前，哪些维度是必须满足的？AI 产品经理的 benchmark 有哪些评价标准去判断它是否合格？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>非常具体的问题。今天 AI 产品有两种说法，我倾向于 Stripe CEO 说的：<strong>今天 AI 产品经理不能只做个凑合的版本就上线</strong>（转写作"map"，按上下文应指 MVP/demo），我挺赞成，因为今天的供给能力已经非常好。你说的标准，我认为是<strong>既要快速迭代、快速上版本，又要这个版本相对比较好</strong>。"做一个 demo 就去给客户试用"已经不完全存在了（客户自己也在用 AI）。</p>
+            <p>另外 AI 产品经理要懂需求、也要懂供给：今天的很多需求是从 B 端生产侧来的，要理解生产力效率什么时候被替代。我认为<strong>今天 AI 产品对人性的理解，可以不像过去移动互联网产品要求那么高</strong>。所以我跟我投的一些 portfolio 公司说：你不用去找过去那种移动互联网式的非常优秀的产品经理，两者要的 criteria 完全不一样。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q4</span>AI 硬件怎么看（眼镜等新形态）？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>现在大家觉得最火的东西（眼镜等）还没有完全出现。<strong>至于手表，它的模态是不够的</strong>，模态不够意味着获取数据的能力不够。回到三要素（算力、算法、数据），这些设备获取数据的能力是关键。眼镜今天还没有完全（成熟），但即便如此，还是有一些不错的硬件赛道：<strong>Plaud</strong> 是一个真的、非常刚需的需求；去满足宠物的一些需求也可以。强烈建议大家去 <strong>CES</strong> 看看硬件：那些硬件细分，每一个都能做到 10 亿美元规模的赛道。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q5</span>创业选通用场景还是垂直场景？（提问同学提到朱啸虎老师上节课说今年上半年大家主要围绕模型和基础设施，垂直场景感觉对大家来说更适合。）</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>今年上半年确实主要围绕模型和资产（infra 属性）。也有垂直场景，但做出一个场景对大家（学生项目）来说……从长周期来看，我建议去<strong>更通用的场景</strong>；但如果你觉得自己的能力不太够，从硬件或软件切入，有很多小的垂直场景可以做。</p>
+            <p>举个例子：<strong>视频生成的 GPT 时刻</strong>，去年我在硅谷得到的趋势判断是（在今年、明年之交达到），我在那个时间点就告诉我的一家 portfolio 公司：<strong>到那个时候你就应该去做跟视频生成相关的</strong>。跟视频生成相关的场景特别多，有的还可以做图片审美等等，不一一举例了。确实可以自己去思考，快速做一个工具出来尝试。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q6</span>怎么看待"被大公司占领的市场里的很新的产品和创意"？（小需求与大市场的矛盾，专注还是散点尝试？）</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>今天这个矛盾可能更突出（别人可以很快抄）。要这么看：<strong>你的竞争对手全是分层的</strong>。你去专注做一个小需求，做到 0-1 的垄断性，这个垄断性（尤其你积累的数据）可以让你继续往前走。如果你还不具备一定的防御性数据，那你就<strong>撒网式地散点尝试各种小市场，直到找到那一点为止</strong>。</p>
+            <p>回到时间原则：如果你 3-5 个月就要换一个赛道，用 1/10 的原则，你可能 0.3-0.5 个月就该想清楚下一个是什么。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q7</span>（Lorry）AI 让更多人可以做出产品、更多 one-person company 涌现。如何判断哪些能力用 AI 快速补足（30-70%），哪些能力需要关键人才来建立？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>有一个比较简单的判断：<strong>凡是跟人打交道的，依赖关键人才；凡是基本不需要和人打交道的，可以用 AI（或调教/训练 AI）快速培训补足</strong>。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q8</span>AI 的壁垒在中国很多是公共数据/公共部门数据。数据集这个赛道，会由什么样的主体或个人挖掘出来？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>先说中美对比，这其实不是悖论而是机会：<strong>中美之间，美国获取数据的摩擦成本远高于中国</strong>。所以在中国做数据公司：中国获取数据的成本小、量多，且中国的数据公司基本功还是非常靠谱的（中国人特别擅长）。<strong>数据这个赛道是非常大的</strong>，安全（数据安全）也应该是大家都在争的一个赛道。</p>
+            <p>为什么说这个赛道大？可以相对标准化地出题打分：比如做 PPT，我给他们要求"达到某某标准、三份 PPT 的要求"，他们就真的不停地迭代，还行。我是把数据输给它的（有数据喂养 + 有 grading 标准，就能形成壁垒）。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q9</span>对于医疗这样不光受三要素影响、还受监管影响的行业，什么时候是比较好的进入时机？（提问同学提到"一张 A4 纸就可以（改变行业）"。）</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>医疗对一般人来说，<strong>如果是有监管的，永远不是一个很好的经济时机</strong>，除非你能够降低你的摩擦系数，或者跟医院有深度合作（跟别的公司合作也可以，但最后别的公司为什么要选你？关键还是医院自己相关的利益，跟他们一起合作才行）。今天（美国的）Abridge 也是这样（见 16.2）。大赛道的话，对其他公司不容易、很难，因为没壁垒：获取数据没壁垒、算力没壁垒、你的快也没壁垒，腾讯的人也在使劲干。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q10</span>那像做 PPT 这类大赛道的产品呢？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>这样的东西大家就别去搞了。今天原来一些做 PPT 的（公司）也不容易。如果一定要去，就<strong>去海外做 C 端产品</strong>。但今天海外的通用场景也不行，垂直场景这些也都在做（OpenAI、Sora 这些全都在做）。另外也有以开源方式来做的路径，但开源的红利在中国已经见顶（转写存疑），完全没有壁垒，你靠快都快不过。<strong>不过如果你拥有数据的壁垒，那还是值得做</strong>。总之还是值得尝试一下，积累一点经验没关系。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q11</span>硅谷的 YC 等 batch 更多押注 harness（智能体框架）或硬件赛道；内地 VC 的情况是否不一样？是不是 APP 或 SaaS 是更好的机会？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>两边的需求不一样，差别还是很大的。美国更愿意投 To B（今天讲的这些基本都在 To B 上）。在中国，要结合中国自己独特的要素和优势，还是要联系到国内去。<strong>我觉得大家可以看看新闻联播，今年创业还挺需要新闻联播的</strong>（政策导向即国运变量，见 08 章）。</p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q12</span>怎么看 FDE（Forward Deployed Engineer）这种模式？它和规模化之间的张力（像售前、consulting，难规模化）怎么理解？</h3>
+        <div class="qa-note">该问题在逐字稿中有提问记录，但刘勇的回答未被录音覆盖/转写散佚，此处仅保留问题。</div>
+        <h3><span class="h3no">Q13</span>你今天讲的很多决策（包括投资）里面有很多数学的东西。你在第一次启动创业时，是更偏向数学一点，还是商业一点？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>我觉得我还是更偏向于数学一些。除了判断人的时候（跟人打交道的部分），其他只要不跟人打交道，都可以用很多第一性的东西去实现。<strong>第一性原理很值得大家深入去研究。</strong></p>
+          </div>
+        </div>
+        <h3><span class="h3no">Q14</span>AI Coding 解决的是计算机/软件工程的问题。像机械工程、电气工程呢？（提问同学提到 AI 写 PCB 板写得特别好。）大模型在物理世界的边界是什么？</h3>
+        <div class="turn-list">
+          <div class="turn turn-a">
+            <div class="turn-head"><span class="turn-who">刘勇</span><span class="role">主讲人</span></div>
+            <p>我把这个问题转化为另一个问题：<strong>大模型在物理世界的边界是什么？我目前的答案是：凡是"可以被编程的"物理实验/工程，都在大模型的能力边界之内。</strong>所以你说的电气工程的很多东西（比如 PCB 板设计，本质上是可编程的 EDA 问题）大模型都能发挥；而机械工程里很多人不可编程（依赖实体经验、物理接触）的环节，则受限于此。<strong>这（不可编程的部分）就是咱们中国制造业的优势。</strong></p>
+          </div>
+        </div>
+        <div class="qa-note">收尾：刘勇说"你们已经多听了 20 分钟了"，宣布正式下课，后续问题课下继续交流。</div>        <h3><span class="h3no">尾声</span>结束寄语</h3>
+        <p>课程最后的 PPT 停在北大《AI创业与投资》的寄语页："为科技立心，为产业立命；为后学传薪火，为时代造英雄。"以下为现场照片。</p>
+        <figure class="slide"><img src="images/ppt-36.jpg" alt="课件原图 P.36：全场的收尾页：为科技立心，为产业立命，为后学传薪火，为时代造英雄。" width="1600" height="900" loading="lazy" decoding="async">
+          <figcaption>课件原图 P.36：全场的收尾页：为科技立心，为产业立命，为后学传薪火，为时代造英雄。</figcaption></figure>
+
+        <figure class="slide"><img src="images/scene-01.jpg" alt="现场：刘勇在结束寄语页前讲课。屏幕：北大 AI 创业与投资，为科技立心，为产业立命；为后学传薪火，为时代造英雄。" width="1800" height="1349" loading="lazy" decoding="async">
+          <figcaption>现场：刘勇在结束寄语页前讲课。屏幕：北大 AI 创业与投资，为科技立心，为产业立命；为后学传薪火，为时代造英雄。</figcaption></figure>
+
+        <figure class="slide"><img src="images/scene-02.jpg" alt="现场：结束寄语页前的刘勇（手势讲述）。" width="1800" height="1349" loading="lazy" decoding="async">
+          <figcaption>现场：结束寄语页前的刘勇（手势讲述）。</figcaption></figure>
+
+        <figure class="slide"><img src="images/scene-03.jpg" alt="现场：结束寄语页前的刘勇（双手摊开）。" width="1349" height="1800" loading="lazy" decoding="async">
+          <figcaption>现场：结束寄语页前的刘勇（双手摊开）。</figcaption></figure>
+
+      </section>
+
+      <section class="chapter appendix" id="appA">
+        <div class="chapter-title"><span class="ch-no">A</span><h2>附录 A：转写勘误与存疑对照</h2></div>
+        <div class="table-wrap"><table>
+          <tr><th>转写原文</th><th>应为/处理</th><th>说明</th></tr>
+          <tr><td>Joyce</td><td>（录音账号名）</td><td>全场标签均为录音账号，非讲者</td></tr>
+          <tr><td>周小虎</td><td>朱啸虎</td><td>第二课主讲人</td></tr>
+          <tr><td>蓝池 / 南市</td><td>蓝驰（创投）</td><td>刘勇 2021-2026 年任职机构</td></tr>
+          <tr><td>cloud code / Cl code</td><td>Claude Code</td><td>Coding 产品案例</td></tr>
+          <tr><td>泡沫玛特 / 泡玛特</td><td>泡泡玛特</td><td>麦刚天使投资案例</td></tr>
+          <tr><td>百车大战</td><td>百团大战</td><td>竞争格局类比</td></tr>
+          <tr><td>马龙们 / 生活们</td><td>码农们 / 程序员</td><td></td></tr>
+          <tr><td>写漏子</td><td>写病历</td><td>Abridge 案例</td></tr>
+          <tr><td>deepseek 开源了自己的 ry</td><td>DeepSeek 开源了 R1</td><td>2025 年 1 月</td></tr>
+          <tr><td>GMF</td><td>PMF</td><td></td></tr>
+          <tr><td>harris 的工具</td><td>harness 的工具</td><td>Agent 框架 = 推理 + harness</td></tr>
+          <tr><td>圣女切入点</td><td>绝佳切入点（存疑）</td><td>转写失真</td></tr>
+          <tr><td>新大块</td><td>新、大、快（存疑）</td><td>按上下文归纳</td></tr>
+          <tr><td>X SIX G（Q11 提问中）</td><td>存疑</td><td>硅谷某机构/加速器名，无法确认</td></tr>
+          <tr><td>leo labs</td><td>存疑</td><td>疑指某新架构模型公司</td></tr>
+          <tr><td>101（成功率曲线上下文）</td><td>存疑</td><td>疑指某任务/指标的成功率曲线</td></tr>
+          <tr><td>菲尔斯讲系列</td><td>疑指菲尔兹奖级数学问题（存疑）</td><td></td></tr>
+          <tr><td>james park（4 月 8 日发布产品的公司）</td><td>存疑</td><td>蓝驰投的另一家现象级 Agent 公司</td></tr>
+          <tr><td>中美一级市场投入对比数字（300 亿/12 个病人/3 万亿等）</td><td>存疑</td><td>转写严重失真，仅保留"差距悬殊"的结论</td></tr>
+          <tr><td>90% 成功率总成本 2.2 倍 / 20% 成功率 45 倍</td><td>按原话保留</td><td>讲者推演值</td></tr>
+          <tr><td>50 步 99.9% "好像是 80%"</td><td>讲者凭记忆的说法</td><td>按公式 0.999^50 ≈ 95%</td></tr><tr><td>（素材）课件照片</td><td>已被原图替换</td><td>正文图已从现场屏拍换为讲义站 PPT 原图（附录 D 全集）；现场照保留 3 张（scene-01..03）</td></tr>
+        </table></div>
+      </section>
+
+      <section class="chapter appendix" id="appB">
+        <div class="chapter-title"><span class="ch-no">B</span><h2>附录 B：书单与概念表</h2></div>
+        <h3><span class="h3no">B.1</span>书单（讲者提及）</h3>
+        <ul>
+          <li>《异类》（Outliers，马尔科姆·格拉德威尔）：1955 问题出处</li>
+          <li>《理解媒介》（麦克卢汉）：技术是人类的延伸；做互联网/产品经理必看</li>
+          <li>《赛道为王》（关于红杉的书，书名转写如此）："bet on the racetrack, not the jockey"</li>
+          <li>《孙子兵法》："善战者，求之于势，不责于人"</li>
+          <li>《思考，快与慢》（丹尼尔·卡尼曼）：思考的快与慢 → 创业的快与慢</li>
+          <li>康波周期研究：周金涛（《涛动周期论》系列）</li>
+          <li>一本技术史著作（转写作"技术菲利斯"，书名存疑）</li>
+        </ul>
+        <h3><span class="h3no">B.2</span>核心概念</h3>
+        <ul>
+          <li><strong>PMF</strong>（Product-Market Fit）：产品市场契合</li>
+          <li><strong>AI 摩尔定律</strong>：推理成本每年降 10-30-50 倍，能力持续上升</li>
+          <li><strong>成本公式</strong>：总成本 = [算力成本 + 失败接管成本 × (1−p)] ÷ p（p = 任务成功率）</li>
+          <li><strong>多步任务成功率</strong>：单步成功率^N</li>
+          <li><strong>剪刀差</strong>：供给端成本与需求端人力全成本之差持续扩大 = 规模化 PMF</li>
+          <li><strong>赔率 vs 胜率</strong>：战场决定赔率，切入点决定胜率</li>
+          <li><strong>grading</strong>：打分能力，数据公司的核心能力（RLHF 数据约 100 美元/条，2023 年 OpenAI 水平）</li>
+          <li><strong>Evaluation vs Benchmark</strong>：垂直场景 20 来条任务 vs 宏观公共数据集</li>
+          <li><strong>能力拐点</strong>：成功率跳变的阶跃时刻（如 10%→20%→30-40%→60-70%）</li>
+          <li><strong>新、大、快</strong>：增量市场 / 规模（significant）/ 快速起量</li>
+          <li><strong>稀缺性转移</strong>：技术消灭的稀缺在价值链相邻环节重新出现，新的稀缺 = 利润来源</li>
+          <li><strong>RSI</strong>（递归自我改进）：值得尝试的新架构方向</li>
+        </ul>
+      </section>
+
+      <section class="chapter appendix" id="appC">
+        <div class="chapter-title"><span class="ch-no">C</span><h2>附录 C：课程事务与待办</h2></div>
+        <ul>
+          <li>从本周课程起，所有已选课确认的同学完成组队并开启小组项目。</li>
+          <li>筛选并引入已运营或已获投资的项目作为小组共享项目（目前已有三四个项目报名，含已获天使投资的项目），下星期安排认领与筛选。负责人：夏老师。</li>
+          <li>欢迎有成熟 BP 或已启动项目（愿意共享给同学组队）的创业者联系助教对接。</li>
+          <li>评分：课堂参与 30% + 小组创业项目 35% + Final Demo Day 35%；拟设 Best Venture、Best Investor、Best Pivot 奖项。</li>
+        </ul>
+      </section>
+
+      <section class="chapter appendix" id="appD">
+        <div class="chapter-title"><span class="ch-no">D</span><h2>附录 D：课件全集（36 页）</h2></div>
+        <p>本课 PPT 全部 36 页原图（16:9）。原图来源：课程讲义站 <a href="https://p1.guxq.cn/2026/09/23/1840/" target="_blank" rel="noopener">p1.guxq.cn/2026/09/23/1840</a>，页下图注亦取自该站清单。正文各章的课件图与本附录为同一文件，可点击放大。</p>
+        <div class="deck-grid">
+
+        <figure class="slide"><img src="images/poster.jpg" alt="课件海报" width="1080" height="720" loading="lazy" decoding="async"><figcaption>课件海报</figcaption></figure>
+
+        <figure class="slide"><img src="images/ppt-01.jpg" alt="P.01：标题页：主讲人刘勇，副标题直接点出这堂课的两个变量：战场（Battlefield）和时机（Timing）。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.01：标题页：主讲人刘勇，副标题直接点出这堂课的两个变量：战场（Battlefield）和时机（Timing）。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-02.jpg" alt="P.02：开场问题与红杉的赌赛道哲学，是整堂课方法论的起点。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.02：开场问题与红杉的赌赛道哲学，是整堂课方法论的起点。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-03.jpg" alt="P.03：Follow on 好问题：把「怎么选」拆成「花多久选」，并直接给出他自己的答案：十分之一的时间。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.03：Follow on 好问题：把「怎么选」拆成「花多久选」，并直接给出他自己的答案：十分之一的时间。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-04.jpg" alt="P.04：一个好框架要满足的三条硬标准，后面所有推导都要回到这三条上检验。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.04：一个好框架要满足的三条硬标准，后面所有推导都要回到这三条上检验。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-05.jpg" alt="P.05：全场的路线图，右上角是他的个人简介，「用第一性原理、物理、周期拆解 AI 创业投资」。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.05：全场的路线图，右上角是他的个人简介，「用第一性原理、物理、周期拆解 AI 创业投资」。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-06.jpg" alt="P.06：技术史主线的时间轴，从工具、能源到信息，跨度两百万年，落点收在稀缺与反稀缺的矛盾上。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.06：技术史主线的时间轴，从工具、能源到信息，跨度两百万年，落点收在稀缺与反稀缺的矛盾上。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-07.jpg" alt="P.07：五轮康波周期的具体年份和时长，第五轮「信息技术」还没走完，问号留在那里。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.07：五轮康波周期的具体年份和时长，第五轮「信息技术」还没走完，问号留在那里。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-08.jpg" alt="P.08：康波周期的四阶段模型：复苏、繁荣、衰退、萧条，创业的窗口在复苏到繁荣这一段。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.08：康波周期的四阶段模型：复苏、繁荣、衰退、萧条，创业的窗口在复苏到繁荣这一段。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-09.jpg" alt="P.09：技术革命让普通人离财富更近的三种机制，以及两个最容易踩的认知陷阱。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.09：技术革命让普通人离财富更近的三种机制，以及两个最容易踩的认知陷阱。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-10.jpg" alt="P.10：PC、互联网、移动、AI 四代范式并排对比，AI 这一列的降价要素是「智力」。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.10：PC、互联网、移动、AI 四代范式并排对比，AI 这一列的降价要素是「智力」。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-11.jpg" alt="P.11：稀缺重估的完整链条：机械时代到 AI 时代，每次都是旧稀缺消失、新稀缺登场。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.11：稀缺重估的完整链条：机械时代到 AI 时代，每次都是旧稀缺消失、新稀缺登场。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-12.jpg" alt="P.12：把宏观框架落成一个可以直接计算的公式：机器价格加能源价格，对比劳动力工资。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.12：把宏观框架落成一个可以直接计算的公式：机器价格加能源价格，对比劳动力工资。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-13.jpg" alt="P.13：英国工业革命的历史案例，用来验证这套公式不是凭空编的。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.13：英国工业革命的历史案例，用来验证这套公式不是凭空编的。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-14.jpg" alt="P.14：把公式翻译成两个 VC 最爱问的问题，What 决定赔率，Why Now 决定胜率。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.14：把公式翻译成两个 VC 最爱问的问题，What 决定赔率，Why Now 决定胜率。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-15.jpg" alt="P.15：AI 摩尔定律的具体曲线：达到同等能力的推理成本，十八个月跌去二百八十倍。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.15：AI 摩尔定律的具体曲线：达到同等能力的推理成本，十八个月跌去二百八十倍。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-16.jpg" alt="P.16：AI 时代版本的战场优先框架，PMF 最先在美国的数字白领任务上跨线。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.16：AI 时代版本的战场优先框架，PMF 最先在美国的数字白领任务上跨线。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-17.jpg" alt="P.17：中美人力成本的真实数字对比，公式右边「人有多贵」的具体答案。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.17：中美人力成本的真实数字对比，公式右边「人有多贵」的具体答案。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-18.jpg" alt="P.18：推算过程二：把 AI 定义成「概率型资本品」，买的不是固定产能，而是一次做对的成功率。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.18：推算过程二：把 AI 定义成「概率型资本品」，买的不是固定产能，而是一次做对的成功率。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-19.jpg" alt="P.19：公式左边：机器完成复杂任务的真实成本，把失败介入成本也算了进去。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.19：公式左边：机器完成复杂任务的真实成本，把失败介入成本也算了进去。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-20.jpg" alt="P.20：同一公式两套要素价格：软件先看美国，物理自动化再看中国。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.20：同一公式两套要素价格：软件先看美国，物理自动化再看中国。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-21.jpg" alt="P.21：「国运」怎么进这套公式：美国的资本密度和中国的制造部署规模，是两条不同的赛道。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.21：「国运」怎么进这套公式：美国的资本密度和中国的制造部署规模，是两条不同的赛道。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-22.jpg" alt="P.22：成本阈值达标之后还要过的三关：新市场、TAM 要大、能不能快速起规模。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.22：成本阈值达标之后还要过的三关：新市场、TAM 要大、能不能快速起规模。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-23.jpg" alt="P.23：Why Now 版本的战场优先框架：真正的 Driver 不是市场热度，是大模型的能力拐点。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.23：Why Now 版本的战场优先框架：真正的 Driver 不是市场热度，是大模型的能力拐点。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-24.jpg" alt="P.24：能力拐点的数学模型：完整任务成功率等于单步成功率的 n 次方，直观解释了「AI 什么都会又什么都做不成」。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.24：能力拐点的数学模型：完整任务成功率等于单步成功率的 n 次方，直观解释了「AI 什么都会又什么都做不成」。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-25.jpg" alt="P.25：Claude Code 的真实时间线：能力拐点前等了三年，窗口打开后只用八十七天就从 Preview 走到 GA。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.25：Claude Code 的真实时间线：能力拐点前等了三年，窗口打开后只用八十七天就从 Preview 走到 GA。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-26.jpg" alt="P.26：模型能力是连续进步的，但机会是突然打开的：步数示意图把这句话具象化了。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.26：模型能力是连续进步的，但机会是突然打开的：步数示意图把这句话具象化了。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-27.jpg" alt="P.27：Coding 之所以第一个跨线，靠的是六项结构性优势，不只是「程序员容易被替代」这么简单。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.27：Coding 之所以第一个跨线，靠的是六项结构性优势，不只是「程序员容易被替代」这么简单。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-28.jpg" alt="P.28：AI 产品经理的可验证性框架：grader 越强的任务，越是好的创业战场。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.28：AI 产品经理的可验证性框架：grader 越强的任务，越是好的创业战场。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-29.jpg" alt="P.29：AI 产品经理的第一条资产不是提示词，是一组能稳定复现客户任务、环境与失败的评测集。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.29：AI 产品经理的第一条资产不是提示词，是一组能稳定复现客户任务、环境与失败的评测集。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-30.jpg" alt="P.30：AI 解决一个局部瓶颈后，价值会转移到没有同步提速的相邻环节，这才是真正的新战场。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.30：AI 解决一个局部瓶颈后，价值会转移到没有同步提速的相邻环节，这才是真正的新战场。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-31.jpg" alt="P.31：冲浪三天法的完整表述：为下一代模型做产品，测量今天，重估昨天，预测明天。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.31：冲浪三天法的完整表述：为下一代模型做产品，测量今天，重估昨天，预测明天。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-32.jpg" alt="P.32：Cursor 的完整时间线，用真实的 ARR 数字回答「复制 Cursor 还有没有机会」这个问题。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.32：Cursor 的完整时间线，用真实的 ARR 数字回答「复制 Cursor 还有没有机会」这个问题。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-33.jpg" alt="P.33：Klarna 的真实数据：自动化率要和重复咨询率、解决时间一起看，不能只看一个指标。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.33：Klarna 的真实数据：自动化率要和重复咨询率、解决时间一起看，不能只看一个指标。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-34.jpg" alt="P.34：Abridge 医疗写病历产品的实测数据：接诊时间、认知负荷、时间压力全面下降。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.34：Abridge 医疗写病历产品的实测数据：接诊时间、认知负荷、时间压力全面下降。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-35.jpg" alt="P.35：中美 AI 竞争的五个变量对比：模型、人才、资本、市场、物理世界，各自领先的维度不同。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.35：中美 AI 竞争的五个变量对比：模型、人才、资本、市场、物理世界，各自领先的维度不同。</figcaption></figure>
+        <figure class="slide"><img src="images/ppt-36.jpg" alt="P.36：全场的收尾页：为科技立心，为产业立命，为后学传薪火，为时代造英雄。" width="1600" height="900" loading="lazy" decoding="async"><figcaption>P.36：全场的收尾页：为科技立心，为产业立命，为后学传薪火，为时代造英雄。</figcaption></figure>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="course-nav" aria-label="课程导引">
+    <h4>北大《AI创业与投资》· 课程讲次</h4>
+    <ul class="cn-series">
+      <li><span class="cn-no">第 1 讲</span><a href="../20260909-wangxiaochuan/index.html">创新相对论与百川的思考</a><span class="cn-date">2026.09.09</span><span class="cn-date">王小川</span></li>
+      <li><span class="cn-no">第 2 讲</span><a href="../20260916-zhuxiaohu/index.html">互联网和 AI 的创业与投资的异同</a><span class="cn-date">2026.09.16</span><span class="cn-date">朱啸虎</span></li>
+      <li class="current"><span class="cn-no">第 3 讲</span><span>AI 创业的第一性框架：赛道和时机</span><span class="cn-date">2026.09.23</span><span class="cn-date">刘勇</span><span class="cn-now">本讲</span></li>
+    </ul>
+    <div class="cn-pager">
+      <a class="prev" href="../20260916-zhuxiaohu/index.html"><span class="cn-dir">上一讲</span>第 2 讲 · 朱啸虎：互联网和 AI 的创业与投资的异同</a>
+      <a class="next disabled" aria-disabled="true"><span class="cn-dir">下一讲</span>待更新</a>
+    </div>
+    <div class="cn-more">
+      <span><span class="cn-ext">课程总览</span><a href="../index.html">《AI创业与投资》课程目录</a></span>
+    </div>
+  </nav>
+
+  <footer class="colophon">
+    <p>北大《AI创业与投资》第三课课堂笔记 · 主讲：刘勇（TaoZ Capital 创始合伙人） · 2026 年 9 月 23 日</p>
+    <p>整理说明：本笔记按录音逐字稿整理，保留全部论证与推理链条，仅删去课间闲聊与纯事务性内容。转写中的明显口误与识别错误已按上下文校正（详见附录 A），存疑处均在文中注明。转写账号显示为"Joyce"，系录音账号名而非讲者。逐字稿清洗稿见同目录 transcript-cleaned.md，原始转写见 transcript-raw.txt。观点归主讲人所有。</p>
+  </footer>
+</div>
+<div id="top-sentinel" aria-hidden="true"></div>
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+<script>
+(function(){
+  "use strict";
+  var btn=document.getElementById("backToTop"),sentinel=document.getElementById("top-sentinel");
+  new IntersectionObserver(function(e){btn.classList.toggle("visible",!e[0].isIntersecting);},{rootMargin:"-200px 0px 0px 0px"}).observe(sentinel);
+  btn.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});
+  var links=Array.prototype.slice.call(document.querySelectorAll(".sidebar .toc a"));
+  var map={};
+  links.forEach(function(a){var id=a.getAttribute("href").slice(1);(map[id]=map[id]||[]).push(a);});
+  var sections=Array.prototype.slice.call(document.querySelectorAll("section.chapter[id]"));
+  var visible={},setActive=function(){
+    var best=null,bestTop=-Infinity;
+    sections.forEach(function(s){if(visible[s.id]){var t=s.getBoundingClientRect().top;if(t>bestTop){bestTop=t;best=s.id;}}});
+    if(!best)return;
+    links.forEach(function(a){a.classList.remove("active");});
+    (map[best]||[]).forEach(function(a){a.classList.add("active");});
+  };
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){visible[e.target.id]=e.isIntersecting;});
+    setActive();
+  },{rootMargin:"-10% 0px -70% 0px"});
+  sections.forEach(function(s){io.observe(s);});
+  /* 图片灯箱 */
+  var lb=document.createElement('div');lb.className='lb';
+  lb.innerHTML='<img alt=""><div class="lb-cap"></div>';
+  document.body.appendChild(lb);
+  var lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap');
+  var lbClose=function(){lb.classList.remove('open');document.body.style.overflow='';};
+  lb.addEventListener('click',lbClose);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose();});
+  document.querySelectorAll('figure.slide img').forEach(function(img){
+    img.addEventListener('click',function(){
+      lbImg.src=img.currentSrc||img.src;lbImg.alt=img.alt||'';
+      var fc=img.parentNode.querySelector('figcaption');
+      lbCap.textContent=fc?fc.textContent:'';
+      lb.classList.add('open');document.body.style.overflow='hidden';
+    });
+  });
+})();
+</script>
+</body>
+</html>

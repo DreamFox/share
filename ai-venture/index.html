@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北大《AI创业与投资》课程目录 · 课堂笔记</title>
+<meta name="description" content="北京大学《AI创业与投资》课程笔记总览：王小川、朱啸虎、刘勇三讲完整收录，每讲保留全部推理链与问答实录。">
+<style>
+  :root{
+    --paper:#f7f6f3; --card:#fffefb; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
+    --accent:#9a3b2e; --accent-deep:#772b20; --accent-tint:#f2e6e2;
+    --rule:#dcd7cf; --hairline:#e7e3dc;
+    --serif:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+      --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+      --rule:#323537; --hairline:#26292b;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.95;-webkit-font-smoothing:antialiased}
+  .wrap{width:calc(100% - 48px);max-width:860px;margin:0 auto}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  ::selection{background:var(--accent-tint);color:var(--accent-deep)}
+  .topbar{border-bottom:1px solid var(--rule)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;font-family:var(--sans);font-size:12.5px;flex-wrap:wrap}
+  .wordmark{font-weight:600;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
+  .topbar a{color:var(--muted)}
+  .topbar a:hover{color:var(--accent);text-decoration:none}
+  header.hero{padding:56px 0 34px;border-bottom:1px solid var(--rule)}
+  .kicker{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:16px}
+  h1{font-size:clamp(28px,4.4vw,44px);line-height:1.3;font-weight:900;margin-bottom:18px}
+  .lede{font-family:var(--sans);color:var(--ink-soft);font-size:15px;line-height:1.9;max-width:38em;margin-bottom:20px}
+  .facts{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.9;border-top:1px solid var(--hairline);padding-top:14px;max-width:38em}
+  .facts b{color:var(--ink-soft)}
+  .lecture{display:grid;grid-template-columns:88px minmax(0,1fr);gap:26px;padding:34px 0;border-bottom:1px solid var(--rule)}
+  .lec-no{font-family:var(--serif);font-size:40px;font-weight:900;line-height:1.1;color:var(--accent)}
+  .lec-date{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block;margin-top:8px}
+  .lecture h2{font-size:22px;line-height:1.45;font-weight:800;margin-bottom:6px}
+  .lecture h2 a{color:var(--ink)}
+  .lecture h2 a:hover{color:var(--accent);text-decoration:none}
+  .speaker-line{font-family:var(--sans);font-size:13px;color:var(--accent-deep);margin-bottom:10px}
+  .speaker-line .tag{font-size:11.5px;background:var(--accent-tint);border-radius:99px;padding:2px 10px;margin-left:8px}
+  .lecture p{font-family:var(--sans);font-size:14px;line-height:1.9;color:var(--ink-soft);margin-bottom:8px;max-width:42em}
+  .go{font-family:var(--sans);font-size:13px;font-weight:600;margin-top:6px;display:inline-block}
+  .other{padding:34px 0 8px}
+  .other h3{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:14px}
+  .other ul{list-style:none;font-family:var(--sans);font-size:14px;line-height:2.2}
+  .other li .cn-ext{font-family:var(--sans);font-size:11.5px;letter-spacing:.12em;color:var(--muted);margin-right:12px}
+  footer.colophon{border-top:1px solid var(--rule);margin-top:26px;padding:24px 0 56px;font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.9}
+  @media (max-width:640px){
+    .wrap{width:calc(100% - 28px)}
+    body{font-size:15.5px}
+    .lecture{grid-template-columns:minmax(0,1fr);gap:6px;padding:26px 0}
+    .lec-no{font-size:32px}
+    .lecture h2{font-size:19px}
+  }
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+  @media print{ body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="wordmark">北大《AI创业与投资》课堂笔记</span>
+  <nav>
+    <a href="20260909-wangxiaochuan/index.html">第 1 讲 王小川</a>&nbsp;&nbsp;
+    <a href="20260916-zhuxiaohu/index.html">第 2 讲 朱啸虎</a>&nbsp;&nbsp;
+    <a href="20260923-liuyong/index.html">第 3 讲 刘勇</a>
+  </nav>
+</div></div>
+<div class="wrap">
+  <header class="hero">
+    <p class="kicker">2026 秋季学期 · 课程目录</p>
+    <h1>《AI创业与投资》课堂笔记</h1>
+    <p class="lede">一门创业投资实战课，目标是培养未来的 AI 创业者：一个学期获得两种能力，既能从 Founder 的角度创造机会（Build），也能从 Investor 的角度审视机会（Invest）。本目录收录每讲嘉宾分享的完整课堂笔记，保留全部推理链条与问答实录。</p>
+    <p class="facts"><b>课程信息：</b>北京大学 · 2 学分 · 本研合上 · 中文授课 · 嘉宾分享 + 学生组队项目。<b>评分：</b>课堂参与 30% + 小组创业项目 35% + Final Demo Day 35%，拟设 Best Venture、Best Investor、Best Pivot 奖项。</p>
+  </header>
+
+  <section class="lecture">
+    <div><div class="lec-no">01</div><span class="lec-date">2026.09.09</span></div>
+    <div>
+      <h2><a href="20260909-wangxiaochuan/index.html">创新相对论与百川的思考</a></h2>
+      <p class="speaker-line">主讲：王小川（百川智能创始人兼 CEO）<span class="tag">第 1 讲</span></p>
+      <p>从哲学视角拆解创业中主观与客观的辩证关系，回顾从搜狗到百川的二十年创业历程。</p>
+      <p>核心论证：以"创新相对论"框架讨论技术判断中的主观预期与客观规律如何相互塑造，并由此阐述百川智能从通用大模型转向医疗 AI 的战略逻辑：通用模型的确定性竞争之上，医疗是能建立长期差异化壁垒的战场。</p>
+      <a class="go" href="20260909-wangxiaochuan/index.html">阅读本讲笔记 →</a>
+    </div>
+  </section>
+
+  <section class="lecture">
+    <div><div class="lec-no">02</div><span class="lec-date">2026.09.16</span></div>
+    <div>
+      <h2><a href="20260916-zhuxiaohu/index.html">互联网和 AI 的创业与投资的异同</a></h2>
+      <p class="speaker-line">主讲：朱啸虎（金沙江创投主管合伙人）· 对话嘉宾：王小川<span class="tag">第 2 讲</span></p>
+      <p>系统拆解互联网时代与 AI 时代创业和投资的异同，上下两场：主题演讲 + 与王小川的对话及现场问答。</p>
+      <p>核心论证：3S 框架（significant / scalable / sustainable）与商业模式金字塔；AI 时代先发与后发优势的再平衡；开源的终局判断与 AI 应用的三大场景。结论指向：互联网的增长剧本不能照搬，AI 的价值捕获要重新算账。</p>
+      <a class="go" href="20260916-zhuxiaohu/index.html">阅读本讲笔记 →</a>
+    </div>
+  </section>
+
+  <section class="lecture">
+    <div><div class="lec-no">03</div><span class="lec-date">2026.09.23</span></div>
+    <div>
+      <h2><a href="20260923-liuyong/index.html">AI 创业的第一性框架：赛道和时机</a></h2>
+      <p class="speaker-line">主讲：刘勇（TaoZ Capital 创始合伙人）<span class="tag">第 3 讲</span></p>
+      <p>从"为什么比尔·盖茨和乔布斯都生于 1955 年"出发，用第一性原理把赛道选择与时机判断拆成可计算的框架。</p>
+      <p>核心论证：技术消灭稀缺、商业价值来自新的稀缺（康波周期定位"现在"）；成本剪刀差 × 成功率决定 PMF 在哪里发生（中美阈值差）；模型能力连续进步而机会是阶跃函数（87 天窗口案例）；落点是"新、大、快"赛道标准与"快 + 独特数据"的壁垒。含 14 组现场问答。</p>
+      <a class="go" href="20260923-liuyong/index.html">阅读本讲笔记 →</a>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <p>北大《AI创业与投资》课堂笔记 · 各讲观点归主讲人所有 · 笔记按现场录音逐字稿整理，保留全部推理链条与问答实录。</p>
+  </footer>
+</div>
+</body>
+</html>
