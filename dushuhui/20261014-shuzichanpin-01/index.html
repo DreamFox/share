@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>25P5《数字时代的产品创新》课前读书预习会 · 详细纪要</title>
+<style>
+:root{
+  /* 清华紫配色 */
+  --accent:#5A2E7A;
+  --accent-soft:#F3EDF7;
+  --accent-mid:#8B6BB8;
+  --accent-strong:#3E1F56;
+  --ink:#1C1A1E;
+  --ink-2:#4F4A52;
+  --line:#E6E0E8;
+  --bg:#FFFFFF;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+  --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --mono:"SF Mono","JetBrains Mono",Menlo,monospace;
+
+  /* 发言人专属色（三方对谈） */
+  --c-lsz:#8B4513;  /* 赖少宗 - 赭石 */
+  --c-lsz-soft:#FDF3E7;
+  --c-cqx:#005B4F;  /* 冯成蹊 - 深青 */
+  --c-cqx-soft:#E8F4F1;
+  --c-chx:#8B1A2B;  /* 常豪鑫 - 深绯 */
+  --c-chx-soft:#FCEEF0;
+  --c-host:#5A2E7A;  /* 王鑫（主持） - 清华紫 */
+  --c-host-soft:#F3EDF7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.85;-webkit-font-smoothing:antialiased;font-size:16.5px}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px;width:calc(100% - 32px)}
+img{max-width:100%;height:auto;display:block}
+b,strong{font-weight:700;color:var(--ink)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover{border-bottom-color:var(--accent)}
+
+/* hero */
+.hero{padding:64px 0 42px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--accent);font-weight:700;margin-bottom:18px}
+h1.title{font-size:34px;line-height:1.35;letter-spacing:-.5px;font-weight:800;font-family:var(--sans)}
+.sub{margin-top:14px;font-size:16.5px;color:var(--ink-2);max-width:680px}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;font-family:var(--sans)}
+.meta div{display:flex;gap:10px;min-width:0}
+.meta b{color:var(--accent);font-weight:700;flex:none}
+.meta span{color:var(--ink-2);overflow-wrap:anywhere}
+
+/* speaker color cards (legend) */
+.speakers{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.spk{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;font-family:var(--sans);font-size:13px;font-weight:700}
+.spk-lsz{background:var(--c-lsz-soft);color:var(--c-lsz);border:1px solid #EAD9C5}
+.spk-cqx{background:var(--c-cqx-soft);color:var(--c-cqx);border:1px solid #C8E0DA}
+.spk-chx{background:var(--c-chx-soft);color:var(--c-chx);border:1px solid #F0D0D5}
+.spk-host{background:var(--c-host-soft);color:var(--c-host);border:1px solid #D8CCE5}
+
+/* toc */
+nav.toc{padding:34px 0;border-bottom:1px solid var(--line)}
+nav.toc details{font-family:var(--sans)}
+nav.toc summary{cursor:pointer;font-weight:700;font-size:15px;color:var(--accent);list-style:none}
+nav.toc summary::-webkit-details-marker{display:none}
+nav.toc summary:before{content:"+ ";font-family:var(--mono)}
+nav.toc details[open] summary:before{content:"− "}
+nav.toc ol{margin:14px 0 0 22px;font-size:14.5px;color:var(--ink-2)}
+nav.toc li{margin-bottom:7px}
+nav.toc a{border:none}
+@media(min-width:901px){nav.toc details[open]{column-count:2;column-gap:36px}}
+
+/* layout */
+main{padding-top:6px}
+section.ch{padding:50px 0;border-bottom:1px solid var(--line)}
+.ch-num{font-family:var(--serif);font-size:40px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:8px}
+h2{font-family:var(--sans);font-size:26px;font-weight:800;letter-spacing:-.3px;line-height:1.4;margin-bottom:18px}
+h3{font-family:var(--sans);font-size:18.5px;font-weight:700;color:var(--accent);margin:30px 0 12px;line-height:1.5}
+h4{font-family:var(--sans);font-size:16px;font-weight:700;margin:22px 0 8px}
+p{margin:0 0 14px;color:var(--ink-2)}
+p strong,li strong{color:var(--ink)}
+ul.bul{list-style:none;margin:0 0 16px}
+ul.bul li{position:relative;padding-left:18px;margin-bottom:9px;color:var(--ink-2)}
+ul.bul li:before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;background:var(--accent);border-radius:1px}
+ol.num{margin:0 0 16px 22px;color:var(--ink-2)}
+ol.num li{margin-bottom:9px}
+
+/* quote & callout */
+blockquote{border-left:3px solid var(--accent);background:var(--accent-soft);padding:16px 20px;margin:18px 0;border-radius:0 6px 6px 0}
+blockquote p{margin:0;color:var(--ink);font-size:16.5px}
+.callout{background:var(--accent-soft);border-radius:8px;padding:18px 22px;margin:18px 0}
+.callout .ct{font-family:var(--sans);font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.1em;margin-bottom:8px}
+.callout p{margin:0;font-size:15.5px}
+.callout p+p{margin-top:8px}
+
+/* table */
+.table-wrap{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;min-width:560px;width:100%;font-size:14.5px;font-family:var(--sans)}
+th{background:var(--accent-soft);color:var(--ink);font-weight:700;text-align:left}
+th,td{padding:10px 14px;border:1px solid var(--line);vertical-align:top;line-height:1.65;overflow-wrap:break-word}
+td{color:var(--ink-2)}
+td strong{color:var(--ink)}
+
+/* photo */
+figure.event-photo{margin:22px 0}
+figure.event-photo img{cursor:zoom-in;border:1px solid var(--line);border-radius:6px}
+figure.event-photo figcaption{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-top:8px;text-align:center}
+
+/* speaker turn - colored per speaker */
+.turn-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.turn{width:100%;min-width:0;max-width:100%;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:16px 20px;background:#fff}
+.turn.lsz{border-left-color:var(--c-lsz)}
+.turn.cqx{border-left-color:var(--c-cqx)}
+.turn.chx{border-left-color:var(--c-chx)}
+.turn.host{border-left-color:var(--c-host)}
+.turn-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:8px;min-width:0}
+.turn-name{font-family:var(--sans);font-weight:800;font-size:15px}
+.turn.lsz .turn-name{color:var(--c-lsz)}
+.turn.cqx .turn-name{color:var(--c-cqx)}
+.turn.chx .turn-name{color:var(--c-chx)}
+.turn.host .turn-name{color:var(--c-host)}
+.role{font-family:var(--sans);font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+.turn.lsz .role{background:var(--c-lsz-soft);color:var(--c-lsz)}
+.turn.cqx .role{background:var(--c-cqx-soft);color:var(--c-cqx)}
+.turn.chx .role{background:var(--c-chx-soft);color:var(--c-chx)}
+.turn.host .role{background:var(--c-host-soft);color:var(--c-host)}
+.turn p{margin:0 0 8px;font-size:15.5px}
+.turn p:last-child{margin-bottom:0}
+.turn .ts{font-family:var(--mono);font-size:12px;color:var(--accent-mid);margin-left:auto}
+.qa{font-family:var(--sans);font-size:14px;color:var(--ink-2);border-radius:6px;padding:10px 14px;margin:10px 0}
+.turn.lsz .qa{background:var(--c-lsz-soft)}
+.turn.cqx .qa{background:var(--c-cqx-soft)}
+.turn.chx .qa{background:var(--c-chx-soft)}
+.turn.host .qa{background:var(--c-host-soft)}
+.qa b{color:var(--accent)}
+
+/* timeline (logic map) */
+details.flowmap{border:1px solid var(--line);border-radius:8px;padding:0;margin:20px 0;background:#fff}
+details.flowmap summary{cursor:pointer;list-style:none;padding:15px 20px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--accent)}
+details.flowmap summary::-webkit-details-marker{display:none}
+details.flowmap summary:before{content:"▸ "}
+details.flowmap[open] summary:before{content:"▾ "}
+.flow-inner{padding:6px 22px 22px}
+.fstep{position:relative;padding:0 0 20px 26px;border-left:2px solid var(--line)}
+.fstep:last-child{padding-bottom:0;border-left:none}
+.fstep:before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.fstep .ft{font-family:var(--sans);font-weight:800;font-size:15px;margin-bottom:4px}
+.fstep p{margin:0;font-size:15px}
+.fstep ul.bul{margin-top:6px}
+.fstep ul.bul li{font-size:14.5px;margin-bottom:5px}
+
+/* todo list */
+.todo{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:18px 0}
+.todo-item{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:flex-start;min-width:0}
+.todo-item:last-child{border-bottom:none}
+.todo-item .box{flex:none;width:16px;height:16px;border:2px solid var(--accent);border-radius:3px;margin-top:5px}
+.todo-item p{margin:0;flex:1;min-width:0}
+.todo-item .ddl{flex:none;font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:3px 12px;margin-top:2px;white-space:nowrap}
+
+/* footer */
+footer{padding:44px 0 60px;font-family:var(--sans);font-size:13.5px;color:var(--ink-2)}
+footer .ft-title{font-weight:800;color:var(--ink);margin-bottom:10px}
+footer ul{list-style:none}
+footer li{margin-bottom:6px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(15,12,8,.92);display:none;align-items:center;justify-content:center;flex-direction:column;cursor:zoom-out;z-index:99;padding:20px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:86vh;object-fit:contain;border-radius:4px}
+.lb-cap{font-family:var(--sans);font-size:13px;color:#E8DFF0;margin-top:14px;text-align:center}
+
+/* entrance */
+section.ch{animation:fadein .5s ease both}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){section.ch{animation:none}}
+@media print{section.ch{animation:none}.lb{display:none!important}}
+
+/* responsive */
+@media(max-width:900px){
+  h1.title{font-size:28px}
+  .meta{grid-template-columns:minmax(0,1fr)}
+  nav.toc details[open]{column-count:1}
+}
+@media(max-width:640px){
+  body{font-size:15.5px}
+  .hero{padding:44px 0 32px}
+  h1.title{font-size:24px}
+  section.ch{padding:36px 0}
+  .ch-num{font-size:32px}
+  h2{font-size:21px}
+  h3{font-size:17px}
+  table{min-width:0;width:100%;table-layout:fixed}
+  th,td{padding:8px 10px;font-size:13.5px}
+  .turn{padding:13px 15px}
+  .todo-item{flex-wrap:wrap}
+  .todo-item .ddl{margin-left:30px}
+  .speakers{gap:8px}
+  .spk{font-size:12px;padding:5px 12px}
+}
+@media(max-width:390px){
+  .wrap{padding:0 16px}
+  .turn{padding:12px 13px}
+  th,td{padding:7px 8px;font-size:12.5px}
+  .spk{font-size:11px;padding:4px 10px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">清华 MBA 25P5 · 数字时代的产品创新 · 课前读书预习会</div>
+    <h1 class="title">从 0 到 1 做产品，从 1 到 N 做规模<br>三人接力读书分享 · 详细纪要</h1>
+    <p class="sub">课代表赖少宗搭课程框架，冯成蹊拆苹果/腾讯/小米的 0-1 案例，常豪鑫讲 IBM/华为/微软的 1-N 规模化，穿插 AI Native 组织实践的真实困境。纪要以录制转写逐字稿（230 段全程）为骨干，对照智能纪要核对补全。</p>
+    <div class="meta">
+      <div><b>时间</b><span>2026 年 10 月 14 日（周三）21:00-22:30</span></div>
+      <div><b>形式</b><span>腾讯会议线上（225 454 426）</span></div>
+      <div><b>主讲</b><span>赖少宗 · 冯成蹊 · 常豪鑫</span></div>
+      <div><b>主持</b><span>王鑫</span></div>
+      <div><b>参会</b><span>约 17-19 人</span></div>
+      <div><b>格式</b><span>三人接力 + 互动问答 + 课程反馈问卷</span></div>
+    </div>
+    <div class="speakers">
+      <span class="spk spk-lsz">赖少宗 · 课代表 / 框架</span>
+      <span class="spk spk-cqx">冯成蹊 · 0-1 案例</span>
+      <span class="spk spk-chx">常豪鑫 · 1-N 规模化</span>
+      <span class="spk spk-host">王鑫 · 主持</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc">
+  <details>
+    <summary>目录</summary>
+    <ol>
+      <li><a href="#ch1">开场：组织逻辑与推荐书目</a></li>
+      <li><a href="#ch2">赖少宗：课程框架与核心逻辑</a></li>
+      <li><a href="#ch3">冯成蹊：苹果 / 腾讯 / 小米的 0-1 案例</a></li>
+      <li><a href="#ch4">常豪鑫：IBM / 华为 / 微软的 1-N 规模化</a></li>
+      <li><a href="#ch5">互动问答与现场讨论</a></li>
+      <li><a href="#ch6">问卷与收尾</a></li>
+      <li><a href="#ch7">金句摘录</a></li>
+      <li><a href="#flow">本课逻辑脉络图</a></li>
+      <li><a href="#ch8">待办事项</a></li>
+    </ol>
+  </details>
+</nav>
+
+<main>
+
+<!-- ========== 一、开场 ========== -->
+<section class="ch" id="ch1">
+  <div class="ch-num">01</div>
+  <h2>开场：组织逻辑与推荐书目</h2>
+
+  <div class="turn-list">
+    <div class="turn host">
+      <div class="turn-head">
+        <span class="turn-name">王鑫</span>
+        <span class="role">主持</span>
+        <span class="ts">07:45</span>
+      </div>
+      <p>不用等了，开始吧。</p>
+    </div>
+
+    <div class="turn lsz">
+      <div class="turn-head">
+        <span class="turn-name">赖少宗</span>
+        <span class="role">课代表 · 开场</span>
+        <span class="ts">07:57</span>
+      </div>
+      <p>应班委的号召，我这边给大家做一个数字时代的产品创新的分享。这次是三个人，我讲一下课程的框架，更核心的是冯成蹊和常豪鑫读老师的指导书籍，分享心得和观点。每个人接近 20 分钟，看大家自己的发挥，有问题随时打断去聊。</p>
+      <p>流程：我先讲框架，然后他们两位讲案例，最后有一个调研问卷，核心是收集大家的问题，便于老师准备课件时更有针对性。后续也可以短暂交流。</p>
+      <div class="qa">
+        <b>于老师推荐书目</b>：前期沟通时，于老师先给了较多清单，后来反应过来大家时间相对有限，重点推荐了企业类的 6 本：华为、小米、腾讯、苹果、IBM、微软。这 6 本拆成两个专题，前三本（苹果/腾讯/小米）冯成蹊讲 0-1，后三本（IBM/华为/微软）常豪鑫讲 1-N。
+      </div>
+      <p>赖少宗的建议：剩下的书尤其是 AI 来了，直接把电子书丢给 AI 让它读，提炼一个万字总结，把核心的东西学到就可以。剩下的按图索骥，哪块感兴趣再去深读。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 二、赖少宗 ========== -->
+<section class="ch" id="ch2">
+  <div class="ch-num">02</div>
+  <h2>赖少宗：课程框架与核心逻辑</h2>
+
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">课程框架</span>
+      <span class="ts">10:54-25:16</span>
+    </div>
+    <p>这门课上一两届的课件被整理成一百多页 PPT，核心词是"创新"，从不确定性到确定性，从艺术到工程（因为创新需要被管理、可以被复制）。课程分五个部分：引言 + 四个专题，每个专题有理论+案例。</p>
+  </div>
+
+  <h3>引言：德鲁克的逻辑</h3>
+  <blockquote>
+    <p>企业的目的只有一个正确定义，就是创造顾客。 彼得·德鲁克</p>
+  </blockquote>
+  <ul class="bul">
+    <li>实现这个目的的两大功能是<strong>营销和创新</strong>。利润只是检验企业效能的指标，不是目的本身。</li>
+    <li>产品创新落到三个手段：<strong>技术、管理、商业模式</strong>。这三者不是固定关系，跟行业和企业阶段有关。</li>
+    <li>课程把产品创新者定位成<strong>"迷你 CEO"</strong>，产品经理/创新领导者要跨越管理类、技术类（项目经理、流程经理、各类工程师）的边界去做整合。</li>
+  </ul>
+
+  <h3>四个专题串联</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>专题</th><th>主题</th><th>关键问题</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>专题一</strong></td><td>环境变了怎么变</td><td>渐进式跟不上同质化/跨界竞争，必须做颠覆式创新</td></tr>
+        <tr><td><strong>专题二</strong></td><td>往哪个方向做</td><td>用 NPD 流程锁定值得投入的颠覆性项目</td></tr>
+        <tr><td><strong>专题三</strong></td><td>怎么做好 0-1</td><td>NPD 三环节：用户需求洞察 → 产品定义 → 走向市场</td></tr>
+        <tr><td><strong>专题四</strong></td><td>怎么做好 1-N</td><td>组合管理：单项目最优 ≠ 组合最优</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>关键数据与模型</h3>
+  <figure class="event-photo">
+    <img src="images/slide-01-课程框架图.png" alt="产品创新三类协同课程框架图" width="1620" height="1080" loading="lazy">
+    <figcaption>赖少宗讲解：产品创新三类协同课程框架图（11:20 会议截图）</figcaption>
+  </figure>
+  <figure class="event-photo">
+    <img src="images/slide-02-NPD流程与组合管理.png" alt="NPD流程与组合管理总逻辑图" width="1620" height="1080" loading="lazy">
+    <figcaption>赖少宗讲解：NPD 流程与组合管理总逻辑图（14:47 会议截图）</figcaption>
+  </figure>
+  <ul class="bul">
+    <li><strong>颠覆式创新的价值</strong>：颠覆性新产品只占 <strong>14%</strong>，却贡献 <strong>61%</strong> 的利润；渐进式产品占 60% 多，只贡献 30% 多利润。结论：必须向颠覆式创新转型。</li>
+    <li><strong>NPD 流程</strong>：用户需求洞察 → 定义产品 → 市场传播销售。最终目标三句话：比顾客更懂顾客（洞察需求）；用关键资源做出极致性价比的产品；走向市场让用户愿意付费。</li>
+    <li><strong>组合管理理念</strong>：单项目最优不等于整体最优。车企按定位/价格带分离产品线以避免内部蚕食，就是一个直观例子。</li>
+    <li><strong>创新九宫格</strong>：纵轴是对公司而言的创新程度，横轴是对市场而言的创新程度。真正的颠覆式创新（对公司、对市场都是新的）占比非常少。</li>
+    <li><strong>不同竞争力企业的创新占比</strong>：最差 20% 企业与最佳 20% 企业，在重大/颠覆式创新上的占比分别是 <strong>45% vs 65%</strong>。</li>
+    <li><strong>产品创新分类</strong>：突破性创新 → 改进创新（重大创新 + 微小改进）。微小改进的例子：改规格尺寸（啤酒 500ml→550ml 同价增量）、改包装、局部性能（车上加手机支架）。跟进策略从 Me too → Best in class。</li>
+  </ul>
+
+  <h3>九大秘诀（战略/组织/战术）</h3>
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">九大秘诀</span>
+      <span class="ts">22:15-23:21</span>
+    </div>
+    <p><strong>战略（4 条）</strong>：清晰的创新战略；聚焦市场；聚焦市场内的产品；明确核心竞争力。赖少宗个人理解：这跟聚焦、差异化、成本优势的经典战略框架没有太大区别。</p>
+    <p><strong>组织（3 条）</strong>：结构与团队；资源充足；创新氛围（文化导向）+ 高层全力支持。</p>
+    <p><strong>战术（一堆工具）</strong>：设定战略战术目标 → 选择战略领域 → 进入战略 → 组合战略 → 战略路线图。战术目标已经是最后落地层面，比如新品占销售利润的百分比、新品动销率/转化率等。</p>
+    <p>配套概念：五看三定（看行业、看市场、看技术、看竞争、看自己 → 定目标领域打法）。</p>
+  </div>
+
+  <h3>华为案例作为贯穿主线</h3>
+  <ul class="bul">
+    <li>前言部分用华为案例导入，四个专题在华为身上都有对应动作。</li>
+    <li>华为实际动作顺序：先 IPD（集成产品开发）→ 再 ISC（集成供应链）→ 轮值决策 → MTL 等。注意：<strong>企业的实际选择顺序跟科班理论顺序不一样</strong>，理论顺序是"创新基因 → 创新策略 → 单项目 → 多项目"，华为是先做 IPD 再补其他。</li>
+    <li>成果数据：供应链集成后合同齐套发货率从 <strong>20% → 85%</strong>；客户结构上，前 50 大运营商收入占比从 <strong>38% → 65%</strong>。</li>
+  </ul>
+
+  <h3>推荐书目与分工</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>书</th><th>讲解人</th><th>对应专题</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>《乔布斯传》（苹果）</td><td>冯成蹊</td><td>专题三 0-1</td></tr>
+        <tr><td>《腾讯传》</td><td>冯成蹊</td><td>专题三 0-1</td></tr>
+        <tr><td>《小米生态链战地笔记》/《参与感》</td><td>冯成蹊</td><td>专题三 0-1</td></tr>
+        <tr><td>《谁说大象不能跳舞》（IBM）</td><td>常豪鑫</td><td>专题四 1-N</td></tr>
+        <tr><td>《华为管理变革》</td><td>常豪鑫</td><td>专题四 1-N</td></tr>
+        <tr><td>《刷新》（微软）</td><td>常豪鑫</td><td>专题四 1-N</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 三、冯成蹊 ========== -->
+<section class="ch" id="ch3">
+  <div class="ch-num">03</div>
+  <h2>冯成蹊：苹果 / 腾讯 / 小米的 0-1 案例</h2>
+
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">0-1 案例 · 总起</span>
+      <span class="ts">27:47-28:20</span>
+    </div>
+    <p>我接着赖少宗往下拆第三个专题，从 0-1 做产品这个方面，这三本书里每本挑了 4-5 个产品案例，简单跟大家过一下，然后关联到老师接下来会讲到的 NPD 三个方向里分别重点都是啥。</p>
+    <p>我对这门课的理解：最关心的是一个想法、一个新的想法怎么变成用户有意愿去选择的产品。工作中可能基于小的客户需求、一个功能或一个技术就开始讨论，然后很快进入怎么实现。老师的课件会系统性地提醒我们：从整体再往前，用户到底需要什么东西？怎么去定义用户的需求？技术实现完之后，产品达到能用的状态，怎么去触达用户？用户为什么会持续愿意购买？大概是以这几个角度触发我们思考整体链路框架。</p>
+    <p>接下来的分享，会以产品视角和我这些年的经验，从技术、设计、营销、资源等安排，回到当时的情况下，看用户希望得到什么东西。</p>
+  </div>
+
+  <h3>苹果（《乔布斯传》）</h3>
+
+  <h4>营销哲学三原则（1977 年 Apple II 时期）</h4>
+  <figure class="event-photo">
+    <img src="images/slide-03-苹果营销哲学.png" alt="苹果营销哲学共鸣专注灌输三原则" width="1728" height="1080" loading="lazy">
+    <figcaption>冯成蹊讲解：苹果营销哲学共鸣专注灌输三原则（33:06 会议截图）</figcaption>
+  </figure>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">苹果 · 营销哲学</span>
+      <span class="ts">31:34-33:44</span>
+    </div>
+    <p>马库拉加入苹果时带来一张纸，写了三个词：</p>
+    <ul class="bul">
+      <li><strong>共鸣（Empathy）</strong>：比别人更能理解使用者的需要，跟客户产生共振。</li>
+      <li><strong>专注（Focus）</strong>：为了做好选定的事情而拒绝不重要的机会。</li>
+      <li><strong>灌输（Impute）</strong>：人会根据产品传递出来的信号判断品质。客户没深入使用产品之前，从展台设计、产品标识、展示方式、介绍手册等一系列触点上形成第一印象，这个第一印象决定了产品的品质定位和品牌定位。</li>
+    </ul>
+    <p>我的提炼：产品要做好自己的定位，同时还要做好"客户会从什么视角看你的产品"。中间有大量设计、包装、介绍手册的工作，这些都是用户接触产品的第一印象。</p>
+  </div>
+
+  <h4>Mac 电脑：从技术到产品的距离（1979 年施乐 PARC 参观）</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">苹果 · Mac</span>
+      <span class="ts">35:23-37:27</span>
+    </div>
+    <p>乔布斯在施乐 PARC 研究中心看到三项关键技术：图形界面、鼠标、位图显示。当时大部分电脑还在用命令行。苹果的关键动作不是照搬，而是：</p>
+    <ol class="num">
+      <li>把鼠标做得<strong>简单</strong>（施乐的鼠标键多、造价高）；</li>
+      <li>把成本做得<strong>非常低</strong>；</li>
+      <li>让它在普通表面上就能用；</li>
+      <li>定义了新的交互方式：窗口怎么移动、文件怎么拽到文件夹里。</li>
+    </ol>
+    <p>施乐自己也推出了 Star 电脑，但价格、速度、市场选择表现都不好。</p>
+    <div class="qa">
+      <b>核心提炼</b>：技术只是产品的基础能力条件。如何通过简化操作、学习客户环境，把技术真正包装成产品，是关键环节能力。
+    </div>
+  </div>
+
+  <h4>1997 年乔布斯回归：产品线聚焦</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">苹果 · 聚焦</span>
+      <span class="ts">37:47-39:43</span>
+    </div>
+    <p>乔布斯被赶走又被请回，公司面临的最大问题是产品线太多，内部都说不清有多少个产品，没人能回答"我朋友要买一台电脑，我推荐哪一台"。</p>
+    <p>动作：画了四个象限（横轴：消费级 vs 专业级；纵轴：台式 vs 便携），每个格子只允许留一款产品。连带砍掉不赚钱的鸡肋项目，包括打印机业务（耗材收益大头被惠普拿走，苹果自己利润很差）。伴随项目取消、人员调整，整体资源跟着方向做移动。</p>
+    <div class="qa">
+      <b>核心提炼</b>：公司要聚焦，最后要看人、钱、项目是否真的跟随方向目标做移动。这张表格帮助管理层说清楚：我们服务的最终客户是谁，在什么场景下使用，公司的资源要投往什么方向。
+    </div>
+  </div>
+
+  <h4>iPod：NPD 全链路串起来的标杆案例（2000 年前后）</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">苹果 · iPod</span>
+      <span class="ts">40:12-44:21</span>
+    </div>
+    <p>背景：当时大家用 Walkman/CD 随身听听歌。苹果当时把注意力放在视频上，错过了音乐播放需求，乔布斯自己承认没赶上。</p>
+    <p>补课动作：收购一个音乐管理软件团队，把软件从复杂做到简单，推出 iTunes。发现市面上音乐播放器体验不好，容纳歌曲少、歌单长时交互不顺畅。团队发现东芝的小型硬盘，把方案整合进产品。</p>
+    <p>关键取舍：把用户旅程切成两端：</p>
+    <ul class="bul">
+      <li><strong>PC 端（iTunes）</strong>：放复杂的音乐管理、歌单整理等操作；</li>
+      <li><strong>移动端（iPod）</strong>：解决大容量（当时几 G 的小硬盘）、电量、盲操作（转盘式交互，不用看屏幕就能选歌、调音量）。</li>
+    </ul>
+    <p>宣传策略的精妙：不说"几 G 容量""几百兆"，而是告诉客户"放在牛仔裤小兜里能装 1000 首歌"。客户对 G 和兆没有体感，对"1000 首歌"有体感。</p>
+    <div class="qa">
+      <b>核心提炼</b>：这是把 Needs、Product、Market 三段完整串起来的经典案例。苹果靠 iTunes + iPod 把整个产品线和音乐软件行业全部颠覆。
+    </div>
+  </div>
+
+  <h4>iPhone：开创智能手机时代（2007 年）</h4>
+  <figure class="event-photo">
+    <img src="images/slide-04-iPhone供应链.png" alt="iPhone触控屏与康宁玻璃供应链改造" width="1728" height="1080" loading="lazy">
+    <figcaption>冯成蹊讲解：iPhone 触控屏与康宁玻璃供应链改造（43:38 会议截图）</figcaption>
+  </figure>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">苹果 · iPhone</span>
+      <span class="ts">44:21-47:46</span>
+    </div>
+    <p>背景：在 iPhone 之前，沃达丰、黑莓、诺基亚的塞班系统其实都算"智能手机"，但都没有摆脱实体键盘和手写笔。</p>
+    <p>发布会策略：乔布斯前 6 分钟说"我要发布三款产品"，一个 iPod、一个网页浏览器、一个新时代的手机，最后告诉大家这不是三款，是一款。</p>
+    <p>核心交互理念：为什么要用键盘输入？为什么要塑料感很重的外壳？为什么要用笔？人天然就有手指，用手指触达、捏合就是最自然的交互方法。</p>
+    <p>供应链重塑的两个细节：</p>
+    <ol class="num">
+      <li><strong>电容屏替代电阻屏</strong>：电阻屏是当时主流，电容屏是激进选择。</li>
+      <li><strong>玻璃替代塑料</strong>：当时没有厂商能做出来，苹果联系了康宁，康宁针对这个技术做了自己的生产线，一代代跟着产品要求迭代，把材料、动力学、合作关系全部重塑。</li>
+    </ol>
+    <p>外观反复：第一版金属外壳会干扰视频信号，改成玻璃外壳后内部电路板、天线都得全部重新设计，整个团队工作压力巨大，最后完成了。</p>
+    <div class="qa">
+      <b>核心提炼</b>：企业在创新过程中要解决的不止一个问题，而是相互关联的技术、成本、链条，甚至要去突破行业没人做过的事。每一句体验的承诺，背后都要找到能支撑它的工程和供应条件。
+    </div>
+  </div>
+
+  <h3>腾讯（《腾讯传》）</h3>
+
+  <h4>OICQ：本地化创新（1998 年前后）</h4>
+  <figure class="event-photo">
+    <img src="images/slide-05-OICQ云端存储.png" alt="OICQ云端存储好友列表方案页" width="1728" height="1080" loading="lazy">
+    <figcaption>冯成蹊讲解：OICQ 云端存储好友列表方案页（49:28 会议截图）</figcaption>
+  </figure>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">腾讯 · OICQ</span>
+      <span class="ts">48:53-52:32</span>
+    </div>
+    <p>背景：国外有 ICQ，国内大家常用 MSN。当时国内大部分网民在网吧上网，家里买电脑、拉拨号宽带都很奢侈。</p>
+    <p>痛点：网吧场景下，聊天记录和好友列表没办法跟着人走，当时的 ICQ/MSN 都是本地存储。</p>
+    <p>关键创新：把好友列表和聊天记录<strong>存储在云端</strong>。任何人换一台电脑/换一个网吧，登录后直接从云端拉下好友列表。连带技术优化：客户端可以做得非常小（书里数据约 200 多 KB），在拨号上网几 K 几 K 的速度下，下载安装很快。同时把一些技术放到后端服务端去做。</p>
+    <p>其他本地化小创新：离线消息/在线消息（头像黑白/彩色），适配当时网速慢、上网时间不同、不能 always online 的环境。</p>
+    <p>改名小典故：最早内部叫 OICQ（Open ICQ 之意），被 ICQ 告了，才改名叫 QQ。</p>
+  </div>
+
+  <h4>QQ 秀：从观察到落地的商业化转折点</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">腾讯 · QQ 秀</span>
+      <span class="ts">52:32-55:28</span>
+    </div>
+    <p>背景：OICQ 做了几年不赚钱，服务器很贵，马化腾一度想把 QQ 卖掉。关键人物：员工许良，看到韩国出现一个叫 Avatar 的虚拟形象服务，在韩国成了爆款。</p>
+    <p>许良的判断：人在上网过程中会用虚拟形象代替自己在网络上做社交；中国人会更习惯在即时通讯软件里做这件事，而不是在网站里做。</p>
+    <p>落地过程曲折：第一版方案上报后，高层一个多月没回应。许良自己补做调研，做出完整方案和初步系统，二次专项汇报才得到高层支持。</p>
+    <p>产品形态：虚拟形象 + 商城 + 道具 + Q 币支付；推出红钻会员，每天送多少套衣服；冷启动时给所有老 QQ 会员送 10 个 Q 币，让这批人先体验起来。</p>
+    <div class="qa">
+      <b>核心提炼</b>：腾讯把客户的情感和社会关系做了一层商业化变现。用户购买的并不是虚拟货品本身，而是虚拟货品背后在虚拟世界里跟朋友的连接、自我表达、被看见。做这类产品时，要把主营需求之外的内容、展示、支付、关系链等"水面下"的产品一起关联起来做好。
+    </div>
+  </div>
+
+  <h4>QQ 邮箱：抓客户驱动痛点做快速迭代</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">腾讯 · QQ 邮箱</span>
+      <span class="ts">55:28-58:40</span>
+    </div>
+    <p>背景：张小龙做 Foxmail 被腾讯收购后，最初是想做管理的，没深入一线。QQ 邮箱做得很笨重，市场份额不高（当时新浪、163 是绝对霸主）。2006 年开始，张小龙重回一线主导轻便版。</p>
+    <p>抓到的核心痛点：</p>
+    <ol class="num">
+      <li><strong>大附件</strong>：当时邮箱容量就 50-200 MB，附件大小限制严格，没有离线的网盘。QQ 邮箱首创临时存储盘，一定容量以下永久存储，超过给 7 天或 30 天临时空间，最大可发到 1 GB。</li>
+      <li><strong>邮件发送状态</strong>：以前发出去不知道对方有没有收到、有没有打开看。QQ 邮箱最早做了这两个状态反馈。</li>
+    </ol>
+    <div class="qa">
+      <b>核心提炼</b>：每一个产品功能都要找到它的核心功能点，基于这个功能点再往上做迭代，先给少数人带来利益，再基于这个利益点慢慢迭代其他功能。这就是客户驱动需求+螺旋式快速迭代的方法。
+    </div>
+  </div>
+
+  <h4>微信：找到真正的刚需点</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">腾讯 · 微信</span>
+      <span class="ts">58:40-01:00:30</span>
+    </div>
+    <p>背景：微信不是最早的。雷军做的米聊比微信早一段时间，两者有过角逐。早期试错：微信最早主打"发短信省短信费"和"图片分享"，都认为图片分享是刚需，但实际没起来。</p>
+    <p>真正起来的功能：摇一摇 + 附近的人（Top Box），用到了移动互联网重要的地理位置能力。这两个功能出来后，才验证了"这是真正的刚需"。之后才动用腾讯内部资源，包括 QQ 的关系链导流，一骑绝尘甩开米聊。</p>
+    <div class="qa">
+      <b>核心提炼</b>：找到客户需求点的时候，并不知道它对不对，要快速做构建→测试→反馈→修正。微信这么成功的产品也需要这么做。
+    </div>
+  </div>
+
+  <h4>腾讯赛马机制</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">腾讯 · 赛马</span>
+      <span class="ts">01:00:30</span>
+    </div>
+    <p>赛马是腾讯内部的文化，微信就是三个团队赛马，张小龙团队优先胜出。现在视频号应该也是类似机制。</p>
+    <div class="qa">
+      <b>提醒</b>：赛马需要<strong>战略冗余</strong>，会有大量资源浪费。不是所有公司都适合，特别是中小公司没有那么多资源。真要做得话，可以保留一部分小的方式去做，这只是方法之一。
+    </div>
+  </div>
+
+  <h3>小米（《小米生态链战地笔记》/《参与感》）</h3>
+
+  <h4>MIUI：社区驱动的小螺旋</h4>
+  <figure class="event-photo">
+    <img src="images/slide-06-MIUI社区驱动.png" alt="MIUI社区驱动早期版本迭代机制" width="1728" height="1080" loading="lazy">
+    <figcaption>冯成蹊讲解：MIUI 社区驱动早期版本迭代机制（01:01:42 会议截图）</figcaption>
+  </figure>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">小米 · MIUI</span>
+      <span class="ts">01:00:41-01:02:24</span>
+    </div>
+    <p>背景：2010 年小米刚起步时，安卓体验普遍不好。MIUI 是小米三驾马车之一（MIUI、米聊、小米手机）。关键定位：把功能聚焦到四个，电话、短信、通讯录、桌面，按国人的使用习惯做改造。</p>
+    <p>玩法：基于不同版本（内测版、开发版、稳定版）找到核心用户人群（发烧友/米粉），激发他们形成内测环境。每出一版系统，论坛第一时间刷机反馈。</p>
+    <div class="qa">
+      <b>核心提炼</b>：用小螺旋的内生循环，再变成大螺旋，慢慢往不同客户延伸。MIUI 到现在都是一种经典的社群玩法。
+    </div>
+  </div>
+
+  <h4>七字诀：专注、极致、口碑、快</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">小米 · 七字诀</span>
+      <span class="ts">01:02:54</span>
+    </div>
+    <p>雷军的反思：早期创业时什么活都做，方向分散。后来意识到专注应该专注在"用户需要的功能方向上"，而不是做成"自己秀情怀、自我感动"的能力。</p>
+    <p>反例：小米手机卡针上打小米 logo，成本贵，但带来多大的用户反馈和价值？不一定。所以专注和极致要关注的是功能点，以及这个点要有实际回报和反馈时才投入。</p>
+  </div>
+
+  <h4>爆品逻辑：让用户重复购买</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">小米 · 爆品</span>
+      <span class="ts">01:03:51-01:04:39</span>
+    </div>
+    <p>雷军的总结：爆品四特征，<strong>单品、精品、海量、长周期</strong>。</p>
+    <p>超预期的具体含义：<strong>基础功能做得好是用户本来就需要的；在全面过关的基础上，一定要有某个方面足够突出，用户才会有足够明显的感觉。</strong></p>
+    <p>爆品要回到：给给客户一个购买和重复购买的理由。</p>
+  </div>
+
+  <h4>5% 综合毛利率红线：商业化定义</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">小米 · 5% 毛利率</span>
+      <span class="ts">01:04:58-01:06:09</span>
+    </div>
+    <p>雷军的硬性承诺：小米硬件综合毛利率<strong>永远不超过 5%</strong>，相当于给自己定了一个铁人三项。</p>
+    <p>关键区分：研发总投入和单件产品分摊成本是两个完全不同的数字。想摊薄单件成本，一定要把销量做高。要把销量做高，就要考虑渠道、周转率、经营效率等其他维度。</p>
+    <p>商业化路径：通过硬件不挣钱，通过云分发、阅读等软件增值服务挣钱，这是一种新的产品商业化定义。</p>
+  </div>
+
+  <h4>小米插线板：成熟品类的创新机会</h4>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">小米 · 插线板</span>
+      <span class="ts">01:06:09-01:07:00</span>
+    </div>
+    <p>背景：雷军做传统插线板改造时，行业已经有几十年历史。需要回答"传统行业为什么要跟我合作"。过程：找到很多可以改进的点（外观、工艺、排布等），但实际生产中发现太理想化，成品率非常低，废品率特别高。接着又做了很多小的排布创新。最终成果：第一次做出来的小米插线板外观非常惊艳，品质还做得特别好。</p>
+    <div class="qa">
+      <b>核心提炼</b>：产品各项之间是相互牵动的，好看、小巧、要兼顾安全、兼顾大批量制造，每一项都会影响到其他几项。成熟品类同样有创新机会，只要定义好很好的体验，把伙伴上下游工艺跟质量一起想清楚，还是有非常大的创新空间。
+    </div>
+  </div>
+
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">0-1 小结</span>
+      <span class="ts">01:07:00-01:08:13</span>
+    </div>
+    <p>回到课程核心：做产品创新一定要知道：</p>
+    <ol class="num">
+      <li>我自己做的产品里，用户到底是谁？</li>
+      <li>用户想要的东西是什么？</li>
+      <li>怎么通过一些东西去判断到底是不是对的？</li>
+      <li>有没有方法快速通过小样本做验证？</li>
+      <li>验证完之后怎么做迭代？</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== 四、常豪鑫 ========== -->
+<section class="ch" id="ch4">
+  <div class="ch-num">04</div>
+  <h2>常豪鑫：IBM / 华为 / 微软的 1-N 规模化</h2>
+
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">1-N 规模化 · 总起</span>
+      <span class="ts">01:08:30-01:09:41</span>
+    </div>
+    <p>我负责讲课程的最后一部分，就是 1 到 N。首先你要从原有的业务去找到一些创新思路，经过各种各样的试错、讨论，最后闯出 0-1 之后，你如何把它去做大做强、做聚焦。这部分第一个我会讲得快一点，后面有三本书自己的理解，最后有一个实践分享讨论。</p>
+  </div>
+
+  <h3>组合管理的核心：先小后多</h3>
+  <figure class="event-photo">
+    <img src="images/slide-07-组合管理.png" alt="组合管理定义与资源分配决策机制" width="1728" height="1080" loading="lazy">
+    <figcaption>常豪鑫讲解：组合管理定义与资源分配决策机制（01:10:31 会议截图）</figcaption>
+  </figure>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">组合管理</span>
+      <span class="ts">01:09:41-01:12:22</span>
+    </div>
+    <p>一句话概括：当你已经明确一个创新项目、闯出 0-1 之后，如何用现有资源（绝大部分资源还是要支持原有业务）去有效分配，把创新业务做大。</p>
+    <p><strong>先小</strong>：Less is more。0-1 已经过了，不要再试错找新方向，要围绕已经趟出来的战略方向、新场景和定位，做得更准、更聚焦。一般会从行业内的头部客户、大客户做起，先做灯塔项目，做完再复制到中等、小型项目。</p>
+    <p><strong>变多</strong>：规模化。在"小"的前提下，明确趟出来之后就直接复制，因为复制的边际成本最低，是最适合做规模化的路径。</p>
+    <p>价格分布策略：可以选择从小往上打（类似小米），或者从高端往低端打。价格和客户视角对应的是不同档位的产品。</p>
+    <p>产品矩阵：苹果是最典型的例子。iPhone 之外做了 iPad、手表、Mac；iPad 内部又有 Pro、Air 等不同版本面对不同客群。把整个产品矩阵做完之后，可以更精准地服务客户，把整体市场规模做得更大。</p>
+  </div>
+
+  <h3>产品生命周期：滚动孵化</h3>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">生命周期</span>
+      <span class="ts">01:11:35</span>
+    </div>
+    <p>现金流产品（金牛）：技术壁垒已经没那么高，但市场体量大，提供现金流。有了金牛之后，要积极布局下一个明星产品。等金牛走成瘦狗、逐步退出后，新的明星产品成长为新的现金流。这是一个滚动过程。</p>
+  </div>
+
+  <h3>1-N 的冲突决策五条原则</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>原则</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>符不符合主航道</strong></td><td>哪怕短期是非常盈利的项目，但不符合主航道、后面没有复制性，可能就是一个定制</td></tr>
+        <tr><td><strong>天花板</strong></td><td>整个市场规模以及市场本身的成长速度高不高。例：华为当年基于电信传输 vs 基于互联网 IP 的选择，互联网 IP 当时市场份额只有 4%，但复合增长能达到 30% 多，后续市场规模天花板非常高</td></tr>
+        <tr><td><strong>盈利能力以及战略价值匹配度</strong></td><td>非盈利或跟战略方向偏差的，不是主干道，只是分支</td></tr>
+        <tr><td><strong>实现难度</strong></td><td>这个其实在 0-1 阶段就已经决定了。五看三定里的第一个就是先找自己的切入点定位，也就是护城河。如果没有护城河本身，压根就不该投</td></tr>
+        <tr><td><strong>各种失败风险</strong></td><td>属于整个公司稳定性运营，包括很多财务知识、现金流等因素</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>战略桶与产品线 CEO</h3>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">战略桶 / 产品线 CEO</span>
+      <span class="ts">01:15:16-01:16:49</span>
+    </div>
+    <p><strong>战略桶</strong>：1-N 时到底怎么分配资源？按创新产品的类型分配，全新产品应该占多少？原有产品的微创新应该占多少？如果都是创新产品但分很多系列（金融赛道一个、能源赛道一个），不同系列应该往哪个方向投资源，也要按实际战略定位做好资源分配。</p>
+    <p><strong>产品线 CEO</strong>：创新赛道不可能全员上，一定是从小团队做起，符合 AI Native 的趋势。产品线负责人（不是产品经理）可以是任何角色，他就是一个小型 CEO，要考虑营销、服务、技术、财务、研发等所有维度，对整个产品线或创新产品负责盈亏。总得有人负责盈亏，否则这件事本身走不远。</p>
+  </div>
+
+  <h3>三本书的时间轴关联</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>时间</th><th>事件</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1993</td><td>IBM 不行了</td></tr>
+        <tr><td>1994</td><td>郭士纳空降到 IBM，当年实现盈利</td></tr>
+        <tr><td>1997</td><td>IBM 营收接近前高；华为 93-97 年出现大量危机</td></tr>
+        <tr><td>1997 年底</td><td>任正非去 IBM 学习</td></tr>
+        <tr><td>1998</td><td>华为开始实行 IPD 流程</td></tr>
+        <tr><td>之后</td><td>IPD 已经迭代到 13 个版本</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>IBM《谁说大象不能跳舞》</h3>
+  <figure class="event-photo">
+    <img src="images/slide-08-IBM转型.png" alt="IBM郭士纳服务化转型决策原文" width="1728" height="1080" loading="lazy">
+    <figcaption>常豪鑫讲解：IBM 郭士纳服务化转型决策原文（01:19:16 会议截图）</figcaption>
+  </figure>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">IBM</span>
+      <span class="ts">01:18:10-01:24:26</span>
+    </div>
+    <p><strong>整体感受</strong>：这本书完全是靠郭士纳的个人能力。大概率是做了一个非常大的风险决策，"要不然就死，要不然就活"，很巧的是他们活下来了。他的能力非常强。</p>
+    <p><strong>背景</strong>：郭士纳之前不想来 IBM，被劝了 3-5 次、劝了大概半年，才觉得有挑战性才来。来的时候战略还没有定，是在过程中不断思考、不断刷新战略，最终让 IBM 走出困境。</p>
+    <p><strong>为什么不能分拆</strong>：当时很多人觉得 IBM 必死。郭士纳认为大象不能拆，要聚在一起，因为大体量下找新的战略定位需要综合解决能力。一旦分拆，就会被大量小企业蚕食。</p>
+    <p><strong>第一个关键动作：抓现金流</strong>：IBM 刚开始花销非常大，硬件开发、全国各地的租赁业务和地产业务、组织内臃肿和开销。郭士纳第一年没有做战略的事，先抓现金流，先活下来。常豪鑫联想到：如果面临大企业做战略转型，财务非常重要。之前卓老师课程讲过"财务驱动的战略转型"，在体量非常大、行业非常成熟时，财务策略甚至可以决定公司下一步的发展。</p>
+    <p><strong>四个关键决策</strong>（刚进公司时）：</p>
+    <ol class="num">
+      <li>保持公司的完整性（不分拆）。</li>
+      <li>改变公司的经济模式：以前全是卖硬件+围绕硬件打包操作系统/数据库，其他公司都在做模块化软件抢 IBM 份额。新模式：碰到 Oracle 的数据库，也可以拿过来用，把最好的软件结合自己的硬件，形成组合产品，提供端到端完整解决方案。</li>
+      <li>改变商业模式：从硬件强制转向软件+服务。</li>
+      <li>（第四条没有明确讲，但第四部分对应"服务主导型"和"网络化模式"两个方向。）</li>
+    </ol>
+    <p><strong>94 年的两个模式认知</strong>：服务主导型 + 网络化模式。在此之前 IBM 是出售主机+配套软件的打包模式，定死的。这两个模式认知出来后，IBM 认为谁做硬件不重要、谁做软件不重要，谁能提供端到端的解决方案才重要，顾客掏一个钱，什么都不用管，整个公司的信息化、数字化全搞定。基于这个战略认知，做了更大的商业模式调整，也包括后面的多元化布局。网络化本质上也是解决"从不流通的状态转向动态服务"的过程。</p>
+    <p><strong>战略刷新但保持延续性</strong>：后面战略刷新了一下，但战略本身没有变化，完整性、经济模式、商业模式，这时具象化了：主机业务是核心不能再投资但保留；保留核心的半导体技术；以客户为导向，转化成市场驱动的服务性公司。</p>
+    <div class="qa">
+      <b>核心提炼</b>：战略规划应该不要太勤奋，想清楚干就好了。但大部分公司非常勤奋，天天变来变去。战术上的勤奋掩盖战略上的懒惰。试错可以、敏捷可以，但要先把长期的事想清楚。只要主线干道不动，小的敏捷反而可以服务长期战略。
+    </div>
+  </div>
+
+  <h3>华为《华为管理变革》</h3>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">华为</span>
+      <span class="ts">01:24:26-01:30:23</span>
+    </div>
+    <p><strong>IPD 之外</strong>：IPD 引入后发展好了一段时间，但也面临大企业病，流程越来越臃肿。后续又做了 ISC（供应链集成）→ ISC+ → IPD+ 等持续变革。整个流程管理方式也是动态调整的。</p>
+    <p><strong>任正非的金句</strong>："华为什么都不会，剩下就剩下管理。"他希望华为能成为一个无生命的管理体系，生命总是有尽头的，他怎么样能通过管理体系让公司不断延续下去（比如他的领导力没了之后）。这就是马利克曲线（第二曲线）：第一个曲线下来后，有第二增长曲线托起来，形成连续不断往上涨的曲线。靠的就是整套管理体系代代相传。</p>
+    <p><strong>常豪鑫自己的实践（跟华为生态合作很多）</strong>：</p>
+    <ul class="bul">
+      <li>海思最牛的不是芯片大牛，而是<strong>流程管理</strong>。靠流程管理，不用每个人都是大牛，可以做人才梯队建设，哪怕这个人只会一部分技能，也能找到自己合适的位置，同时通过流程给这个人托下线、托底。</li>
+      <li>华为跟海思合作的人，有时候会觉得"这个人好拗、不专业、只会执行"，执行的依据就是公司的流程。早期 2020 年制裁之前，海思把国内嵌入式芯片市场整个垄断了，最后一代芯片 3559A 没有任何人可以跟它打，90% 以上市场份额。被制裁后整个市场份额才被瓜分，才有了瑞芯微、SigmaStar 等新厂商。最近海思解决卡脖子问题之后，市场份额又开始往上涨。</li>
+      <li>结论：并不是每个人都很精英，而是可以做梯队建设，因为这样的成本对企业是最好的。它怎么保证不同人的素质技能？靠流程、靠管理。</li>
+    </ul>
+    <p><strong>两个跟华为合作项目的细节</strong>：</p>
+    <ol class="num">
+      <li>华为的门锁支持掌静脉识别。做验证时涉及手掌数据集，华为对数据验证标准是按 <strong>BMI 分级</strong>定义胖瘦，从而定义手掌数据集的分布。常豪鑫他们觉得"人胖手不一定胖"，但华为说"这都是个例，我按标准来"。</li>
+      <li>验收时会细化到数字：文档包括打灯的距离（精确到毫米）、门锁识别过程精确到毫秒。执行的人其实不懂算法训练、不懂场景，只管执行，执行依据是公司流程里定义出来的。</li>
+    </ol>
+    <div class="qa">
+      <b>评价</b>：这些细节都是褒义词，是华为流程牛逼的地方。你不管我的认知，我验证就得拿到这些标准，拿不到就不通过。
+    </div>
+  </div>
+
+  <h3>微软《刷新》</h3>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">微软</span>
+      <span class="ts">01:30:23-01:33:51</span>
+    </div>
+    <p><strong>大背景</strong>：微软早期抢了 IBM 的客户（操作系统和工具类）。后来面临谷歌和苹果的竞争，尤其是移动业务的增长。</p>
+    <p><strong>收购诺基亚</strong>：为了应对移动业务，把诺基亚收了，想推 Windows Phone。但实际刚推出来，他们更看好的是云计算赛道。</p>
+    <p><strong>关键动作</strong>：CEO 纳德拉上任后第一件事是裁掉 <strong>1.8 万人</strong>，Windows Phone 团队。战略分析认为这个市场已经失去先机，不可能再去抢占安卓和 iOS 的市场，这个市场不会允许第三家存在。转而去聚焦云和企业服务赛道。</p>
+    <p><strong>聚焦后的组合管理</strong>：围绕云计算做并购，并购领英、Mojang（我的世界）等，补全整个能力拼图。</p>
+    <p><strong>三张截图</strong>：</p>
+    <ol class="num">
+      <li>纳德拉接手时的时机很巧，肯定有幸存者偏差。比尔盖茨介绍他时讲到"我们虽然赢得了一些市场，但份额还不够"，当时微软在 Windows 和 Office 疲软的情况下，新搞的云服务和搜索开始出现一些苗头，公司本身已经站在战略转型和新赛道的起步阶段。</li>
+      <li>新战略一句话："移动为先，云为先"，整个定位完全变了。</li>
+      <li>投资策略三个方向：人工智能、虚拟现实、量子计算。除了当时正在做的云计算之外，他们很早就确认了未来的赛道。这时就可以做比较好的布局：核心业务慢慢扮演现金流，但扮演到什么时候会衰退？明星产品什么时候孵化、什么时候扩大规模成为新的增长点？走到领先无人区的时候，如何通过创新突破新市场、找到新蓝海？这就是 CEO 的战略视野能不能足够高、足够长，带领公司做更大的一到 N。</li>
+    </ol>
+  </div>
+
+  <h3>三本书对照</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>维度</th><th>IBM</th><th>华为</th><th>微软</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>核心动作</strong></td><td>不分拆、做集成服务订阅</td><td>组合管理、IPD、产品经营、流程制度化</td><td>文化刷新、砍掉手机业务、聚焦云计算</td></tr>
+        <tr><td><strong>关键决策</strong></td><td>郭士纳四个关键决策</td><td>任正非引入 IPD + 持续变革</td><td>纳德拉裁 1.8 万人聚焦云</td></tr>
+        <tr><td><strong>转型方向</strong></td><td>硬件 → 集成服务+软件</td><td>流程化管理体系</td><td>移动 → 云计算+AI</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 五、互动问答 ========== -->
+<section class="ch" id="ch5">
+  <div class="ch-num">05</div>
+  <h2>互动问答与现场讨论</h2>
+
+  <h3>Q1：乔布斯的判断力是怎么形成的？可复制吗？</h3>
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">提问</span>
+      <span class="ts">01:39:17</span>
+    </div>
+    <p>分析了苹果之后，为什么乔布斯跟大家平常想法不一样？这个东西很重要，判断力是可复制可学习的吗？</p>
+  </div>
+  <div class="turn cqx">
+    <div class="turn-head">
+      <span class="turn-name">冯成蹊</span>
+      <span class="role">回答</span>
+      <span class="ts">01:39:29</span>
+    </div>
+    <p>简单结论是<strong>不可复制</strong>。把产品经理分两系：</p>
+    <ul class="bul">
+      <li><strong>爹系产品经理</strong>（乔布斯）："我不要你觉得，我要我觉得。我觉得好的做出来就是好的。"他是<strong>定义需求</strong>的人。这是天才般的 Sense，有可能他定义的就是别人想要的，你去定义就不是。这是真 Sense 的过程，没办法做。</li>
+      <li><strong>妈系产品经理</strong>（雷军）：你不确定要不要的情况下，你告诉我，我快速给你实现；你需求会变化，我会跟着你需求去变化。<strong>贴着你走</strong>。</li>
+    </ul>
+    <p>王鑫总结：嘘寒问暖 vs 不管你要不要就按我的来。</p>
+    <p>冯成蹊的结论：更多的、可能可复制的是雷军这种做法，快速找到客户需求、快速迭代。这是大部分产品经理能做出来的、比较能复制的方法。乔布斯就是神。</p>
+  </div>
+
+  <h3>Q2：IBM 的转型靠郭士纳的个人决断力，这种战略认知怎么提升？</h3>
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">提问</span>
+      <span class="ts">01:40:54</span>
+    </div>
+    <p>豪鑫那边 IBM 也是靠个人判断、决断力做起来的，核心还是想明白。第二曲线、第一性原理喊了很多年，真正做的时候都不明白。有没有什么方法可以提升？</p>
+  </div>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">回答</span>
+      <span class="ts">01:41:38</span>
+    </div>
+    <p>郭士纳去 IBM 之前<strong>不属于 IBM 体系</strong>，是另外一个公司的 CEO，跟今天分享的其他所有公司都不一样，他是<strong>空降的</strong>。</p>
+    <p>空降之后，他竟然能够对这个公司、这个行业有那么清晰的认知，最终还能预判出来未来有互联网、未来有服务主导。</p>
+    <p>IBM 以前是一整套封闭的解决方案，必须选我整套的方案，所以每一个做数据库做操作系统的都可以从它身上挖一块肉。郭士纳意识到"我不可能做垄断，这个赛道太大了，我要做的是生态、做的是集成"。这种认知在那个时代非常非常少。</p>
+  </div>
+
+  <h3>Q3：关于减法</h3>
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">补充</span>
+      <span class="ts">01:42:43</span>
+    </div>
+    <p>查了一下 AI，说乔布斯为什么简单一点？他会先问"人最自然的方式是什么"，而不是"加多少功能"。他有减法强迫症，把禅宗的学问联系在一起。反观我们自己：一般会想"我是不是要多加点功能？多市场营销？堆一点卖点？"</p>
+  </div>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">回应</span>
+      <span class="ts">01:43:24</span>
+    </div>
+    <p>这就是典型的<strong>战术上的勤奋，掩盖战略上的懒惰</strong>。</p>
+  </div>
+
+  <h3>Q4：AI Native 组织实践的两个困境</h3>
+  <div class="turn chx">
+    <div class="turn-head">
+      <span class="turn-name">常豪鑫</span>
+      <span class="role">实践分享</span>
+      <span class="ts">01:34:32-01:37:26</span>
+    </div>
+    <p><strong>背景</strong>：常豪鑫所在的公司 5 月份俱乐部组织活动时提了 FDE（Forward Deployed Engineer）、Pod 等概念。他挑了一拨人成立了虚拟组织承担 FDE 角色，聚焦商业交通安全和职场两个赛道。</p>
+    <p><strong>做法</strong>：先通过几个 KA 灯塔客户，产品线直接出人、研发直接出人，找架构师直接上项目交付打磨。因为这个时候交付团队还没学会。打磨完成后沉淀形成小的 Pod，把更多场景不断沉淀下来持续裂变，目标是形成最高效、响应速度最快、综合能力最强、技能面最全的 AI Native 组织。</p>
+    <p><strong>困境一：小 Pod 变得臃肿</strong>，想做 AI Native 的小组织，但产品的架构还有很多分层。做金融客户时早期定义了三个核心成员，但做的过程中发现很多研发组件、过往的开发背景还是需要拉很多人进来，小 Pod 逐步变得越来越臃肿。在不同场景里都碰到了。</p>
+    <p><strong>困境二：核心人员抽离不出来</strong>，希望 FDE 有阶梯，早期攻坚之后可以交给阶梯成本低一点或技能少一点的人去承接，但实际上撤不出来。</p>
+    <p><strong>背景因素</strong>：整个公司没有 AI 化。</p>
+    <p><strong>影响</strong>：高价值的人做高价值的事，但进了项目之后很难抽身，反过来会影响最核心的战略规划、产品规划或其他核心工作。</p>
+  </div>
+</section>
+
+<!-- ========== 六、问卷与收尾 ========== -->
+<section class="ch" id="ch6">
+  <div class="ch-num">06</div>
+  <h2>问卷与收尾</h2>
+
+  <div class="turn lsz">
+    <div class="turn-head">
+      <span class="turn-name">赖少宗</span>
+      <span class="role">问卷说明</span>
+      <span class="ts">01:38:12</span>
+    </div>
+    <p>发了课程反馈问卷，收集三个核心信息：背景、诉求、对老师最重要的一个问题。也欢迎没来的同学填，可以在课程群里发。</p>
+  </div>
+
+  <div class="turn host">
+    <div class="turn-head">
+      <span class="turn-name">高千一</span>
+      <span class="role">班长 · 总结</span>
+      <span class="ts">01:43:54</span>
+    </div>
+    <p>做读书会的关键诉求就是希望大家通过前面的梳理盘点，围绕自己的实际工作需求给老师反向提建议，哪块想听得更多、工作中跟课程相关的疑问。这样老师回复的针对性更强，开课之前有时间优化课件。</p>
+  </div>
+
+  <div class="turn host">
+    <div class="turn-head">
+      <span class="turn-name">王鑫</span>
+      <span class="role">主持 · 收尾</span>
+      <span class="ts">01:45:26</span>
+    </div>
+    <p>赖少宗会跟常豪鑫、冯成蹊收集课件打包发到课程群，并把相关文件传到飞书。</p>
+  </div>
+</section>
+
+<!-- ========== 七、金句摘录 ========== -->
+<section class="ch" id="ch7">
+  <div class="ch-num">07</div>
+  <h2>金句摘录</h2>
+
+  <blockquote>
+    <p>企业的目的只有一个正确定义，就是创造顾客。 彼得·德鲁克（课程引言）</p>
+  </blockquote>
+  <blockquote>
+    <p>单项目最优不等于整体组合最优。</p>
+  </blockquote>
+  <blockquote>
+    <p>技术只是产品的基础能力条件，如何简化操作包装成产品才是关键能力。</p>
+  </blockquote>
+  <blockquote>
+    <p>每一句体验的承诺，背后都要找到能支撑它的工程或供应条件。 冯成蹊</p>
+  </blockquote>
+  <blockquote>
+    <p>用户购买的并不是虚拟货品本身，而是虚拟货品背后在虚拟世界里跟朋友的连接。 冯成蹊</p>
+  </blockquote>
+  <blockquote>
+    <p>基础功能做得好是用户本来就需要的；在全面过关的基础上，一定要有某个方面足够突出，用户才会有足够明显的感觉。 雷军（冯成蹊转述）</p>
+  </blockquote>
+  <blockquote>
+    <p>战略规划应该不要太勤奋，想清楚干就好了。战术上的勤奋，掩盖战略上的懒惰。 常豪鑫</p>
+  </blockquote>
+  <blockquote>
+    <p>华为什么都不会，剩下就剩下管理。 任正非（常豪鑫转述）</p>
+  </blockquote>
+  <blockquote>
+    <p>并不是每个人都很精英，而是可以做梯队建设。它靠流程靠管理。 常豪鑫</p>
+  </blockquote>
+  <blockquote>
+    <p>爹系产品经理是定义需求的人，这是真 Sense，没办法复制。妈系产品经理是快速响应需求变化，这个可以复制。 冯成蹊</p>
+  </blockquote>
+</section>
+
+<!-- ========== 逻辑脉络图 ========== -->
+<section class="ch" id="flow">
+  <div class="ch-num">08</div>
+  <h2>本课逻辑脉络图</h2>
+
+  <details class="flowmap">
+    <summary>点击展开：从德鲁克到 AI Native 的完整推理链</summary>
+    <div class="flow-inner">
+      <div class="fstep">
+        <div class="ft">德鲁克：企业的目的是创造顾客</div>
+        <p>两大功能：营销 + 创新。利润只是检验指标。</p>
+      </div>
+      <div class="fstep">
+        <div class="ft">产品创新三手段：技术 / 管理 / 商业模式</div>
+        <p>产品创新者是"迷你 CEO"，跨越管理类和技术类边界。</p>
+      </div>
+      <div class="fstep">
+        <div class="ft">为什么必须做颠覆式创新？</div>
+        <p>14% 颠覆性产品 → 61% 利润；60%+ 渐进式产品 → 30%+ 利润。必须转型。</p>
+      </div>
+      <div class="fstep">
+        <div class="ft">怎么找到值得投入的颠覆方向？</div>
+        <p>NPD 三环节：Needs（用户需求洞察）→ Product（产品定义）→ Market（走向市场）。</p>
+      </div>
+      <div class="fstep">
+        <div class="ft">0-1 怎么做？（专题三）</div>
+        <ul class="bul">
+          <li><strong>苹果</strong>：营销哲学三原则（共鸣/专注/灌输）→ 施乐技术 → Mac 简化交互 → 四象限聚焦 → iPod NPD 全链路 → iPhone 供应链重塑</li>
+          <li><strong>腾讯</strong>：OICQ 云端存储本地化 → QQ 秀情感/关系变现 → QQ 邮箱大附件+状态反馈 → 微信摇一摇验证刚需 → 赛马机制需要战略冗余</li>
+          <li><strong>小米</strong>：MIUI 发烧友社区小螺旋 → 七字诀专注极致口碑快 → 爆品单品精品海量长周期 → 5% 毛利率 → 增值服务挣钱 → 插线板成熟品类创新</li>
+        </ul>
+      </div>
+      <div class="fstep">
+        <div class="ft">1-N 怎么做？（专题四）</div>
+        <ul class="bul">
+          <li><strong>先小</strong>：Less is more。灯塔客户 → 复制。</li>
+          <li><strong>变多</strong>：规模化。金牛 → 明星 → 瘦狗滚动孵化。价格带：从小往上 or 从高端往低端。产品矩阵（苹果 iPhone/iPad/Watch）。</li>
+          <li><strong>五条决策原则</strong>：主航道 / 天花板 / 盈利能力 / 战略价值匹配 / 实现难度。</li>
+          <li><strong>战略桶</strong>：按创新类型/系列分配资源。</li>
+          <li><strong>产品线 CEO</strong>：小型 CEO 负责盈亏。</li>
+        </ul>
+      </div>
+      <div class="fstep">
+        <div class="ft">1-N 案例</div>
+        <ul class="bul">
+          <li><strong>IBM</strong>：郭士纳四个关键决策，不分拆 / 抓现金流 / 经济模式 / 商业模式 / 服务主导。</li>
+          <li><strong>华为</strong>：IPD + 流程管理。人才梯队 + BMI 验收标准。流程给普通人托底。</li>
+          <li><strong>微软</strong>：裁 1.8 万人聚焦云。"移动为先，云为先"。投资 AI/VR/量子计算。</li>
+        </ul>
+      </div>
+      <div class="fstep">
+        <div class="ft">AI Native 组织实践的两个困境</div>
+        <p>1. 小 Pod 变臃肿（公司整体未 AI 化）<br>2. 核心人员抽离不出来（影响战略规划）</p>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- ========== 八、待办事项 ========== -->
+<section class="ch" id="ch8">
+  <div class="ch-num">09</div>
+  <h2>待办事项</h2>
+
+  <div class="todo">
+    <div class="todo-item">
+      <div class="box"></div>
+      <p>填写课程反馈问卷，结合个人工作需求向老师提出针对性问题。</p>
+      <span class="ddl">全体参会人员</span>
+    </div>
+    <div class="todo-item">
+      <div class="box"></div>
+      <p>将本次会议的课件、视频及文件打包整理后发送至课程群。</p>
+      <span class="ddl">赖少宗</span>
+    </div>
+    <div class="todo-item">
+      <div class="box"></div>
+      <p>将相关课件及文件上传至飞书。</p>
+      <span class="ddl">赖少宗</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="ft-title">素材来源</div>
+  <ul>
+    <li>腾讯会议录制转写逐字稿（230 段全程）+ 智能纪要</li>
+    <li>会议录制地址：<a href="https://meeting.tencent.com/crw/KW6p7JPEa8">https://meeting.tencent.com/crw/KW6p7JPEa8</a></li>
+    <li>会议号：225 454 426 · 2026 年 10 月 14 日 21:00-22:30</li>
+  </ul>
+</footer>
+
+</div><!-- /wrap -->
+
+<!-- lightbox -->
+<div class="lb" id="lb">
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cap" id="lb-cap"></div>
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-cap');
+  document.querySelectorAll('figure.event-photo img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.currentSrc || img.src;
+      var cap = img.closest('figure').querySelector('figcaption');
+      lbCap.textContent = cap ? cap.textContent : '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  lb.addEventListener('click', function(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lb.classList.contains('open')){
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
