@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心智探秘 · 第 3 讲 | 智能的演化(从逻辑原点到 AGI)</title>
+<style>
+  :root {
+    --purple: #660874;
+    --purple-deep: #4a0554;
+    --purple-soft: #f3eaf5;
+    --ink: #211d24;
+    --ink-2: #4d4650;
+    --ink-3: #7d7580;
+    --paper: #faf8f4;
+    --paper-2: #f1ede5;
+    --line: #e3ddd2;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--purple); color: #fff; }
+
+  .topbar { border-bottom: 1px solid var(--line); font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
+  .topbar-inner {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; height: 44px;
+  }
+  .topbar .brand { color: var(--purple); font-weight: 600; letter-spacing: 0.02em; }
+
+  .hero {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    padding: 56px 0 48px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.22em;
+    color: var(--purple); text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.2vw, 62px); line-height: 1.15;
+    font-weight: 900; letter-spacing: 0.01em; margin-bottom: 18px;
+  }
+  .hero .subtitle { font-size: 19px; color: var(--ink-2); line-height: 1.7; max-width: 40em; margin-bottom: 30px; }
+  .hero-meta {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 32px; font-family: var(--sans); max-width: 520px;
+  }
+  .hero-meta .k { font-size: 11px; letter-spacing: 0.14em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 2px; }
+  .hero-meta .v { font-size: 14.5px; color: var(--ink); }
+  .hero-meta .v.mono { font-family: var(--mono); }
+
+  .layout {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 240px minmax(0, 1fr);
+    gap: 64px; padding: 56px 0 96px;
+  }
+  .toc {
+    position: sticky; top: 32px; align-self: start;
+    font-family: var(--sans); font-size: 13.5px;
+    max-height: calc(100vh - 64px); overflow-y: auto;
+  }
+  .toc-title { font-size: 11px; letter-spacing: 0.18em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 14px; }
+  .toc a {
+    display: block; color: var(--ink-2); text-decoration: none;
+    padding: 5px 0 5px 14px; border-left: 2px solid var(--line);
+    line-height: 1.45; transition: color 0.2s, border-color 0.2s;
+  }
+  .toc a:hover { color: var(--purple); }
+  .toc a.active { color: var(--purple); border-left-color: var(--purple); font-weight: 600; }
+  .toc a .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-right: 6px; }
+  .toc a.active .n { color: var(--purple); }
+  .toc details { display: none; }
+
+  main { min-width: 0; max-width: 780px; }
+
+  .chapter { margin-bottom: 96px; scroll-margin-top: 24px; }
+  .chapter-head { display: flex; align-items: baseline; gap: 22px; margin-bottom: 8px; }
+  .chapter-num { font-family: var(--serif); font-size: 56px; font-weight: 900; color: var(--purple); line-height: 1; opacity: 0.9; }
+  .chapter-head h2 { font-size: 30px; font-weight: 900; line-height: 1.3; }
+  .chapter-time { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); margin-bottom: 28px; }
+  .chapter h3 {
+    font-size: 21px; font-weight: 700; margin: 44px 0 14px;
+    padding-left: 14px; border-left: 3px solid var(--purple); line-height: 1.5;
+  }
+  .chapter p { margin-bottom: 16px; color: var(--ink); }
+  .chapter p.lead { font-size: 18.5px; }
+  .chapter ul { margin: 0 0 16px 1.4em; }
+  .chapter li { margin-bottom: 8px; }
+  .chapter strong { color: var(--purple-deep); }
+
+  blockquote {
+    margin: 26px 0; padding: 20px 26px; background: var(--purple-soft);
+    border-radius: var(--radius); font-size: 18px; line-height: 1.8; color: var(--purple-deep);
+  }
+  blockquote .attr { display: block; margin-top: 8px; font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
+
+  .keypoint {
+    margin: 30px 0; padding: 26px 30px; background: var(--purple);
+    color: #fdfbfe; border-radius: var(--radius); font-size: 19px; line-height: 1.8; font-weight: 600;
+  }
+  .keypoint strong { color: #ffd875; font-weight: 800; }
+  .keypoint small { display: block; font-family: var(--sans); font-weight: 400; font-size: 12.5px; opacity: 0.75; margin-top: 8px; }
+
+  .table-wrap { overflow-x: auto; margin: 26px 0; }
+  table { width: 100%; min-width: 520px; border-collapse: collapse; font-family: var(--sans); font-size: 14px; line-height: 1.6; }
+  th {
+    text-align: left; font-size: 12px; letter-spacing: 0.1em; color: var(--purple);
+    text-transform: uppercase; padding: 10px 14px; border-bottom: 2px solid var(--purple);
+  }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.mono { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+
+  /* logic map - vertical timeline */
+  .logic-map { margin-bottom: 56px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); overflow: hidden; }
+  .logic-map summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 14px;
+    padding: 18px 24px; font-family: var(--sans); font-size: 15px; color: var(--purple);
+    font-weight: 700; user-select: none; transition: background 0.2s;
+  }
+  .logic-map summary::-webkit-details-marker { display: none; }
+  .logic-map summary:hover { background: var(--purple-soft); }
+  .logic-map[open] summary { border-bottom: 1px solid var(--line); }
+  .logic-map[open] .lm-icon { transform: rotate(90deg); }
+  .lm-icon { display: inline-block; font-size: 13px; transition: transform 0.2s; color: var(--purple); }
+  .lm-label { font-size: 16px; }
+  .lm-hint { font-size: 12.5px; color: var(--ink-3); font-weight: 400; margin-left: auto; }
+  .lm-body { padding: 28px 24px 28px 28px; }
+  .lm-timeline { position: relative; padding-left: 28px; }
+  .lm-timeline::before {
+    content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 3px; background: var(--purple); border-radius: 2px; opacity: 0.25;
+  }
+  .lm-item { position: relative; padding: 14px 0 14px 20px; border-bottom: 1px dashed var(--line); }
+  .lm-item:last-child { border-bottom: none; }
+  .lm-item::before {
+    content: ""; position: absolute; left: -24px; top: 22px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--paper); border: 3px solid var(--purple);
+  }
+  .lm-item.lm-final::before { background: var(--purple-deep); border-color: var(--purple-deep); }
+  .lm-item-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .lm-item-step { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--purple); font-weight: 700; flex-shrink: 0; }
+  .lm-item-title { font-family: var(--serif); font-size: 20px; font-weight: 900; color: var(--purple-deep); line-height: 1.3; }
+  .lm-item-desc { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--ink-2); }
+  .lm-item-desc strong { color: var(--purple-deep); font-weight: 700; }
+  @media (max-width: 640px) {
+    .lm-hint { display: none; }
+    .lm-body { padding: 20px 16px 20px 20px; }
+    .lm-timeline { padding-left: 22px; }
+    .lm-item::before { left: -19px; top: 20px; width: 10px; height: 10px; }
+    .lm-item-title { font-size: 18px; }
+    .lm-item-desc { font-size: 13px; }
+  }
+
+  /* series footer nav */
+  .series-nav {
+    border-top: 1px solid var(--line); margin-top: 60px; padding-top: 24px;
+    font-family: var(--sans);
+  }
+  .series-nav .nav-row {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; margin-bottom: 20px;
+  }
+  .series-nav .nav-row a { font-size: 15px; font-weight: 700; color: var(--purple); text-decoration: none; }
+  .series-nav .nav-row span { font-size: 13px; color: var(--ink-3); }
+  .series-nav .nav-links {
+    display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3);
+    border-top: 1px dashed var(--line); padding-top: 16px;
+  }
+  .series-nav .nav-links strong { color: var(--ink); }
+  .series-nav .nav-links a { color: var(--ink-2); text-decoration: none; }
+  .series-nav .nav-links a:hover { color: var(--purple); }
+
+  footer { border-top: 1px solid var(--line); font-family: var(--sans); font-size: 12.5px; color: var(--ink-3); }
+  .footer-inner {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    padding: 32px 0 48px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; line-height: 1.7;
+  }
+
+  .backtop {
+    position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px;
+    border-radius: 50%; background: var(--purple); color: #fff; border: none;
+    font-size: 18px; cursor: pointer; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s; box-shadow: 0 8px 24px -8px rgba(74,5,84,0.5);
+  }
+  .backtop.show { opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 40px; }
+    .toc { position: static; max-height: none; margin-bottom: 40px; }
+    .toc details { display: block; }
+    .toc > .toc-list { display: none; }
+    .toc details summary {
+      cursor: pointer; font-size: 14px; font-weight: 600; color: var(--purple);
+      padding: 12px 16px; background: var(--purple-soft); border-radius: var(--radius); list-style: none;
+    }
+    .toc details[open] summary { border-radius: var(--radius) var(--radius) 0 0; }
+    .toc details .toc-list { padding: 12px 0; border: 1px solid var(--line); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding-left: 12px; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .chapter-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .chapter-num { font-size: 40px; }
+    .chapter-head h2 { font-size: 24px; }
+    blockquote { padding: 16px 18px; font-size: 16.5px; }
+    .keypoint { padding: 20px 22px; font-size: 17px; }
+    table { min-width: 0; table-layout: fixed; font-size: 13px; }
+    th, td { padding: 8px 8px; overflow-wrap: break-word; }
+    td.mono { white-space: normal; }
+  }
+  @media (max-width: 390px) {
+    .topbar-inner, .hero, .layout, .footer-inner { width: calc(100% - 32px); }
+    .hero h1 { font-size: 34px; }
+    .hero-meta { grid-template-columns: minmax(0, 1fr); }
+    .chapter h3 { font-size: 19px; }
+  }
+  @media print {
+    .toc, .backtop { display: none; }
+    .layout { display: block; }
+    .chapter { page-break-inside: avoid; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">心智探秘 · Exploring the Mind</span>
+    <span>清华大学 · 2026 秋</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">课程笔记 · 第 3 讲</div>
+    <h1>智能的演化<br>从逻辑原点到 AGI</h1>
+    <p class="subtitle">从 2024 诺奖与认知侵蚀,一路下挖科学的逻辑原点,重建神经网络的演化史,再对照人类认知革命,直面 AGI 的蝴蝶与恶魔。</p>
+    <div class="hero-meta">
+      <div><div class="k">主讲</div><div class="v">刘嘉 · 清华大学基础科学讲席教授</div></div>
+      <div><div class="k">时间</div><div class="v mono">2026-10-08 19:00-21:25</div></div>
+      <div><div class="k">来源</div><div class="v">讯飞语音转写(310 段)整理</div></div>
+      <div><div class="k">时长</div><div class="v mono">2 小时 25 分 · 14 章</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" id="toc">
+    <div class="toc-title">目录</div>
+    <div class="toc-list">
+      <a href="#ch1"><span class="n">01</span>开场:160 页删成三次课</a>
+      <a href="#ch2"><span class="n">02</span>2024 诺奖:AI 登上科学之巅</a>
+      <a href="#ch3"><span class="n">03</span>数学失守与认知侵蚀</a>
+      <a href="#ch4"><span class="n">04</span>数字大脑:蓝脑与数字果蝇</a>
+      <a href="#ch5"><span class="n">05</span>语言的奇迹</a>
+      <a href="#ch6"><span class="n">06</span>逻辑的原点:矛盾律</a>
+      <a href="#ch7"><span class="n">07</span>伽利略的证伪</a>
+      <a href="#ch8"><span class="n">08</span>布尔到香农:还原论</a>
+      <a href="#ch9"><span class="n">09</span>感知机与两次寒冬</a>
+      <a href="#ch10"><span class="n">10</span>Hinton:疯狂的核心</a>
+      <a href="#ch11"><span class="n">11</span>人类认知革命</a>
+      <a href="#ch12"><span class="n">12</span>思维链:天才跃迁</a>
+      <a href="#ch13"><span class="n">13</span>AGI:起点与蚂蚁</a>
+      <a href="#ch14"><span class="n">14</span>永生、脑机接口与脑科学</a>
+      <a href="#timeline"><span class="n">附</span>课堂时间轴</a>
+    </div>
+    <details>
+      <summary>目录</summary>
+      <div class="toc-list">
+        <a href="#ch1"><span class="n">01</span>开场:160 页删成三次课</a>
+        <a href="#ch2"><span class="n">02</span>2024 诺奖:AI 登上科学之巅</a>
+        <a href="#ch3"><span class="n">03</span>数学失守与认知侵蚀</a>
+        <a href="#ch4"><span class="n">04</span>数字大脑:蓝脑与数字果蝇</a>
+        <a href="#ch5"><span class="n">05</span>语言的奇迹</a>
+        <a href="#ch6"><span class="n">06</span>逻辑的原点:矛盾律</a>
+        <a href="#ch7"><span class="n">07</span>伽利略的证伪</a>
+        <a href="#ch8"><span class="n">08</span>布尔到香农:还原论</a>
+        <a href="#ch9"><span class="n">09</span>感知机与两次寒冬</a>
+        <a href="#ch10"><span class="n">10</span>Hinton:疯狂的核心</a>
+        <a href="#ch11"><span class="n">11</span>人类认知革命</a>
+        <a href="#ch12"><span class="n">12</span>思维链:天才跃迁</a>
+        <a href="#ch13"><span class="n">13</span>AGI:起点与蚂蚁</a>
+        <a href="#ch14"><span class="n">14</span>永生、脑机接口与脑科学</a>
+        <a href="#timeline"><span class="n">附</span>课堂时间轴</a>
+      </div>
+    </details>
+  </nav>
+
+  <main>
+    <!-- Logic Map (collapsible by default) -->
+    <details class="logic-map" id="logic-map">
+      <summary>
+        <span class="lm-icon">▸</span>
+        <span class="lm-label">全讲逻辑脉络图</span>
+        <span class="lm-hint">点击展开 · 诺奖冲击 → 认知侵蚀 → 追问根基 → 重建智能 → 对照演化 → 终极拷问</span>
+      </summary>
+      <div class="lm-body">
+        <div class="lm-timeline">
+          <div class="lm-item">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 01</span>
+              <span class="lm-item-title">现实冲击:诺奖惊雷</span>
+            </div>
+            <div class="lm-item-desc">2024 物理学奖给神经网络、化学奖给 AlphaFold · <strong>AI 登上科学殿堂</strong> · Hassabis 预言 10 年治愈所有疾病</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 02</span>
+              <span class="lm-item-title">危机显现:认知侵蚀</span>
+            </div>
+            <div class="lm-item-desc">AI 攻克数学(372 个顶级难题) · 奥赛天才传奇终结 · <strong>AI 让世界再无传奇</strong> · 失业焦虑引爆情绪</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 03</span>
+              <span class="lm-item-title">追问根基:逻辑原点</span>
+            </div>
+            <div class="lm-item-desc">亚里士多德矛盾律 → 伽利略证伪 → 布尔集合论证明 → 香农电路 · <strong>逻辑原点挖得越深,发展空间越大</strong> · 还原论从简单重建复杂</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 04</span>
+              <span class="lm-item-title">重建智能:神经网络史</span>
+            </div>
+            <div class="lm-item-desc">MCP 神经元(逻辑运算单元) → 感知机(1958) → 两次 AI 寒冬 → Hinton 30 年坚持 → 深度学习 · <strong>从猴子打字机到图灵测试</strong></div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 05</span>
+              <span class="lm-item-title">对照演化:人类认知革命</span>
+            </div>
+            <div class="lm-item-desc">300 万年演化 · 7.7 万年石刻 = 第一次认知革命 · 前额叶三倍扩容 · 抽象思维(肉 → 贝壳项链) · <strong>思维链让大模型 IQ 达 120</strong></div>
+          </div>
+          <div class="lm-item lm-final">
+            <div class="lm-item-header">
+              <span class="lm-item-step">STEP 06</span>
+              <span class="lm-item-title">终极拷问:蝴蝶还是恶魔</span>
+            </div>
+            <div class="lm-item-desc">奥特曼"欢迎来到 AGI 时代" · 蚂蚁比喻 · Hinton 毛毛虫警告 · 数字永生为探索宇宙 · <strong>面向未来最好的科学一定是脑科学</strong></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+
+    <section class="chapter" id="ch1">
+      <div class="chapter-head"><span class="chapter-num">01</span><h2>开场:160 页,删成三次课;第一章&ldquo;诸神会&rdquo;</h2></div>
+      <div class="chapter-time">00:00 - 00:18 · 讲次安排 · 诸神会</div>
+            <p class="lead">刘嘉开篇交代本讲的体量。原本准备了 160 多页 PPT,发现要讲三次课,于是不停地删,&ldquo;一边删就一边心疼&rdquo;,但还是删成了今天这种样子。全讲从&ldquo;2024 年的落点&rdquo;切入。</p>      <p>今天总共分六章,以&ldquo;章节小说&rdquo;的方式一章一章来讲。第一章他称为<strong>&ldquo;诸神会&rdquo;</strong>:</p>      <blockquote>有多少人知道诸神黄昏的由来?来自于北欧的神话故事。如果你不知道北欧神话故事,可以去看一下,这是一个令人荡气回肠的故事,但是结局是很悲哀的。<span class="attr">刘嘉,开场</span></blockquote>      <p>这也暗示了全讲的基调:AI 诸神登场(诺奖加冕),而人类的结局未必光明。</p>
+    </section>
+
+    <section class="chapter" id="ch2">
+      <div class="chapter-head"><span class="chapter-num">02</span><h2>诸神会:2024 诺奖与 AI 的能力边界</h2></div>
+      <div class="chapter-time">00:18 - 16:26 · 诺奖加冕 · AI 能力边界</div>
+            <h3>诺奖加冕</h3>      <p>2024 年的诺贝尔奖是这堂课的切入点:</p>      <ul>
+        <li><strong>物理学奖</strong>给了人工神经网络方向的工作(Hopfield 网络与玻尔兹曼机那条线),&ldquo;正是它直接导致了后来的大模型的出现&rdquo;;</li>
+        <li><strong>化学奖</strong>给了 Demis Hassabis 和 John Jumper,表彰他们用 AlphaFold 解决了<strong>蛋白质结构预测</strong>问题。</li>
+      </ul>      <h3>微信头像:AI 的创造力已经触手可及</h3>      <p>刘嘉先讲了个轻松的亲身例子。他年轻时候的照片,想做一个卡通风格的微信头像。以前这事得去淘宝找画师,现在直接让 AI 生图:&ldquo;生成一幅图之后我一看挺好,但是好像年龄大了一点。&rdquo;于是让 AI 把他画年轻一点,&ldquo;特别简单&rdquo;,一分钱没花就得到了。如果你去找淘宝画师,很难这么快迭代出效果。</p>      <h3>看手相:一个玩笑,但玩笑背后是能力</h3>      <p>他还现场演示了让 AI 看手相(按中国古代相术,男的看左手):</p>      <blockquote>我把我的左手掌拍给他,我说你看一下我的手相到底怎么样。这是一个玩笑,不是科学的。他说没问题,把他给我分析一下。他比较婉转地告诉你肯定不太好,毕竟人家是有修养的。&ldquo;你的命运线不太明显,但这种极端的命运线也不是特别好,它代表着人生的方向和事业的起伏。可能表示你人生路途中会有许多的选择和抉择&hellip;&hellip;意思也就是说,你这人只能靠自己打拼。&rdquo;</blockquote>      <p>刘嘉马上想到一个&ldquo;科学算命&rdquo;的商业点子:在清华摆个摊,&ldquo;我可以看手相&rdquo;,把手相一拍,假装念念有词,旁边一个大模型输出文字,看一次收 5 块 10 块。当然这只是个玩笑,这些解读没有任何科学价值。</p>      <h3>AI 看病:精确度超过人类医生</h3>      <p>但玩笑归玩笑,AI 在真正严肃的领域已经很能打:</p>      <blockquote>如果你去医院照了 X 光片、做了心脏的血流图、做了核磁共振,我们一般都是做完之后去找名医、排专家号。现在不用了,你直接让大模型去看,它的精确度已经超过了所有人类的医生。不是 99.99%,是 85% 以上的准确率,诊断效果会精确很多。</blockquote>      <p>有同学说&ldquo;我用豆包,经常问出一些错误的结果出来&rdquo;,原因是什么?</p>      <blockquote>认真看是要花钱的。你花钱,它就给你认真看。</blockquote>      <h3>一个真实案例:零背景治愈肿瘤</h3>      <p>刘嘉讲了一个真实的例子:一个完全没有任何生物背景的人、一个完全不懂医的人,借助 AI 成功地治疗好了肿瘤。</p>      <blockquote>如果这放在以前,你一定觉得这是天方夜谭。但在今天这一切就变成可能。为什么?因为 <strong>AI 变成了我们认知的外骨骼</strong>。什么叫做外骨骼?当你的力气比较小的时候,举起比较重的东西,你加一个高达战士的外骨骼,你就力大无比。</blockquote>      <h3>对嘲笑者的回应</h3>      <blockquote>现在社会上有很多嘲笑 AI 说他不能做的,我对他们的态度是:尽可能尽快地嘲笑吧,因为你留给你嘲笑的时间不多了。AI 发展的速度非常快,他现在不能做的事情,只是暂时而已。</blockquote>      <h3>Hassabis 的激进预言</h3>      <blockquote>大量的药物会被迅速开发出来,AI 有望在未来 10 年之内治愈所有的疾病。记住,不是治愈大多数疾病,是治愈所有的疾病。<span class="attr">Demis Hassabis,2024 诺奖后受访</span></blockquote>      <p>也就是说,只要在座的各位爱护身体、熬过这 10 年,将不会死于癌症,不会死于心血管疾病,将不再死于任何疾病。寿命会轻轻松松跨过 100 岁,甚至更加悠长。这就是 AI 带来的福利。</p>
+    </section>
+
+    <section class="chapter" id="ch3">
+      <div class="chapter-head"><span class="chapter-num">03</span><h2>认知侵蚀:数学失守与传奇终结</h2></div>
+      <div class="chapter-time">16:26 - 24:00 · 372 个数学难题 · 认知侵蚀</div>
+            <h3>AI 攻克数学</h3>      <p>AI 把数学也给攻克了,导致整个数学领域不再需要人去参与:722 篇论文,覆盖了 372 个悬而未解的顶级数学难题,里面的任何一个,都是数学家啃了很多年的硬骨头。</p>      <h3>北大见闻:奥赛金牌得主也像&ldquo;文科生&rdquo;</h3>      <p>刘嘉讲了自己的亲身经历。他到北大之后,见了一堆拿国际数学奥赛金牌的人,跟他们交流之后,发现他们也像&ldquo;文科生&rdquo;一样学数学,基本上没有他那个同学那么传奇。他有一位更加传奇的同学:参加全国数学竞赛拿了大奖,然后就得了精神分裂。</p>      <div class="keypoint">天才,但是 AI 就让这种世界上再无传奇可言。因为有什么题解不了,大家一起解决。这就是我们所说的<strong>认知侵蚀</strong>。<small>刘嘉,第 3 讲</small></div>      <h3>天才与&ldquo;精神病&rdquo;</h3>      <p>刘嘉顺带调侃了一条规律:</p>      <blockquote>你如果不得点精神病,你都不好意思叫自己数学家或者是艺术家。</blockquote>      <p>天才和精神疾病之间的暧昧关系,是这个领域的老话题。但 AI 的出现把&ldquo;天才&rdquo;这个稀缺物种的光环也抹掉了。</p>      <h3>AI 为什么被骂</h3>      <p>骂 AI 的力度之狠、时间之长始料未及。原因很直接:</p>      <blockquote>&ldquo;你别回来了,你的没工作了,你的所有工作将被 AI 所取代了。&rdquo;你想想人家不骂你骂谁?</blockquote>
+    </section>
+
+    <section class="chapter" id="ch4">
+      <div class="chapter-head"><span class="chapter-num">04</span><h2>数字大脑:蓝脑计划与数字果蝇</h2></div>
+      <div class="chapter-time">35:50 - 44:00 · 蓝脑计划 · 数字线虫 · 数字果蝇</div>
+            <p class="lead">如果说 AI 是从算法逼近智能,另一条路是直接<strong>复现大脑</strong>:跟我们生物系统一模一样的神经系统,复现出来之后,&ldquo;我们就能够浮现出不仅仅是智能,能够浮现出生命&rdquo;。</p>      <ul>
+        <li><strong>欧盟蓝脑计划(Blue Brain)</strong>:试图研究每个神经元和它的突触是怎么理解信息的、它们是怎么样构成网络的。&ldquo;我就把他的网络复现出来,这有意义吗?有意义的。&rdquo;至少把现存的 302 个神经元,把它的连接方式完全 1:1 复现出来,就得到了一个跟真实世界里一样活动、一样生存的数字生命。</li>
+        <li><strong>数字果蝇</strong>:果蝇的大脑总共有 14 万个神经元。这个数字果蝇可以在虚拟世界里自由地探索,有洗脸的动作,会去觅食,闻到食物的味道。</li>
+      </ul>
+    </section>
+
+    <section class="chapter" id="ch5">
+      <div class="chapter-head"><span class="chapter-num">05</span><h2>语言的奇迹:猴子打字机与图灵测试</h2></div>
+      <div class="chapter-time">50:25 - 55:00 · RLHF · 猴子打字机 · 图灵测试</div>
+            <h3>多模态与 RLHF</h3>      <p>现在的大模型不只吃文本,还有视频、图片等多模态数据来训练,但这需要人来做一件事:<strong>RLHF(基于人类反馈的强化学习)进行微调、进行对齐</strong>。模型要学会&ldquo;讨好&rdquo;,见人说人话。</p>      <h3>随机与有序:猴子打字机</h3>      <p>语言是大模型最先突破的方向,而这在当年被认为最不可能。刘嘉用&ldquo;猴子打字机&rdquo;来讲清这一点:一个猴子坐在打字机面前,要敲出一本一字不差的《哈姆雷特》,需要多久?</p>      <blockquote>需要 883,000 多次方这个数量级。如果它一秒钟敲一下键盘,不吃不喝,从宇宙大爆炸开始敲,一直敲到现在(总共约 4.3&times;10 的 17 次方秒),他用时要 7.8&times;10 的 18 万次方年。大家觉得这个时间,他敲出来没有?<strong>一句话都没敲出来</strong>。因为从宇宙大爆炸到现在,只是他需要时间的 1 万个数量级之一。一个数量级是 10 倍,他是多了 1 万个数量级。</blockquote>      <p>但 ChatGPT 随便写出来的文字如此优美,以至于在座的每个人都能读懂。它是<strong>怎么从这种随机里面找到这种有序的东西出来</strong>的?所以当时大家认为 AI 要找到这个规律,根本说是不可能的。当时大家最不看好的方向,就是用语言来训练 AI,让大模型能够产生跟人类一样的语言。</p>      <h3>图灵测试与&ldquo;阳光之下无新事&rdquo;</h3>      <p>图灵当年提出最经典的测试叫图灵测试,他认为只要 AI 能把语言这件事情攻克了,AI 就达到了终极状态。事实上图灵测试在 2024 年就已经真正通过了(尽管 AI 与真实人的能力还有相当距离)。为什么语言是最早的突破口?</p>      <blockquote>有一句很著名的话:&ldquo;发生过的事情还会再发生一遍,那些做过的事情还会再做一遍,因为<strong>阳光之下无新事</strong>。&rdquo;</blockquote>      <p>你看,我们人类也不会说话,老鼠也没有语言,那不就经过漫长的演化,它就有了吗?AI 只需要把人类学习语言的方式重新去学习做一遍,我们无需去发明一套全新的方式出来。那么人类是怎么,或者说生命体是怎么产生语言的?这就引出下面的问题。</p>
+    </section>
+
+    <section class="chapter" id="ch6">
+      <div class="chapter-head"><span class="chapter-num">06</span><h2>逻辑的原点:亚里士多德与矛盾律</h2></div>
+      <div class="chapter-time">1:00:49 - 1:04:00 · MCP 神经元 · 形而上学 · 矛盾律</div>
+            <h3>MCP 神经元:一个心理学家加一个逻辑学家</h3>      <p>1943 年,McCulloch 和 Pitts 发布了 MCP 神经元模型。这个模型有什么了不起?好像只是让一个心理学家加上一个逻辑学家一块搞出来的东西,它为什么会产生这么大的影响?</p>      <blockquote>0 和 1,就是一个逻辑运算的最基本单位。他们两个把一个生物神经元抽象成了什么?一个<strong>逻辑运算单元</strong>。他说,我们人类的神经元最本质就是一个逻辑运算:0 或者 1。</blockquote>      <p>这就是还原论的力量:把复杂扔掉,找最核心、最简单的东西。</p>      <h3>亚里士多德:《形而上学》与矛盾律</h3>      <p>再往上追逻辑的原点。亚里士多德写完一本书(参考了世界的运行规则)之后,觉得意犹未尽,还有一些东西没有写完,就写了&ldquo;物理学之后&rdquo;(Meta-physics),现在我们国内把它翻译成叫<strong>形而上学</strong>。他在这里面开始讲哲学、逻辑学、心理学,提出了著名的逻辑判断:<strong>A 不能既是 B 又非 B</strong>。这就是<strong>矛盾律</strong>。</p>      <p>这个名字听上去就很高大上,但它统治人类思想长达上千年。</p>
+    </section>
+
+    <section class="chapter" id="ch7">
+      <div class="chapter-head"><span class="chapter-num">07</span><h2>伽利略的证伪:科学的本质</h2></div>
+      <div class="chapter-time">1:04:34 - 1:10:34 · 比萨斜塔 · 月球锤羽实验</div>
+            <p class="lead">矛盾律统治千年,但伽利略并不这么认为。大家高中课本里学过:伽利略做了比萨斜塔实验,证伪了亚里士多德&ldquo;重物比轻物落得快&rdquo;的运动理论。</p>      <p>伽利略晚年被教皇逼着忏悔:&ldquo;你为什么有这么多邪教的、稀奇古怪的想法?&rdquo;但他忏悔的最后结果是:</p>      <blockquote>我相信地球是围绕太阳转的。<span class="attr">伽利略,晚年忏悔词的最后</span></blockquote>      <p>为了证明这个观点,人类第一次登上月球的时候,重现了 300 年前伽利略想法的实验(阿波罗 15 号宇航员 David Scott 的原声):</p>      <blockquote>On my left hand, I have a feather. In my right hand, a hammer. I guess one of the reasons we got here today was because of a gentleman named Galileo a long time ago who made a rather significant discovery about falling objects in gravity fields, and we thought that what would be a better place to confirm his findings than the Moon. Hopefully they&#39;ll hit the ground at the same time.<span class="attr">阿波罗 15 号,月球现场</span></blockquote>      <p>羽毛和锤子在月球上同时落地。这印证了科学的本质:</p>      <blockquote>他发现的是符合科学本质的结论,照样在 300 年之后会被大家验证它是正确的。而当年把他送进囚禁的那一方教皇以及他的各种手下,已经不再有人记得。因为伽利略才是真正对这个社会有贡献的人。</blockquote>      <p>亚里士多德的物理理论被证伪了,但矛盾律本身是对的,逻辑推理依然成立。</p>
+    </section>
+
+    <section class="chapter" id="ch8">
+      <div class="chapter-head"><span class="chapter-num">08</span><h2>从布尔到香农:还原论的胜利</h2></div>
+      <div class="chapter-time">1:10:34 - 1:17:52 · 布尔代数 · 香农电路 · 还原论链条</div>
+            <h3>矛盾律万一是错的怎么办?</h3>      <p>伽利略用矛盾律证伪了亚里士多德,那大家会想:矛盾律万一是错的,是不是刚才这些推理全都错了?这出了一个伟人叫<strong>布尔</strong>,大家写计算机一定要写布尔代数。布尔用集合论证明了矛盾律(x &cap; &not;x = 0),矛盾律成立,奠定了现代逻辑学基础。</p>      <h3>逻辑原点与发展空间</h3>      <p>刘嘉画出了一条清晰的推导链:</p>      <div class="keypoint">对于伽利略而言,他的逻辑原理就是矛盾律。他从下往上走,就有了伽利略运动律;有了伽利略运动律之后,牛顿在他的基础上就搞出了经典力学。<strong>你的逻辑原点挖得越深,发展空间就越大</strong>。矛盾律往下走就是布尔逻辑;布尔逻辑往上面走,就有我们今天的计算机、互联网、人工智能。</div>      <h3>还原论:从简单重建复杂</h3>      <p>科学的逻辑非常简单,就是用<strong>还原来寻找规律</strong>:把那些复杂的东西一个个扔掉,去找它里面最核心的、最简单的东西,找到它的规则(MCP 神经元就是把复杂的生物神经元简化成&ldquo;求和 + 激活函数&rdquo;的极简模型);然后<strong>要用基于简单的东西生长回去,用构造来重建复杂的系统</strong>。这是产生人工智能的关键。</p>      <h3>香农:人类历史上最伟大的硕士论文</h3>      <p>布尔代数再有天才的<strong>香农</strong>,香农写了人类历史上最伟大的一篇硕士论文,把布尔这套逻辑用在了<strong>电路设计</strong>上面,解决了电路设计的一个根本问题。所以我们要找一个更底层的逻辑基石、逻辑原点,来找到我们精神世界的发展规律。</p>
+    </section>
+
+    <section class="chapter" id="ch9">
+      <div class="chapter-head"><span class="chapter-num">09</span><h2>感知机兴衰与第一次 AI 寒冬</h2></div>
+      <div class="chapter-time">1:17:52 - 1:22:47 · 感知机 · 异或问题 · 第一次低谷</div>
+            <h3>1958:感知机</h3>      <p>1958 年,心理学家<strong>罗森布拉特</strong>构建出<strong>感知机</strong>,&ldquo;我们现在经常还在用&rdquo;。他这篇文章发在《心理学评论》(Psychological Review)上,几乎不是数学期刊,因为他本身是一个心理学家。论文标题就是:</p>      <blockquote>感知机:一个能够去感觉、能够再认、能够记忆、能够反应,能够像人类心灵一样反应的一个东西。</blockquote>      <p>大家对此寄予了极大的期望。</p>      <h3>第一次寒冬</h3>      <p>但感知机很快出了问题(单层感知机无法解决异或问题):</p>      <blockquote>于是好多原来搞人工神经网络的就纷纷开始转行,经费也不再拨给这个领域,因为它就是一个错误的方向。你要他去模仿一只小鸟飞行,也没必要把小鸟的羽毛给造出来,还是应该回到符号主义这条路上。人工神经网络就开始陷入了第一次低谷。</blockquote>      <h3>30 年的坚持</h3>      <p>从第一个人工神经网络提出,到解决异或问题,花了整整 30 年。并不是这个问题有多难,而是<strong>所有人对它失去了信念</strong>,觉得这件事情不可能,只有极少数人在坚持。花了整整 30 年,这个人我们今天把它称为<strong>人工智能之父</strong>:Geoffrey Hinton。他做了两个关键改动(其中一个是把激活函数改成可微的函数,细节不展开了),让三层感知机模型能够跑起来,能够解决异或问题。</p>
+    </section>
+
+    <section class="chapter" id="ch10">
+      <div class="chapter-head"><span class="chapter-num">10</span><h2>Hinton:从木匠到&ldquo;疯狂的核心&rdquo;</h2></div>
+      <div class="chapter-time">1:23:52 - 1:34:11 · 传奇家世 · 爱丁堡读博 · 信念</div>
+            <h3>一个不断退学的传奇学生</h3>      <p>Hinton 的求学经历本身就很传奇:先是学物理和化学,待了一年之后回来又学了建筑,<strong>学一天就退学</strong>;最后又选了物理和生理学,学了之后觉得不靠谱,又转哲学,最后获得<strong>实验心理学</strong>的学位。</p>      <h3>家族信条:要么做学者,要么做失败者</h3>      <p>Hinton 出生于一个学术世家。刘嘉专门澄清:家族里的&ldquo;木匠&rdquo;不是给你们家做普通家具的木匠,而是有创造力的手艺人。这个家族的信条是:</p>      <blockquote><strong>要么做学者,要么做失败者,二选一。</strong>所以他说我肯定当不了学者,我就去当个失败者好了,就去当了木匠。</blockquote>      <p>满大街都是著名学者,在他们家里要冒充一个学者难度挺高的。家族谱系:他的曾祖父是数学家兼科幻作家;往上有一位皇家院士,是植物学昆虫学家。这个家族的渊源可以一路追溯到<strong>布尔</strong>(布尔代数的创立者)。刘嘉讲了个家族八卦:家族里有一位姑婆辈的科学家(即 Boole 家族的后人 Joan Hinton,中文名韩春),她说&ldquo;我要离开万恶的美国&rdquo;,于是来到北京,和先生一起开始做畜牧业(现在大家喝的酸奶,和她当年的工作有关);她是第一个拿到中国绿卡的老外。故事到这还没结束:她的叔叔当年驻印度,是地质勘测总监,发现了珠穆朗玛峰并测量了它的高度,以他的名字命名,珠峰的英文名正是 <strong>Everest</strong>。</p>      <h3>爱丁堡读博:被刺激出来的 AI 之路</h3>      <p>Hinton 后来在家庭聚会上被刺激(&ldquo;我真的要一个博士&rdquo;),于是去了爱丁堡大学,学了人工智能的模式。</p>      <blockquote>今天的 AI 水平,如果要是夸张一点说,就是 Hinton 一个人搞起来的。因为当我们大家都觉得这个东西没有任何意义、没有任何价值的时候,他在那里一天一天地坚持。</blockquote>      <h3>第二次低谷与&ldquo;疯狂的核心&rdquo;</h3>      <p>当深度学习展示出力量之后,大家发现一个问题:当层数加得更多的时候,算法没法训练,只能做非常浅层的神经网络。&ldquo;你看你多了层能解决什么问题?但是你解决不了更复杂的问题,所以这个东西还是一个错误。&rdquo;人工神经网络开始进入第二次低谷。</p>      <p>Hinton 完全不服这口气,他用了 20 年时间,把深度网络做出来。当人工神经网络得到全世界认同、成为 AI 主流之后,当年骂他的人开始忏悔(说&ldquo;你其实在边缘疯狂一下就可以了&rdquo;),他说了一句话:</p>      <blockquote><strong>我们不再是疯子的边缘,我们现在是在疯狂的核心。</strong><span class="attr">Geoffrey Hinton</span></blockquote>      <p>他结果就搞出了咱们现在的大模型。</p>      <h3>他的信念从何而来</h3>      <p>当所有人都觉得神经网络是错误方向时,他为什么能坚持?答案不是固执:</p>      <blockquote>因为他相信,<strong>其他所有人都错了</strong>。</blockquote>      <p>这种信念不是莽撞,而是建立在&ldquo;逻辑原点挖得越深、发展空间越大&rdquo;的判断之上。</p>
+    </section>
+
+    <section class="chapter" id="ch11">
+      <div class="chapter-head"><span class="chapter-num">11</span><h2>人类第一次认知革命</h2></div>
+      <div class="chapter-time">1:42:40 - 1:54:40 · 300 万年演化 · 7.7 万年石刻 · 抽象思维</div>
+            <p class="lead">AI 的能力再强,也要对照人类智能的演化史来看。Hinton 坚信的底气,也来自他对人类智能演化的理解:</p>      <ul>
+        <li>从猴子到人,大概花了 <strong>300 万年</strong>;</li>
+        <li>第一个智能(现代智人)出现只有三四万年的时间;北京山顶洞人、云南元谋人等都是我们的祖先中被智人灭掉的分支;</li>
+        <li>一个很大的特点:石头器物同样的构造能够用几百万年,没有任何变化;但到了距今 <strong>7.7 万年前</strong>,出现了刻着文物的石器,&ldquo;这些文物到底代表什么意思,我们不知道&rdquo;。<strong>能够记录下来,这就是人类的第一次认知革命。</strong></li>
+        <li>脑容量增加了三倍,但这三倍并不是平均增加的,而是<strong>主要增加在前额叶</strong>:老鼠的前额叶很小(嗅球很大),猫开始有一定前额叶,大猩猩更多,人类最大。&ldquo;天庭饱满&rdquo;的面相说法并非毫无道理:额头往前面凸出来,代表我们能够去思考。</li>
+      </ul>      <h3>远古的推理:从肉到贝壳项链</h3>      <p>刘嘉现场做了个推理:你是远古的智人,住在洞穴里,今天运气好,打猎多了肉回来怎么吃都吃不完,有些肉还可以留到明天吃。怎么留?</p>      <blockquote>你可以稍微做一点点变化:肉不变,在上面打一个洞,用绳穿起来挂起来风干。我现在没有做好,我用贝壳,用绳子穿起来,你说我就有了贝壳项链,对不对?你看你现在不仅能够把肉保留到第二天,你现在还可以做个项链送给你心仪的女生。你们既有肉吃还有后代了,所以你的基因就会传递下去了,对吗?</blockquote>      <div class="keypoint">你一旦把它写成一般化的模式,就可以生出万物出来。这就是我们的<strong>抽象思维模式</strong>。<small>刘嘉,第 3 讲</small></div>
+    </section>
+
+    <section class="chapter" id="ch12">
+      <div class="chapter-head"><span class="chapter-num">12</span><h2>思维链:大模型的天才跃迁</h2></div>
+      <div class="chapter-time">1:54:40 - 2:00:28 · 思维链 · IQ 120 · 概率统计</div>
+            <p class="lead">有了演绎推理这条链之后,软件层面上发生了质变:</p>      <ul>
+        <li><strong>第一代大模型</strong>的 IQ 比人类平均值(100 分)低,所以他经常会给你搞一些稀奇古怪的问题出来;</li>
+        <li>但一旦有了<strong>思维链(chain of thought)</strong>,把我们人类的逻辑思维、演绎推理这套方法赋予他,大模型 IQ 一下就干到了 <strong>120</strong>。120 是什么分数?100 分是代表人类的平均智商水平;80 分及以下我们专门有个词叫做<strong>弱智</strong>(或者叫智障);120 分以上,我们专门有个词叫做<strong>天才</strong>。通过把逻辑思维、演绎推理赋予他,大模型就变成了天才的水平。</li>
+        <li>刘嘉开玩笑:&ldquo;我在清华就成弱智了,欢乐儿童乐园了,我该走了。&rdquo;你们的分数是比 120 高的,北大清华本科生本身 IQ 大概是 <strong>125~134</strong>。&ldquo;你们的确比 125 要高,的确是属于天才级。中国考上清华非常难,高考还是有含金量的。但是我们高的有限。&rdquo;</li>
+        <li>也就是说,<strong>现在的大模型比在座的各位要聪明很多</strong>。大家说&ldquo;没觉得啊,我用它时它挺笨的&rdquo;,那是因为什么?<strong>你们花钱。你们花钱这样随便打一打就可以了,花了钱它就会认真给你打。</strong></li>
+      </ul>      <h3>概率统计:语言学习的另一条腿</h3>      <p>从海量文本里统计规律、用多模态数据训练、用 RLHF 对齐,这条概率统计的路线(与演绎推理相辅相成)正是大模型习得语言的方式。而&ldquo;猴子敲出哈姆雷特&rdquo;的极小概率,恰说明纯随机不可行,真正起作用的是<strong>在随机中找到有序的统计规律</strong>。</p>
+    </section>
+
+    <section class="chapter" id="ch13">
+      <div class="chapter-head"><span class="chapter-num">13</span><h2>AGI 时代:起点、曲线与蚂蚁</h2></div>
+      <div class="chapter-time">2:00:28 - 2:07:14 · 奥特曼 · 蚂蚁比喻 · 毛毛虫警告</div>
+            <h3>欢迎来到通用人工智能时代</h3>      <p>OpenAI 的 CEO 奥特曼(Altman)当时在黑板上面写了一句话:</p>      <blockquote><strong>欢迎来到通用人工智能时代。</strong></blockquote>      <p>他认为在这一刻,人类已经来到了&ldquo;起点&rdquo;。刘嘉用曲线解释:这条红线代表人类 IQ/智能的演化曲线,我们的基因并没有太多的本质上的变化,但是我们的教育水平、人类积累的知识在不断地提升我们的 IQ;而 AGI 的智能曲线,则以远超生物演化的速度上升。</p>      <h3>蚂蚁比喻(呼应第一讲)</h3>      <p>你会为一只蚂蚁去牺牲掉自己吗?你会说&ldquo;我人生的所有意义就是为了让这只蚂蚁能活得更好&rdquo;吗?不会。</p>      <blockquote>当你比一只蚂蚁聪明 10 倍、100 倍的时候,你觉得我要去为它打球吗?又觉得太弱智了,对不对?让它死掉好了,没必要去搞它。那么我觉得这种(仇杀)入手的可能性会比较小。</blockquote>      <p>那么另外一种可能性是什么呢?就像《终结者》里所讲的一样,直接把人类给干掉就可以了。</p>      <h3>Hinton 的毛毛虫警告</h3>      <p>Hinton 当时发了一条文字出来:</p>      <blockquote>毛毛虫提取营养物质,化茧为蝶。人类已经提取了数十亿思维的金块,而 GPT 就是毛毛虫的幼虫。幼虫死后它需要大量的营养,营养就是人类创造出来的各种文明,从 6000 年前开始形成的第一个楔形文字,全部成为大模型的服务,大模型吸取了这些营养之后,就会变成蝴蝶。<span class="attr">Geoffrey Hinton</span></blockquote>      <p>但后来发现,你放出来的不是一只蝴蝶,是一只可以摧毁掉人类的全新的物种。原则上觉得制造出了人类的蝴蝶,现在发现其实制造出了一个恶魔。</p>
+    </section>
+
+    <section class="chapter" id="ch14">
+      <div class="chapter-head"><span class="chapter-num">14</span><h2>数字永生、脑机接口与脑科学的终极使命</h2></div>
+      <div class="chapter-time">2:09:21 - 2:25:15 · 数字永生 · 脑机接口 · 脑科学</div>
+            <h3>永生的意义</h3>      <p>AI 可以让人永生。大家说&ldquo;有必要吗?永生有那么必要吗?&rdquo;刘嘉的答案是:</p>      <blockquote>永生的目的并不是让你活得更长,而是<strong>让你有机会去探索真正的宇宙奥秘</strong>。</blockquote>      <h3>脑机接口</h3>      <p>脑机接口(大脑通过脑机接口直接与外部计算系统相连、实时联机)是实现人脑与数字系统深度融合的关键:如果某件事你不懂,没关系,我找一个脑机接口我就解决这事情了,我用大模型来看你,就能看明白了。&ldquo;后来告诉我啥就可以了。&rdquo;</p>      <h3>终章:这就是我们的幼儿园</h3>      <div class="keypoint">要对大脑的结构和功能有深入的理解,能够精确地模拟大脑活动。这里就是我们的幼儿园,<strong>面向未来最好的科学,一定是脑科学</strong>。<small>刘嘉,第 3 讲收束</small></div>      <p>面对 AI 的一切冲击,人类最后的立足点在于理解自身的心智。我们今天对大脑的理解,还只是幼儿园水平。而这正是&ldquo;心智探秘&rdquo;这门课的使命所在:在这个被算法席卷的时代,回到自己这颗 2.5 斤的肉球,回答&ldquo;我是谁、我的故事是什么、我如何成为我&rdquo;。</p>
+    </section>
+
+    <!-- timeline -->
+    <section class="chapter" id="timeline">
+      <div class="chapter-head"><span class="chapter-num">附</span><h2>课堂时间轴</h2></div>
+      <div class="chapter-time">2026-10-08 19:00 - 21:25 · 时长 2:25:15</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>时间</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">00:00</td><td>开场:160 多页删成三次课;第一章&ldquo;诸神会&rdquo;(北欧神话诸神黄昏)</td></tr>
+            <tr><td class="mono">00:18</td><td>2024 诺奖:物理学奖(神经网络)/化学奖(AlphaFold 蛋白质结构)</td></tr>
+            <tr><td class="mono">04:27</td><td>对嘲笑者:留给你嘲笑的时间不多了</td></tr>
+            <tr><td class="mono">06:22</td><td>微信头像:AI 生图零成本迭代;AI 看手相与&ldquo;科学算命&rdquo;的玩笑</td></tr>
+            <tr><td class="mono">09:45</td><td>AI 看病:X 光、核磁让大模型看,精确度超过人类医生;花钱才认真看</td></tr>
+            <tr><td class="mono">12:27</td><td>真实案例:零生物背景者借 AI 治愈肿瘤;AI 是认知的外骨骼(高达)</td></tr>
+            <tr><td class="mono">13:30</td><td>Hassabis 预言:AI 10 年内治愈所有疾病</td></tr>
+            <tr><td class="mono">16:26</td><td>AI 攻克数学:722 篇论文覆盖 372 个顶级难题</td></tr>
+            <tr><td class="mono">20:18</td><td>北大奥赛金牌&ldquo;文科生&rdquo;;天才同学得精神分裂;认知侵蚀</td></tr>
+            <tr><td class="mono">23:03</td><td>AI 被骂:工作被取代</td></tr>
+            <tr><td class="mono">35:50</td><td>蓝脑计划、数字线虫(302 神经元)、数字果蝇(14 万神经元)</td></tr>
+            <tr><td class="mono">50:25</td><td>RLHF:基于人类反馈的强化学习对齐</td></tr>
+            <tr><td class="mono">51:22</td><td>猴子打字机与《哈姆雷特》的概率(7.8&times;10^18 万年 vs 4.3&times;10^17 秒)</td></tr>
+            <tr><td class="mono">53:53</td><td>图灵测试 2024 年通过;阳光之下无新事</td></tr>
+            <tr><td class="mono">1:00:49</td><td>MCP 神经元模型:生物神经元 &rarr; 逻辑运算单元(0/1)</td></tr>
+            <tr><td class="mono">1:02:38</td><td>亚里士多德《形而上学》与矛盾律</td></tr>
+            <tr><td class="mono">1:04:34</td><td>伽利略证伪亚里士多德;月球锤羽实验(1:08:49,阿波罗 15 号原声)</td></tr>
+            <tr><td class="mono">1:15:00</td><td>布尔证明矛盾律;香农电路设计;还原论链条</td></tr>
+            <tr><td class="mono">1:17:52</td><td>1958 感知机(罗森布拉特,心理学家,《心理学评论》)</td></tr>
+            <tr><td class="mono">1:20:34</td><td>第一次 AI 寒冬:转行、断经费、回符号主义</td></tr>
+            <tr><td class="mono">1:22:06</td><td>30 年解决异或:人工智能之父 Hinton</td></tr>
+            <tr><td class="mono">1:23:52</td><td>Hinton 传奇家世与&ldquo;要么学者要么失败者&rdquo;信条</td></tr>
+            <tr><td class="mono">1:29:34</td><td>爱丁堡读博:&ldquo;今天的 AI 是 Hinton 一个人搞起来的&rdquo;</td></tr>
+            <tr><td class="mono">1:30:13</td><td>深度网络训练之困;第二次低谷;20 年坚持</td></tr>
+            <tr><td class="mono">1:33:23</td><td>&ldquo;我们不再是疯子的边缘,我们现在是在疯狂的核心&rdquo;</td></tr>
+            <tr><td class="mono">1:42:40</td><td>人类演化:300 万年、3-4 万年、7.7 万年石刻</td></tr>
+            <tr><td class="mono">1:48:50</td><td>前额叶三倍扩容;天庭饱满;远古推理(肉 &rarr; 贝壳项链)</td></tr>
+            <tr><td class="mono">1:54:40</td><td>布尔演绎推理 &rarr; 香农电路 &rarr; 深度学习的底层链条</td></tr>
+            <tr><td class="mono">1:58:05</td><td>思维链:大模型 IQ 从低于 100 到 120(天才);清北 125-134;花钱认真打</td></tr>
+            <tr><td class="mono">2:00:28</td><td>奥特曼&ldquo;欢迎来到通用人工智能时代&rdquo;;智能演化曲线</td></tr>
+            <tr><td class="mono">2:03:33</td><td>蚂蚁比喻:AI 不会为蚂蚁牺牲自己</td></tr>
+            <tr><td class="mono">2:05:55</td><td>Hinton 的毛毛虫警告:蝴蝶还是恶魔</td></tr>
+            <tr><td class="mono">2:09:21</td><td>数字永生:为了探索宇宙奥秘</td></tr>
+            <tr><td class="mono">2:13:06</td><td>脑机接口与脑科学的终极使命</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- series footer nav -->
+    <nav class="series-nav">
+      <div class="nav-row">
+        <a href="../20260924-liujia/index.html">← 上一讲:第 2 讲 · 意识</a>
+        <span>第 3 讲 · 智能的演化(最新讲次)</span>
+      </div>
+      <div class="nav-links">
+        <span><strong>课程总览:</strong><a href="../index.html">《心智探秘》全部讲次</a></span>
+        <span style="margin-left:auto"><a href="../../index.html">← 返回分享主站</a></span>
+      </div>
+    </nav>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>心智探秘 · 第 3 讲笔记 | 整理自讯飞语音转写逐字稿(310 段)</span>
+    <span>清华大学 · 刘嘉 · 2026-10-08</span>
+    <span style="width:100%">逐字稿来源:讯飞听见 AI 语音转写 · <a href="https://shareaudio.iflyrec.com/appShare/share.html?audioId=SAT09ae28e94f49481292cbf368ccbfe091" style="color:var(--purple)">原始录音与转写页面</a></span>
+  </div>
+</footer>
+
+<button class="backtop" id="backtop" aria-label="回到顶部">↑</button>
+
+<script>
+  // TOC active state via IntersectionObserver
+  var links = document.querySelectorAll('.toc > .toc-list a, .toc details .toc-list a');
+  var map = {};
+  links.forEach(function(a){ var id = a.getAttribute('href').slice(1); (map[id] = map[id] || []).push(a); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        links.forEach(function(a){ a.classList.remove('active'); });
+        (map[e.target.id] || []).forEach(function(a){ a.classList.add('active'); });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('section.chapter').forEach(function(s){ io.observe(s); });
+
+  // Back to top via sentinel
+  var btn = document.getElementById('backtop');
+  var sentinel = document.createElement('div');
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function(en){ btn.classList.toggle('show', !en[0].isIntersecting); }).observe(sentinel);
+  btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
