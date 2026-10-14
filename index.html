@@ -7,7 +7,7 @@
 <meta name="description" content="easyaistudy 公开分享页：课程笔记、读书笔记与其他想分享的静态网页。">
 <style>
   :root{
-    --paper:#f7f6f3; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
+    --paper:#f7f6f3; --card:#fffefb; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
     --accent:#9a3b2e; --accent-deep:#772b20; --accent-tint:#f2e6e2;
     --rule:#dcd7cf; --hairline:#e7e3dc;
     --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -15,9 +15,11 @@
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --paper:#151617; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+      --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
       --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
       --rule:#323537; --hairline:#26292b;
+      --tag-bg:#2a201d; --tag-ink:#e9a08e; --accent-tsu:#b57bd0;
+      --tagkids-bg:#2a221c; --tagkids-ink:#e5a87e;
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -36,6 +38,10 @@
   .card p{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin:0}
   .card .meta{font-family:var(--sans);font-size:12px;color:var(--muted);margin-top:8px}
   .tag{display:inline-block;font-family:var(--sans);font-size:11px;background:var(--accent-tint);color:var(--accent-deep);border-radius:99px;padding:2px 10px;font-weight:600;margin-bottom:8px}
+  .tag-tsu{background:var(--tag-bg,#f5edf7);color:var(--tag-ink,#660874)}
+  .tag-kids{background:var(--tagkids-bg,#fff0e5);color:var(--tagkids-ink,#c2561c)}
+  .card-tsu{border-left:4px solid var(--accent-tsu,#660874)}
+  .card-kids{border-left:4px solid var(--accent-kids,#ff8a52)}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
   .meta-foot{margin-top:48px;font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:18px}
@@ -52,8 +58,8 @@
 
   <section>
     <div class="sec-title">课程笔记</div>
-    <div class="card" style="border-left: 4px solid #660874;">
-      <span class="tag" style="background:#f5edf7;color:#660874">系列课 · 新</span>
+    <div class="card card-tsu">
+      <span class="tag tag-tsu">系列课 · 新</span>
       <h2><a href="dushuhui/index.html">清华 MBA 25P5 课前读书会</a></h2>
       <p>25P5 班覆盖各门课程的课前读书会系列：课代表与同学领读课程材料与案例、班委质询补充。纪要以录制逐字稿为骨干，保留全部推理链与问答实录。</p>
       <div class="meta">
@@ -61,8 +67,8 @@
         后续：艾勒可（10.24 课前）· APPLE 2008（11.07 课前）· 各课程课中领读
       </div>
     </div>
-    <div class="card" style="border-left: 4px solid #660874;">
-      <span class="tag" style="background:#f5edf7;color:#660874">系列课</span>
+    <div class="card card-tsu">
+      <span class="tag tag-tsu">系列课</span>
       <h2><a href="xinzhi-tanmi/index.html">清华《心智探秘》课堂笔记</a></h2>
       <p>清华大学高水平通识课特选课堂（主讲：刘嘉教授）。从连体双胞胎、感知构建到 AGI 时代主体性危机，保留全部神经科学与心理学推理实证。</p>
       <div class="meta">
@@ -94,16 +100,16 @@
 
   <section>
     <div class="sec-title">亲子小应用</div>
-    <div class="card" style="border-left: 4px solid #ff8a52;">
-      <span class="tag" style="background:#fff0e5;color:#c2561c">给孩子</span>
+    <div class="card card-kids">
+      <span class="tag tag-kids">给孩子</span>
       <h2><a href="english-100-sentences/index.html">小馄饨 · 英语 100 句</a></h2>
       <p>8 个生活场景的英语口语动画：打招呼问好、洗漱进餐、在园日常、排队与指令等。点图片即播，播完自动接下一集，适合手机/平板横屏给孩子看。</p>
       <div class="meta">
         8 集 · 共约 11 分钟 · 支持上一集/下一集连播
       </div>
     </div>
-    <div class="card" style="border-left: 4px solid #ff8a52;">
-      <span class="tag" style="background:#fff0e5;color:#c2561c">给孩子</span>
+    <div class="card card-kids">
+      <span class="tag tag-kids">给孩子</span>
       <h2><a href="english-audiobook/index.html">小馄饨 · 英语口语 100 句有声绘本</a></h2>
       <p>100 句日常英语口语的 9 大场景有声绘本动画：问候致谢、用餐洗漱、集体活动、看病就医、校园生活、户外出行等。图配文带配音，逐句跟读。</p>
       <div class="meta">
