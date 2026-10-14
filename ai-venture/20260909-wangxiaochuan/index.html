@@ -5,6 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="QH4SKgCOsaPFIqXV3gETMR">
   <title>创新相对论与百川的思考 | 北大 AI创业与投资 课程笔记</title>
   <meta name="description" content="2026年9月9日北京大学《AI创业与投资》第一课课堂笔记：百川智能创始人兼CEO王小川，从哲学视角拆解创业中主观与客观的辩证关系，回顾从搜狗到百川的二十年创业历程，深入阐述百川智能从通用大模型转向医疗AI的战略逻辑。" data-page-node-id="NsIcpdxQG2TZLkA5h9Z7i6">
+  <script>
+  /* 主题三态切换：亮 / 暗 / 跟随系统，localStorage 全系列共享 */
+  (function(){
+    "use strict";
+    var KEY="ai-venture-theme";
+    var mq=window.matchMedia("(prefers-color-scheme: dark)");
+    var doc=document.documentElement;
+    function saved(){ try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";} }
+    function eff(m){ return m==="dark"?"dark":(m==="light"?"light":(mq.matches?"dark":"light")); }
+    function apply(){
+      var m=saved();
+      doc.setAttribute("data-theme",m);
+      doc.style.colorScheme=eff(m);
+      var b=document.getElementById("themeToggle");
+      if(b){ b.textContent=m==="light"?"\u2600":(m==="dark"?"\u263E":"\u25D0");
+        b.title="主题："+(m==="light"?"亮色":(m==="dark"?"暗色":"跟随系统"))+"（点击切换）";
+        b.setAttribute("aria-label",b.title); }
+    }
+    apply();
+    mq.addEventListener("change",function(){ if(saved()==="auto")apply(); });
+    window.__cycleTheme=function(){
+      var order=["auto","light","dark"];
+      var n=order[(order.indexOf(saved())+1)%order.length];
+      try{localStorage.setItem(KEY,n);}catch(e){}
+      apply();
+    };
+  })();
+  </script>
   <style>/*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
 
 .pswp {
@@ -444,7 +472,7 @@ div.pswp__img--placeholder,
       --mono: ui-monospace, "SF Mono", "Menlo", monospace;
     }
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
         --bg: #101512;
         --surface: #171e1a;
         --fg: #e6ece7;
@@ -457,6 +485,20 @@ div.pswp__img--placeholder,
         --on-accent: #101512;
       }
     }
+    :root[data-theme="dark"] {
+      --bg: #101512;
+      --surface: #171e1a;
+      --fg: #e6ece7;
+      --muted: #94a098;
+      --accent: #79bd9d;
+      --accent-ink: #a4d6bf;
+      --accent-tint: #1c2921;
+      --border: #2a352e;
+      --hairline: #232c26;
+      --on-accent: #101512;
+    }
+    .theme-toggle{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--accent);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans)}
+    .theme-toggle:hover{background:var(--accent-tint)}
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -762,8 +804,9 @@ div.pswp__img--placeholder,
     .callout p { margin: 0 0 10px; }
     .callout p:last-child { margin-bottom: 0; }
     @media (prefers-color-scheme: dark) {
-      .callout strong { color: var(--accent); }
+      :root:not([data-theme="light"]) .callout strong { color: var(--accent); }
     }
+    :root[data-theme="dark"] .callout strong { color: var(--accent); }
 
     /* Closing quote */
     .closing-quote {
@@ -1295,13 +1338,20 @@ div.pswp__img--placeholder,
     --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
       --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
       --rule:#323537; --hairline:#26292b; --pill:#26292b; --pill-2:#232629;
       --bg:var(--paper); --surface:var(--card); --fg:var(--ink); --border:var(--rule);
       --accent-ink:var(--accent-deep); --on-accent:var(--paper); --radius:10px;
     }
+  }
+  :root[data-theme="dark"]{
+    --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+    --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+    --rule:#323537; --hairline:#26292b; --pill:#26292b; --pill-2:#232629;
+    --bg:var(--paper); --surface:var(--card); --fg:var(--ink); --border:var(--rule);
+    --accent-ink:var(--accent-deep); --on-accent:var(--paper); --radius:10px;
   }
   body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.95}
   a{color:var(--accent)}
@@ -1419,6 +1469,7 @@ div.pswp__img--placeholder,
         <a href="#c6" data-page-node-id="JlY7fBuuirbljkXjhxJAGG">AI医疗</a>
         <a href="#c7" data-page-node-id="BoPoR2sOovBCwk3lgAJFXf">问答</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" onclick="__cycleTheme()" aria-label="切换主题">◐</button>
     </div>
   </header>
 
@@ -2100,6 +2151,7 @@ div.pswp__img--placeholder,
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 1 讲</span> <span style="font-weight:700;color:var(--fg)">创新相对论与百川的思考</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.09</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">王小川</span> <span style="font-size:11px;background:var(--accent-tint);color:var(--accent-ink);border-radius:99px;padding:1px 9px">本讲</span></li>
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 2 讲</span> <a href="../20260916-zhuxiaohu/index.html" style="color:var(--accent);font-weight:600">互联网和 AI 的创业与投资的异同</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.16</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">朱啸虎</span></li>
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 3 讲</span> <a href="../20260923-liuyong/index.html" style="color:var(--accent);font-weight:600">AI 创业的第一性框架：赛道和时机</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.23</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">刘勇</span></li>
+      <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 5 讲</span> <a href="../20261014-yangjinfang/index.html" style="color:var(--accent);font-weight:600">AI 时代选人、自我认知、领导力与组织文化</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.10.14</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">杨锦方</span></li>
     </ul>
     <div style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:18px;margin-bottom:22px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif"><span style="display:block;font-size:15px;color:var(--muted);cursor:default"><span style="display:block;font-size:11.5px;letter-spacing:.1em;margin-bottom:4px">上一讲</span>本课首讲</span><a href="../20260916-zhuxiaohu/index.html" style="display:block;font-size:15px;font-weight:700;color:var(--accent);text-align:right;margin-left:auto"><span style="display:block;font-size:11.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:4px">下一讲</span>第 2 讲 · 朱啸虎：互联网和 AI 的创业与投资的异同</a></div>
     <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;font-size:13.5px;border-top:1px solid var(--border);padding-top:18px;line-height:2">

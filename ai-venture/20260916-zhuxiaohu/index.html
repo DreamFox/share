@@ -8,6 +8,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <script>
+  /* 主题三态切换：亮 / 暗 / 跟随系统，localStorage 全系列共享 */
+  (function(){
+    "use strict";
+    var KEY="ai-venture-theme";
+    var mq=window.matchMedia("(prefers-color-scheme: dark)");
+    var doc=document.documentElement;
+    function saved(){ try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";} }
+    function eff(m){ return m==="dark"?"dark":(m==="light"?"light":(mq.matches?"dark":"light")); }
+    function apply(){
+      var m=saved();
+      doc.setAttribute("data-theme",m);
+      doc.style.colorScheme=eff(m);
+      var b=document.getElementById("themeToggle");
+      if(b){ b.textContent=m==="light"?"\u2600":(m==="dark"?"\u263E":"\u25D0");
+        b.title="主题："+(m==="light"?"亮色":(m==="dark"?"暗色":"跟随系统"))+"（点击切换）";
+        b.setAttribute("aria-label",b.title); }
+    }
+    apply();
+    mq.addEventListener("change",function(){ if(saved()==="auto")apply(); });
+    window.__cycleTheme=function(){
+      var order=["auto","light","dark"];
+      var n=order[(order.indexOf(saved())+1)%order.length];
+      try{localStorage.setItem(KEY,n);}catch(e){}
+      apply();
+    };
+  })();
+  </script>
   <style>
     :root {
       --paper: #f7f6f3;
@@ -30,7 +58,7 @@
       --measure: 40em;
     }
     @media (prefers-color-scheme: dark) {
-      :root {
+      :root:not([data-theme="light"]) {
         --paper: #151617;
         --surface: #1b1d1f;
         --surface-2: #202325;
@@ -46,6 +74,23 @@
         --on-accent: #151617;
       }
     }
+    :root[data-theme="dark"] {
+      --paper: #151617;
+      --surface: #1b1d1f;
+      --surface-2: #202325;
+      --ink: #e9e7e2;
+      --ink-soft: #c8c5be;
+      --muted: #9a968e;
+      --faint: #96918a;
+      --accent: #d9836f;
+      --accent-deep: #e9a08e;
+      --accent-tint: #2a201d;
+      --rule: #323537;
+      --hairline: #26292b;
+      --on-accent: #151617;
+    }
+    .theme-toggle{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--accent);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans)}
+    .theme-toggle:hover{background:var(--accent-tint)}
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -618,6 +663,7 @@
         <a href="#ch-14">问答</a>
         <a href="#appendix">附录</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" onclick="__cycleTheme()" aria-label="切换主题">◐</button>
     </div>
   </header>
 
@@ -1931,6 +1977,7 @@
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 1 讲</span> <a href="../20260909-wangxiaochuan/index.html" style="color:var(--accent);font-weight:600">创新相对论与百川的思考</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.09</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">王小川</span></li>
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 2 讲</span> <span style="font-weight:700;color:var(--ink)">互联网和 AI 的创业与投资的异同</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.16</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">朱啸虎</span> <span style="font-size:11px;background:var(--accent-tint);color:var(--accent-deep);border-radius:99px;padding:1px 9px">本讲</span></li>
       <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 3 讲</span> <a href="../20260923-liuyong/index.html" style="color:var(--accent);font-weight:600">AI 创业的第一性框架：赛道和时机</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.09.23</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">刘勇</span></li>
+      <li style="margin-bottom:8px"><span style="font-family:monospace;font-size:12px;color:var(--muted);display:inline-block;min-width:52px">第 5 讲</span> <a href="../20261014-yangjinfang/index.html" style="color:var(--accent);font-weight:600">AI 时代选人、自我认知、领导力与组织文化</a> <span style="font-family:monospace;font-size:12px;color:var(--muted)">2026.10.14</span> <span style="font-family:monospace;font-size:12px;color:var(--muted)">杨锦方</span></li>
     </ul>
     <div style="display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:18px;margin-bottom:22px;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif"><a href="../20260909-wangxiaochuan/index.html" style="display:block;font-size:15px;font-weight:700;color:var(--accent)"><span style="display:block;font-size:11.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:4px">上一讲</span>第 1 讲 · 王小川：创新相对论与百川的思考</a><a href="../20260923-liuyong/index.html" style="display:block;font-size:15px;font-weight:700;color:var(--accent);text-align:right;margin-left:auto"><span style="display:block;font-size:11.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:4px">下一讲</span>第 3 讲 · 刘勇：AI 创业的第一性框架：赛道和时机</a></div>
     <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;font-size:13.5px;border-top:1px solid var(--rule);padding-top:18px;line-height:2">

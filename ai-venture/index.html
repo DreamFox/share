@@ -4,7 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>北大《AI创业与投资》课程目录 · 课堂笔记</title>
-<meta name="description" content="北京大学《AI创业与投资》课程笔记总览：王小川、朱啸虎、刘勇三讲完整收录，每讲保留全部推理链与问答实录。">
+<meta name="description" content="北京大学《AI创业与投资》课程笔记总览：王小川、朱啸虎、刘勇、杨锦方四讲完整收录，每讲保留全部推理链与问答实录。">
+<script>
+/* 主题三态切换：亮 / 暗 / 跟随系统，localStorage 全系列共享 */
+(function(){
+  "use strict";
+  var KEY="ai-venture-theme";
+  var mq=window.matchMedia("(prefers-color-scheme: dark)");
+  var doc=document.documentElement;
+  function saved(){ try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";} }
+  function eff(m){ return m==="dark"?"dark":(m==="light"?"light":(mq.matches?"dark":"light")); }
+  function apply(){
+    var m=saved();
+    doc.setAttribute("data-theme",m);
+    doc.style.colorScheme=eff(m);
+    var b=document.getElementById("themeToggle");
+    if(b){ b.textContent=m==="light"?"\u2600":(m==="dark"?"\u263E":"\u25D0");
+      b.title="主题："+(m==="light"?"亮色":(m==="dark"?"暗色":"跟随系统"))+"（点击切换）";
+      b.setAttribute("aria-label",b.title); }
+  }
+  apply();
+  mq.addEventListener("change",function(){ if(saved()==="auto")apply(); });
+  window.__cycleTheme=function(){
+    var order=["auto","light","dark"];
+    var n=order[(order.indexOf(saved())+1)%order.length];
+    try{localStorage.setItem(KEY,n);}catch(e){}
+    apply();
+  };
+})();
+</script>
 <style>
   :root{
     --paper:#f7f6f3; --card:#fffefb; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
@@ -15,12 +43,19 @@
     --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
   }
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
       --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
       --rule:#323537; --hairline:#26292b;
     }
   }
+  :root[data-theme="dark"]{
+    --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+    --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+    --rule:#323537; --hairline:#26292b;
+  }
+  .theme-toggle{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1px solid var(--rule);background:var(--card);color:var(--accent);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans)}
+  .theme-toggle:hover{background:var(--accent-tint)}
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.95;-webkit-font-smoothing:antialiased}
   .wrap{width:calc(100% - 48px);max-width:860px;margin:0 auto}
@@ -70,8 +105,10 @@
   <nav>
     <a href="20260909-wangxiaochuan/index.html">第 1 讲 王小川</a>&nbsp;&nbsp;
     <a href="20260916-zhuxiaohu/index.html">第 2 讲 朱啸虎</a>&nbsp;&nbsp;
-    <a href="20260923-liuyong/index.html">第 3 讲 刘勇</a>
+    <a href="20260923-liuyong/index.html">第 3 讲 刘勇</a>&nbsp;&nbsp;
+    <a href="20261014-yangjinfang/index.html">第 5 讲 杨锦方</a>
   </nav>
+  <button class="theme-toggle" id="themeToggle" onclick="__cycleTheme()" aria-label="切换主题">◐</button>
 </div></div>
 <div class="wrap">
   <header class="hero">
@@ -111,6 +148,17 @@
       <p>从"为什么比尔·盖茨和乔布斯都生于 1955 年"出发，用第一性原理把赛道选择与时机判断拆成可计算的框架。</p>
       <p>核心论证：技术消灭稀缺、商业价值来自新的稀缺（康波周期定位"现在"）；成本剪刀差 × 成功率决定 PMF 在哪里发生（中美阈值差）；模型能力连续进步而机会是阶跃函数（87 天窗口案例）；落点是"新、大、快"赛道标准与"快 + 独特数据"的壁垒。含 14 组现场问答。</p>
       <a class="go" href="20260923-liuyong/index.html">阅读本讲笔记 →</a>
+    </div>
+  </section>
+
+  <section class="lecture">
+    <div><div class="lec-no">05</div><span class="lec-date">2026.10.14</span></div>
+    <div>
+      <h2><a href="20261014-yangjinfang/index.html">AI 时代选人、自我认知、领导力与组织文化</a></h2>
+      <p class="speaker-line">主讲：杨锦方（美团创始团队成员、前副总裁）· Panel 嘉宾：王鹏霄（Romangic 创始人兼 CEO）<span class="tag">第 5 讲</span></p>
+      <p>从千团大战到 AI Native：创业早期最昂贵的不是融资时估值低了，而是"关键位置放错一个人"。一位美团老兵与一位 AI 新生代，现场对照"哪些经验仍然有效，哪些必须重写"。</p>
+      <p>核心论证：核心人才是比资金更强的杠杆（方向判断 × 方法论扩散 × 时间复利）；选人框架从战略开始（战略→组织→岗位→任务组合→胜任力模型），能力三段进阶靠"四个 F"长期训练；组织篇落地"企业能力 = 战略能力 × 组织能力"，价值观是压力下对组织好的排序原则，必须进入招聘、评价、晋升与淘汰（业绩 × 价值观矩阵，野狗必须淘汰）。Panel 对照：AI 时代团队更小但人才密度更高，价值观是能力数字前的正负号。含 4 组对谈与 7 组问答、25 张现场课件。</p>
+      <a class="go" href="20261014-yangjinfang/index.html">阅读本讲笔记 →</a>
     </div>
   </section>
 

@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 创业的第一性框架：赛道和时机 | 北大 AI创业与投资 课程笔记</title>
 <meta name="description" content="北京大学《AI创业与投资》第三课课堂笔记：TaoZ Capital 创始合伙人刘勇主讲《AI创业的第一性框架：赛道和时机》，从康波周期、第一性成本模型到成功率与能力拐点，系统拆解 AI 创业的赛道选择与时机判断。">
+<script>
+/* 主题三态切换：亮 / 暗 / 跟随系统，localStorage 全系列共享 */
+(function(){
+  "use strict";
+  var KEY="ai-venture-theme";
+  var mq=window.matchMedia("(prefers-color-scheme: dark)");
+  var doc=document.documentElement;
+  function saved(){ try{return localStorage.getItem(KEY)||"auto";}catch(e){return "auto";} }
+  function eff(m){ return m==="dark"?"dark":(m==="light"?"light":(mq.matches?"dark":"light")); }
+  function apply(){
+    var m=saved();
+    doc.setAttribute("data-theme",m);
+    doc.style.colorScheme=eff(m);
+    var b=document.getElementById("themeToggle");
+    if(b){ b.textContent=m==="light"?"\u2600":(m==="dark"?"\u263E":"\u25D0");
+      b.title="主题："+(m==="light"?"亮色":(m==="dark"?"暗色":"跟随系统"))+"（点击切换）";
+      b.setAttribute("aria-label",b.title); }
+  }
+  apply();
+  mq.addEventListener("change",function(){ if(saved()==="auto")apply(); });
+  window.__cycleTheme=function(){
+    var order=["auto","light","dark"];
+    var n=order[(order.indexOf(saved())+1)%order.length];
+    try{localStorage.setItem(KEY,n);}catch(e){}
+    apply();
+  };
+})();
+</script>
 <style>
   :root{
     --paper:#f7f6f3; --card:#fffefb; --ink:#17191b; --ink-soft:#3d4246; --muted:#6d7175;
@@ -17,12 +45,19 @@
     --pill-2:#f1eee8;
   }
   @media (prefers-color-scheme: dark){
-    :root{
+    :root:not([data-theme="light"]){
       --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
       --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
       --rule:#323537; --hairline:#26292b; --pill:#26292b; --pill-2:#232629;
     }
   }
+  :root[data-theme="dark"]{
+    --paper:#151617; --card:#202325; --ink:#e9e7e2; --ink-soft:#c8c5be; --muted:#9a968e;
+    --accent:#d9836f; --accent-deep:#e9a08e; --accent-tint:#2a201d;
+    --rule:#323537; --hairline:#26292b; --pill:#26292b; --pill-2:#232629;
+  }
+  .theme-toggle{flex-shrink:0;width:30px;height:30px;border-radius:50%;border:1px solid var(--rule);background:var(--card);color:var(--accent);font-size:14px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans)}
+  .theme-toggle:hover{background:var(--accent-tint)}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.95;-webkit-font-smoothing:antialiased}
@@ -223,6 +258,7 @@
     <a href="../20260916-zhuxiaohu/index.html">第二课 朱啸虎</a>
     <a href="#ch17">问答实录</a>
   </nav>
+  <button class="theme-toggle" id="themeToggle" onclick="__cycleTheme()" aria-label="切换主题">◐</button>
 </div></div>
 <div class="wrap">
   <section class="hero">
@@ -1034,10 +1070,11 @@
       <li><span class="cn-no">第 1 讲</span><a href="../20260909-wangxiaochuan/index.html">创新相对论与百川的思考</a><span class="cn-date">2026.09.09</span><span class="cn-date">王小川</span></li>
       <li><span class="cn-no">第 2 讲</span><a href="../20260916-zhuxiaohu/index.html">互联网和 AI 的创业与投资的异同</a><span class="cn-date">2026.09.16</span><span class="cn-date">朱啸虎</span></li>
       <li class="current"><span class="cn-no">第 3 讲</span><span>AI 创业的第一性框架：赛道和时机</span><span class="cn-date">2026.09.23</span><span class="cn-date">刘勇</span><span class="cn-now">本讲</span></li>
+      <li><span class="cn-no">第 5 讲</span><a href="../20261014-yangjinfang/index.html">AI 时代选人、自我认知、领导力与组织文化</a><span class="cn-date">2026.10.14</span><span class="cn-date">杨锦方</span></li>
     </ul>
     <div class="cn-pager">
       <a class="prev" href="../20260916-zhuxiaohu/index.html"><span class="cn-dir">上一讲</span>第 2 讲 · 朱啸虎：互联网和 AI 的创业与投资的异同</a>
-      <a class="next disabled" aria-disabled="true"><span class="cn-dir">下一讲</span>待更新</a>
+      <a class="next" href="../20261014-yangjinfang/index.html"><span class="cn-dir">下一讲</span>第 5 讲 · 杨锦方：AI 时代选人、自我认知、领导力与组织文化</a>
     </div>
     <div class="cn-more">
       <span><span class="cn-ext">课程总览</span><a href="../index.html">《AI创业与投资》课程目录</a></span>
