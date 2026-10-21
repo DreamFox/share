@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心智探秘 · 第 4 讲 | 批判性思维与视觉重构(刻意练习)</title>
+<style>
+  :root {
+    --purple: #660874;
+    --purple-deep: #4a0554;
+    --purple-soft: #f3eaf5;
+    --ink: #211d24;
+    --ink-2: #4d4650;
+    --ink-3: #7d7580;
+    --paper: #faf8f4;
+    --paper-2: #f1ede5;
+    --line: #e3ddd2;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+    --sans: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --radius: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--purple); color: #fff; }
+
+  .topbar { border-bottom: 1px solid var(--line); font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
+  .topbar-inner {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; height: 44px;
+  }
+  .topbar .brand { color: var(--purple); font-weight: 600; letter-spacing: 0.02em; }
+
+  .hero {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    padding: 56px 0 48px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.22em;
+    color: var(--purple); text-transform: uppercase; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.2vw, 62px); line-height: 1.15;
+    font-weight: 900; letter-spacing: 0.01em; margin-bottom: 18px;
+  }
+  .hero .subtitle { font-size: 19px; color: var(--ink-2); line-height: 1.7; max-width: 40em; margin-bottom: 30px; }
+  .hero-meta {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 32px; font-family: var(--sans); max-width: 520px;
+  }
+  .hero-meta .k { font-size: 11px; letter-spacing: 0.14em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 2px; }
+  .hero-meta .v { font-size: 14.5px; color: var(--ink); }
+  .hero-meta .v.mono { font-family: var(--mono); }
+
+  .layout {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 240px minmax(0, 1fr);
+    gap: 64px; padding: 56px 0 96px;
+  }
+  .toc {
+    position: sticky; top: 32px; align-self: start;
+    font-family: var(--sans); font-size: 13.5px;
+    max-height: calc(100vh - 64px); overflow-y: auto;
+  }
+  .toc-title { font-size: 11px; letter-spacing: 0.18em; color: var(--ink-3); text-transform: uppercase; margin-bottom: 14px; }
+  .toc a {
+    display: block; color: var(--ink-2); text-decoration: none;
+    padding: 5px 0 5px 14px; border-left: 2px solid var(--line);
+    line-height: 1.45; transition: color 0.2s, border-color 0.2s;
+  }
+  .toc a:hover { color: var(--purple); }
+  .toc a.active { color: var(--purple); border-left-color: var(--purple); font-weight: 600; }
+  .toc a .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-right: 6px; }
+  .toc a.active .n { color: var(--purple); }
+  .toc details { display: none; }
+
+  main { min-width: 0; max-width: 780px; }
+
+  .chapter { margin-bottom: 96px; scroll-margin-top: 24px; }
+  .chapter-head { display: flex; align-items: baseline; gap: 22px; margin-bottom: 8px; }
+  .chapter-num { font-family: var(--serif); font-size: 56px; font-weight: 900; color: var(--purple); line-height: 1; opacity: 0.9; }
+  .chapter-head h2 { font-size: 30px; font-weight: 900; line-height: 1.3; }
+  .chapter-time { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); margin-bottom: 28px; }
+  .chapter h3 {
+    font-size: 21px; font-weight: 700; margin: 44px 0 14px;
+    padding-left: 14px; border-left: 3px solid var(--purple); line-height: 1.5;
+  }
+  .chapter p { margin-bottom: 16px; color: var(--ink); }
+  .chapter p.lead { font-size: 18.5px; }
+  .chapter ul { margin: 0 0 16px 1.4em; }
+  .chapter li { margin-bottom: 8px; }
+  .chapter strong { color: var(--purple-deep); }
+
+  blockquote {
+    margin: 26px 0; padding: 20px 26px; background: var(--purple-soft);
+    border-radius: var(--radius); font-size: 18px; line-height: 1.8; color: var(--purple-deep);
+  }
+  blockquote .attr { display: block; margin-top: 8px; font-family: var(--sans); font-size: 13px; color: var(--ink-3); }
+
+  .keypoint {
+    margin: 30px 0; padding: 26px 30px; background: var(--purple);
+    color: #fdfbfe; border-radius: var(--radius); font-size: 19px; line-height: 1.8; font-weight: 600;
+  }
+  .keypoint strong { color: #ffd875; font-weight: 800; }
+  .keypoint small { display: block; font-family: var(--sans); font-weight: 400; font-size: 12.5px; opacity: 0.75; margin-top: 8px; }
+
+  .table-wrap { overflow-x: auto; margin: 26px 0; }
+  table { width: 100%; min-width: 520px; border-collapse: collapse; font-family: var(--sans); font-size: 14px; line-height: 1.6; }
+  th {
+    text-align: left; font-size: 12px; letter-spacing: 0.1em; color: var(--purple);
+    text-transform: uppercase; padding: 10px 14px; border-bottom: 2px solid var(--purple);
+  }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.mono { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+
+  /* logic map - vertical timeline */
+  .logic-map { margin-bottom: 56px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); overflow: hidden; }
+  .logic-map summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 14px;
+    padding: 18px 24px; font-family: var(--sans); font-size: 15px; color: var(--purple);
+    font-weight: 700; user-select: none; transition: background 0.2s;
+  }
+  .logic-map summary::-webkit-details-marker { display: none; }
+  .logic-map summary:hover { background: var(--purple-soft); }
+  .logic-map[open] summary { border-bottom: 1px solid var(--line); }
+  .logic-map[open] .lm-icon { transform: rotate(90deg); }
+  .lm-icon { display: inline-block; font-size: 13px; transition: transform 0.2s; color: var(--purple); }
+  .lm-label { font-size: 16px; }
+  .lm-hint { font-size: 12.5px; color: var(--ink-3); font-weight: 400; margin-left: auto; }
+  .lm-body { padding: 28px 24px 28px 28px; }
+  .lm-timeline { position: relative; padding-left: 28px; }
+  .lm-timeline::before {
+    content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px;
+    width: 3px; background: var(--purple); border-radius: 2px; opacity: 0.25;
+  }
+  .lm-item { position: relative; padding: 14px 0 14px 20px; border-bottom: 1px dashed var(--line); }
+  .lm-item:last-child { border-bottom: none; }
+  .lm-item::before {
+    content: ""; position: absolute; left: -24px; top: 22px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--paper); border: 3px solid var(--purple);
+  }
+  .lm-item.lm-final::before { background: var(--purple-deep); border-color: var(--purple-deep); }
+  .lm-item-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .lm-item-step { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--purple); font-weight: 700; flex-shrink: 0; }
+  .lm-item-title { font-family: var(--serif); font-size: 20px; font-weight: 900; color: var(--purple-deep); line-height: 1.3; }
+  .lm-item-desc { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--ink-2); }
+  .lm-item-desc strong { color: var(--purple-deep); font-weight: 700; }
+  @media (max-width: 640px) {
+    .lm-hint { display: none; }
+    .lm-body { padding: 20px 16px 20px 20px; }
+    .lm-timeline { padding-left: 22px; }
+    .lm-item::before { left: -19px; top: 20px; width: 10px; height: 10px; }
+    .lm-item-title { font-size: 18px; }
+    .lm-item-desc { font-size: 13px; }
+  }
+
+  /* series footer nav */
+  .series-nav {
+    border-top: 1px solid var(--line); margin-top: 60px; padding-top: 24px;
+    font-family: var(--sans);
+  }
+  .series-nav .nav-row {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; margin-bottom: 20px;
+  }
+  .series-nav .nav-row a { font-size: 15px; font-weight: 700; color: var(--purple); text-decoration: none; }
+  .series-nav .nav-row span { font-size: 13px; color: var(--ink-3); }
+  .series-nav .nav-links {
+    display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3);
+    border-top: 1px dashed var(--line); padding-top: 16px;
+  }
+  .series-nav .nav-links strong { color: var(--ink); }
+  .series-nav .nav-links a { color: var(--ink-2); text-decoration: none; }
+  .series-nav .nav-links a:hover { color: var(--purple); }
+
+  footer { border-top: 1px solid var(--line); font-family: var(--sans); font-size: 12.5px; color: var(--ink-3); }
+  .footer-inner {
+    width: calc(100% - 48px); max-width: 1240px; margin: 0 auto;
+    padding: 32px 0 48px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; line-height: 1.7;
+  }
+
+  .backtop {
+    position: fixed; right: 24px; bottom: 24px; width: 44px; height: 44px;
+    border-radius: 50%; background: var(--purple); color: #fff; border: none;
+    font-size: 18px; cursor: pointer; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s; box-shadow: 0 8px 24px -8px rgba(74,5,84,0.5);
+  }
+  .backtop.show { opacity: 1; pointer-events: auto; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 40px; }
+    .toc { position: static; max-height: none; margin-bottom: 40px; }
+    .toc details { display: block; }
+    .toc > .toc-list { display: none; }
+    .toc details summary {
+      cursor: pointer; font-size: 14px; font-weight: 600; color: var(--purple);
+      padding: 12px 16px; background: var(--purple-soft); border-radius: var(--radius); list-style: none;
+    }
+    .toc details[open] summary { border-radius: var(--radius) var(--radius) 0 0; }
+    .toc details .toc-list { padding: 12px 0; border: 1px solid var(--line); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding-left: 12px; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .chapter-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .chapter-num { font-size: 40px; }
+    .chapter-head h2 { font-size: 24px; }
+    blockquote { padding: 16px 18px; font-size: 16.5px; }
+    .keypoint { padding: 20px 22px; font-size: 17px; }
+    table { min-width: 0; table-layout: fixed; font-size: 13px; }
+    th, td { padding: 8px 8px; overflow-wrap: break-word; }
+    td.mono { white-space: normal; }
+  }
+  @media (max-width: 390px) {
+    .topbar-inner, .hero, .layout, .footer-inner { width: calc(100% - 32px); }
+    .hero h1 { font-size: 34px; }
+    .hero-meta { grid-template-columns: minmax(0, 1fr); }
+    .chapter h3 { font-size: 19px; }
+  }
+  @media print {
+    .toc, .backtop { display: none; }
+    .layout { display: block; }
+    .chapter { page-break-inside: avoid; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">心智探秘 · Exploring the Mind</span>
+    <span>清华大学 · 2026 秋</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">课程笔记 · 第 4 讲</div>
+    <h1>批判性思维<br>与视觉重构</h1>
+    <p class="subtitle">从直线思维到第一性原理,从刻意练习到禅宗破执,再到视觉重构证明所见皆幻觉,最终明白:语言的边界即世界的边界,意义由自己创造。</p>
+    <div class="hero-meta">
+      <div><div class="k">主讲</div><div class="v">刘嘉 · 清华大学基础科学讲席教授</div></div>
+      <div><div class="k">时间</div><div class="v mono">2026-10-15 19:20 起</div></div>
+      <div><div class="k">来源</div><div class="v">腾讯会议转写(458 段)整理</div></div>
+      <div><div class="k">时长</div><div class="v mono">2 小时 23 分 · 14 章</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="toc" id="toc">
+    <div class="toc-title">目录</div>
+    <div class="toc-list">
+      <a href="#ch1"><span class="n">01</span>刻意练习:直线思维到第一性原理</a>
+      <a href="#ch2"><span class="n">02</span>乔布斯的根:Think Different</a>
+      <a href="#ch3"><span class="n">03</span>刻意练习的规则与方法</a>
+      <a href="#ch4"><span class="n">04</span>禅与摩托车维修艺术</a>
+      <a href="#ch5"><span class="n">05</span>舔狗题目的完整推演</a>
+      <a href="#ch6"><span class="n">06</span>禅宗:应无所住而生其心</a>
+      <a href="#ch7"><span class="n">07</span>洛克的质疑:物质决定精神</a>
+      <a href="#ch8"><span class="n">08</span>视觉的相对性:庄子</a>
+      <a href="#ch9"><span class="n">09</span>变化盲视:门板实验</a>
+      <a href="#ch10"><span class="n">10</span>信息压缩与重构</a>
+      <a href="#ch11"><span class="n">11</span>时间的重构与罗生门</a>
+      <a href="#ch12"><span class="n">12</span>语言的边界:可说与不可说</a>
+      <a href="#ch13"><span class="n">13</span>苍蝇与玻璃瓶:收回控制权</a>
+      <a href="#ch14"><span class="n">14</span>终章:不是风动是心动</a>
+      <a href="#timeline"><span class="n">附</span>课堂时间轴</a>
+    </div>
+    <details>
+      <summary>目录</summary>
+      <div class="toc-list">
+        <a href="#ch1"><span class="n">01</span>刻意练习:直线思维到第一性原理</a>
+        <a href="#ch2"><span class="n">02</span>乔布斯的根:Think Different</a>
+        <a href="#ch3"><span class="n">03</span>刻意练习的规则与方法</a>
+        <a href="#ch4"><span class="n">04</span>禅与摩托车维修艺术</a>
+        <a href="#ch5"><span class="n">05</span>舔狗题目的完整推演</a>
+        <a href="#ch6"><span class="n">06</span>禅宗:应无所住而生其心</a>
+        <a href="#ch7"><span class="n">07</span>洛克的质疑:物质决定精神</a>
+        <a href="#ch8"><span class="n">08</span>视觉的相对性:庄子</a>
+        <a href="#ch9"><span class="n">09</span>变化盲视:门板实验</a>
+        <a href="#ch10"><span class="n">10</span>信息压缩与重构</a>
+        <a href="#ch11"><span class="n">11</span>时间的重构与罗生门</a>
+        <a href="#ch12"><span class="n">12</span>语言的边界:可说与不可说</a>
+        <a href="#ch13"><span class="n">13</span>苍蝇与玻璃瓶:收回控制权</a>
+        <a href="#ch14"><span class="n">14</span>终章:不是风动是心动</a>
+        <a href="#timeline"><span class="n">附</span>课堂时间轴</a>
+      </div>
+    </details>
+  </nav>
+
+  <main>
+
+    <!-- Logic Map (collapsible by default) -->
+    <details class="logic-map" id="logic-map">
+      <summary>
+        <span class="lm-icon">▸</span>
+        <span class="lm-label">全讲逻辑脉络图</span>
+        <span class="lm-hint">点击展开 · 破惯性 → 立方法 → 找隐藏假设 → 入禅破执 → 视觉证伪 → 语言划界 → 意义自创</span>
+      </summary>
+      <div class="lm-body">
+        <div class="lm-timeline">
+          <div class="lm-item">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 01</span><span class="lm-item-title">破惯性:直线思维之弊</span></div>
+            <div class="lm-item-desc">选课与留北上广的水平问答 · <strong>短视从众是思维惰性</strong> · AI 时代答案变廉价,要以辩求真</div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 02</span><span class="lm-item-title">立方法:第一性原理与刻意练习</span></div>
+            <div class="lm-item-desc">10 年后想成为什么样的人 · 君子务本,本立而道生 · 乔布斯 Think Different 的根 · <strong>5 人组大白纸推演规则</strong></div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 03</span><span class="lm-item-title">示典范:舔狗隐藏假设推演</span></div>
+            <div class="lm-item-desc">亮观点 → 找隐藏假设("世界会回应我") → 论证假设之错(苦难没有观众) → 新假设(世界无预设意义) → <strong>我爱你,但与你无关</strong></div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 04</span><span class="lm-item-title">入禅破执:应无所住而生其心</span></div>
+            <div class="lm-item-desc">苹果产品部分与整体为一 · 慧能"菩提本无树,明镜亦非台" vs 神秀"时时勤拂拭" · <strong>抛弃执着才有自在清净之心</strong></div>
+          </div>
+          <div class="lm-item">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 05</span><span class="lm-item-title">视觉证伪:所见皆重构</span></div>
+            <div class="lm-item-desc">庄子大小相对 · 明暗相对 · 变化盲视(门板实验 70% 无觉) · 信息从 100 亿压到 100 比特 · 康德"没有知识引导的感觉是瞎的" · 经验塑造感知(亚马逊看牛)</div>
+          </div>
+          <div class="lm-item lm-final">
+            <div class="lm-item-header"><span class="lm-item-step">STEP 06</span><span class="lm-item-title">划边界与得自由</span></div>
+            <div class="lm-item-desc">维特根斯坦:语言的边界即世界的边界 · 可说与不可说 · <strong>山河之美在观者之心</strong> · 苍蝇与玻璃瓶 · 不是风动不是幡动,是仁者心动</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+
+    <section class="chapter" id="ch1">
+      <div class="chapter-head"><span class="chapter-num">01</span><h2>刻意练习:从直线思维到第一性原理</h2></div>
+      <div class="chapter-time">0:07 - 0:25 · 直线思维之弊 · 第一性原理 · 君子务本</div>
+            <h3>直线思维:为什么我们的决定总是错的</h3>      <p>刘嘉从大学生最日常的两个选择切入:要不要选这门课?毕业后要不要留北上广?大家怎么做的?问学长&ldquo;这门课好不好玩、水不水、要不要做作业&rdquo;,或者把北京和家乡的工资、房价列进 Excel 表格做对比,觉得自己做了很多调研。</p>      <blockquote>你觉得你问了很多的人,你发现没有,你并没有往深度走。你在一条水平线上问你的问题,非常直接:我留在北上广有什么好处?有什么坏处?我选这门课有什么好处?有什么坏处?</blockquote>      <p>直线的思维模式很快,马上就能找到结论,但<strong>短视、从众和惯性,本质上是我们思维惰性的一种体现</strong>。十万年前,我们祖先的思维就是直线的:要不要去打猎?去打。打老虎还是打兔子?祖先的血泪教训告诉我们,打弱一点的动物,不用去思考。但今天这个世界太复杂了,还用十万年前的直线思维,就会得到非常错误的答案。</p>      <p>为什么我们意识不到?三个假象:第一,觉得&ldquo;我已经思考了,我已经问了几十个人了&rdquo;;第二,觉得&ldquo;我已经付出了很多,我做了调研,准备了 Excel 表格&rdquo;;第三,&ldquo;我一想到就马上行动,我快速地得到了结论&rdquo;。</p>      <p>在 AI 时代,这个问题更致命:当答案变得越来越廉价、越来越多,你直接问大模型,比找同学、找学长快得多。<strong>这就要求我们必须采用一种&ldquo;以辩求真&rdquo;、往下追问的方式。</strong></p>      <h3>纵向深挖:第一性原理</h3>      <p>标准模式是什么?不是问&ldquo;清华计算机系的分是多少、心理系的分是多少&rdquo;,而是问:<strong>志愿设置的目的是什么?10 年之后,我究竟想成为一个什么样的人?什么是我想赖以生存的东西?</strong></p>      <blockquote>当你把这点想清楚了之后,你才会有想清楚:志愿其实是到达目标的路线和起点。有了这一点之后,你再来想,我应该做什么样的选择。我们不要用实现层面的方式来思维,而是要往纵向走。</blockquote>      <h3>刘嘉的雪碧故事:底层逻辑如何决定选择</h3>      <p>刘嘉用自己留北京的经历示范什么叫底层逻辑。90 年代他到北京读大学,拒绝让父母送。到北京第一晚住在朋友家(月坛边上),第二天一早五六点就起来给家报平安,那时候没有微信、没有手机、连固定电话都没有,只能去邮局发电报(按字收费,字一定要省,但意思要表达清楚)。</p>      <p>出了邮局大门,天亮了,那是他第一眼看北京:</p>      <blockquote>太阳特别亮、特别高,天上没有白云,无限宽广。他来自重庆,著名的雾都,每天都是各种各样的白雾,人就在一片白雾中间穿梭。所以他当时想:天居然有这么高,太阳这么亮。</blockquote>      <p>再看月坛那条路,四条车道,笔直向前、感觉没有尽头。他家乡只有一条路,还是歪歪拐拐的山路。他感叹:天下还有这么宽的马路。正感叹时,一个老太太推着冰棍车经过。他问有没有雪碧,初中高中时他在《少年文艺》里读到过一种特别好喝的饮料叫雪碧,但家乡没卖的。老太太摸出一瓶冰镇的雪碧,绿色玻璃瓶,打开喝下去:</p>      <blockquote>我当时只有一个念头:我一定要留下北京。当我碰到各种挫折的时候,我就想起在北京喝雪碧的这种感觉。</blockquote>      <p>这就是底层逻辑:要不要留北上广,不是看北京房价有多高、工资有多高,而是<strong>北上广对人的最大价值是&ldquo;被放大的红利&rdquo;</strong>,这一切是在家乡体验不到、感受不到的;当然也有挑战:大家都想待下来,你得有更强的竞争。有了底层逻辑之后,剩下的是风格问题:有些人想过挑战的人生,有些人想过安静的人生,无所谓好坏,只是个人风格。</p>      <blockquote>对我而言,我就喜欢那种卷的人生,喜欢在阳光之下面对一望无垠的蓝天的感觉。北京的工资多少与我有关系吗?没有关系。北京的房价有多高?与我没有关系。</blockquote>      <p>当你把底层逻辑想清楚了,以后碰到学业困难、生活不如意,这些都不重要,你就能坚守下来。</p>      <h3>君子务本,本立而道生</h3>      <p>《论语》里有一句非常重要的话:<strong>君子务本,本立而道生</strong>。本就是根本。一个人追求事物的本源,他万事万物的出发点、所有决定的出发点,一定要从这个本出发。</p>      <blockquote>一旦你找到了这个本,找到了你的基石,找到你的第一性之后,本立而道生,从下层的上面生长起来,有无穷多的演化的可能性。当你的本越深的时候,你能生长出更多的东西。</blockquote>      <p>这呼应了第 3 讲的链条:从矛盾律到布尔代数,你往下面挖得越深,生长出来的树木就越茂盛。</p>
+    </section>
+
+    <section class="chapter" id="ch2">
+      <div class="chapter-head"><span class="chapter-num">02</span><h2>乔布斯的根:Think Different 与苹果的 Core Value</h2></div>
+      <div class="chapter-time">0:26 - 0:31 · Think Different · Core Value</div>
+            <p>刘嘉现场放了苹果经典广告《Think Different》(Here&#39;s to the crazy ones, the misfits, the rebels, the troublemakers...)。他借这支广告讲&ldquo;一个公司的根&rdquo;:</p>      <blockquote>我们在表面上看到的是什么?一个公司今年 revenue 是多少,卖了多少东西,计算机卖了 100 万台还是 1000 万台,股价涨了多少,这是每个 CEO 都在追求的东西。但如果你的 core value 变了,今天用户喜欢这种,你赶紧往这边生产,生产完了用户不喜欢了,你又改变策略,你就始终疲于奔命,最后被这个市场淘汰。为什么?因为你没有根。而你真正的根是最底层的东西。</blockquote>      <p>对苹果公司而言,根就是&ldquo;Think Different&rdquo;。乔布斯死了,后面的库克和技术人都把这个作为苹果最核心的 core value。</p>      <blockquote>我们每个人,假设你想生活得好、工作得好,假设你想在这个世界上快快乐乐地活下去,那一定要有不动的东西。这个 core value 是什么?它不是天上掉下来的,是自我探索去找到的。自我探索的过程是什么?就是我们这学期大家做的刻意练习,教会大家通过思辨来找到自己的根究竟在什么地方。</blockquote>
+    </section>
+
+    <section class="chapter" id="ch3">
+      <div class="chapter-head"><span class="chapter-num">03</span><h2>刻意练习的规则与方法</h2></div>
+      <div class="chapter-time">0:31 - 0:42 · 分组流程 · 作业评分 · 文献方法</div>
+            <h3>分组与流程</h3>      <ul>
+        <li><strong>分组</strong>:5 人一组,自由报名、自由组合、先到先得;每个同学总共要做 4 次刻意练习(这段时间忙可以以后再报);</li>
+        <li><strong>流程</strong>:每周给一个练习题目,自己去找相关文献阅读;助教参与小组讨论、帮助打磨观点(四位助教就是为此而设);</li>
+        <li><strong>工具</strong>:不用 PPT,用大白纸,把思路用图表、框架的方式画出来,纸免费供应;</li>
+        <li><strong>打磨与 PK</strong>:组内每人讲一遍,选出讲得最好的一个,全组帮他打磨观点;然后组间 PK,胜出者代表小组上台分享;</li>
+        <li><strong>报告格式</strong>:问题阐述 &rarr; 结论(是/否) &rarr; 该问题的底层逻辑、隐藏假设是什么 &rarr; 论证它为什么成立或不成立 &rarr; 最后的金句。</li>
+      </ul>      <h3>作业与评分</h3>      <ul>
+        <li>选出的&ldquo;全村的希望&rdquo;执笔 800-1000 字论述报告(大家别想划水,他写的就是你们小组的,你们要一起打磨);</li>
+        <li>每个成员把大白纸上的观点框架拷贝到 A4 纸(拍照转 PDF 即可),每个成员占 10%,共 50%;加上报告,合计 100 分;</li>
+        <li>每人最多有一次执笔报告的机会(给其他人留机会);助教选出最优秀的 1-2 个小组上台分享,<strong>限时 5 分钟</strong>,绝不能超过 10 分钟;</li>
+        <li>分享时组员站在旁边,因为同学会质疑、会提问,他们要回应、要反驳,这是非常好的追问模式;只对选课学生开放,本周报名在企业微信完成。</li>
+      </ul>      <h3>怎么读文献:借大模型的产婆术</h3>      <p>刘嘉给了个实用建议:现在没有人再从一篇文章第一个字读到最后一个字。他刚到 MIT 读书时,一门课的课后阅读材料至少 50-100 页 A4 纸论文,他是系里唯一的非美国人,GRE 单词要求又高,常常一页没读完就天黑了。现在不用了:</p>      <ul>
+        <li><strong>掌控全局</strong>:把文章扔给大模型,&ldquo;给我总结一下这篇文献,让我快速了解&rdquo;(可以直接让它给 1000 字英文摘要);</li>
+        <li><strong>有效提问</strong>:关注什么就问什么,研究目的、研究方法、数据分析;对某个观点感兴趣,就不断追问到满意为止;</li>
+        <li><strong>从一篇到多篇</strong>:让大模型推荐相关文章,你就跳出了这一篇的题目,走向更多篇。&ldquo;大模型把全世界的知识压缩进权重&rdquo;,这就是最好的读文献方法;</li>
+        <li><strong>内化思考</strong>:用思维导图把关键点拿出来(&ldquo;原来特别不屑用思维导图,用了之后发现真香&rdquo;),它帮你把盘中错节的观点纠结起来。不想用思维导图就在纸上写,写的过程也是思考的过程。</li>
+      </ul>      <blockquote>我们读文献要训练的就是:你追问,变得更加深入,不停迭代,变得更加系统。最开始的文章是我们给你的,但到最后你会发现老师给的文章不好、不是你感兴趣的,你要找到你自己的点,这就是我们科研的过程。所以这堂课也教给大家怎么做科研。</blockquote>
+    </section>
+
+    <section class="chapter" id="ch4">
+      <div class="chapter-head"><span class="chapter-num">04</span><h2>《禅与摩托车维修艺术》:波西格的 121 次投稿</h2></div>
+      <div class="chapter-time">0:42 - 0:46 · 波西格 · 古典理性与浪漫感情</div>
+            <p>刘嘉介绍了一本&ldquo;神书&rdquo;:罗伯特·波西格的《禅与摩托车维修艺术》。书名里两个完全不相干的东西,禅坐在庙里,摩托车在路上修,被作者拧在一起:他带着儿子一边骑摩托一边修摩托,在路上跟儿子讨论哲学问题,把整个过程记录下来,就成了这本书。</p>      <blockquote>他总共投了 121 家出版社。1974 年第一次出版到现在,全世界销量 500 万册。它是一本哲学的书,能卖 500 万册是什么概念?以中国标准为例:一本书卖 2 万册叫畅销书,卖 5 万册叫超级畅销书,编辑要跪在地上感谢。它卖了 500 万册,成为史上最经典的哲学书之一。</blockquote>      <p>乔布斯在多个场合提到这本书,苹果那套东西深受这本书的哲学影响。它的核心:把古典的理性和浪漫的感情融为一体,<strong>事物本身的卓越感先于主、客观而存在,无法用纯理性来给它做一个简单的决定</strong>。最关键的是:当你沉下心来拧螺丝、修理机器,这种全身心的投入,跟你沉下心来读文献、打磨观点、做刻意练习,是一样的。</p>      <blockquote>当你专注于某件事情的时候,你能够真正洞悉这个世界的本质。</blockquote>
+    </section>
+
+    <section class="chapter" id="ch5">
+      <div class="chapter-head"><span class="chapter-num">05</span><h2>刻意练习示范:舔狗题目的完整推演</h2></div>
+      <div class="chapter-time">0:46 - 1:07 · 隐藏假设 · 西弗神话 · 金句</div>
+            <h3>第一步:亮观点</h3>      <p>刘嘉现场用一道刻意练习题目做完整示范。题目:</p>      <blockquote>你对他有好感,决定通过不断的付出来赢得他的好感。但随着时间的推移,边际效用递减,他习惯了,甚至开始把这当做理所应当,而你的努力并没有让关系更进一步。问题:你是否应该停止对他的付出?<span class="attr">练习题目</span></blockquote>      <p>报告的标题要清楚地表达观点,先亮出结论。刘嘉示范的观点是&ldquo;不,我还要继续付出&rdquo;。</p>      <h3>第二步:找隐藏假设(最关键的一步)</h3>      <p>为什么&ldquo;我&rdquo;会失望、会想停止?因为有个隐藏假设:<strong>这个世界会回应我</strong>,我付出了,对方也应该回应。</p>      <blockquote>我们付出,他原来还惊喜;我现在付出,他连惊喜都没有,理所当然了。隐藏假设这一步是最关键的:这个世界应该回应我。</blockquote>      <h3>第三步:论证假设的对错(先煽情,再理性)</h3>      <p>先通过煽情把大家的情绪调动起来,这是我们从小被教育的东西:我哭了,妈妈就会来;我努力了,就能考上清华;善有善报,恶有恶报;正义也许会迟到,但永远不会缺席。</p>      <p>然后用冷静的理性拆掉它:</p>      <blockquote>努力的人会失败。很多人努力,清华每年就招这么几个人,全国努力的人远比清华招的多;善良的人会受伤;优秀的人会被埋没;死亡不讲情面,历史并不在乎个人的悲欢离合,社会的机器不会考虑我们每个人多么努力。</blockquote>      <p>再往下追一层:人真正难以忍受的,未必是没有结果、没有答案,而是<strong>苦难没有观众,人生没有意义</strong>,我舔,对方没有任何回应,那这个行为就没有意义了。</p>      <h3>第四步:新假设与回扣</h3>      <p>旧假设(&ldquo;这个世界应该回应我&rdquo;)是错的,这个世界没有意识,神只是提供了一个因果压缩。那么新的隐藏假设是什么?</p>      <blockquote>这个世界本身就没有预设的意义。我们不要去等待别人给我们意义,等待老天给我们指条路是错的,因为老天本身没有这种意识。意义要自己来创造。我把原来交给别人的主动权抢回来了,我把控制权交到别人手里,期待别人做出反应;现在,控制权全部到我手里。意义由自己来创造。</blockquote>      <p>回扣标题:舔狗不是傻瓜,因为&ldquo;我爱你,但与你无关&rdquo;,这个&ldquo;是&rdquo;已经定义了全部。你爱不爱我不重要,这是全部的爱。</p>      <h3>金句与西弗神话</h3>      <p>结尾要留一个可以记忆的金句。刘嘉先讲了西西弗斯:他犯了错,被宙斯罚把石头推上山,推到山顶石头又滚下来,只好重新推,一件多无聊、多没有意义的事情。</p>      <p>他讲了自己军训时的经历:整整军训一年,有一天中队长怕他们闲着出问题,就让他和同学王小文在食堂门口挖一个树坑(宽 60cm、长 60cm、深 1m),挖好了,吃完饭之后又让他们把坑全部填上。&ldquo;我们很多时间,就是在做没有意义的周而复始的事情。&rdquo;</p>      <p>诺贝尔奖得主加缪写了著名的《西西弗神话》(刘嘉特别推荐北大杜小珍的译本,他读大学时最困惑迷茫的时候读完,所有问题全部解决):</p>      <blockquote>西西弗并不是一个被动地把石头推上山,他用把石头推上山这个行为来对抗荒谬。这个世界充满了荒谬。在推上山的过程中,他确实是在对宙斯嘲笑。这个时候,意义由我来定义,不再由宙斯定义。文章的结尾,加缪说:<strong>我们必须想象西西弗是幸福的。</strong>为什么?意义由我来创造。</blockquote>      <p>你可以想象把西西弗换成那只舔狗:不停地舔,疯狂地舔,舔得没有任何意义。但是我们必须想象,当他跪下来的时候,我们欣赏他,因为意义由他自己创造。</p>      <h3>本周练习题目</h3>      <div class="keypoint">如果选择权真的交到你手里,你会选择永生吗?,隐藏假设是什么?它是对的还是错的?你的金句是什么?<small>刻意练习 · 本周题目</small></div>
+    </section>
+
+    <section class="chapter" id="ch6">
+      <div class="chapter-head"><span class="chapter-num">06</span><h2>禅宗:应无所住而生其心</h2></div>
+      <div class="chapter-time">1:16 - 1:25 · 苹果的整体观 · 慧能神秀 · 菩提本无树</div>
+            <h3>苹果:整体与部分为一</h3>      <p>刘嘉给了一张苹果产品的图片(Mac 系列):看这幅图有一种极度舒适的感觉。为什么?苹果的产品不是整体的部分,而是<strong>部分与整体为一</strong>。这背后是禅宗的东西在运作。</p>      <p>他分享了自己从 PC 死忠到苹果用户的故事:92 年他在北大的宿舍可能是中国第一个有计算机的宿舍(学编程,最后变成打游戏);他曾是中关村著名的修计算机的,90 年代帮人家组装一台计算机能挣 200-500 块钱(相当于现在 6000 块)。到 MIT 读研究生时,老板送他苹果产品他特别鄙视:&ldquo;我一定要用 PC。&rdquo;直到有一天朋友送了他一块苹果手表,他久坐,手表震动提醒他站起来。后来朋友又问他苹果手表用得怎么样,他说没用,因为他手机是安卓连不上。朋友默默走了,过了几天送了他一部苹果手机。</p>      <blockquote>这么好一个东西,为什么我现在才用上?我把我的 PC 机换成苹果,这个世界怎么有这么美好的东西?它背后运行的逻辑是什么?</blockquote>      <h3>慧能与神秀:菩提本无树</h3>      <p>禅宗的&ldquo;应无所住而生其心&rdquo;:当我们执着于一个事物、纠缠于我们的思想,就永远不会生出自在清净的心。只有把这种事物和思想抛弃掉,才会有自在而清净的心。</p>      <p>刘嘉讲了禅宗史上最著名的衣钵之争。五祖弘忍感觉自己不行了,要找弟子接衣钵,让大家写偈子。大弟子神秀写的是:&ldquo;身是菩提树,心如明镜台,时时勤拂拭,勿使惹尘埃。&rdquo;大家觉得简直太了不起了。</p>      <p>慧能从旁边路过,他出身贫寒,大字不识,每天只能扫地、帮厨。他托师兄念给他听,听完马上来了一句:</p>      <div class="keypoint"><strong>菩提本无树,明镜亦非台,本来无一物,何处惹尘埃。</strong><small>六祖慧能</small></div>      <p>当你说还有个菩提树、还有明镜台的时候,你其实已经执着于这个事物了。都没有树、没有明镜台,怎么会去惹尘埃?这句话说出来,所有人全部震散。五祖赶紧把自己的衣钵传给他,让他跑路,&ldquo;你太厉害了,大家会记住你,神秀会把你剁掉。&rdquo;慧能就带着衣钵跑到深山里去修,后来成为六祖,这套东西后来经日本东部和尚传回日本,成为日本禅宗的来源。</p>
+    </section>
+
+    <section class="chapter" id="ch7">
+      <div class="chapter-head"><span class="chapter-num">07</span><h2>洛克的质疑:物质决定精神?</h2></div>
+      <div class="chapter-time">1:25 - 1:27 · 唯物主义质疑</div>
+            <p>禅宗这一套有最大的反对者,西方大哲学家洛克的唯物主义:</p>      <blockquote>当我们通过感觉所传递的信息产生任何一点知识时,这个知识不仅依赖于我们的观察,也依赖于物质。翻译成现在的哲学:你先得有物质,你才有精神,物质决定精神。</blockquote>      <p>背后的逻辑很简单:现实世界有一个绿色的苹果,进入到我们的眼睛,刺激了视网膜放电,进入视觉皮层放电,再进到前额叶放电,然后你知道&ldquo;我看见了一个绿色的苹果&rdquo;。如果世界上不存在绿色的苹果,你说看见了一个,大家一定会说你精神分裂。</p>      <blockquote>我给大家上课,除了那边坐的四个助教之外,我说这边还站了十个助教,你们一定要给校长举报说,我们的老师精神分裂,送回回龙观吧?</blockquote>      <p>我们通常直观地以为:视觉是对外部世界客观的、忠实的反应,就像一个照相机。接下来整个下半场,就是要拆掉这个直觉。</p>
+    </section>
+
+    <section class="chapter" id="ch8">
+      <div class="chapter-head"><span class="chapter-num">08</span><h2>视觉的相对性:庄子、大小与明暗</h2></div>
+      <div class="chapter-time">1:27 - 1:34 · 庄子 · 大小对比 · 明暗对比</div>
+            <h3>庄子:大小都是对比出来的</h3>      <p>庄子说过:&ldquo;以差观之,因其所大而大之,则万物莫不大;因其所小而小之,则万物莫不小。&rdquo;翻译成现代汉语:我们之所以觉得大、觉得小,是因为有对比。没有对比,就无所谓大和小。</p>      <blockquote>就像在座的各位一样,当你觉得我考上清华特别了不起,到了清华之后发现原来大家都很牛。在你们中学里你是天选,永远是最高的;到了清华,所谓的学霸和学渣,都是相互对比而已。</blockquote>      <p>复习第 1 讲的错觉:两个红色圆点哪个更大?换成不同的环绕方式,答案就变了。因为我们不能感觉绝对的大小,只能感觉相对的大小。</p>      <h3>明暗也是相对的</h3>      <p>一位俄罗斯诗人说过:所有的光明都是黑暗,如果你和更亮的光明相比;所有的黑暗都是一片光明,如果你和更暗的黑暗相比。</p>      <p>刘嘉现场演示:同样亮的两个色块(标一和标二),一个放更亮的背景、一个放更暗的背景,马上显得不一样亮。然后他一点点把背景抽掉,大家惊呼,两块颜色真的一样亮。&ldquo;我们不能感受绝对的亮度和暗度,我们只能感受相对的。&rdquo;连颜色是否一样,都留作作业让大家回去自己试。</p>
+    </section>
+
+    <section class="chapter" id="ch9">
+      <div class="chapter-head"><span class="chapter-num">09</span><h2>变化盲视:门板实验与 21 处变化</h2></div>
+      <div class="chapter-time">1:34 - 1:41 · 《情人》朗读 · 门板实验 · 变化视频</div>
+            <p>刘嘉先放了杜拉斯《情人》的著名开场朗读(&ldquo;我已经老了。有一天,一个男人向我走来,他主动介绍自己,他说我认识你,我永远记得你&hellip;&hellip;那时候你是年轻女人,我更爱你现在备受摧残的面容&rdquo;),然后问:大家注意到有什么变化吗?,朗读过程中,图片上的人从年轻女性变成了一个备受摧残的老人,几乎没人发现。</p>      <blockquote>你们对变化也不敏感。这是我们第一节课就讲过的:我们只对相对变化敏感,对绝对不变的东西不敏感。</blockquote>      <p>更狠的是康奈尔大学的经典实验:心理学家带助手去校园里找人问路,问路过程中两人扛着一块门板经过,问路的人被门板挡住视线的瞬间,问路者被换成了另一个人(从年轻人变成老人、甚至从男性换成女性)。<strong>70% 的人没有意识到换了人。</strong></p>      <p>最后放了一段比扑克牌更狠的变化视频:翠壳在什么地方?你能发现多少变化?,全场数出来大约 20-21 处变化。我们看到了吗?没看到。这不是眼睛不行,不需要每个人换一副眼镜。这是洛克所讲的感知方式出了问题。</p>
+    </section>
+
+    <section class="chapter" id="ch10">
+      <div class="chapter-head"><span class="chapter-num">10</span><h2>信息的压缩与重构:从 100 亿到 100 比特</h2></div>
+      <div class="chapter-time">1:41 - 1:55 · 视觉压缩 · 康德 · 自动重构 · 经验塑造感知</div>
+            <h3>大脑为什么敢于重构</h3>      <p>看一个苹果,到达视网膜的信息量是上百亿;视网膜通过约 100 万个神经连接到达视觉初级皮层,变成 600 万;大量信息在视网膜和外侧膝状体被筛掉,只把认为重要的留下来;到了视觉加工区变成 1 万;到视觉高级皮层再往前额叶送,最后变成 <strong>100 比特</strong>。</p>      <blockquote>从 100 亿比特每秒,变成 100 比特,信息被压缩了。我们大脑没有 AI 聪明,只有这么少的信息,那我怎么去看这个世界长什么样子?大脑把它重构出来。我们只要根据外部世界一点点信息,把它重构。你有一种感觉:我眼睛所看见的世界就是真实的世界,你其实已经丢掉了百亿的信息,压缩了一亿倍。</blockquote>      <p>这样做有什么好处?这正是人形机器人不能在真实物理世界行动的关键:它不知道怎么快速压缩、把最有效最关键的信息提出来。</p>      <h3>重构是创造性的,而且是自动的</h3>      <p>我们有时会把绿色的苹果看成红色的苹果,甚至看成梨子,这不是看错了,而是<strong>你所看见的,即使是正确的绿色苹果,也是你大脑构建的</strong>。你可能会问:能不能不要重构,老老实实做个照相机就行了?不行。我们之所以进化出重构,背后一定有非常重要的生态学意义。</p>      <blockquote><strong>没有感觉支撑的知识是空的,没有知识引导的感觉是瞎的。</strong>如果你不知道你应该看到什么,那你将什么都看不到。<span class="attr">康德</span></blockquote>      <ul>
+        <li><strong>旋转的女舞者</strong>:顺时针转还是逆时针转?两种都有人看到。想象一下它在逆时针转,它马上就变成逆时针转。给你引导,它就变。</li>
+        <li><strong>锐角直角钝角</strong>:一幅平面图你觉得有锐角有钝角,是因为你偷偷加上了第三维度。三维是我们构造出来、偷偷塞进二维里结合的,自动加工,不受意识控制;</li>
+        <li><strong>阴影错觉</strong>:碗一下变大一下变小;球从左下角移到右上角,改变阴影就给你完全不同的感觉,球好像在飞毯上悬空、在漂浮。你知道是阴影在捣乱,但你能用意识把阴影去掉吗?没有用;</li>
+        <li><strong>缪勒莱尔错觉</strong>:两条一样长的线,加上箭头就不一样长,第 1 讲就演示过;</li>
+        <li><strong>亚马逊丛林人看牛</strong>:人类学家带亚马逊人去美国看大草原,他看见一头牛向他跑过来,露出惊恐的表情:&ldquo;这头牦牛在我眼前膨胀起来了!&rdquo;他知道牛的体积不应该改变,但他的视觉世界最远只有几米(丛林里一棵树一棵树密密麻麻),他看见的就是 5 米外的一头牦牛跑到面前,在他的视网膜上,那头牛该长多大?</li>
+      </ul>      <div class="keypoint">你可以看到,我们的经验、我们的生活会塑造我们的感知。我们对这个世界的感知,是被我们的过去所塑造的。<small>刘嘉,第 4 讲</small></div>
+    </section>
+
+    <section class="chapter" id="ch11">
+      <div class="chapter-head"><span class="chapter-num">11</span><h2>时间的重构与罗生门</h2></div>
+      <div class="chapter-time">1:55 - 2:05 · 时间重构 · MV 动画 · 《罗生门》 · 心灵构建</div>
+            <h3>时间也是重构出来的</h3>      <p>爱因斯坦讲相对论时,有人让他用通俗的方式讲讲,他说:</p>      <blockquote>当你和一个美女在一起的时候,觉得时间过得特别快;当你和一个无趣的人在一起,时间特别慢;当你听一门讲得很慢的课程,感觉过去一天了,才过去 5 分钟。<span class="attr">爱因斯坦,被课堂引述</span></blockquote>      <p>刘嘉放了一段他特别喜欢的 MV:一个女孩躺在那里拍一张照片,再把照片连起来变成动画,这里面有时间吗?这个时间是重构出来的。<strong>不仅时间可以重构,所有的一切都可以重构出来。</strong></p>      <p>这期的观影作业是《罗生门》:一个武士被谋杀,所有的人都在讲不同的版本。为什么?并不是谁说谎,而是每个人都在维护自己的立场。你会发现,每个人的故事都是不一样的。</p>      <h3>世界是我们构建的</h3>      <p>认知心理学的观点:我们所知道的世界,是我们构建的。在这构建的世界里面,<strong>心灵提供了构建的逻辑,而外部世界提供能量(材料)</strong>,外部世界提供的是砖瓦钢筋水泥,但你要修成什么样的房屋、什么样的城堡,是我们的心灵决定的。没有砖瓦肯定不行;但你的心灵世界是美是丑,取决于这个构建。</p>      <blockquote>我们的视觉不是照相机,而是真正的构造者。我们把一个绿色的苹果看成一个绿色的苹果,同样也是幻觉,因为绿色的苹果也是我们构建出来的,它只是碰巧和物理世界那个绿色的苹果长得一模一样而已。在绝大多数情况之下,大脑所构建的苹果让你感觉和世界的苹果一模一样。</blockquote>
+    </section>
+
+    <section class="chapter" id="ch12">
+      <div class="chapter-head"><span class="chapter-num">12</span><h2>语言的边界:可说与不可说</h2></div>
+      <div class="chapter-time">2:05 - 2:12 · 维特根斯坦 · 可说与不可说 · 观者之心</div>
+            <h3>语言的边界即世界的边界</h3>      <p>维特根斯坦说:<strong>语言的边界,即世界的边界</strong>。刘嘉上次讲大模型时说过:语言的边界就是大模型的边界,所以大语言模型不应该叫大语言模型,应该叫认知模型。今天来拆解这句话。</p>      <ul>
+        <li><strong>可说</strong>:自然科学的事实命题,能用语言清晰描述,有真假。这是语言世界的领地。AI 解数学题、编程为什么厉害?因为这些东西是可说的。在语言的逻辑之内,AI 最擅长。</li>
+        <li><strong>不可说</strong>:伦理学、美学、生命的意义、上帝、价值,在维特根斯坦看来,这些都真实存在,但不能用语言表达,不能做成事实。什么叫美?不同的人有不同的判断。100 个人读《哈姆雷特》,就会有 100 个哈姆雷特,因为每个人都把自己的东西投射进去。</li>
+      </ul>      <p>看一幅图:一个房子、一棵树、一个人、一个月亮,这是描述分析,是&ldquo;可说&rdquo;的;但你感觉这里面有东西,它在和你心中某个东西形成共鸣,那是&ldquo;不可说&rdquo;的。你描述的时候绝不会说&ldquo;这是一棵树、一个人&rdquo;,而会说&ldquo;这是一个正在等待恋人回来的人&rdquo;。<strong>我们每个人都会把自己的情感投射于其中。</strong>心理学通过这种方式去了解人的内部构造(投射测验的原理)。</p>      <blockquote>AI 没有美和丑。让 AI 生成一幅画,需要你来挑,如果 AI 知道什么是美,直接生成一幅就可以了,它不用生成几十幅让你挑。因为 AI 只能描述可说的东西,编程、数学,它不能做到不可说的。这是我们人类真正最后的保障所在的地方:我们的伦理、我们的美学、我们的生命意义。这就是为什么 AI 越发展,心理学越变成一个显学的学科。</blockquote>      <p>刘嘉顺势自黑:80 年代他读书时,&ldquo;学好数理化,走遍天下都不怕&rdquo;,理科班瞧不起文科班;但这时代变了,最早受攻击的是什么?学数学的。</p>      <h3>世界的意义必然在世界之外</h3>      <p>维特根斯坦在&ldquo;语言的边界即世界的边界&rdquo;后面又加了一句话:<strong>世界的意义必然在世界之外</strong>。</p>      <p>还是以那幅画为例:画里有树、房子、人、月亮,这是世界之内。但它的意义在这幅画之外。石头落地、下雨,如果只是一堆客观事实,你算它的重力加速度就行了,你不会感动。我们看见一个美好的东西觉得感动,是因为意义在世界之外。</p>      <blockquote>我们可以通过科技移山填海,改变山川的高度、河流的走向,甚至重新塑造出整片海。但是<strong>山河之美,却不在山高水长,在观者之心</strong>。移山填海很伟大,美吗?有价值吗?有意义吗?存在于观者之心。</blockquote>      <p>蒙娜丽莎的微笑,在弗洛伊德给她加上恋母情节的解释之前,就是一幅不错的肖像;弗洛伊德之后,家长看这幅画的眼神就变了,能看出达芬奇对他母亲深深的爱恋,既看出女性的端庄,也看出女性的内在。</p>      <p>一瓶茅台酒卖 10 万人民币,值这么多钱吗?不就是一点酒精加一点水加一点香料?但你如果知道当时的僧侣是怎么酿造的,如何把理性和感性融为一体,喝进那一刻,酒的意义就不一样了。刘嘉认识的音乐家小柯(《北京欢迎你》的作曲者)自己酿酒,他说&ldquo;喝我的酒,就像在唱一首歌&rdquo;:前奏是酒香入口前淡淡的清香,到了主歌、副歌&hellip;&hellip;用歌曲的方式讲了之后再去喝那酒,口感完全不一样。</p>
+    </section>
+
+    <section class="chapter" id="ch13">
+      <div class="chapter-head"><span class="chapter-num">13</span><h2>苍蝇与玻璃瓶:收回意义的控制权</h2></div>
+      <div class="chapter-time">2:17 - 2:25 · 规训话术 · 反驳陷阱 · 瓶子是幻觉</div>
+            <h3>规训的话术:玻璃瓶是如何形成的</h3>      <p>刘嘉拆解了那些耳熟能详的&ldquo;规训话术&rdquo;:&ldquo;你太脆弱了&rdquo;&ldquo;你太极端了、太情绪化了&rdquo;(反复否定你情绪的合法性);&ldquo;我已经打了你一巴掌了,痛得要死,却说没事儿,你吃了这个亏你就知道感恩&rdquo;;&ldquo;不听我的,你这么做会伤我的心&rdquo;;&ldquo;年轻人就太冲动&rdquo;&ldquo;我们以前就是缠小脚的,残疾也就过来了,现实就是这样子&rdquo;,把压力合理化成现实;&ldquo;你不快乐是因为你想太多了,凡事往好处想&rdquo;。</p>      <blockquote>一个苍蝇关在玻璃瓶里面,用尽全力要从玻璃瓶里面跑出来。玻璃瓶是什么?就是刚才那些话,别人的经验、你应该接受现实。这些话语筑成了一个瓶子。我们在座的各位就是那只苍蝇,你很努力,拼命挣扎,但每次都只会碰壁,碰壁多了之后你就说:别再飞了,老老实实把别人的经验变成我的,你就会相信&ldquo;这个世界会回应我&rdquo;。</blockquote>      <h3>反驳的陷阱:别掉进他的话语体系</h3>      <p>你说&ldquo;我要去寻求正义&rdquo;,你就坐在了玻璃瓶上。别人用&ldquo;老天会帮我惩罚他&rdquo;来安慰你,可这个世界从来就不是善有善报、恶有恶报,坏人过得挺开心的,寿终正寝。</p>      <p>更危险的是反驳。你说&ldquo;你太年轻了,听我的,你经验不够&rdquo;,我去反驳说&ldquo;我虽然年轻,我也读过很多书&rdquo;,这句话的隐藏假设是什么?读书多就可以成熟。<strong>你一旦反驳,就掉进了他的话语体系、逻辑体系里面</strong>,你才真正输了。</p>      <p>维特根斯坦说过:哲学的任务不是提什么高深理论,而是<strong>让苍蝇找到瓶口</strong>。</p>      <blockquote>这里说的哲学,不是学术上的,是我们每个人看待这个世界的方式。你重要的不是去和这些人争论,因为这些人的话语没有任何根基,只是一种幻觉。当你把这些人的话语当成一个需要考虑的东西,你就输了。&ldquo;我爱你,与你无关&rdquo;,这瓶子就自然消失了。你不用去找瓶口在哪里,瓶子只是幻觉,里面的挣扎才是真实。</blockquote>      <h3>社会的规训与原生家庭</h3>      <p>我们痛苦的根源:社会规训与原生家庭的束缚,阻碍个体寻求真正的正义与自由。当你意识到&ldquo;这个世界没有预设的意义&rdquo;,你就可以收回来,意义由你自己创造,你不需要去问别人的感受。</p>
+    </section>
+
+    <section class="chapter" id="ch14">
+      <div class="chapter-head"><span class="chapter-num">14</span><h2>终章:不是风动,不是幡动,是心动</h2></div>
+      <div class="chapter-time">2:26 - 2:30 · 慧能出山 · 心动</div>
+            <p>刘嘉用六祖慧能出山的故事收束全讲。慧能当年传了五祖的衣钵,神秀要追杀他,他潜逃了十几年之后大彻大悟,决定出山。出山时正赶上庙里讲经,有风吹动旗幡,一个僧人说&ldquo;风在动&rdquo;,另一个说&ldquo;幡在动&rdquo;,争论不休。慧能大摇大摆走进去说:</p>      <div class="keypoint"><strong>不是风动,不是幡动,是仁者心动。</strong><small>六祖慧能</small></div>      <p>这呼应全讲的主线:我们所看见的世界,大小、明暗、颜色、时间,全是大脑重构出来的;世界的意义不在世界之内,而在观者之心;别人给我们的规训筑成的玻璃瓶只是幻觉;收回控制权,意义由自己创造。</p>      <blockquote>这个世界上你所经历的不幸的事情,并不真的会造成致命的打击。真正让你觉得痛苦的,是你把定义权交给了别人。今天的课就到这里。<span class="attr">刘嘉,第 4 讲收束</span></blockquote>
+    </section>
+
+    <!-- timeline -->
+    <section class="chapter" id="timeline">
+      <div class="chapter-head"><span class="chapter-num">附</span><h2>课堂时间轴</h2></div>
+      <div class="chapter-time">2026-10-15 19:20 起 · 转写时长约 2 小时 23 分</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>时间</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">0:07:17</td><td>开场:选课与留北上广的直线思维之弊</td></tr>
+            <tr><td class="mono">0:09:10</td><td>十万年前的直线思维;AI 时代答案变廉价,要以辩求真</td></tr>
+            <tr><td class="mono">0:10:37</td><td>填志愿的正确问法:10 年后我想成为什么样的人</td></tr>
+            <tr><td class="mono">0:12:38</td><td>刘嘉的雪碧故事:90 年代到北京、发电报、第一眼北京</td></tr>
+            <tr><td class="mono">0:19:47</td><td>北上广的底层逻辑:被放大的红利与挑战</td></tr>
+            <tr><td class="mono">0:21:12</td><td>伽利略矛盾律呼应:最底层的逻辑不可触碰</td></tr>
+            <tr><td class="mono">0:23:02</td><td>第一性原理;君子务本,本立而道生</td></tr>
+            <tr><td class="mono">0:26:31</td><td>乔布斯 Think Different 广告;苹果的 core value</td></tr>
+            <tr><td class="mono">0:31:50</td><td>刻意练习规则:5 人组、大白纸、组内打磨、组间 PK、5 分钟汇报</td></tr>
+            <tr><td class="mono">0:35:35</td><td>作业与评分:800-1000 字报告 + A4 思路图;报名安排</td></tr>
+            <tr><td class="mono">0:37:16</td><td>读文献方法:大模型产婆术 + 思维导图</td></tr>
+            <tr><td class="mono">0:42:34</td><td>《禅与摩托车维修艺术》:121 次投稿,500 万册</td></tr>
+            <tr><td class="mono">0:46:23</td><td>刻意练习示范:舔狗题目(是否停止付出)</td></tr>
+            <tr><td class="mono">0:49:27</td><td>隐藏假设:这个世界应该回应我</td></tr>
+            <tr><td class="mono">0:50:31</td><td>论证:煽情开局 + 理性拆解(苦难没有观众)</td></tr>
+            <tr><td class="mono">0:55:18</td><td>新假设:世界没有预设意义,意义自己创造</td></tr>
+            <tr><td class="mono">0:56:29</td><td>西弗神话:军训挖坑填坑;我们必须想象西西弗是幸福的</td></tr>
+            <tr><td class="mono">1:02:37</td><td>金句:我爱你,但与你无关</td></tr>
+            <tr><td class="mono">1:05:38</td><td>本周练习题目:如果选择权交到你手里,你会选择永生吗</td></tr>
+            <tr><td class="mono">1:16:09</td><td>苹果产品:部分与整体为一;刘嘉从 PC 死忠到苹果</td></tr>
+            <tr><td class="mono">1:20:00</td><td>禅宗:应无所住而生其心</td></tr>
+            <tr><td class="mono">1:21:38</td><td>慧能与神秀的衣钵之争:菩提本无树</td></tr>
+            <tr><td class="mono">1:25:29</td><td>洛克的质疑:物质决定精神</td></tr>
+            <tr><td class="mono">1:27:56</td><td>庄子:以差观之;大小都是对比</td></tr>
+            <tr><td class="mono">1:30:40</td><td>明暗相对:俄罗斯诗人;双色块抽背景演示</td></tr>
+            <tr><td class="mono">1:34:24</td><td>杜拉斯《情人》开场与变化盲视</td></tr>
+            <tr><td class="mono">1:36:25</td><td>康奈尔门板实验:70% 的人没发现换了人</td></tr>
+            <tr><td class="mono">1:38:49</td><td>变化视频:全场只数出 21 处变化</td></tr>
+            <tr><td class="mono">1:41:02</td><td>信息压缩:从 100 亿比特到 100 比特</td></tr>
+            <tr><td class="mono">1:42:36</td><td>重构的创造性:绿色苹果也是构建出来的</td></tr>
+            <tr><td class="mono">1:43:50</td><td>康德:没有知识引导的感觉是瞎的</td></tr>
+            <tr><td class="mono">1:44:55</td><td>旋转女舞者:顺时针还是逆时针</td></tr>
+            <tr><td class="mono">1:47:40</td><td>锐角直角钝角:偷偷加上的第三维</td></tr>
+            <tr><td class="mono">1:50:38</td><td>阴影错觉:球漂浮与飞毯</td></tr>
+            <tr><td class="mono">1:53:04</td><td>亚马逊丛林人看牛膨胀:经验塑造感知</td></tr>
+            <tr><td class="mono">1:55:39</td><td>爱因斯坦:美女与时间的相对性;MV 照片动画</td></tr>
+            <tr><td class="mono">2:00:12</td><td>观影作业《罗生门》:每人维护自己的版本</td></tr>
+            <tr><td class="mono">2:01:20</td><td>认知观:心灵提供构建逻辑,外部世界提供材料</td></tr>
+            <tr><td class="mono">2:05:15</td><td>维特根斯坦:语言的边界即世界的边界;可说与不可说</td></tr>
+            <tr><td class="mono">2:08:58</td><td>AI 没有美和丑;AI 越发展,心理学越是显学</td></tr>
+            <tr><td class="mono">2:09:52</td><td>世界的意义必然在世界之外</td></tr>
+            <tr><td class="mono">2:12:17</td><td>山河之美不在山高水长,在观者之心;茅台酒与小柯酿酒</td></tr>
+            <tr><td class="mono">2:17:11</td><td>规训话术拆解;苍蝇与玻璃瓶</td></tr>
+            <tr><td class="mono">2:23:23</td><td>反驳的陷阱:别掉进他的话语体系</td></tr>
+            <tr><td class="mono">2:24:08</td><td>维特根斯坦:哲学是让苍蝇找到瓶口;瓶子是幻觉</td></tr>
+            <tr><td class="mono">2:26:12</td><td>收回控制权:意义由自己创造</td></tr>
+            <tr><td class="mono">2:29:03</td><td>终章:不是风动,不是幡动,是仁者心动</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- series footer nav -->
+    <nav class="series-nav">
+      <div class="nav-row">
+        <a href="../20261008-liujia/index.html">← 上一讲:第 3 讲 · 智能的演化</a>
+        <span>第 4 讲 · 批判性思维与视觉重构(最新讲次)</span>
+      </div>
+      <div class="nav-links">
+        <span><strong>课程总览:</strong><a href="../index.html">《心智探秘》全部讲次</a></span>
+        <span style="margin-left:auto"><a href="../../index.html">← 返回分享主站</a></span>
+      </div>
+    </nav>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span>心智探秘 · 第 4 讲笔记 | 整理自腾讯会议语音转写(458 段)</span>
+    <span>清华大学 · 刘嘉 · 2026-10-15</span>
+    <span style="width:100%">逐字稿来源:腾讯会议 AI 语音转写 · <a href="https://meeting.tencent.com/ct/2Zv8yndd39" style="color:var(--purple)">原始会议录制与转写页面</a></span>
+  </div>
+</footer>
+
+<button class="backtop" id="backtop" aria-label="回到顶部">↑</button>
+
+<script>
+  // TOC active state via IntersectionObserver
+  var links = document.querySelectorAll('.toc > .toc-list a, .toc details .toc-list a');
+  var map = {};
+  links.forEach(function(a){ var id = a.getAttribute('href').slice(1); (map[id] = map[id] || []).push(a); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        links.forEach(function(a){ a.classList.remove('active'); });
+        (map[e.target.id] || []).forEach(function(a){ a.classList.add('active'); });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('section.chapter').forEach(function(s){ io.observe(s); });
+
+  // Back to top via sentinel
+  var btn = document.getElementById('backtop');
+  var sentinel = document.createElement('div');
+  document.body.prepend(sentinel);
+  new IntersectionObserver(function(en){ btn.classList.toggle('show', !en[0].isIntersecting); }).observe(sentinel);
+  btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
