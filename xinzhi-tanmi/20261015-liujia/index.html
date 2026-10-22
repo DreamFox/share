@@ -164,6 +164,37 @@
     .lm-item-desc { font-size: 13px; }
   }
 
+
+  /* image lightbox */
+  figure.event-photo img { cursor: zoom-in; }
+  figure.event-photo { margin: 26px 0; }
+  figure.event-photo img {
+    width: 100%; height: auto; display: block;
+    border-radius: var(--radius); border: 1px solid var(--line);
+  }
+  figure.event-photo figcaption {
+    font-family: var(--sans); font-size: 12.5px; color: var(--ink-3);
+    padding-top: 8px; line-height: 1.6;
+  }
+  .lb {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(14, 10, 16, 0.94);
+    display: none; align-items: center; justify-content: center;
+    padding: 24px; cursor: zoom-out;
+  }
+  .lb.open { display: flex; }
+  .lb img {
+    max-width: 100%; max-height: 88vh; object-fit: contain;
+    border-radius: var(--radius);
+    box-shadow: 0 32px 90px -30px rgba(0,0,0,0.8);
+  }
+  .lb-cap {
+    position: absolute; left: 0; right: 0; bottom: 14px;
+    text-align: center; color: rgba(255,255,255,0.75);
+    font-family: var(--sans); font-size: 12.5px; padding: 0 24px;
+    line-height: 1.6; pointer-events: none;
+  }
+
   /* series footer nav */
   .series-nav {
     border-top: 1px solid var(--line); margin-top: 60px; padding-top: 24px;
@@ -346,6 +377,37 @@
       <div class="chapter-head"><span class="chapter-num">01</span><h2>刻意练习:从直线思维到第一性原理</h2></div>
       <div class="chapter-time">0:07 - 0:25 · 直线思维之弊 · 第一性原理 · 君子务本</div>
             <h3>直线思维:为什么我们的决定总是错的</h3>      <p>刘嘉从大学生最日常的两个选择切入:要不要选这门课?毕业后要不要留北上广?大家怎么做的?问学长&ldquo;这门课好不好玩、水不水、要不要做作业&rdquo;,或者把北京和家乡的工资、房价列进 Excel 表格做对比,觉得自己做了很多调研。</p>      <blockquote>你觉得你问了很多的人,你发现没有,你并没有往深度走。你在一条水平线上问你的问题,非常直接:我留在北上广有什么好处?有什么坏处?我选这门课有什么好处?有什么坏处?</blockquote>      <p>直线的思维模式很快,马上就能找到结论,但<strong>短视、从众和惯性,本质上是我们思维惰性的一种体现</strong>。十万年前,我们祖先的思维就是直线的:要不要去打猎?去打。打老虎还是打兔子?祖先的血泪教训告诉我们,打弱一点的动物,不用去思考。但今天这个世界太复杂了,还用十万年前的直线思维,就会得到非常错误的答案。</p>      <p>为什么我们意识不到?三个假象:第一,觉得&ldquo;我已经思考了,我已经问了几十个人了&rdquo;;第二,觉得&ldquo;我已经付出了很多,我做了调研,准备了 Excel 表格&rdquo;;第三,&ldquo;我一想到就马上行动,我快速地得到了结论&rdquo;。</p>      <p>在 AI 时代,这个问题更致命:当答案变得越来越廉价、越来越多,你直接问大模型,比找同学、找学长快得多。<strong>这就要求我们必须采用一种&ldquo;以辩求真&rdquo;、往下追问的方式。</strong></p>      <h3>纵向深挖:第一性原理</h3>      <p>标准模式是什么?不是问&ldquo;清华计算机系的分是多少、心理系的分是多少&rdquo;,而是问:<strong>志愿设置的目的是什么?10 年之后,我究竟想成为一个什么样的人?什么是我想赖以生存的东西?</strong></p>      <blockquote>当你把这点想清楚了之后,你才会有想清楚:志愿其实是到达目标的路线和起点。有了这一点之后,你再来想,我应该做什么样的选择。我们不要用实现层面的方式来思维,而是要往纵向走。</blockquote>      <h3>刘嘉的雪碧故事:底层逻辑如何决定选择</h3>      <p>刘嘉用自己留北京的经历示范什么叫底层逻辑。90 年代他到北京读大学,拒绝让父母送。到北京第一晚住在朋友家(月坛边上),第二天一早五六点就起来给家报平安,那时候没有微信、没有手机、连固定电话都没有,只能去邮局发电报(按字收费,字一定要省,但意思要表达清楚)。</p>      <p>出了邮局大门,天亮了,那是他第一眼看北京:</p>      <blockquote>太阳特别亮、特别高,天上没有白云,无限宽广。他来自重庆,著名的雾都,每天都是各种各样的白雾,人就在一片白雾中间穿梭。所以他当时想:天居然有这么高,太阳这么亮。</blockquote>      <p>再看月坛那条路,四条车道,笔直向前、感觉没有尽头。他家乡只有一条路,还是歪歪拐拐的山路。他感叹:天下还有这么宽的马路。正感叹时,一个老太太推着冰棍车经过。他问有没有雪碧,初中高中时他在《少年文艺》里读到过一种特别好喝的饮料叫雪碧,但家乡没卖的。老太太摸出一瓶冰镇的雪碧,绿色玻璃瓶,打开喝下去:</p>      <blockquote>我当时只有一个念头:我一定要留下北京。当我碰到各种挫折的时候,我就想起在北京喝雪碧的这种感觉。</blockquote>      <p>这就是底层逻辑:要不要留北上广,不是看北京房价有多高、工资有多高,而是<strong>北上广对人的最大价值是&ldquo;被放大的红利&rdquo;</strong>,这一切是在家乡体验不到、感受不到的;当然也有挑战:大家都想待下来,你得有更强的竞争。有了底层逻辑之后,剩下的是风格问题:有些人想过挑战的人生,有些人想过安静的人生,无所谓好坏,只是个人风格。</p>      <blockquote>对我而言,我就喜欢那种卷的人生,喜欢在阳光之下面对一望无垠的蓝天的感觉。北京的工资多少与我有关系吗?没有关系。北京的房价有多高?与我没有关系。</blockquote>      <p>当你把底层逻辑想清楚了,以后碰到学业困难、生活不如意,这些都不重要,你就能坚守下来。</p>      <h3>君子务本,本立而道生</h3>      <p>《论语》里有一句非常重要的话:<strong>君子务本,本立而道生</strong>。本就是根本。一个人追求事物的本源,他万事万物的出发点、所有决定的出发点,一定要从这个本出发。</p>      <blockquote>一旦你找到了这个本,找到了你的基石,找到你的第一性之后,本立而道生,从下层的上面生长起来,有无穷多的演化的可能性。当你的本越深的时候,你能生长出更多的东西。</blockquote>      <p>这呼应了第 3 讲的链条:从矛盾律到布尔代数,你往下面挖得越深,生长出来的树木就越茂盛。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-01.jpg" width="1600" height="903" alt="课件第 1 页:封面：刻意练习，追问事物的本源">
+        <figcaption>课件第 1 页:封面：刻意练习，追问事物的本源</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-03.jpg" width="1600" height="903" alt="课件第 3 页:直线式思考的三个自我欺骗">
+        <figcaption>课件第 3 页:直线式思考的三个自我欺骗</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-04.jpg" width="1600" height="903" alt="课件第 4 页:U 型思考：高考志愿">
+        <figcaption>课件第 4 页:U 型思考：高考志愿</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-05.jpg" width="1600" height="903" alt="课件第 5 页:U 型思考：定居城市">
+        <figcaption>课件第 5 页:U 型思考：定居城市</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-06.jpg" width="1600" height="903" alt="课件第 6 页:从直线式思考走向 U 型思考">
+        <figcaption>课件第 6 页:从直线式思考走向 U 型思考</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-07.jpg" width="1600" height="903" alt="课件第 7 页:君子务本，本立而道生">
+        <figcaption>课件第 7 页:君子务本，本立而道生</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch2">
@@ -374,42 +436,139 @@
         <li><strong>从一篇到多篇</strong>:让大模型推荐相关文章,你就跳出了这一篇的题目,走向更多篇。&ldquo;大模型把全世界的知识压缩进权重&rdquo;,这就是最好的读文献方法;</li>
         <li><strong>内化思考</strong>:用思维导图把关键点拿出来(&ldquo;原来特别不屑用思维导图,用了之后发现真香&rdquo;),它帮你把盘中错节的观点纠结起来。不想用思维导图就在纸上写,写的过程也是思考的过程。</li>
       </ul>      <blockquote>我们读文献要训练的就是:你追问,变得更加深入,不停迭代,变得更加系统。最开始的文章是我们给你的,但到最后你会发现老师给的文章不好、不是你感兴趣的,你要找到你自己的点,这就是我们科研的过程。所以这堂课也教给大家怎么做科研。</blockquote>
+    
+      <figure class="event-photo">
+        <img src="images/slide-08.jpg" width="1600" height="903" alt="课件第 8 页:如何探求事物的本源：刻意练习">
+        <figcaption>课件第 8 页:如何探求事物的本源：刻意练习</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-09.jpg" width="1600" height="903" alt="课件第 9 页:内化与思考：把追问方法用进文献阅读">
+        <figcaption>课件第 9 页:内化与思考：把追问方法用进文献阅读</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch4">
       <div class="chapter-head"><span class="chapter-num">04</span><h2>《禅与摩托车维修艺术》:波西格的 121 次投稿</h2></div>
       <div class="chapter-time">0:42 - 0:46 · 波西格 · 古典理性与浪漫感情</div>
             <p>刘嘉介绍了一本&ldquo;神书&rdquo;:罗伯特·波西格的《禅与摩托车维修艺术》。书名里两个完全不相干的东西,禅坐在庙里,摩托车在路上修,被作者拧在一起:他带着儿子一边骑摩托一边修摩托,在路上跟儿子讨论哲学问题,把整个过程记录下来,就成了这本书。</p>      <blockquote>他总共投了 121 家出版社。1974 年第一次出版到现在,全世界销量 500 万册。它是一本哲学的书,能卖 500 万册是什么概念?以中国标准为例:一本书卖 2 万册叫畅销书,卖 5 万册叫超级畅销书,编辑要跪在地上感谢。它卖了 500 万册,成为史上最经典的哲学书之一。</blockquote>      <p>乔布斯在多个场合提到这本书,苹果那套东西深受这本书的哲学影响。它的核心:把古典的理性和浪漫的感情融为一体,<strong>事物本身的卓越感先于主、客观而存在,无法用纯理性来给它做一个简单的决定</strong>。最关键的是:当你沉下心来拧螺丝、修理机器,这种全身心的投入,跟你沉下心来读文献、打磨观点、做刻意练习,是一样的。</p>      <blockquote>当你专注于某件事情的时候,你能够真正洞悉这个世界的本质。</blockquote>
+    
+      <figure class="event-photo">
+        <img src="images/slide-10.jpg" width="1600" height="903" alt="课件第 10 页:《禅与摩托车维修艺术》">
+        <figcaption>课件第 10 页:《禅与摩托车维修艺术》</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch5">
       <div class="chapter-head"><span class="chapter-num">05</span><h2>刻意练习示范:舔狗题目的完整推演</h2></div>
       <div class="chapter-time">0:46 - 1:07 · 隐藏假设 · 西弗神话 · 金句</div>
             <h3>第一步:亮观点</h3>      <p>刘嘉现场用一道刻意练习题目做完整示范。题目:</p>      <blockquote>你对他有好感,决定通过不断的付出来赢得他的好感。但随着时间的推移,边际效用递减,他习惯了,甚至开始把这当做理所应当,而你的努力并没有让关系更进一步。问题:你是否应该停止对他的付出?<span class="attr">练习题目</span></blockquote>      <p>报告的标题要清楚地表达观点,先亮出结论。刘嘉示范的观点是&ldquo;不,我还要继续付出&rdquo;。</p>      <h3>第二步:找隐藏假设(最关键的一步)</h3>      <p>为什么&ldquo;我&rdquo;会失望、会想停止?因为有个隐藏假设:<strong>这个世界会回应我</strong>,我付出了,对方也应该回应。</p>      <blockquote>我们付出,他原来还惊喜;我现在付出,他连惊喜都没有,理所当然了。隐藏假设这一步是最关键的:这个世界应该回应我。</blockquote>      <h3>第三步:论证假设的对错(先煽情,再理性)</h3>      <p>先通过煽情把大家的情绪调动起来,这是我们从小被教育的东西:我哭了,妈妈就会来;我努力了,就能考上清华;善有善报,恶有恶报;正义也许会迟到,但永远不会缺席。</p>      <p>然后用冷静的理性拆掉它:</p>      <blockquote>努力的人会失败。很多人努力,清华每年就招这么几个人,全国努力的人远比清华招的多;善良的人会受伤;优秀的人会被埋没;死亡不讲情面,历史并不在乎个人的悲欢离合,社会的机器不会考虑我们每个人多么努力。</blockquote>      <p>再往下追一层:人真正难以忍受的,未必是没有结果、没有答案,而是<strong>苦难没有观众,人生没有意义</strong>,我舔,对方没有任何回应,那这个行为就没有意义了。</p>      <h3>第四步:新假设与回扣</h3>      <p>旧假设(&ldquo;这个世界应该回应我&rdquo;)是错的,这个世界没有意识,神只是提供了一个因果压缩。那么新的隐藏假设是什么?</p>      <blockquote>这个世界本身就没有预设的意义。我们不要去等待别人给我们意义,等待老天给我们指条路是错的,因为老天本身没有这种意识。意义要自己来创造。我把原来交给别人的主动权抢回来了,我把控制权交到别人手里,期待别人做出反应;现在,控制权全部到我手里。意义由自己来创造。</blockquote>      <p>回扣标题:舔狗不是傻瓜,因为&ldquo;我爱你,但与你无关&rdquo;,这个&ldquo;是&rdquo;已经定义了全部。你爱不爱我不重要,这是全部的爱。</p>      <h3>金句与西弗神话</h3>      <p>结尾要留一个可以记忆的金句。刘嘉先讲了西西弗斯:他犯了错,被宙斯罚把石头推上山,推到山顶石头又滚下来,只好重新推,一件多无聊、多没有意义的事情。</p>      <p>他讲了自己军训时的经历:整整军训一年,有一天中队长怕他们闲着出问题,就让他和同学王小文在食堂门口挖一个树坑(宽 60cm、长 60cm、深 1m),挖好了,吃完饭之后又让他们把坑全部填上。&ldquo;我们很多时间,就是在做没有意义的周而复始的事情。&rdquo;</p>      <p>诺贝尔奖得主加缪写了著名的《西西弗神话》(刘嘉特别推荐北大杜小珍的译本,他读大学时最困惑迷茫的时候读完,所有问题全部解决):</p>      <blockquote>西西弗并不是一个被动地把石头推上山,他用把石头推上山这个行为来对抗荒谬。这个世界充满了荒谬。在推上山的过程中,他确实是在对宙斯嘲笑。这个时候,意义由我来定义,不再由宙斯定义。文章的结尾,加缪说:<strong>我们必须想象西西弗是幸福的。</strong>为什么?意义由我来创造。</blockquote>      <p>你可以想象把西西弗换成那只舔狗:不停地舔,疯狂地舔,舔得没有任何意义。但是我们必须想象,当他跪下来的时候,我们欣赏他,因为意义由他自己创造。</p>      <h3>本周练习题目</h3>      <div class="keypoint">如果选择权真的交到你手里,你会选择永生吗?,隐藏假设是什么?它是对的还是错的?你的金句是什么?<small>刻意练习 · 本周题目</small></div>
+    
+      <figure class="event-photo">
+        <img src="images/slide-11.jpg" width="1600" height="903" alt="课件第 11 页:示例题目：是否该停止付出">
+        <figcaption>课件第 11 页:示例题目：是否该停止付出</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-12.jpg" width="1600" height="903" alt="课件第 12 页:标题要清晰表达观点、抓人眼球">
+        <figcaption>课件第 12 页:标题要清晰表达观点、抓人眼球</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-13.jpg" width="1600" height="903" alt="课件第 13 页:隐藏假设：我对 TA 好，世界就会回应我">
+        <figcaption>课件第 13 页:隐藏假设：我对 TA 好，世界就会回应我</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-14.jpg" width="1600" height="903" alt="课件第 14 页:论证：梨子加煽情">
+        <figcaption>课件第 14 页:论证：梨子加煽情</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-15.jpg" width="1600" height="903" alt="课件第 15 页:论证：理论加冷静">
+        <figcaption>课件第 15 页:论证：理论加冷静</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-16.jpg" width="1600" height="903" alt="课件第 16 页:升华：西西弗斯">
+        <figcaption>课件第 16 页:升华：西西弗斯</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-17.jpg" width="1600" height="903" alt="课件第 17 页:新的隐藏假设：世界没有意识">
+        <figcaption>课件第 17 页:新的隐藏假设：世界没有意识</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-18.jpg" width="1600" height="903" alt="课件第 18 页:金句结尾：我爱你，但与你无关">
+        <figcaption>课件第 18 页:金句结尾：我爱你，但与你无关</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-19.jpg" width="1600" height="903" alt="课件第 19 页:刻意练习题目一：库兹韦尔与数字永生">
+        <figcaption>课件第 19 页:刻意练习题目一：库兹韦尔与数字永生</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch6">
       <div class="chapter-head"><span class="chapter-num">06</span><h2>禅宗:应无所住而生其心</h2></div>
       <div class="chapter-time">1:16 - 1:25 · 苹果的整体观 · 慧能神秀 · 菩提本无树</div>
             <h3>苹果:整体与部分为一</h3>      <p>刘嘉给了一张苹果产品的图片(Mac 系列):看这幅图有一种极度舒适的感觉。为什么?苹果的产品不是整体的部分,而是<strong>部分与整体为一</strong>。这背后是禅宗的东西在运作。</p>      <p>他分享了自己从 PC 死忠到苹果用户的故事:92 年他在北大的宿舍可能是中国第一个有计算机的宿舍(学编程,最后变成打游戏);他曾是中关村著名的修计算机的,90 年代帮人家组装一台计算机能挣 200-500 块钱(相当于现在 6000 块)。到 MIT 读研究生时,老板送他苹果产品他特别鄙视:&ldquo;我一定要用 PC。&rdquo;直到有一天朋友送了他一块苹果手表,他久坐,手表震动提醒他站起来。后来朋友又问他苹果手表用得怎么样,他说没用,因为他手机是安卓连不上。朋友默默走了,过了几天送了他一部苹果手机。</p>      <blockquote>这么好一个东西,为什么我现在才用上?我把我的 PC 机换成苹果,这个世界怎么有这么美好的东西?它背后运行的逻辑是什么?</blockquote>      <h3>慧能与神秀:菩提本无树</h3>      <p>禅宗的&ldquo;应无所住而生其心&rdquo;:当我们执着于一个事物、纠缠于我们的思想,就永远不会生出自在清净的心。只有把这种事物和思想抛弃掉,才会有自在而清净的心。</p>      <p>刘嘉讲了禅宗史上最著名的衣钵之争。五祖弘忍感觉自己不行了,要找弟子接衣钵,让大家写偈子。大弟子神秀写的是:&ldquo;身是菩提树,心如明镜台,时时勤拂拭,勿使惹尘埃。&rdquo;大家觉得简直太了不起了。</p>      <p>慧能从旁边路过,他出身贫寒,大字不识,每天只能扫地、帮厨。他托师兄念给他听,听完马上来了一句:</p>      <div class="keypoint"><strong>菩提本无树,明镜亦非台,本来无一物,何处惹尘埃。</strong><small>六祖慧能</small></div>      <p>当你说还有个菩提树、还有明镜台的时候,你其实已经执着于这个事物了。都没有树、没有明镜台,怎么会去惹尘埃?这句话说出来,所有人全部震散。五祖赶紧把自己的衣钵传给他,让他跑路,&ldquo;你太厉害了,大家会记住你,神秀会把你剁掉。&rdquo;慧能就带着衣钵跑到深山里去修,后来成为六祖,这套东西后来经日本东部和尚传回日本,成为日本禅宗的来源。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-20.jpg" width="1600" height="903" alt="课件第 20 页:应无所住而生其心，《金刚经》">
+        <figcaption>课件第 20 页:应无所住而生其心，《金刚经》</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-21.jpg" width="1600" height="903" alt="课件第 21 页:禅宗六祖惠能，身是菩提树">
+        <figcaption>课件第 21 页:禅宗六祖惠能，身是菩提树</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch7">
       <div class="chapter-head"><span class="chapter-num">07</span><h2>洛克的质疑:物质决定精神?</h2></div>
       <div class="chapter-time">1:25 - 1:27 · 唯物主义质疑</div>
             <p>禅宗这一套有最大的反对者,西方大哲学家洛克的唯物主义:</p>      <blockquote>当我们通过感觉所传递的信息产生任何一点知识时,这个知识不仅依赖于我们的观察,也依赖于物质。翻译成现在的哲学:你先得有物质,你才有精神,物质决定精神。</blockquote>      <p>背后的逻辑很简单:现实世界有一个绿色的苹果,进入到我们的眼睛,刺激了视网膜放电,进入视觉皮层放电,再进到前额叶放电,然后你知道&ldquo;我看见了一个绿色的苹果&rdquo;。如果世界上不存在绿色的苹果,你说看见了一个,大家一定会说你精神分裂。</p>      <blockquote>我给大家上课,除了那边坐的四个助教之外,我说这边还站了十个助教,你们一定要给校长举报说,我们的老师精神分裂,送回回龙观吧?</blockquote>      <p>我们通常直观地以为:视觉是对外部世界客观的、忠实的反应,就像一个照相机。接下来整个下半场,就是要拆掉这个直觉。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-22.jpg" width="1600" height="903" alt="课件第 22 页:John Locke 论感觉与物理世界">
+        <figcaption>课件第 22 页:John Locke 论感觉与物理世界</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch8">
       <div class="chapter-head"><span class="chapter-num">08</span><h2>视觉的相对性:庄子、大小与明暗</h2></div>
       <div class="chapter-time">1:27 - 1:34 · 庄子 · 大小对比 · 明暗对比</div>
             <h3>庄子:大小都是对比出来的</h3>      <p>庄子说过:&ldquo;以差观之,因其所大而大之,则万物莫不大;因其所小而小之,则万物莫不小。&rdquo;翻译成现代汉语:我们之所以觉得大、觉得小,是因为有对比。没有对比,就无所谓大和小。</p>      <blockquote>就像在座的各位一样,当你觉得我考上清华特别了不起,到了清华之后发现原来大家都很牛。在你们中学里你是天选,永远是最高的;到了清华,所谓的学霸和学渣,都是相互对比而已。</blockquote>      <p>复习第 1 讲的错觉:两个红色圆点哪个更大?换成不同的环绕方式,答案就变了。因为我们不能感觉绝对的大小,只能感觉相对的大小。</p>      <h3>明暗也是相对的</h3>      <p>一位俄罗斯诗人说过:所有的光明都是黑暗,如果你和更亮的光明相比;所有的黑暗都是一片光明,如果你和更暗的黑暗相比。</p>      <p>刘嘉现场演示:同样亮的两个色块(标一和标二),一个放更亮的背景、一个放更暗的背景,马上显得不一样亮。然后他一点点把背景抽掉,大家惊呼,两块颜色真的一样亮。&ldquo;我们不能感受绝对的亮度和暗度,我们只能感受相对的。&rdquo;连颜色是否一样,都留作作业让大家回去自己试。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-23.jpg" width="1600" height="903" alt="课件第 23 页:庄子《秋水》：以差观之">
+        <figcaption>课件第 23 页:庄子《秋水》：以差观之</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-24.jpg" width="1600" height="903" alt="课件第 24 页:John Ruskin 论光与影的相对性">
+        <figcaption>课件第 24 页:John Ruskin 论光与影的相对性</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch9">
       <div class="chapter-head"><span class="chapter-num">09</span><h2>变化盲视:门板实验与 21 处变化</h2></div>
       <div class="chapter-time">1:34 - 1:41 · 《情人》朗读 · 门板实验 · 变化视频</div>
             <p>刘嘉先放了杜拉斯《情人》的著名开场朗读(&ldquo;我已经老了。有一天,一个男人向我走来,他主动介绍自己,他说我认识你,我永远记得你&hellip;&hellip;那时候你是年轻女人,我更爱你现在备受摧残的面容&rdquo;),然后问:大家注意到有什么变化吗?,朗读过程中,图片上的人从年轻女性变成了一个备受摧残的老人,几乎没人发现。</p>      <blockquote>你们对变化也不敏感。这是我们第一节课就讲过的:我们只对相对变化敏感,对绝对不变的东西不敏感。</blockquote>      <p>更狠的是康奈尔大学的经典实验:心理学家带助手去校园里找人问路,问路过程中两人扛着一块门板经过,问路的人被门板挡住视线的瞬间,问路者被换成了另一个人(从年轻人变成老人、甚至从男性换成女性)。<strong>70% 的人没有意识到换了人。</strong></p>      <p>最后放了一段比扑克牌更狠的变化视频:翠壳在什么地方?你能发现多少变化?,全场数出来大约 20-21 处变化。我们看到了吗?没看到。这不是眼睛不行,不需要每个人换一副眼镜。这是洛克所讲的感知方式出了问题。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-25.jpg" width="1600" height="903" alt="课件第 25 页:视觉是对外部世界的忠实反映吗">
+        <figcaption>课件第 25 页:视觉是对外部世界的忠实反映吗</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch10">
@@ -422,12 +581,44 @@
         <li><strong>缪勒莱尔错觉</strong>:两条一样长的线,加上箭头就不一样长,第 1 讲就演示过;</li>
         <li><strong>亚马逊丛林人看牛</strong>:人类学家带亚马逊人去美国看大草原,他看见一头牛向他跑过来,露出惊恐的表情:&ldquo;这头牦牛在我眼前膨胀起来了!&rdquo;他知道牛的体积不应该改变,但他的视觉世界最远只有几米(丛林里一棵树一棵树密密麻麻),他看见的就是 5 米外的一头牦牛跑到面前,在他的视网膜上,那头牛该长多大?</li>
       </ul>      <div class="keypoint">你可以看到,我们的经验、我们的生活会塑造我们的感知。我们对这个世界的感知,是被我们的过去所塑造的。<small>刘嘉,第 4 讲</small></div>
+    
+      <figure class="event-photo">
+        <img src="images/slide-26.jpg" width="1600" height="903" alt="课件第 26 页:重构的过程是创造性的，不是复制">
+        <figcaption>课件第 26 页:重构的过程是创造性的，不是复制</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-27.jpg" width="1600" height="903" alt="课件第 27 页:康德：没有知识引导的感觉是瞎的">
+        <figcaption>课件第 27 页:康德：没有知识引导的感觉是瞎的</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-28.jpg" width="1600" height="903" alt="课件第 28 页:重构出「空间」">
+        <figcaption>课件第 28 页:重构出「空间」</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch11">
       <div class="chapter-head"><span class="chapter-num">11</span><h2>时间的重构与罗生门</h2></div>
       <div class="chapter-time">1:55 - 2:05 · 时间重构 · MV 动画 · 《罗生门》 · 心灵构建</div>
             <h3>时间也是重构出来的</h3>      <p>爱因斯坦讲相对论时,有人让他用通俗的方式讲讲,他说:</p>      <blockquote>当你和一个美女在一起的时候,觉得时间过得特别快;当你和一个无趣的人在一起,时间特别慢;当你听一门讲得很慢的课程,感觉过去一天了,才过去 5 分钟。<span class="attr">爱因斯坦,被课堂引述</span></blockquote>      <p>刘嘉放了一段他特别喜欢的 MV:一个女孩躺在那里拍一张照片,再把照片连起来变成动画,这里面有时间吗?这个时间是重构出来的。<strong>不仅时间可以重构,所有的一切都可以重构出来。</strong></p>      <p>这期的观影作业是《罗生门》:一个武士被谋杀,所有的人都在讲不同的版本。为什么?并不是谁说谎,而是每个人都在维护自己的立场。你会发现,每个人的故事都是不一样的。</p>      <h3>世界是我们构建的</h3>      <p>认知心理学的观点:我们所知道的世界,是我们构建的。在这构建的世界里面,<strong>心灵提供了构建的逻辑,而外部世界提供能量(材料)</strong>,外部世界提供的是砖瓦钢筋水泥,但你要修成什么样的房屋、什么样的城堡,是我们的心灵决定的。没有砖瓦肯定不行;但你的心灵世界是美是丑,取决于这个构建。</p>      <blockquote>我们的视觉不是照相机,而是真正的构造者。我们把一个绿色的苹果看成一个绿色的苹果,同样也是幻觉,因为绿色的苹果也是我们构建出来的,它只是碰巧和物理世界那个绿色的苹果长得一模一样而已。在绝大多数情况之下,大脑所构建的苹果让你感觉和世界的苹果一模一样。</blockquote>
+    
+      <figure class="event-photo">
+        <img src="images/slide-29.jpg" width="1600" height="903" alt="课件第 29 页:重构出「时间」">
+        <figcaption>课件第 29 页:重构出「时间」</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-30.jpg" width="1600" height="903" alt="课件第 30 页:《罗生门》，1950">
+        <figcaption>课件第 30 页:《罗生门》，1950</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-31.jpg" width="1600" height="903" alt="课件第 31 页:W. Durant：世界是我们构建的">
+        <figcaption>课件第 31 页:W. Durant：世界是我们构建的</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch12">
@@ -437,18 +628,76 @@
         <li><strong>可说</strong>:自然科学的事实命题,能用语言清晰描述,有真假。这是语言世界的领地。AI 解数学题、编程为什么厉害?因为这些东西是可说的。在语言的逻辑之内,AI 最擅长。</li>
         <li><strong>不可说</strong>:伦理学、美学、生命的意义、上帝、价值,在维特根斯坦看来,这些都真实存在,但不能用语言表达,不能做成事实。什么叫美?不同的人有不同的判断。100 个人读《哈姆雷特》,就会有 100 个哈姆雷特,因为每个人都把自己的东西投射进去。</li>
       </ul>      <p>看一幅图:一个房子、一棵树、一个人、一个月亮,这是描述分析,是&ldquo;可说&rdquo;的;但你感觉这里面有东西,它在和你心中某个东西形成共鸣,那是&ldquo;不可说&rdquo;的。你描述的时候绝不会说&ldquo;这是一棵树、一个人&rdquo;,而会说&ldquo;这是一个正在等待恋人回来的人&rdquo;。<strong>我们每个人都会把自己的情感投射于其中。</strong>心理学通过这种方式去了解人的内部构造(投射测验的原理)。</p>      <blockquote>AI 没有美和丑。让 AI 生成一幅画,需要你来挑,如果 AI 知道什么是美,直接生成一幅就可以了,它不用生成几十幅让你挑。因为 AI 只能描述可说的东西,编程、数学,它不能做到不可说的。这是我们人类真正最后的保障所在的地方:我们的伦理、我们的美学、我们的生命意义。这就是为什么 AI 越发展,心理学越变成一个显学的学科。</blockquote>      <p>刘嘉顺势自黑:80 年代他读书时,&ldquo;学好数理化,走遍天下都不怕&rdquo;,理科班瞧不起文科班;但这时代变了,最早受攻击的是什么?学数学的。</p>      <h3>世界的意义必然在世界之外</h3>      <p>维特根斯坦在&ldquo;语言的边界即世界的边界&rdquo;后面又加了一句话:<strong>世界的意义必然在世界之外</strong>。</p>      <p>还是以那幅画为例:画里有树、房子、人、月亮,这是世界之内。但它的意义在这幅画之外。石头落地、下雨,如果只是一堆客观事实,你算它的重力加速度就行了,你不会感动。我们看见一个美好的东西觉得感动,是因为意义在世界之外。</p>      <blockquote>我们可以通过科技移山填海,改变山川的高度、河流的走向,甚至重新塑造出整片海。但是<strong>山河之美,却不在山高水长,在观者之心</strong>。移山填海很伟大,美吗?有价值吗?有意义吗?存在于观者之心。</blockquote>      <p>蒙娜丽莎的微笑,在弗洛伊德给她加上恋母情节的解释之前,就是一幅不错的肖像;弗洛伊德之后,家长看这幅画的眼神就变了,能看出达芬奇对他母亲深深的爱恋,既看出女性的端庄,也看出女性的内在。</p>      <p>一瓶茅台酒卖 10 万人民币,值这么多钱吗?不就是一点酒精加一点水加一点香料?但你如果知道当时的僧侣是怎么酿造的,如何把理性和感性融为一体,喝进那一刻,酒的意义就不一样了。刘嘉认识的音乐家小柯(《北京欢迎你》的作曲者)自己酿酒,他说&ldquo;喝我的酒,就像在唱一首歌&rdquo;:前奏是酒香入口前淡淡的清香,到了主歌、副歌&hellip;&hellip;用歌曲的方式讲了之后再去喝那酒,口感完全不一样。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-32.jpg" width="1600" height="903" alt="课件第 32 页:「房树人」投射测试">
+        <figcaption>课件第 32 页:「房树人」投射测试</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-33.jpg" width="1600" height="903" alt="课件第 33 页:维特根斯坦：语言的边界即世界的边界">
+        <figcaption>课件第 33 页:维特根斯坦：语言的边界即世界的边界</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-34.jpg" width="1600" height="903" alt="课件第 34 页:维特根斯坦：世界的意义必定在世界之外">
+        <figcaption>课件第 34 页:维特根斯坦：世界的意义必定在世界之外</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-35.jpg" width="1600" height="903" alt="课件第 35 页:小柯与罗曼尼康帝：理性与感性握手言和">
+        <figcaption>课件第 35 页:小柯与罗曼尼康帝：理性与感性握手言和</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch13">
       <div class="chapter-head"><span class="chapter-num">13</span><h2>苍蝇与玻璃瓶:收回意义的控制权</h2></div>
       <div class="chapter-time">2:17 - 2:25 · 规训话术 · 反驳陷阱 · 瓶子是幻觉</div>
             <h3>规训的话术:玻璃瓶是如何形成的</h3>      <p>刘嘉拆解了那些耳熟能详的&ldquo;规训话术&rdquo;:&ldquo;你太脆弱了&rdquo;&ldquo;你太极端了、太情绪化了&rdquo;(反复否定你情绪的合法性);&ldquo;我已经打了你一巴掌了,痛得要死,却说没事儿,你吃了这个亏你就知道感恩&rdquo;;&ldquo;不听我的,你这么做会伤我的心&rdquo;;&ldquo;年轻人就太冲动&rdquo;&ldquo;我们以前就是缠小脚的,残疾也就过来了,现实就是这样子&rdquo;,把压力合理化成现实;&ldquo;你不快乐是因为你想太多了,凡事往好处想&rdquo;。</p>      <blockquote>一个苍蝇关在玻璃瓶里面,用尽全力要从玻璃瓶里面跑出来。玻璃瓶是什么?就是刚才那些话,别人的经验、你应该接受现实。这些话语筑成了一个瓶子。我们在座的各位就是那只苍蝇,你很努力,拼命挣扎,但每次都只会碰壁,碰壁多了之后你就说:别再飞了,老老实实把别人的经验变成我的,你就会相信&ldquo;这个世界会回应我&rdquo;。</blockquote>      <h3>反驳的陷阱:别掉进他的话语体系</h3>      <p>你说&ldquo;我要去寻求正义&rdquo;,你就坐在了玻璃瓶上。别人用&ldquo;老天会帮我惩罚他&rdquo;来安慰你,可这个世界从来就不是善有善报、恶有恶报,坏人过得挺开心的,寿终正寝。</p>      <p>更危险的是反驳。你说&ldquo;你太年轻了,听我的,你经验不够&rdquo;,我去反驳说&ldquo;我虽然年轻,我也读过很多书&rdquo;,这句话的隐藏假设是什么?读书多就可以成熟。<strong>你一旦反驳,就掉进了他的话语体系、逻辑体系里面</strong>,你才真正输了。</p>      <p>维特根斯坦说过:哲学的任务不是提什么高深理论,而是<strong>让苍蝇找到瓶口</strong>。</p>      <blockquote>这里说的哲学,不是学术上的,是我们每个人看待这个世界的方式。你重要的不是去和这些人争论,因为这些人的话语没有任何根基,只是一种幻觉。当你把这些人的话语当成一个需要考虑的东西,你就输了。&ldquo;我爱你,与你无关&rdquo;,这瓶子就自然消失了。你不用去找瓶口在哪里,瓶子只是幻觉,里面的挣扎才是真实。</blockquote>      <h3>社会的规训与原生家庭</h3>      <p>我们痛苦的根源:社会规训与原生家庭的束缚,阻碍个体寻求真正的正义与自由。当你意识到&ldquo;这个世界没有预设的意义&rdquo;,你就可以收回来,意义由你自己创造,你不需要去问别人的感受。</p>
+    
+      <figure class="event-photo">
+        <img src="images/slide-36.jpg" width="1600" height="903" alt="课件第 36 页:我都是为了你好">
+        <figcaption>课件第 36 页:我都是为了你好</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-37.jpg" width="1600" height="903" alt="课件第 37 页:爹味语录的四种运作方式">
+        <figcaption>课件第 37 页:爹味语录的四种运作方式</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-38.jpg" width="1600" height="903" alt="课件第 38 页:苍蝇困境：瓶子只是幻觉，重构才是真实">
+        <figcaption>课件第 38 页:苍蝇困境：瓶子只是幻觉，重构才是真实</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-39.jpg" width="1600" height="903" alt="课件第 39 页:当你意识到意义不在他们的言语之中">
+        <figcaption>课件第 39 页:当你意识到意义不在他们的言语之中</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-40.jpg" width="1600" height="903" alt="课件第 40 页:随性、随喜、随缘">
+        <figcaption>课件第 40 页:随性、随喜、随缘</figcaption>
+      </figure>
+
+      <figure class="event-photo">
+        <img src="images/slide-41.jpg" width="1600" height="903" alt="课件第 41 页:重构：物理世界与心理世界的分界">
+        <figcaption>课件第 41 页:重构：物理世界与心理世界的分界</figcaption>
+      </figure>
+
     </section>
 
     <section class="chapter" id="ch14">
       <div class="chapter-head"><span class="chapter-num">14</span><h2>终章:不是风动,不是幡动,是心动</h2></div>
       <div class="chapter-time">2:26 - 2:30 · 慧能出山 · 心动</div>
             <p>刘嘉用六祖慧能出山的故事收束全讲。慧能当年传了五祖的衣钵,神秀要追杀他,他潜逃了十几年之后大彻大悟,决定出山。出山时正赶上庙里讲经,有风吹动旗幡,一个僧人说&ldquo;风在动&rdquo;,另一个说&ldquo;幡在动&rdquo;,争论不休。慧能大摇大摆走进去说:</p>      <div class="keypoint"><strong>不是风动,不是幡动,是仁者心动。</strong><small>六祖慧能</small></div>      <p>这呼应全讲的主线:我们所看见的世界,大小、明暗、颜色、时间,全是大脑重构出来的;世界的意义不在世界之内,而在观者之心;别人给我们的规训筑成的玻璃瓶只是幻觉;收回控制权,意义由自己创造。</p>      <blockquote>这个世界上你所经历的不幸的事情,并不真的会造成致命的打击。真正让你觉得痛苦的,是你把定义权交给了别人。今天的课就到这里。<span class="attr">刘嘉,第 4 讲收束</span></blockquote>
+    
+      <figure class="event-photo">
+        <img src="images/slide-42.jpg" width="1600" height="903" alt="课件第 42 页:《六祖坛经》：仁者心动">
+        <figcaption>课件第 42 页:《六祖坛经》：仁者心动</figcaption>
+      </figure>
+
     </section>
 
     <!-- timeline -->
@@ -534,6 +783,12 @@
   </div>
 </footer>
 
+
+<div class="lb" id="lb" role="dialog" aria-label="查看大图">
+  <img src="" alt="">
+  <div class="lb-cap"></div>
+</div>
+
 <button class="backtop" id="backtop" aria-label="回到顶部">↑</button>
 
 <script>
@@ -557,6 +812,24 @@
   document.body.prepend(sentinel);
   new IntersectionObserver(function(en){ btn.classList.toggle('show', !en[0].isIntersecting); }).observe(sentinel);
   btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  // Lightbox
+  var lb = document.getElementById('lb');
+  var lbImg = lb.querySelector('img');
+  var lbCap = lb.querySelector('.lb-cap');
+  function lbClose(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lb.addEventListener('click', lbClose);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') lbClose(); });
+  document.querySelectorAll('figure.event-photo img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      var cap = img.closest('figure').querySelector('figcaption');
+      lbCap.textContent = cap ? cap.textContent : '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
 </script>
 </body>
 </html>
